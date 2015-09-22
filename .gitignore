@@ -1,0 +1,12 @@
+*.aux
+*.log
+*.out
+*~
+.#*
+#*
+.Rhistory
+.Rproj.user
+*.Rout
+meu1repo
+meu1repo/*
+*.html
