@@ -831,11 +831,56 @@ baixado um arquivo com um função para calcular o fator de inflação de
 variância (*vif*, variance inflation factor) usado em modelos de
 regressão, disponível na página da [Professora Suely Giolo][].
 
-```{r, engine="bash", echo=-c(1:2)}
+```{r, engine="bash", include=FALSE}
+## Tenta ir para o diretório downloads, se não conseguir é porque não
+## existe então cria um diretório download para então entrar nele.
+if [ -d downloads ]
+then
+    echo "Diretório existe."
+    cd downloads
+else
+    echo "Diretório não existe."
+    mkdir downloads
+    cd downloads
+fi
+
+## Se não existir o aquivo vif.R, então baixar da internet.
+if [ ! -f vif.R ]
+then
+    echo "Arquivo vif.R não existe. Baixando..."
+    wget 'http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R'
+else
+    echo "Arquivo vif.R já existe."
+fi
+
+## Copiar o arquivo vif.R para o meu1repo (-v: verbose).
+cp -v vif.R ../meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
 cd meu1repo
 
 ## Baixando arquivo da internet. Uma função do R.
 wget 'http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R'
+```
+
+```{r, engine="bash", echo=FALSE}
+## Printa o seria o output da wget mas sem usar a wget para não
+## encarecer a compilação. Insere o instante da compilação. Esconde
+## também o IP da máquina com ???.??.???.??.
+
+cat << EOF
+--$(date +"%Y-%m-%d %H:%M:%S")--  http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R
+Resolving people.ufpr.br (people.ufpr.br)... ???.??.???.??, 2801:82:8020:0:8377:0:100:20
+Connecting to people.ufpr.br (people.ufpr.br)|???.??.???.??|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 560
+Saving to: ‘vif.R’
+
+     0K                                                       100% 44,0M=0s
+
+$(date +"%Y-%m-%d %H:%M:%S") (44,0 MB/s) - ‘vif.R’ saved [560/560]
+EOF
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -1029,11 +1074,58 @@ cd meu1repo
 git checkout HEAD@{6}
 ```
 
-```{r, engine="bash", echo=-c(1:2)}
+```{r, engine="bash", include=FALSE}
+## Tenta ir para o diretório downloads, se não conseguir é porque não
+## existe então cria um diretório download para então entrar nele.
+if [ -d downloads ]
+then
+    echo "Diretório existe."
+    cd downloads
+else
+    echo "Diretório não existe."
+    mkdir downloads
+    cd downloads
+fi
+
+## Se não existir o aquivo pimentel_racoes.txt, então baixar da internet.
+if [ ! -f pimentel_racoes.txt ]
+then
+    echo "Arquivo pimentel_racoes.txt não existe. Baixando..."
+    wget 'http://www.leg.ufpr.br/~walmes/data/pimentel_racoes.txt'
+else
+    echo "Arquivo pimentel_racoes.txt já existe."
+fi
+
+## Copiar o arquivo pimentel_racoes.txt para o meu1repo (-v: verbose).
+cp -v pimentel_racoes.txt ../meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
 cd meu1repo
 
 ## Baixa arquivo de dados da internet.
 wget 'http://www.leg.ufpr.br/~walmes/data/pimentel_racoes.txt'
+```
+
+```{r, engine="bash", echo=FALSE}
+## Printa o seria o output da wget mas sem usar a wget para não
+## encarecer a compilação. Insere o instante da compilação. Esconde
+## também o IP da máquina com ???.??.???.??.
+
+cat << EOF
+--(date +"%Y-%m-%d %H:%M:%S")--  http://www.leg.ufpr.br/~walmes/data/pimentel_racoes.txt
+Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
+Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 217 [text/plain]
+Saving to: ‘pimentel_racoes.txt’
+
+     0K                                                       100% 68,9M=0s
+
+(date +"%Y-%m-%d %H:%M:%S") (68,9 MB/s) - ‘pimentel_racoes.txt’ saved [217/217]
+
+‘pimentel_racoes.txt’ -> ‘../meu1repo/pimentel_racoes.txt’
+EOF
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -1106,10 +1198,55 @@ cd meu1repo
 git checkout feature01
 ```
 
-```{r, engine="bash", echo=-c(1:2)}
+```{r, engine="bash", echo=FALSE}
+## Tenta ir para o diretório downloads, se não conseguir é porque não
+## existe então cria um diretório download para então entrar nele.
+if [ -d downloads ]
+then
+    echo "Diretório existe."
+    cd downloads
+else
+    echo "Diretório não existe."
+    mkdir downloads
+    cd downloads
+fi
+
+## Se não existir o aquivo brasilCopa2014.txt, então baixar da internet.
+if [ ! -f brasilCopa2014.txt ]
+then
+    echo "Arquivo brasilCopa2014.txt não existe. Baixando..."
+    wget 'http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt'
+else
+    echo "Arquivo brasilCopa2014.txt já existe."
+fi
+
+## Copiar o arquivo brasilCopa2014.txt para o meu1repo (-v: verbose).
+cp -v brasilCopa2014.txt ../meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
 cd meu1repo
 
 wget 'http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt'
+```
+
+```{r, engine="bash", echo=FALSE}
+## Printa o seria o output da wget mas sem usar a wget para não
+## encarecer a compilação. Insere o instante da compilação. Esconde
+## também o IP da máquina com ???.??.???.??.
+
+cat << EOF
+--$(date +"%Y-%m-%d %H:%M:%S")--  http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt
+Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
+Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1254 (1,2K) [text/plain]
+Saving to: ‘brasilCopa2014.txt’
+
+     0K .                                                     100% 69,6M=0s
+
+$(date +"%Y-%m-%d %H:%M:%S") (69,6 MB/s) - ‘brasilCopa2014.txt’ saved [1254/1254]
+EOF
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -1206,11 +1343,56 @@ cd meu1repo
 git checkout -b feature03
 ```
 
-```{r, engine="bash", echo=-c(1:2)}
+```{r, engine="bash", include=FALSE}
+## Tenta ir para o diretório downloads, se não conseguir é porque não
+## existe então cria um diretório download para então entrar nele.
+if [ -d downloads ]
+then
+    echo "Diretório existe."
+    cd downloads
+else
+    echo "Diretório não existe."
+    mkdir downloads
+    cd downloads
+fi
+
+## Se não existir o aquivo bib1.txt, então baixar da internet.
+if [ ! -f bib1.txt ]
+then
+    echo "Arquivo bib1.txt não existe. Baixando..."
+    wget 'http://www.leg.ufpr.br/~walmes/data/bib1.txt'
+else
+    echo "Arquivo bib1.txt já existe."
+fi
+
+## Copiar o arquivo bib1.txt para o meu1repo (-v: verbose).
+cp -v bib1.txt ../meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
 cd meu1repo
 
 ## Baixa o arquivo.
 wget 'http://www.leg.ufpr.br/~walmes/data/bib1.txt'
+```
+
+```{r, engine="bash", echo=FALSE}
+## Printa o seria o output da wget mas sem usar a wget para não
+## encarecer a compilação. Insere o instante da compilação. Esconde
+## também o IP da máquina com ???.??.???.??.
+
+cat << EOF
+--$(date +"%Y-%m-%d %H:%M:%S")--  http://www.leg.ufpr.br/~walmes/data/bib1.txt
+Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
+Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 535 [text/plain]
+Saving to: ‘bib1.txt’
+
+     0K                                                       100% 35,0M=0s
+
+$(date +"%Y-%m-%d %H:%M:%S") (35,0 MB/s) - ‘bib1.txt’ saved [535/535]
+EOF
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -1250,7 +1432,13 @@ cd meu1repo
 git checkout master
 ```
 
-```{r, engine="bash", echo=-c(1:2)}
+```{r, engine="bash", include=FALSE}
+## Copiar o arquivo bib1.txt para o meu1repo (-v: verbose).
+cd downloads
+cp -v bib1.txt ../meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
 cd meu1repo
 
 ## Baixa o arquivo.
