@@ -10,6 +10,7 @@ output:
 ---
 
 ```{r, include=FALSE}
+library(knitr)
 opts_chunk$set(comment=NA)
 ```
 
@@ -48,8 +49,17 @@ O modelo de funcionamento do Git:
 
 Playlists de tutoriais de Git
 
-  * TODO
-  * TODO
+  * Loiane Groner - [Git e Github para iniciantes](https://www.youtube.com/watch?v=UMhskLXJuq4)
+  * HxTutors - [Github - Pra que serve e como usar?](https://www.youtube.com/watch?v=neDiLHwXSVo)
+  * Devmedia Editora - [Controle de versoes distribuido com Git](https://www.youtube.com/watch?v=1zj8ItHi_Kk)
+  * RBtech - [Curso básico de Git (playlist)](https://www.youtube.com/playlist?list=PLInBAd9OZCzzHBJjLFZzRl6DgUmOeG3H0)
+  * Luiz Venturote - [Controle de Versão com Git](https://www.youtube.com/playlist?list=PLBzQU3U8iMRndBoeUhURmQf1aLhQExbP8)
+  * Leandro Cavalcante [Git (playlist)](https://www.youtube.com/watch?v=GBnt3ztA6nI&list=PLXtEEPEfASEIrUZj9X_kj-dlaul59bRox)
+  * StudyClassOficial - [Controle de Versão com GIT](https://www.youtube.com/watch?v=Wj8EB4IAqWc)
+  * Israel Santos - [Controle de versão com git](https://www.youtube.com/watch?v=morEwdyzmY4)
+  * Giovanni Silva - [Tutorial Git (playlist)](https://www.youtube.com/playlist?list=PL3NGePwPGuvvnBO4tk---xNABmNVEpD2R)
+  * makigas - [Tutorial de Git en media hora](https://www.youtube.com/watch?v=QGKTdL7GG24)
+  * Desde Cero - [Cómo Instalar Git en Windows Desde Cero](https://www.youtube.com/watch?v=poVAyKNsk00)
 
 ****
 ## O que é o Git?
