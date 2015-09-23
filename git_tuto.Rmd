@@ -256,7 +256,29 @@ esse tutorial algo reproduzível. Se você considera que uma ferramenta
 gráfica é mais confortável ou produtiva, sinta-se à vontade para
 aprendê-la e usá-la.
 
-```{r, engine="bash"}
+```{r, engine="bash", include=FALSE}
+if [ -d meu1repo ]
+then
+    echo "Diretório existe. Então apagar pasta .git"
+    cd meu1repo
+    ls -a
+    if [ -d .git ]
+    then
+        echo "Já existe projeto git aqui. Apagar."
+        rm -rf .git/
+        rm -rf *
+    fi
+else
+    echo "Diretório não existe."
+    mkdir meu1repo
+fi
+
+## Tudo limpo tal como precisamos.
+pwd
+ls -a
+```
+
+```{r, engine="bash", eval=FALSE}
 ## Cria diretório (make directory).
 mkdir meu1repo
 
@@ -1344,6 +1366,28 @@ git reflog
 ```
 
 ## Trabalhando com cópias
+
+```{r, engine="bash", include=FALSE}
+if [ -d ~/maquina2/ ]
+then
+    echo "Diretório existe. Então apagar pasta meu1repo."
+    cd ~/maquina2/
+    ls -a
+    if [ -d meu1repo ]
+    then
+        echo "Já existe meu1repo aqui. Apagar."
+        rm -rf meu1repo
+    fi
+else
+    echo "Diretório não existe."
+    mkdir ~/maquina2/
+fi
+
+## Tudo limpo tal como precisamos.
+pwd
+ls -a
+
+```
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
