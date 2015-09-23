@@ -1813,17 +1813,39 @@ opts_chunk$set(eval=FALSE)
 ## Ignorando arquivos e diretórios
 
 ****
-## Trabalhando com repositórios remotos
+## Autenticando em contas do GitLab (c3sl) e GitHub
 
-Na etapa que vem a seguir, será solicitado uma senha
-(`passphrase`). Você pode forncer uma ou apenas pressinar Enter para
-correr o procedimento padrão. O resultado é uma senha gráfica ASCII.
+Os procedimentos dessa sessão tem o objetivo de promover o conexão da
+sua máquina de trabalho com sua conta no GitLab do c3sl (alunos UFPR) ou
+conta do GitHub. Assume-se, logicamente, que você tenha conta em algum
+desses serviços. Caso você não tenha uma conta em algum serviço de
+hospedagem de repsitório Git, seguem algumas opções:
+
+  * GitHub: <https://github.com/>
+  * GitLab: <https://about.gitlab.com/>
+  * Bitbucket: <https://bitbucket.org/>
+
+Uma comparação entre os serviços disponíveis para Git está disponível em
+[git-hosting-services-compared][].
+
+Abra o terminal em qualquer diretório. Não precisa ser um diretório
+Git. Aqui será criado um par de chaves, que nada mais são que longas
+cadeias de caracteres, de forma que elas formam um par
+chave/cadeado. A pública (a chave) é copiada para o servidor. A privada
+fica na sua máquina. Dessa maneira, a comunicação para transferência de
+dados entre as máquinas pode ser feita.
+
+Será solicitado uma senha (`passphrase`). Você pode forncer uma ou
+apenas pressionar `Enter` para correr o procedimento padrão. O resultado
+é uma senha gráfica ASCII além de gerar os arquivos (chaves) cujo
+caminho é informado no *output*.
 
 ```{r, engine="sh", eval=FALSE}
+## keygen (chave gerar). rsa é o tipo.
 ssh-keygen -t rsa -C "batman@justiceleague.org"
 ```
 
-```sh
+```
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/batman/.ssh/id_rsa): 
 Enter passphrase (empty for no passphrase): 
@@ -1847,10 +1869,10 @@ The key's randomart image is:
           +-----------------+
 ```
 
-O importante é o conteúdo do arquivo `/home/batman/.ssh/id_rsa.pub`. Este
-deve ser fornecido ao GitLab (ou GitHub) em uma janela com as chaves. Os
-endereços abaixo levam para a mencionada janela. Requer que esteja
-logado.
+O importante é o conteúdo do arquivo `/home/batman/.ssh/id_rsa.pub`, a
+sua chave pública. Este deve ser fornecido ao GitLab (ou GitHub) em uma
+janela com as chaves. Os endereços abaixo levam para a mencionada
+janela. Requer que esteja logado.
 
   * GitLab: <http://gitab.c3sl.ufpr.br/profile/keys>
   * GitHub: <https://github.com/settings/ssh>
@@ -1863,11 +1885,11 @@ Para ver/abrir o conteúdo do arquivo no próprio terminal use `less` ou
 editor de texto, o `gedit` por exemplo, é só passar o nome do arquivo.
 
 ```sh
-## Mostra o conteúdo do arquivo no próprio terminal.
-less /home/batman/.ssh/id_rsa.pub  
-
 ## Abre o arquivo com o editor de texto Gedit.
 gedit /home/batman/.ssh/id_rsa.pub
+
+## Mostra o conteúdo do arquivo no próprio terminal.
+less /home/batman/.ssh/id_rsa.pub  
 ```
 
 ```
@@ -1880,14 +1902,89 @@ c3sl ou do GitHub, aplique a instrução `ssh` abaixo.
 ```sh
 ## Com gitlab do c3sl.
 ssh -T git@gitlab.c3sl.ufpr.br
+```
 
+```
+Welcome to GitLab, Knight Rider!
+```
+
+```sh
 ## Com github.
 ssh -T git@github.com
 ```
 
-### Configurando uma conta no GitHub
+```
+Hi batman! You've successfully authenticated, but GitHub does not provide shell access.
+```
 
-### Configurando uma conta no GitLab do c3sl
+Em caso de obter uma mensagem não positiva, repita o comando com a opção
+`-v` para um log do procedimento.
+
+```sh
+## Com gitlab do c3sl.
+ssh -vT git@github.com
+```
+
+```
+OpenSSH_6.6.1, OpenSSL 1.0.1f 6 Jan 2014
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 19: Applying options for *
+debug1: Connecting to github.com [192.30.252.130] port 22.
+debug1: Connection established.
+debug1: identity file /home/batman/.ssh/id_rsa type 1
+debug1: identity file /home/batman/.ssh/id_rsa-cert type -1
+debug1: identity file /home/batman/.ssh/id_dsa type -1
+debug1: identity file /home/batman/.ssh/id_dsa-cert type -1
+debug1: identity file /home/batman/.ssh/id_ecdsa type -1
+debug1: identity file /home/batman/.ssh/id_ecdsa-cert type -1
+debug1: identity file /home/batman/.ssh/id_ed25519 type -1
+debug1: identity file /home/batman/.ssh/id_ed25519-cert type -1
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.3
+debug1: Remote protocol version 2.0, remote software version libssh-0.7.0
+debug1: no match: libssh-0.7.0
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: server->client aes128-ctr hmac-sha1 none
+debug1: kex: client->server aes128-ctr hmac-sha1 none
+debug1: sending SSH2_MSG_KEX_ECDH_INIT
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: Server host key: RSA 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
+debug1: Host 'github.com' is known and matches the RSA host key.
+debug1: Found key in /home/batman/.ssh/known_hosts:1
+debug1: ssh_rsa_verify: signature correct
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: SSH2_MSG_NEWKEYS received
+debug1: Roaming not allowed by server
+debug1: SSH2_MSG_SERVICE_REQUEST sent
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey
+debug1: Next authentication method: publickey
+debug1: Offering RSA public key: /home/batman/.ssh/id_rsa
+debug1: Server accepts key: pkalg ssh-rsa blen 279
+debug1: Authentication succeeded (publickey).
+Authenticated to github.com ([192.30.252.130]:22).
+debug1: channel 0: new [client-session]
+debug1: Entering interactive session.
+debug1: Sending environment.
+debug1: Sending env LC_PAPER = pt_BR.UTF-8
+debug1: Sending env LC_ADDRESS = pt_BR.UTF-8
+debug1: Sending env LC_MONETARY = pt_BR.UTF-8
+debug1: Sending env LC_NUMERIC = pt_BR.UTF-8
+debug1: Sending env LC_TELEPHONE = pt_BR.UTF-8
+debug1: Sending env LC_IDENTIFICATION = pt_BR.UTF-8
+debug1: Sending env LANG = en_US.UTF-8
+debug1: Sending env LC_MEASUREMENT = pt_BR.UTF-8
+debug1: Sending env LC_TIME = pt_BR.UTF-8
+debug1: Sending env LC_NAME = pt_BR.UTF-8
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+Hi batman! You've successfully authenticated, but GitHub does not provide shell access.
+debug1: channel 0: free: client-session, nchannels 1
+Transferred: sent 3856, received 1784 bytes, in 0.4 seconds
+Bytes per second: sent 10261.9, received 4747.7
+debug1: Exit status 1
+```
 
 ### Requisições de mescla
 
@@ -1927,3 +2024,4 @@ ssh -T git@github.com
 [git-diffs]: http://www.git-tower.com/learn/git/ebook/command-line/advanced-topics/diffs
 [git-caret-and-tilde]: http://www.paulboxley.com/blog/2011/06/git-caret-and-tilde
 [Professora Suely Giolo]: http://www.est.ufpr.br/prof/22-suely.html
+[git-hosting-services-compared]: http://www.git-tower.com/blog/git-hosting-services-compared/
