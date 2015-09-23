@@ -636,7 +636,7 @@ git commit -m "Cria arquivo com título."
 ```
 
 ```
-[master (root-commit) 0596764] Cria arquivo com título.
+[master (root-commit) 6a515a2] Cria arquivo com título.
  1 file changed, 1 insertion(+)
  create mode 100644 README.txt
 ```
@@ -757,9 +757,9 @@ git log
 ```
 
 ```
-commit 0596764648422a6111e7e709021a5cdd97e23223
+commit 6a515a2d2728373a9eb07bf4fe68d70dd4f04253
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:38 2015 -0300
+Date:   Wed Sep 23 19:06:13 2015 -0300
 
     Cria arquivo com título.
 ```
@@ -822,7 +822,7 @@ git commit -m "Lista de inicial de o porquê usar o Linux."
 ```
 
 ```
-[master c245ff9] Lista de inicial de o porquê usar o Linux.
+[master 6752451] Lista de inicial de o porquê usar o Linux.
  1 file changed, 5 insertions(+)
  create mode 100644 porqueLinux.txt
 ```
@@ -874,7 +874,7 @@ git commit -m "Adiciona frase do Linux Torvalds."
 ```
 
 ```
-[master 3fbd019] Adiciona frase do Linux Torvalds.
+[master bd8a80b] Adiciona frase do Linux Torvalds.
  1 file changed, 4 insertions(+)
 ```
 
@@ -888,9 +888,9 @@ git log --oneline
 ```
 
 ```
-3fbd019 Adiciona frase do Linux Torvalds.
-c245ff9 Lista de inicial de o porquê usar o Linux.
-0596764 Cria arquivo com título.
+bd8a80b Adiciona frase do Linux Torvalds.
+6752451 Lista de inicial de o porquê usar o Linux.
+6a515a2 Cria arquivo com título.
 ```
 
 Por meio dos *sha1*, podemos aplicar o *diff* para visitarmos as
@@ -1188,9 +1188,9 @@ git reflog
 ```
 
 ```
-3fbd019 HEAD@{0}: commit: Adiciona frase do Linux Torvalds.
-c245ff9 HEAD@{1}: commit: Lista de inicial de o porquê usar o Linux.
-0596764 HEAD@{2}: commit (initial): Cria arquivo com título.
+bd8a80b HEAD@{0}: commit: Adiciona frase do Linux Torvalds.
+6752451 HEAD@{1}: commit: Lista de inicial de o porquê usar o Linux.
+6a515a2 HEAD@{2}: commit (initial): Cria arquivo com título.
 ```
 
 
@@ -1201,7 +1201,7 @@ git commit -m "Novos argumentos."
 ```
 
 ```
-[master 0984d69] Novos argumentos.
+[master a2ad1a5] Novos argumentos.
  1 file changed, 4 insertions(+), 1 deletion(-)
 ```
 
@@ -1216,11 +1216,11 @@ git blame README.txt
 ```
 
 ```
-^0596764 (Walmes Zeviani 2015-09-23 14:08:38 -0300 1) Meu primeiro repositório Git
-3fbd0193 (Walmes Zeviani 2015-09-23 14:08:38 -0300 2) 
-3fbd0193 (Walmes Zeviani 2015-09-23 14:08:38 -0300 3) A filosofia do Linux é 'Ria na face do perigo'.
-3fbd0193 (Walmes Zeviani 2015-09-23 14:08:38 -0300 4) Ôpa. Errado. 'Faça você mesmo'. É, é essa.
-3fbd0193 (Walmes Zeviani 2015-09-23 14:08:38 -0300 5)                             -- Lunus Torvalds
+^6a515a2 (Walmes Zeviani 2015-09-23 19:06:13 -0300 1) Meu primeiro repositório Git
+bd8a80b3 (Walmes Zeviani 2015-09-23 19:06:13 -0300 2) 
+bd8a80b3 (Walmes Zeviani 2015-09-23 19:06:13 -0300 3) A filosofia do Linux é 'Ria na face do perigo'.
+bd8a80b3 (Walmes Zeviani 2015-09-23 19:06:13 -0300 4) Ôpa. Errado. 'Faça você mesmo'. É, é essa.
+bd8a80b3 (Walmes Zeviani 2015-09-23 19:06:13 -0300 5)                             -- Lunus Torvalds
 ```
 
 ****
@@ -1296,10 +1296,10 @@ git log --oneline
 ```
 
 ```
-0984d69 Novos argumentos.
-3fbd019 Adiciona frase do Linux Torvalds.
-c245ff9 Lista de inicial de o porquê usar o Linux.
-0596764 Cria arquivo com título.
+a2ad1a5 Novos argumentos.
+bd8a80b Adiciona frase do Linux Torvalds.
+6752451 Lista de inicial de o porquê usar o Linux.
+6a515a2 Cria arquivo com título.
 ```
 
 Veja que o novo ramo não começa no zero ou vazio (sem arquivos) e sim a
@@ -1320,7 +1320,7 @@ wget 'http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R'
 
 
 ```
---2015-09-23 14:08:39--  http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R
+--2015-09-23 19:06:14--  http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R
 Resolving people.ufpr.br (people.ufpr.br)... ???.??.???.??, 2801:82:8020:0:8377:0:100:20
 Connecting to people.ufpr.br (people.ufpr.br)|???.??.???.??|:80... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -1329,7 +1329,7 @@ Saving to: ‘vif.R’
 
      0K                                                       100% 44,0M=0s
 
-2015-09-23 14:08:39 (44,0 MB/s) - ‘vif.R’ saved [560/560]
+2015-09-23 19:06:14 (44,0 MB/s) - ‘vif.R’ saved [560/560]
 ```
 
 
@@ -1355,7 +1355,7 @@ git commit -m "Adiciona função R para VIF."
 ```
 
 ```
-[feature01 b22e5d8] Adiciona função R para VIF.
+[feature01 85a471c] Adiciona função R para VIF.
  1 file changed, 20 insertions(+)
  create mode 100644 vif.R
 ```
@@ -1382,12 +1382,12 @@ git reflog
 ```
 
 ```
-b22e5d8 HEAD@{0}: commit: Adiciona função R para VIF.
-0984d69 HEAD@{1}: checkout: moving from master to feature01
-0984d69 HEAD@{2}: commit: Novos argumentos.
-3fbd019 HEAD@{3}: commit: Adiciona frase do Linux Torvalds.
-c245ff9 HEAD@{4}: commit: Lista de inicial de o porquê usar o Linux.
-0596764 HEAD@{5}: commit (initial): Cria arquivo com título.
+85a471c HEAD@{0}: commit: Adiciona função R para VIF.
+a2ad1a5 HEAD@{1}: checkout: moving from master to feature01
+a2ad1a5 HEAD@{2}: commit: Novos argumentos.
+bd8a80b HEAD@{3}: commit: Adiciona frase do Linux Torvalds.
+6752451 HEAD@{4}: commit: Lista de inicial de o porquê usar o Linux.
+6a515a2 HEAD@{5}: commit (initial): Cria arquivo com título.
 ```
 
 
@@ -1490,7 +1490,7 @@ git merge feature01 master
 ```
 
 ```
-Updating 0984d69..b22e5d8
+Updating a2ad1a5..85a471c
 Fast-forward
  vif.R | 20 ++++++++++++++++++++
  1 file changed, 20 insertions(+)
@@ -1503,11 +1503,11 @@ git log --oneline
 ```
 
 ```
-b22e5d8 Adiciona função R para VIF.
-0984d69 Novos argumentos.
-3fbd019 Adiciona frase do Linux Torvalds.
-c245ff9 Lista de inicial de o porquê usar o Linux.
-0596764 Cria arquivo com título.
+85a471c Adiciona função R para VIF.
+a2ad1a5 Novos argumentos.
+bd8a80b Adiciona frase do Linux Torvalds.
+6752451 Lista de inicial de o porquê usar o Linux.
+6a515a2 Cria arquivo com título.
 ```
 
 É possível criar um ramo a partir de um *commit* ancestral ao atual. Isso
@@ -1521,14 +1521,14 @@ git reflog
 ```
 
 ```
-b22e5d8 HEAD@{0}: merge feature01: Fast-forward
-0984d69 HEAD@{1}: checkout: moving from feature01 to master
-b22e5d8 HEAD@{2}: commit: Adiciona função R para VIF.
-0984d69 HEAD@{3}: checkout: moving from master to feature01
-0984d69 HEAD@{4}: commit: Novos argumentos.
-3fbd019 HEAD@{5}: commit: Adiciona frase do Linux Torvalds.
-c245ff9 HEAD@{6}: commit: Lista de inicial de o porquê usar o Linux.
-0596764 HEAD@{7}: commit (initial): Cria arquivo com título.
+85a471c HEAD@{0}: merge feature01: Fast-forward
+a2ad1a5 HEAD@{1}: checkout: moving from feature01 to master
+85a471c HEAD@{2}: commit: Adiciona função R para VIF.
+a2ad1a5 HEAD@{3}: checkout: moving from master to feature01
+a2ad1a5 HEAD@{4}: commit: Novos argumentos.
+bd8a80b HEAD@{5}: commit: Adiciona frase do Linux Torvalds.
+6752451 HEAD@{6}: commit: Lista de inicial de o porquê usar o Linux.
+6a515a2 HEAD@{7}: commit (initial): Cria arquivo com título.
 ```
 
 
@@ -1549,7 +1549,7 @@ do so (now or later) by using -b with the checkout command again. Example:
 
   git checkout -b <new-branch-name>
 
-HEAD is now at 0984d69... Novos argumentos.
+HEAD is now at a2ad1a5... Novos argumentos.
 ```
 
 
@@ -1559,7 +1559,7 @@ git status
 ```
 
 ```
-HEAD detached at 0984d69
+HEAD detached at a2ad1a5
 nothing to commit, working directory clean
 ```
 
@@ -1570,13 +1570,13 @@ git log --name-only --oneline
 ```
 
 ```
-0984d69 Novos argumentos.
+a2ad1a5 Novos argumentos.
 porqueLinux.txt
-3fbd019 Adiciona frase do Linux Torvalds.
+bd8a80b Adiciona frase do Linux Torvalds.
 README.txt
-c245ff9 Lista de inicial de o porquê usar o Linux.
+6752451 Lista de inicial de o porquê usar o Linux.
 porqueLinux.txt
-0596764 Cria arquivo com título.
+6a515a2 Cria arquivo com título.
 README.txt
 ```
 
@@ -1613,7 +1613,7 @@ git branch
 ```
 
 ```
-* (HEAD detached at 0984d69)
+* (HEAD detached at a2ad1a5)
   feature01
   master
 ```
@@ -1629,7 +1629,7 @@ git checkout master
 ```
 
 ```
-Previous HEAD position was 0984d69... Novos argumentos.
+Previous HEAD position was a2ad1a5... Novos argumentos.
 Switched to branch 'master'
 ```
 
@@ -1649,11 +1649,11 @@ git log --oneline
 ```
 
 ```
-b22e5d8 Adiciona função R para VIF.
-0984d69 Novos argumentos.
-3fbd019 Adiciona frase do Linux Torvalds.
-c245ff9 Lista de inicial de o porquê usar o Linux.
-0596764 Cria arquivo com título.
+85a471c Adiciona função R para VIF.
+a2ad1a5 Novos argumentos.
+bd8a80b Adiciona frase do Linux Torvalds.
+6752451 Lista de inicial de o porquê usar o Linux.
+6a515a2 Cria arquivo com título.
 ```
 
 
@@ -1674,16 +1674,16 @@ git reflog
 ```
 
 ```
-b22e5d8 HEAD@{0}: checkout: moving from 0984d692de4cc520363ebf6bc2ff9e9e97b62ef1 to master
-0984d69 HEAD@{1}: checkout: moving from master to HEAD@{4}
-b22e5d8 HEAD@{2}: merge feature01: Fast-forward
-0984d69 HEAD@{3}: checkout: moving from feature01 to master
-b22e5d8 HEAD@{4}: commit: Adiciona função R para VIF.
-0984d69 HEAD@{5}: checkout: moving from master to feature01
-0984d69 HEAD@{6}: commit: Novos argumentos.
-3fbd019 HEAD@{7}: commit: Adiciona frase do Linux Torvalds.
-c245ff9 HEAD@{8}: commit: Lista de inicial de o porquê usar o Linux.
-0596764 HEAD@{9}: commit (initial): Cria arquivo com título.
+85a471c HEAD@{0}: checkout: moving from a2ad1a58f8f9d17dd76697b9dd959636e9be8827 to master
+a2ad1a5 HEAD@{1}: checkout: moving from master to HEAD@{4}
+85a471c HEAD@{2}: merge feature01: Fast-forward
+a2ad1a5 HEAD@{3}: checkout: moving from feature01 to master
+85a471c HEAD@{4}: commit: Adiciona função R para VIF.
+a2ad1a5 HEAD@{5}: checkout: moving from master to feature01
+a2ad1a5 HEAD@{6}: commit: Novos argumentos.
+bd8a80b HEAD@{7}: commit: Adiciona frase do Linux Torvalds.
+6752451 HEAD@{8}: commit: Lista de inicial de o porquê usar o Linux.
+6a515a2 HEAD@{9}: commit (initial): Cria arquivo com título.
 ```
 
 Vamos começar a ser ousados. Vamos voltar no passado, adicionar um
@@ -1707,7 +1707,7 @@ do so (now or later) by using -b with the checkout command again. Example:
 
   git checkout -b <new-branch-name>
 
-HEAD is now at 0984d69... Novos argumentos.
+HEAD is now at a2ad1a5... Novos argumentos.
 ```
 
 
@@ -1740,7 +1740,7 @@ git status
 ```
 
 ```
-HEAD detached at 0984d69
+HEAD detached at a2ad1a5
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 
@@ -1757,7 +1757,7 @@ git commit -m "Adiciona aquivo de dados de experimento com rações."
 ```
 
 ```
-[detached HEAD b1137f6] Adiciona aquivo de dados de experimento com rações.
+[detached HEAD 61e9bbf] Adiciona aquivo de dados de experimento com rações.
  1 file changed, 24 insertions(+)
  create mode 100644 pimentel_racoes.txt
 ```
@@ -1768,7 +1768,7 @@ git status
 ```
 
 ```
-HEAD detached from 0984d69
+HEAD detached from a2ad1a5
 nothing to commit, working directory clean
 ```
 
@@ -1779,13 +1779,13 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* b22e5d8 (master, feature01) Adiciona função R para VIF.
-| * b1137f6 (HEAD) Adiciona aquivo de dados de experimento com rações.
+* 85a471c (master, feature01) Adiciona função R para VIF.
+| * 61e9bbf (HEAD) Adiciona aquivo de dados de experimento com rações.
 |/  
-* 0984d69 Novos argumentos.
-* 3fbd019 Adiciona frase do Linux Torvalds.
-* c245ff9 Lista de inicial de o porquê usar o Linux.
-* 0596764 Cria arquivo com título.
+* a2ad1a5 Novos argumentos.
+* bd8a80b Adiciona frase do Linux Torvalds.
+* 6752451 Lista de inicial de o porquê usar o Linux.
+* 6a515a2 Cria arquivo com título.
 ```
 
 No nosso projeto temos o *master* e o *feature01* em igual condição, sem
@@ -1800,7 +1800,7 @@ git branch
 ```
 
 ```
-* (HEAD detached from 0984d69)
+* (HEAD detached from a2ad1a5)
   feature01
   master
 ```
@@ -1832,13 +1832,13 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* b22e5d8 (master, feature01) Adiciona função R para VIF.
-| * b1137f6 (HEAD -> feature02) Adiciona aquivo de dados de experimento com rações.
+* 85a471c (master, feature01) Adiciona função R para VIF.
+| * 61e9bbf (HEAD -> feature02) Adiciona aquivo de dados de experimento com rações.
 |/  
-* 0984d69 Novos argumentos.
-* 3fbd019 Adiciona frase do Linux Torvalds.
-* c245ff9 Lista de inicial de o porquê usar o Linux.
-* 0596764 Cria arquivo com título.
+* a2ad1a5 Novos argumentos.
+* bd8a80b Adiciona frase do Linux Torvalds.
+* 6752451 Lista de inicial de o porquê usar o Linux.
+* 6a515a2 Cria arquivo com título.
 ```
 
 Vamos explorar bem a funcionalidade. Vamos voltar para o `feature01` e
@@ -1870,7 +1870,7 @@ wget 'http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt'
 
 
 ```
---2015-09-23 14:08:39--  http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt
+--2015-09-23 19:06:15--  http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt
 Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
 Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -1879,7 +1879,7 @@ Saving to: ‘brasilCopa2014.txt’
 
      0K .                                                     100% 69,6M=0s
 
-2015-09-23 14:08:39 (69,6 MB/s) - ‘brasilCopa2014.txt’ saved [1254/1254]
+2015-09-23 19:06:15 (69,6 MB/s) - ‘brasilCopa2014.txt’ saved [1254/1254]
 ```
 
 
@@ -1889,7 +1889,7 @@ git commit -m "Arquivo sobre copa 2014 celeção brasileira."
 ```
 
 ```
-[feature01 4d43c1e] Arquivo sobre copa 2014 celeção brasileira.
+[feature01 0e14c42] Arquivo sobre copa 2014 celeção brasileira.
  1 file changed, 22 insertions(+)
  create mode 100644 brasilCopa2014.txt
 ```
@@ -1900,14 +1900,14 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* 4d43c1e (HEAD -> feature01) Arquivo sobre copa 2014 celeção brasileira.
-* b22e5d8 (master) Adiciona função R para VIF.
-| * b1137f6 (feature02) Adiciona aquivo de dados de experimento com rações.
+* 0e14c42 (HEAD -> feature01) Arquivo sobre copa 2014 celeção brasileira.
+* 85a471c (master) Adiciona função R para VIF.
+| * 61e9bbf (feature02) Adiciona aquivo de dados de experimento com rações.
 |/  
-* 0984d69 Novos argumentos.
-* 3fbd019 Adiciona frase do Linux Torvalds.
-* c245ff9 Lista de inicial de o porquê usar o Linux.
-* 0596764 Cria arquivo com título.
+* a2ad1a5 Novos argumentos.
+* bd8a80b Adiciona frase do Linux Torvalds.
+* 6752451 Lista de inicial de o porquê usar o Linux.
+* 6a515a2 Cria arquivo com título.
 ```
 
 Agora nos temos o *feature01* na frente do master e o *feature02* ao
@@ -1939,7 +1939,7 @@ git merge feature01 master
 ```
 
 ```
-Updating b22e5d8..4d43c1e
+Updating 85a471c..0e14c42
 Fast-forward
  brasilCopa2014.txt | 22 ++++++++++++++++++++++
  1 file changed, 22 insertions(+)
@@ -1965,16 +1965,16 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-*   cb7f9b8 (HEAD -> master) Merge branch 'feature02'
+*   046b056 (HEAD -> master) Merge branch 'feature02'
 |\  
-| * b1137f6 (feature02) Adiciona aquivo de dados de experimento com rações.
-* | 4d43c1e (feature01) Arquivo sobre copa 2014 celeção brasileira.
-* | b22e5d8 Adiciona função R para VIF.
+| * 61e9bbf (feature02) Adiciona aquivo de dados de experimento com rações.
+* | 0e14c42 (feature01) Arquivo sobre copa 2014 celeção brasileira.
+* | 85a471c Adiciona função R para VIF.
 |/  
-* 0984d69 Novos argumentos.
-* 3fbd019 Adiciona frase do Linux Torvalds.
-* c245ff9 Lista de inicial de o porquê usar o Linux.
-* 0596764 Cria arquivo com título.
+* a2ad1a5 Novos argumentos.
+* bd8a80b Adiciona frase do Linux Torvalds.
+* 6752451 Lista de inicial de o porquê usar o Linux.
+* 6a515a2 Cria arquivo com título.
 ```
 
 
@@ -2013,8 +2013,8 @@ git branch
 ```
 
 ```
-Deleted branch feature01 (was 4d43c1e).
-Deleted branch feature02 (was b1137f6).
+Deleted branch feature01 (was 0e14c42).
+Deleted branch feature02 (was 61e9bbf).
 * master
 ```
 
@@ -2024,16 +2024,16 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-*   cb7f9b8 (HEAD -> master) Merge branch 'feature02'
+*   046b056 (HEAD -> master) Merge branch 'feature02'
 |\  
-| * b1137f6 Adiciona aquivo de dados de experimento com rações.
-* | 4d43c1e Arquivo sobre copa 2014 celeção brasileira.
-* | b22e5d8 Adiciona função R para VIF.
+| * 61e9bbf Adiciona aquivo de dados de experimento com rações.
+* | 0e14c42 Arquivo sobre copa 2014 celeção brasileira.
+* | 85a471c Adiciona função R para VIF.
 |/  
-* 0984d69 Novos argumentos.
-* 3fbd019 Adiciona frase do Linux Torvalds.
-* c245ff9 Lista de inicial de o porquê usar o Linux.
-* 0596764 Cria arquivo com título.
+* a2ad1a5 Novos argumentos.
+* bd8a80b Adiciona frase do Linux Torvalds.
+* 6752451 Lista de inicial de o porquê usar o Linux.
+* 6a515a2 Cria arquivo com título.
 ```
 
 Agora vou criar um novo ramo, adicionar um arquivo e encurtar o nome das
@@ -2059,7 +2059,7 @@ wget 'http://www.leg.ufpr.br/~walmes/data/bib1.txt'
 
 
 ```
---2015-09-23 14:08:39--  http://www.leg.ufpr.br/~walmes/data/bib1.txt
+--2015-09-23 19:06:15--  http://www.leg.ufpr.br/~walmes/data/bib1.txt
 Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
 Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -2068,7 +2068,7 @@ Saving to: ‘bib1.txt’
 
      0K                                                       100% 35,0M=0s
 
-2015-09-23 14:08:39 (35,0 MB/s) - ‘bib1.txt’ saved [535/535]
+2015-09-23 19:06:15 (35,0 MB/s) - ‘bib1.txt’ saved [535/535]
 ```
 
 
@@ -2109,7 +2109,7 @@ git commit -m "Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos."
 ```
 
 ```
-[feature03 2b50f6c] Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+[feature03 3bd80e1] Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
  1 file changed, 58 insertions(+)
  create mode 100644 bib1.txt
 ```
@@ -2160,7 +2160,7 @@ git commit -m "Arquivo de experimento em BIB. Cabeçalho em caixa alta."
 ```
 
 ```
-[master 6bc2fa9] Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+[master 90864ca] Arquivo de experimento em BIB. Cabeçalho em caixa alta.
  1 file changed, 58 insertions(+)
  create mode 100644 bib1.txt
 ```
@@ -2189,19 +2189,19 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* 2b50f6c (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-| * 6bc2fa9 (HEAD -> master) Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+* 3bd80e1 (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+| * 90864ca (HEAD -> master) Arquivo de experimento em BIB. Cabeçalho em caixa alta.
 |/  
-*   cb7f9b8 Merge branch 'feature02'
+*   046b056 Merge branch 'feature02'
 |\  
-| * b1137f6 Adiciona aquivo de dados de experimento com rações.
-* | 4d43c1e Arquivo sobre copa 2014 celeção brasileira.
-* | b22e5d8 Adiciona função R para VIF.
+| * 61e9bbf Adiciona aquivo de dados de experimento com rações.
+* | 0e14c42 Arquivo sobre copa 2014 celeção brasileira.
+* | 85a471c Adiciona função R para VIF.
 |/  
-* 0984d69 Novos argumentos.
-* 3fbd019 Adiciona frase do Linux Torvalds.
-* c245ff9 Lista de inicial de o porquê usar o Linux.
-* 0596764 Cria arquivo com título.
+* a2ad1a5 Novos argumentos.
+* bd8a80b Adiciona frase do Linux Torvalds.
+* 6752451 Lista de inicial de o porquê usar o Linux.
+* 6a515a2 Cria arquivo com título.
 ```
 
 
@@ -2305,7 +2305,7 @@ git commit -m "Resolve conflito, trunca com caixa alta."
 ```
 
 ```
-[master 00c4411] Resolve conflito, trunca com caixa alta.
+[master 8df2b99] Resolve conflito, trunca com caixa alta.
 ```
 
 
@@ -2324,21 +2324,21 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-*   00c4411 (HEAD -> master) Resolve conflito, trunca com caixa alta.
+*   8df2b99 (HEAD -> master) Resolve conflito, trunca com caixa alta.
 |\  
-| * 2b50f6c (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-* | 6bc2fa9 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+| * 3bd80e1 (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+* | 90864ca Arquivo de experimento em BIB. Cabeçalho em caixa alta.
 |/  
-*   cb7f9b8 Merge branch 'feature02'
+*   046b056 Merge branch 'feature02'
 |\  
-| * b1137f6 Adiciona aquivo de dados de experimento com rações.
-* | 4d43c1e Arquivo sobre copa 2014 celeção brasileira.
-* | b22e5d8 Adiciona função R para VIF.
+| * 61e9bbf Adiciona aquivo de dados de experimento com rações.
+* | 0e14c42 Arquivo sobre copa 2014 celeção brasileira.
+* | 85a471c Adiciona função R para VIF.
 |/  
-* 0984d69 Novos argumentos.
-* 3fbd019 Adiciona frase do Linux Torvalds.
-* c245ff9 Lista de inicial de o porquê usar o Linux.
-* 0596764 Cria arquivo com título.
+* a2ad1a5 Novos argumentos.
+* bd8a80b Adiciona frase do Linux Torvalds.
+* 6752451 Lista de inicial de o porquê usar o Linux.
+* 6a515a2 Cria arquivo com título.
 ```
 
 
@@ -2347,29 +2347,29 @@ git reflog
 ```
 
 ```
-00c4411 HEAD@{0}: commit (merge): Resolve conflito, trunca com caixa alta.
-6bc2fa9 HEAD@{1}: commit: Arquivo de experimento em BIB. Cabeçalho em caixa alta.
-cb7f9b8 HEAD@{2}: checkout: moving from feature03 to master
-2b50f6c HEAD@{3}: commit: Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-cb7f9b8 HEAD@{4}: checkout: moving from master to feature03
-cb7f9b8 HEAD@{5}: merge feature02: Merge made by the 'recursive' strategy.
-4d43c1e HEAD@{6}: merge feature01: Fast-forward
-b22e5d8 HEAD@{7}: checkout: moving from feature01 to master
-4d43c1e HEAD@{8}: commit: Arquivo sobre copa 2014 celeção brasileira.
-b22e5d8 HEAD@{9}: checkout: moving from feature02 to feature01
-b1137f6 HEAD@{10}: checkout: moving from b1137f61a7e925978325e82d072577b364884175 to feature02
-b1137f6 HEAD@{11}: commit: Adiciona aquivo de dados de experimento com rações.
-0984d69 HEAD@{12}: checkout: moving from master to HEAD@{6}
-b22e5d8 HEAD@{13}: checkout: moving from 0984d692de4cc520363ebf6bc2ff9e9e97b62ef1 to master
-0984d69 HEAD@{14}: checkout: moving from master to HEAD@{4}
-b22e5d8 HEAD@{15}: merge feature01: Fast-forward
-0984d69 HEAD@{16}: checkout: moving from feature01 to master
-b22e5d8 HEAD@{17}: commit: Adiciona função R para VIF.
-0984d69 HEAD@{18}: checkout: moving from master to feature01
-0984d69 HEAD@{19}: commit: Novos argumentos.
-3fbd019 HEAD@{20}: commit: Adiciona frase do Linux Torvalds.
-c245ff9 HEAD@{21}: commit: Lista de inicial de o porquê usar o Linux.
-0596764 HEAD@{22}: commit (initial): Cria arquivo com título.
+8df2b99 HEAD@{0}: commit (merge): Resolve conflito, trunca com caixa alta.
+90864ca HEAD@{1}: commit: Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+046b056 HEAD@{2}: checkout: moving from feature03 to master
+3bd80e1 HEAD@{3}: commit: Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+046b056 HEAD@{4}: checkout: moving from master to feature03
+046b056 HEAD@{5}: merge feature02: Merge made by the 'recursive' strategy.
+0e14c42 HEAD@{6}: merge feature01: Fast-forward
+85a471c HEAD@{7}: checkout: moving from feature01 to master
+0e14c42 HEAD@{8}: commit: Arquivo sobre copa 2014 celeção brasileira.
+85a471c HEAD@{9}: checkout: moving from feature02 to feature01
+61e9bbf HEAD@{10}: checkout: moving from 61e9bbf687a02cb3daa490126fb7f1d18779efed to feature02
+61e9bbf HEAD@{11}: commit: Adiciona aquivo de dados de experimento com rações.
+a2ad1a5 HEAD@{12}: checkout: moving from master to HEAD@{6}
+85a471c HEAD@{13}: checkout: moving from a2ad1a58f8f9d17dd76697b9dd959636e9be8827 to master
+a2ad1a5 HEAD@{14}: checkout: moving from master to HEAD@{4}
+85a471c HEAD@{15}: merge feature01: Fast-forward
+a2ad1a5 HEAD@{16}: checkout: moving from feature01 to master
+85a471c HEAD@{17}: commit: Adiciona função R para VIF.
+a2ad1a5 HEAD@{18}: checkout: moving from master to feature01
+a2ad1a5 HEAD@{19}: commit: Novos argumentos.
+bd8a80b HEAD@{20}: commit: Adiciona frase do Linux Torvalds.
+6752451 HEAD@{21}: commit: Lista de inicial de o porquê usar o Linux.
+6a515a2 HEAD@{22}: commit (initial): Cria arquivo com título.
 ```
 
 ## Trabalhando com cópias
@@ -2462,17 +2462,17 @@ git log --oneline
 ```
 
 ```
-00c4411 Resolve conflito, trunca com caixa alta.
-6bc2fa9 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
-2b50f6c Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-cb7f9b8 Merge branch 'feature02'
-4d43c1e Arquivo sobre copa 2014 celeção brasileira.
-b1137f6 Adiciona aquivo de dados de experimento com rações.
-b22e5d8 Adiciona função R para VIF.
-0984d69 Novos argumentos.
-3fbd019 Adiciona frase do Linux Torvalds.
-c245ff9 Lista de inicial de o porquê usar o Linux.
-0596764 Cria arquivo com título.
+8df2b99 Resolve conflito, trunca com caixa alta.
+90864ca Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+3bd80e1 Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+046b056 Merge branch 'feature02'
+0e14c42 Arquivo sobre copa 2014 celeção brasileira.
+61e9bbf Adiciona aquivo de dados de experimento com rações.
+85a471c Adiciona função R para VIF.
+a2ad1a5 Novos argumentos.
+bd8a80b Adiciona frase do Linux Torvalds.
+6752451 Lista de inicial de o porquê usar o Linux.
+6a515a2 Cria arquivo com título.
 ```
 
 
@@ -2539,7 +2539,7 @@ wget 'http://www.leg.ufpr.br/~walmes/data/diasbarros_feijao.txt'
 
 
 ```
---2015-09-23 14:08:39--  http://www.leg.ufpr.br/~walmes/data/diasbarros_feijao.txt
+--2015-09-23 19:06:16--  http://www.leg.ufpr.br/~walmes/data/diasbarros_feijao.txt
 Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
 Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -2548,7 +2548,7 @@ Saving to: ‘diasbarros_feijao.txt’
 
      0K                                                       100% 40,2M=0s
 
-2015-09-23 14:08:39 (40,2 MB/s) - ‘diasbarros_feijao.txt’ saved [487/487]
+2015-09-23 19:06:16 (40,2 MB/s) - ‘diasbarros_feijao.txt’ saved [487/487]
 ```
 
 
@@ -2573,7 +2573,7 @@ git commit -m "Dados de experimento com feijão."
 ```
 
 ```
-[feature04 7accd9d] Dados de experimento com feijão.
+[feature04 6c60887] Dados de experimento com feijão.
  1 file changed, 37 insertions(+)
  create mode 100644 diasbarros_feijao.txt
 ```
@@ -2639,7 +2639,7 @@ git merge feature04 master
 ```
 
 ```
-Updating 00c4411..7accd9d
+Updating 8df2b99..6c60887
 Fast-forward
  diasbarros_feijao.txt | 37 +++++++++++++++++++++++++++++++++++++
  1 file changed, 37 insertions(+)
@@ -2652,22 +2652,22 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* 7accd9d (HEAD -> master, feature04) Dados de experimento com feijão.
-*   00c4411 Resolve conflito, trunca com caixa alta.
+* 6c60887 (HEAD -> master, feature04) Dados de experimento com feijão.
+*   8df2b99 Resolve conflito, trunca com caixa alta.
 |\  
-| * 2b50f6c (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-* | 6bc2fa9 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+| * 3bd80e1 (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+* | 90864ca Arquivo de experimento em BIB. Cabeçalho em caixa alta.
 |/  
-*   cb7f9b8 Merge branch 'feature02'
+*   046b056 Merge branch 'feature02'
 |\  
-| * b1137f6 Adiciona aquivo de dados de experimento com rações.
-* | 4d43c1e Arquivo sobre copa 2014 celeção brasileira.
-* | b22e5d8 Adiciona função R para VIF.
+| * 61e9bbf Adiciona aquivo de dados de experimento com rações.
+* | 0e14c42 Arquivo sobre copa 2014 celeção brasileira.
+* | 85a471c Adiciona função R para VIF.
 |/  
-* 0984d69 Novos argumentos.
-* 3fbd019 Adiciona frase do Linux Torvalds.
-* c245ff9 Lista de inicial de o porquê usar o Linux.
-* 0596764 Cria arquivo com título.
+* a2ad1a5 Novos argumentos.
+* bd8a80b Adiciona frase do Linux Torvalds.
+* 6752451 Lista de inicial de o porquê usar o Linux.
+* 6a515a2 Cria arquivo com título.
 ```
 
 
@@ -2687,7 +2687,7 @@ git pull origin master
 ```
 From /home/walmes/GitLab/git-tutorial/meu1repo/
  * branch            master     -> FETCH_HEAD
-   00c4411..7accd9d  master     -> origin/master
+   8df2b99..6c60887  master     -> origin/master
 Already up-to-date.
 ```
 
@@ -2697,22 +2697,22 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* 7accd9d (HEAD -> feature04, origin/master, origin/feature04, origin/HEAD) Dados de experimento com feijão.
-*   00c4411 (master) Resolve conflito, trunca com caixa alta.
+* 6c60887 (HEAD -> feature04, origin/master, origin/feature04, origin/HEAD) Dados de experimento com feijão.
+*   8df2b99 (master) Resolve conflito, trunca com caixa alta.
 |\  
-| * 2b50f6c (origin/feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-* | 6bc2fa9 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+| * 3bd80e1 (origin/feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+* | 90864ca Arquivo de experimento em BIB. Cabeçalho em caixa alta.
 |/  
-*   cb7f9b8 Merge branch 'feature02'
+*   046b056 Merge branch 'feature02'
 |\  
-| * b1137f6 Adiciona aquivo de dados de experimento com rações.
-* | 4d43c1e Arquivo sobre copa 2014 celeção brasileira.
-* | b22e5d8 Adiciona função R para VIF.
+| * 61e9bbf Adiciona aquivo de dados de experimento com rações.
+* | 0e14c42 Arquivo sobre copa 2014 celeção brasileira.
+* | 85a471c Adiciona função R para VIF.
 |/  
-* 0984d69 Novos argumentos.
-* 3fbd019 Adiciona frase do Linux Torvalds.
-* c245ff9 Lista de inicial de o porquê usar o Linux.
-* 0596764 Cria arquivo com título.
+* a2ad1a5 Novos argumentos.
+* bd8a80b Adiciona frase do Linux Torvalds.
+* 6752451 Lista de inicial de o porquê usar o Linux.
+* 6a515a2 Cria arquivo com título.
 ```
 
 
@@ -2721,104 +2721,104 @@ git log --stat
 ```
 
 ```
-commit 7accd9dc1468cd42c0279178042d5b02d087be70
+commit 6c608873941e2cff8c7414392f308d64bc1153c0
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:16 2015 -0300
 
     Dados de experimento com feijão.
 
  diasbarros_feijao.txt | 37 +++++++++++++++++++++++++++++++++++++
  1 file changed, 37 insertions(+)
 
-commit 00c4411a3da27ab32b93a904dccc4cf579fa5aa2
-Merge: 6bc2fa9 2b50f6c
+commit 8df2b999bc19b929ba5b17aa5fa70b7adb28de31
+Merge: 90864ca 3bd80e1
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:15 2015 -0300
 
     Resolve conflito, trunca com caixa alta.
 
-commit 6bc2fa906aad9ec63f60236ad46ffcf8ae8e635b
+commit 90864ca25c5374d49d49e8f991f6def020b43b34
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:15 2015 -0300
 
     Arquivo de experimento em BIB. Cabeçalho em caixa alta.
 
  bib1.txt | 58 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 58 insertions(+)
 
-commit 2b50f6c1272ee0de55bbb896375c4234442f1fb9
+commit 3bd80e113d4c8ba530c110dceed750ce7783a53f
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:15 2015 -0300
 
     Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
 
  bib1.txt | 58 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 58 insertions(+)
 
-commit cb7f9b86b60725b0197c75f2d8be9628d24e476a
-Merge: 4d43c1e b1137f6
+commit 046b056d6bbced5bc980a9a0df53ed7896428335
+Merge: 0e14c42 61e9bbf
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:15 2015 -0300
 
     Merge branch 'feature02'
 
-commit 4d43c1ef0008b61598bdfbc40f9e79ea79b08ea8
+commit 0e14c4258f2c94f8031fd5a801869ad790a856a5
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:15 2015 -0300
 
     Arquivo sobre copa 2014 celeção brasileira.
 
  brasilCopa2014.txt | 22 ++++++++++++++++++++++
  1 file changed, 22 insertions(+)
 
-commit b1137f61a7e925978325e82d072577b364884175
+commit 61e9bbf687a02cb3daa490126fb7f1d18779efed
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:14 2015 -0300
 
     Adiciona aquivo de dados de experimento com rações.
 
  pimentel_racoes.txt | 24 ++++++++++++++++++++++++
  1 file changed, 24 insertions(+)
 
-commit b22e5d86c131562d396b69c6612232cd13bafa69
+commit 85a471c9ddca137539b47597441161501882f9cd
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:14 2015 -0300
 
     Adiciona função R para VIF.
 
  vif.R | 20 ++++++++++++++++++++
  1 file changed, 20 insertions(+)
 
-commit 0984d692de4cc520363ebf6bc2ff9e9e97b62ef1
+commit a2ad1a58f8f9d17dd76697b9dd959636e9be8827
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:14 2015 -0300
 
     Novos argumentos.
 
  porqueLinux.txt | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
-commit 3fbd0193c964f7dcaae38ce2daa20c4bc0ef3c45
+commit bd8a80b33badcd9c68da6576e3d34180c8f813fa
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:38 2015 -0300
+Date:   Wed Sep 23 19:06:13 2015 -0300
 
     Adiciona frase do Linux Torvalds.
 
  README.txt | 4 ++++
  1 file changed, 4 insertions(+)
 
-commit c245ff91f274e659aa95a6663aa54565a6e26c22
+commit 6752451f0914cb1329e7d93a175258649e724517
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:38 2015 -0300
+Date:   Wed Sep 23 19:06:13 2015 -0300
 
     Lista de inicial de o porquê usar o Linux.
 
  porqueLinux.txt | 5 +++++
  1 file changed, 5 insertions(+)
 
-commit 0596764648422a6111e7e709021a5cdd97e23223
+commit 6a515a2d2728373a9eb07bf4fe68d70dd4f04253
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:38 2015 -0300
+Date:   Wed Sep 23 19:06:13 2015 -0300
 
     Cria arquivo com título.
 
@@ -2832,9 +2832,9 @@ git log -p -2
 ```
 
 ```
-commit 7accd9dc1468cd42c0279178042d5b02d087be70
+commit 6c608873941e2cff8c7414392f308d64bc1153c0
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:16 2015 -0300
 
     Dados de experimento com feijão.
 
@@ -2882,10 +2882,10 @@ index 0000000..2525ebf
 +11	2	45.9
 +11	3	46.3
 
-commit 00c4411a3da27ab32b93a904dccc4cf579fa5aa2
-Merge: 6bc2fa9 2b50f6c
+commit 8df2b999bc19b929ba5b17aa5fa70b7adb28de31
+Merge: 90864ca 3bd80e1
 Author: Walmes Zeviani <walmeszeviani@gmail.com>
-Date:   Wed Sep 23 14:08:39 2015 -0300
+Date:   Wed Sep 23 19:06:15 2015 -0300
 
     Resolve conflito, trunca com caixa alta.
 ```
@@ -2897,6 +2897,77 @@ Date:   Wed Sep 23 14:08:39 2015 -0300
 
 ****
 ## Trabalhando com repositórios remotos
+
+Na etapa que vem a seguir, será solicitado uma senha
+(`passphrase`). Você pode forncer uma ou apenas pressinar Enter para
+correr o procedimento padrão. O resultado é uma senha gráfica ASCII.
+
+
+```sh
+ssh-keygen -t rsa -C "batman@justiceleague.org"
+```
+
+```sh
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/batman/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/batman/.ssh/id_rsa.
+Your public key has been saved in /home/batman/.ssh/id_rsa.pub.
+The key fingerprint is:
+66:c1:0b:3a:94:25:83:00:81:9f:40:26:f7:aa:af:3a batman@justiceleague.org
+The key's randomart image is:
+          +--[ RSA 2048]----+
+          |                 |
+ ~MMMMMMMMMMMM           MMMMMMMMMMMM~  
+    .MMMMMMMMM.   MMM   .MMMMMMMMM.     
+      MMMMMMMMMMMMMMMMMMMMMMMMMMM       
+       MMMMMMMMMMMMMMMMMMMMMMMMM       
+      .MMMMMMMMMMMMMMMMMMMMMMMMM.        
+              .MMMMMMMMM.               
+                 .MMM.                  
+                   M                    
+          |                 |
+          +-----------------+
+```
+
+O importante é o conteúdo do arquivo `/home/batman/.ssh/id_rsa.pub`. Este
+deve ser fornecido ao GitLab (ou GitHub) em uma janela com as chaves. Os
+endereços abaixo levam para a mencionada janela. Requer que esteja
+logado.
+
+  * GitLab: <http://gitab.c3sl.ufpr.br/profile/keys>
+  * GitHub: <https://github.com/settings/ssh>
+
+Nessa janela deverá ser informado o código gerado pelo
+`ssh-keygen`. Você deve copiar o texto do arquivo
+`/home/batman/.ssh/id_rsa.pub`, sem moficá-lo, e fornecer ao GitLab.
+Para ver/abrir o conteúdo do arquivo no próprio terminal use `less` ou
+`cat`. Para copiar do terminal use `ctrl+shift+c`. Para abrir com um
+editor de texto, o `gedit` por exemplo, é só passar o nome do arquivo.
+
+```sh
+## Mostra o conteúdo do arquivo no próprio terminal.
+less /home/batman/.ssh/id_rsa.pub  
+
+## Abre o arquivo com o editor de texto Gedit.
+gedit /home/batman/.ssh/id_rsa.pub
+```
+
+```
+ssh-rsa BBBBB3NzaC1yc2EAAAADAQABAAABAQDDuQmvkQ0WgwYQvR16z37tG37Q61ID+Qf4hi8+cARjjSWP7015CAtRnCvmGFSbdFMjz3ZEkp2XzHIyRCKw2hLP57rkFcfioWra6N5/9+z+tPiwr2OzwLfk7J/GAETGA4rtoToV96hf5RvKRhvuqyO5uf5ouBILm1PRpjA/5AkfToWp25/7WC136eGIOSJMFgQ3OuK5U+qSXAwuSdu9Uj1XkVYFDjasA45ZjsnkE6L9bKiYymadshEbWEBHJAWqDErd8srMtBYS/2hodNnjfH7rNHHCo8wZD5GJFz7YUodaBSaSYuHVfrEryaEm/r5787CAiecFAjWEeVq6StM7N/lz batman@justiceleague.org
+```
+
+Para conferir a comunicação da sua máquina com o servidor do GitLab do
+c3sl ou do GitHub, aplique a instrução `ssh` abaixo.
+
+```sh
+## Com gitlab do c3sl.
+ssh -T git@gitlab.c3sl.ufpr.br
+
+## Com github.
+ssh -T git@github.com
+```
 
 ### Configurando uma conta no GitHub
 

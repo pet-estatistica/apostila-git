@@ -1815,6 +1815,76 @@ opts_chunk$set(eval=FALSE)
 ****
 ## Trabalhando com repositórios remotos
 
+Na etapa que vem a seguir, será solicitado uma senha
+(`passphrase`). Você pode forncer uma ou apenas pressinar Enter para
+correr o procedimento padrão. O resultado é uma senha gráfica ASCII.
+
+```{r, engine="sh", eval=FALSE}
+ssh-keygen -t rsa -C "batman@justiceleague.org"
+```
+
+```sh
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/batman/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/batman/.ssh/id_rsa.
+Your public key has been saved in /home/batman/.ssh/id_rsa.pub.
+The key fingerprint is:
+66:c1:0b:3a:94:25:83:00:81:9f:40:26:f7:aa:af:3a batman@justiceleague.org
+The key's randomart image is:
+          +--[ RSA 2048]----+
+          |                 |
+ ~MMMMMMMMMMMM           MMMMMMMMMMMM~  
+    .MMMMMMMMM.   MMM   .MMMMMMMMM.     
+      MMMMMMMMMMMMMMMMMMMMMMMMMMM       
+       MMMMMMMMMMMMMMMMMMMMMMMMM       
+      .MMMMMMMMMMMMMMMMMMMMMMMMM.        
+              .MMMMMMMMM.               
+                 .MMM.                  
+                   M                    
+          |                 |
+          +-----------------+
+```
+
+O importante é o conteúdo do arquivo `/home/batman/.ssh/id_rsa.pub`. Este
+deve ser fornecido ao GitLab (ou GitHub) em uma janela com as chaves. Os
+endereços abaixo levam para a mencionada janela. Requer que esteja
+logado.
+
+  * GitLab: <http://gitab.c3sl.ufpr.br/profile/keys>
+  * GitHub: <https://github.com/settings/ssh>
+
+Nessa janela deverá ser informado o código gerado pelo
+`ssh-keygen`. Você deve copiar o texto do arquivo
+`/home/batman/.ssh/id_rsa.pub`, sem moficá-lo, e fornecer ao GitLab.
+Para ver/abrir o conteúdo do arquivo no próprio terminal use `less` ou
+`cat`. Para copiar do terminal use `ctrl+shift+c`. Para abrir com um
+editor de texto, o `gedit` por exemplo, é só passar o nome do arquivo.
+
+```sh
+## Mostra o conteúdo do arquivo no próprio terminal.
+less /home/batman/.ssh/id_rsa.pub  
+
+## Abre o arquivo com o editor de texto Gedit.
+gedit /home/batman/.ssh/id_rsa.pub
+```
+
+```
+ssh-rsa BBBBB3NzaC1yc2EAAAADAQABAAABAQDDuQmvkQ0WgwYQvR16z37tG37Q61ID+Qf4hi8+cARjjSWP7015CAtRnCvmGFSbdFMjz3ZEkp2XzHIyRCKw2hLP57rkFcfioWra6N5/9+z+tPiwr2OzwLfk7J/GAETGA4rtoToV96hf5RvKRhvuqyO5uf5ouBILm1PRpjA/5AkfToWp25/7WC136eGIOSJMFgQ3OuK5U+qSXAwuSdu9Uj1XkVYFDjasA45ZjsnkE6L9bKiYymadshEbWEBHJAWqDErd8srMtBYS/2hodNnjfH7rNHHCo8wZD5GJFz7YUodaBSaSYuHVfrEryaEm/r5787CAiecFAjWEeVq6StM7N/lz batman@justiceleague.org
+```
+
+Para conferir a comunicação da sua máquina com o servidor do GitLab do
+c3sl ou do GitHub, aplique a instrução `ssh` abaixo.
+
+```sh
+## Com gitlab do c3sl.
+ssh -T git@gitlab.c3sl.ufpr.br
+
+## Com github.
+ssh -T git@github.com
+```
+
 ### Configurando uma conta no GitHub
 
 ### Configurando uma conta no GitLab do c3sl
