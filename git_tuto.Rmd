@@ -293,11 +293,15 @@ definições adicionais, caso existam. Em caso de ainda não ter
 configurado o seu Git, informe o nome e email conforme apresentado na
 sessão anterior.
 
-```{r, engine="bash", echo=-c(1:2)}
-cd meu1repo
-
+```{r, engine="bash", eval=FALSE}
 ## Mostra as informações/definições do usuário.
 git config --list
+```
+
+```sh
+user.name=Knight Rider
+user.email=batman@justiceleague.org
+merge.tool=meld
 ```
 
 Temos um diretório destinado ao projeto que será mantido sobre
@@ -1497,7 +1501,8 @@ git status
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
 
-less bib1.txt
+## `less` printa o conteúdo do arquivo mas `head` limita para 10 linhas.
+less bib1.txt | head -10
 ```
 
 Então deu conflito e o Git informa que ele deve ser resolvido. Resolver
@@ -1541,6 +1546,7 @@ cd meu1repo
 
 git status
 ```
+
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
 
@@ -1584,76 +1590,134 @@ git remote -v
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-mkdir -p ~/marquina2 && cd ~/marquina2
+cd ~/maquina2
 
-## Detório na segunda que terá uma cópia em desenvolvimento do projeto.
+## Diretório na segunda que terá uma cópia em desenvolvimento do
+## projeto.
 pwd
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2
+cd ~/maquina2
 
-## Clonando o projeto de outro lugar.
-git clone ~/GitLab/testeGit/meu1repo/.git && cd meu1repo
+## Conteúdo.
+tree -a
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+DIRGIT=$PWD; cd ~/maquina2
+
+## Clonando o projeto de outro lugar.
+## $DIRGIT representa o caminho para chegar até meu1repo.
+git clone "$DIRGIT/meu1repo/.git" && cd meu1repo
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd ~/maquina2/meu1repo
 
 git status
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2
+
+## Conteúdo após clonar.
+tree
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd ~/maquina2/meu1repo
 
 git remote -v
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2/meu1repo
 
 git log --oneline
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2/meu1repo
 
 git branch -a
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2/meu1repo
 
 git branch feature04
 git checkout feature04
 ```
 
-```{r, include=FALSE}
-## STOP
-opts_chunk$set(eval=FALSE)
+```{r, engine="bash", include=TRUE}
+## Tenta ir para o diretório downloads, se não conseguir é porque não
+## existe então cria um diretório download para então entrar nele.
+if [ -d downloads ]
+then
+    echo "Diretório existe."
+    cd downloads
+else
+    echo "Diretório não existe."
+    mkdir downloads
+    cd downloads
+fi
+
+## Se não existir o aquivo diasbarros_feijao.txt, então baixar da
+## internet.
+if [ ! -f diasbarros_feijao.txt ]
+then
+    echo "Arquivo diasbarros_feijao.txt não existe. Baixando..."
+    wget 'http://www.leg.ufpr.br/~walmes/data/diasbarros_feijao.txt'
+else
+    echo "Arquivo diasbarros_feijao.txt já existe."
+fi
+
+## Copiar o arquivo diasbarros_feijao.txt para o meu1repo (-v: verbose).
+cp -v diasbarros_feijao.txt ~/maquina2/meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
+cd ~/maquina2/meu1repo
+
+## Baixa o arquivo.
+wget 'http://www.leg.ufpr.br/~walmes/data/diasbarros_feijao.txt'
+```
+
+```{r, engine="bash", echo=FALSE}
+## Printa o seria o output da wget mas sem usar a wget para não
+## encarecer a compilação. Insere o instante da compilação. Esconde
+## também o IP da máquina com ???.??.???.??.
+
+cat << EOF
+--$(date +"%Y-%m-%d %H:%M:%S")--  http://www.leg.ufpr.br/~walmes/data/diasbarros_feijao.txt
+Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
+Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 487 [text/plain]
+Saving to: ‘diasbarros_feijao.txt’
+
+     0K                                                       100% 40,2M=0s
+
+$(date +"%Y-%m-%d %H:%M:%S") (40,2 MB/s) - ‘diasbarros_feijao.txt’ saved [487/487]
+EOF
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
-
-wget -N 'http://www.leg.ufpr.br/~walmes/data/diasbarros_feijao.txt'
-```
-
-```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2/meu1repo
 
 git status
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2/meu1repo
 
 git add diasbarros_feijao.txt
 git commit -m "Dados de experimento com feijão."
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2/meu1repo
 
 git push origin feature04
 ```
@@ -1728,6 +1792,11 @@ git log --stat
 cd meu1repo
 
 git log -p -2
+```
+
+```{r, include=FALSE}
+## STOP
+opts_chunk$set(eval=FALSE)
 ```
 
 ****
