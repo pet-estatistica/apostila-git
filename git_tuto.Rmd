@@ -16,7 +16,7 @@ opts_chunk$set(comment=NA)
 <!--
 ## Processar com:
 render git_tuto.Rmd
-rm -rf meu1repo/ && rm -rf ~/marquina2/meu1repo/ && render git_tuto.Rmd
+rm -rf meu1repo/ && rm -rf ~/maquina2/meu1repo/ && render git_tuto.Rmd
 
 TODO
   * Remover o downloads. Fazer uma vez para uma pasta /Downloads e só
@@ -1469,25 +1469,25 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2/meu1repo
 
 pwd
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2/meu1repo
 
 git pull origin master
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2/meu1repo
 
 git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd ~/marquina2/meu1repo
+cd ~/maquina2/meu1repo
 
 git log --stat
 ```
