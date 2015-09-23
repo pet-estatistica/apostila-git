@@ -41,10 +41,10 @@ botão de compilar na barra de ferramentas.
     render("git_tuto.Rmd")
     ```
 
-Você sempre deve remover os diretórios criados durante a compilação para
-compilar novamente. Isso porque o projeto cria tudo de novo e é essa a
-intenção, apensar do custo em recriar tudo. Se os diretórios não forem
-deletados antes de uma nova compilação, você irá receber erros de
+Os diretórios criados durante a compilação são sempre apagados que ao
+compilar novamente tudo seja reproduzido. O projeto deve recriar tudo e
+é essa a intenção, apensar do custo. Se os diretórios não fossem
+deletados antes de uma nova compilação, irá-se receber erros de
 compilação.
 
 Esse documento usa instruções no terminal que podem ser particulares do
