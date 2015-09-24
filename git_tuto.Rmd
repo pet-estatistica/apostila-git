@@ -25,6 +25,22 @@ TODO
     podem reproduzir.
   * Aprender o que fazer para não precisar dar cd meu1repo em todos os
     chunks.
+
+TODO Materiais a serem lidos
+* http://www.atualsistemas.net/dev/Manual_Git.PDF
+* http://www.dcc.fc.up.pt/~pbv/aulas/labprog/slides/gitprimer.pdf
+
+## Wiki de um tutorial completo do Conselho Nacional de Justiça.
+http://www.cnj.jus.br/wikipje/index.php/GIT
+
+## Slides com muitas ilustrações.
+http://wiki.softwarelivre.org/pub/Blogs/BlogPostAntonioTerceiro20081108115324/curso-vcs.pdf
+
+## Compara serviços de versionamento
+http://www.ufjf.br/getcomp/files/2013/03/An%C3%A1lise-Comparativa-entre-Sistemas-de-Controle-de-Vers%C3%B5es-Daniel-Tannure-Menandro-de-Freitas.pdf
+
+## Aproveita-se no glossario e cheat sheet
+http://www.ceuma.br/nucleodeti/wp-content/uploads/2013/12/Git_v0.1.2.pdf
 -->
 
 <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png"
@@ -1992,6 +2008,14 @@ debug1: Exit status 1
 
 ****
 ## Modelos de fluxos de trabalho
+
+<!--
+Inspiração:
+
+https://git-scm.com/book/pt-br/v1/Git-Distribu%C3%ADdo-Fluxos-de-Trabalho-Distribu%C3%ADdos
+http://imasters.com.br/gerencia-de-ti/fluxo-de-desenvolvimento-com-gitflow/
+http://www.magentonapratica.com.br/2014/07/um-modelo-bem-sucedido-de-ramificacao.html
+-->
 
 ****
 ## Usando ferramentas gráficas para o Git
