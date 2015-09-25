@@ -6,7 +6,7 @@ O [Git][] é um sistema de controle de versão distribuído cuja finalidade
 "juntando" as contribuições dos membros e incorporando ao projeto com o
 mínimo de esforço possível.
 
-Esse projeto tem a finalidade de aprofundar no conhecimento do Git e
+Esse projeto tem a finalidade de aprofundar o conhecimento do Git e
 documentar tal aprendizado em uma apostila que seja útil tanto para
 iniciantes quanto para usuários intermediários.
 

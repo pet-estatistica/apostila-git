@@ -80,7 +80,14 @@ Playlists de tutoriais de Git
 ****
 ## O que é o Git?
 
-TODO
+O Git é uma ferramenta de controle de versão que facilita os projetos em equipe 
+a verficação do mesmo. Basicamente, o Git detecta as mudanças que ocorrem no
+arquivo, bem como onde ocorreu e qual mudança foi feita. Ainda existe a
+possibilidade de voltar no histórico do projeto, sempre que necessário.
+Outra facilidade está na equipe trabalhar em cima do projeto ao mesmo tempo,
+e no final o Git faz o trabalho de juntar todos os arquivos mostrando se há
+algum conflito. Integrantes podem mandar sugestões de alterações, e cabe ao
+responsável pelo projeto incorporar ou não essas alterações.
 
 ****
 ## Download e instalação
