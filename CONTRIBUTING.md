@@ -1,7 +1,7 @@
 Guia de contribuição
 ====================
 
-Esse é um projeto público do PET Estatística e aberto a
+Esse é um projeto público do PET Estatística aberto a
 colaboradores. Para que a colaboração seja bem sucedida, seguem algumas
 intruções e recomendações.
 
@@ -11,8 +11,7 @@ O núcleo do tutorial é o arquivo `git_tuto.Rmd`. O arquivo `Rmd` é
 marcado por ser escrito com sintaxe [markdown][] com fragmentos de
 código R. Os fragmentos de código R são interpretados durante a
 compilação feita com a função `render` do pacote [rmarkdown][]. Por ser
-escrito em markdown, o tutorial pode ser transformado em formatos de
-saída como markdown (`.md`), html e até PDF.
+escrito em markdown, o tutorial pode ser compilado em formatos como markdown (`.md`), html e PDF.
 
 Apesar de `Rmd` normalmente ter fragmentos de código R, nesse tutorial
 predominam fragmentos de código shell, em outras palavras, são
@@ -27,13 +26,13 @@ que fazê-lo conforme abaixo.
 A compilação desse documento cria sempre um projeto Git do zero. Com
 intruções do shell ao longo do documento, no instante da compilação,
 arquivos são criados, adicionados (`git add`), commitados (`git
-commit`), moficados, etc. Esse domento é, portanto, um documento
+commit`), moficados, etc. Esse documento é, portanto, um documento
 reproduzível.
 
 Para compilar o documento você deve abrir uma sessão R onde o diretório
 de trabalho é o que contém o arquivo `git_tuto.Rmd` e rodar uma chamada
-da função render. Usuários do RStudio poder fazer isso diretamento pelo
-botão de compilar na barra de ferramentas.
+da função render. Usuários do RStudio podem fazer isso diretamente pelo
+botão de compilar, presente na barra de ferramentas.
 
     ```{r, engine="sh"}
     library(rmarkdown)
@@ -41,10 +40,10 @@ botão de compilar na barra de ferramentas.
     render("git_tuto.Rmd")
     ```
 
-Os diretórios criados durante a compilação são sempre apagados que ao
-compilar novamente tudo seja reproduzido. O projeto deve recriar tudo e
-é essa a intenção, apensar do custo. Se os diretórios não fossem
-deletados antes de uma nova compilação, irá-se receber erros de
+Os diretórios criados durante a compilação são sempre apagados, para que ao
+compilar novamente, tudo seja reproduzido. O projeto deve recriar tudo e
+é essa a intenção, apesar do custo. Se os diretórios não fossem
+deletados antes de uma nova compilação, iria-se receber erros de
 compilação.
 
 Esse documento usa instruções no terminal que podem ser particulares do
@@ -55,13 +54,13 @@ compilação pode não acontecer em outros sistemas operacionais.
 
 Esse projeto terá dois ramos persistentes:
 
-  * `devel`: é o ramo que irá imediatamente recever a contribuição dos
+  * `devel`: que irá receber imediatamente a contribuição dos
     membros e será submetido a teste (no caso compilação). Se bem
     sucedido, a contribuição é movida para o ramo `master`.
-  * `master`: é o da versão estável do projeto.
+  * `master`: que recebe a versão estável do projeto.
 
 Os membros devem criar ramos de demanda para adicionarem suas
-contribuições. Por se existe a demanda (*issue*) de acrescentar uma
+contribuições. Por exemplo, se existe a demanda (*issue*) de acrescentar uma
 sessão sobre o uso do programa `meld` para resolver conflitos de merge,
 deve-se criar um ramo para isso, adicionar as contribuições e subir esse
 ramo para o repositório remoto. Os *issues* criados no GitLab são
@@ -84,7 +83,7 @@ Assim que der o `git push`, a próxima etapa é fazer uma requisição de
 *merge*. Isso se faz pela interface do GitLab clicando em
 [merge request][] no menu da esquerda, dentro da página do projeto, e
 depois no botão *New Merge Request*. Lá é onde se designa o responsável
-por avaliar e aplicar o *merge* e quais o *branches* envolvidos
+por avaliar e aplicar o *merge* e quais os *branches* envolvidos
 (doador/receptor).
 
 Existe apenas uma regra que jamais deve ser quebrada:
@@ -120,8 +119,8 @@ Visite para mais dicas de como escrever um *commit*:
 
 Recomensa-se fortemente que ao escrever o código, não se ultrapasse 72
 caracteres por linha. Isso torna o texto/código mais legível nos
-arquivos fontes. Linhas longas nos monitores atuais que são grandes são
-realmente difíceis de ler.
+arquivos fontes. Linhas longas são difíceis de ler nos monitores atuais, 
+que possuem uma tela grande.
 
 Editores de texto (de verdade) geralmente possuem formas de auto quebrar
 linhas, auto indentar/acomodar ou sinalizar a margem direita. O Emacs
