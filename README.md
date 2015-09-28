@@ -12,7 +12,7 @@ iniciantes quanto para usuários intermediários.
 
 O projeto é desenvolvido no serviço GitLab do C3SL e acessado pelo link:
 
-<https://gitlab.c3sl.ufpr.br/pet-estatistica/git-tutorial>
+<https://gitlab.c3sl.ufpr.br/pet-estatistica/apostila-git>
 
 Todas as contribuições ao projeto são bem vindas, tanto por meio de
 [issue][] quando por *fork*.
