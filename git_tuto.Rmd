@@ -78,18 +78,21 @@ Playlists de tutoriais de Git
   * Desde Cero - [C√≥mo Instalar Git en Windows Desde Cero](https://www.youtube.com/watch?v=poVAyKNsk00)
 
 ****
-## O que È o Git?
+## O que √© o Git?
 
-O Git È uma ferramenta de controle de vers√£o que facilita os projetos em equipe 
-a verficaÁ„o do mesmo. Basicamente, o Git detecta as mudanÁas que ocorrem no
-arquivo, bem como onde ocorreu e qual mudanÁa foi feita. Ainda existe a
-possibilidade de voltar no histÛrico do projeto, sempre que necess·rio.
-Outra facilidade est· na equipe trabalhar em cima do projeto ao mesmo tempo,
-e no final o Git faz o trabalho de juntar todos os arquivos mostrando se h·
-algum conflito. Integrantes podem mandar sugestıes de alteraÁıes, e cabe ao
-respons·vel pelo projeto incorporar ou n„o essas alteraÁıes.
+O Git √© uma ferramenta de controle de vers√£o que facilita os projetos em equipe 
+a verfica√ß√£o do mesmo. Basicamente, o Git detecta as mudan√ßas que ocorrem no
+arquivo, bem como onde ocorreu e qual mudan√ßa foi feita. Ainda existe a
+possibilidade de voltar no hist√≥rico do projeto, sempre que necess√°rio.
+Outra facilidade est√° na equipe trabalhar em cima do projeto ao mesmo tempo,
+e no final o Git faz o trabalho de juntar todos os arquivos mostrando se h√°
+algum conflito. Integrantes podem mandar sugest√µes de altera√ß√µes, e cabe ao
+respons√°vel pelo projeto incorporar ou n√£o essas altera√ß√µes.
 
-Criado em 2005 por Linus Torvalds, tambÈm criador do Linux, o Git surgiu a partir da necessidade de desenvolver uma ferramenta b·sica que pudesse lidar com projetos grandes de maneira eficaz. Linus colocou o nome Git em referÍncia a si mesmo, que no inglÍs brit‚nico È uma gÌria para "cabeÁa-dura". 
+Criado em 2005 por Linus Torvalds, tamb√©m criador do Linux, o Git surgiu 
+a partir da necessidade de desenvolver uma ferramenta b√°sica que pudesse 
+lidar com projetos grandes de maneira eficaz. Linus colocou o nome Git 
+em refer√™ncia a si mesmo, que no ingl√™s brit√¢nico √© uma g√≠ria para "cabe√ßa-dura". 
 
 ****
 ## Download e instala√ß√£o
