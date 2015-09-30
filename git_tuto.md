@@ -69,7 +69,14 @@ Playlists de tutoriais de Git
 ****
 ## O que é o Git?
 
-TODO
+O Git é uma ferramenta de controle de versão que facilita os projetos em equipe 
+a verficação do mesmo. Basicamente, o Git detecta as mudanças que ocorrem no
+arquivo, bem como onde ocorreu e qual mudança foi feita. Ainda existe a
+possibilidade de voltar no histórico do projeto, sempre que necessário.
+Outra facilidade está na equipe trabalhar em cima do projeto ao mesmo tempo,
+e no final o Git faz o trabalho de juntar todos os arquivos mostrando se há
+algum conflito. Integrantes podem mandar sugestões de alterações, e cabe ao
+responsável pelo projeto incorporar ou não essas alterações.
 
 ****
 ## Download e instalação
@@ -252,49 +259,53 @@ git help -a
 ```
 usage: git [--version] [--help] [-C <path>] [-c name=value]
            [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
-           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
            [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
            <command> [<args>]
 
-available git commands in '/usr/lib/git-core'
+disponível comandos git em '/usr/lib/git-core'
 
   add                       merge-octopus
   add--interactive          merge-one-file
   am                        merge-ours
   annotate                  merge-recursive
   apply                     merge-resolve
-  archive                   merge-subtree
-  bisect                    merge-tree
-  bisect--helper            mergetool
-  blame                     mktag
-  branch                    mktree
-  bundle                    mv
-  cat-file                  name-rev
-  check-attr                notes
+  archimport                merge-subtree
+  archive                   merge-tree
+  bisect                    mergetool
+  bisect--helper            mktag
+  blame                     mktree
+  branch                    mv
+  bundle                    name-rev
+  cat-file                  notes
+  check-attr                p4
   check-ignore              pack-objects
   check-mailmap             pack-redundant
   check-ref-format          pack-refs
   checkout                  patch-id
-  checkout-index            prune
-  cherry                    prune-packed
-  cherry-pick               pull
-  citool                    push
-  clean                     quiltimport
-  clone                     read-tree
-  column                    rebase
-  commit                    receive-pack
-  commit-tree               reflog
-  config                    relink
-  count-objects             remote
-  credential                remote-ext
-  credential-cache          remote-fd
-  credential-cache--daemon  remote-ftp
-  credential-store          remote-ftps
-  daemon                    remote-http
-  describe                  remote-https
-  diff                      remote-testsvn
-  diff-files                repack
-  diff-index                replace
+  checkout-index            peek-remote
+  cherry                    prune
+  cherry-pick               prune-packed
+  citool                    pull
+  clean                     push
+  clone                     quiltimport
+  column                    read-tree
+  commit                    rebase
+  commit-tree               receive-pack
+  config                    reflog
+  count-objects             relink
+  credential                remote
+  credential-cache          remote-ext
+  credential-cache--daemon  remote-fd
+  credential-store          remote-ftp
+  cvsexportcommit           remote-ftps
+  cvsimport                 remote-http
+  cvsserver                 remote-https
+  daemon                    remote-testpy
+  describe                  remote-testsvn
+  diff                      repack
+  diff-files                replace
+  diff-index                repo-config
   diff-tree                 request-pull
   difftool                  rerere
   difftool--helper          reset
@@ -302,40 +313,40 @@ available git commands in '/usr/lib/git-core'
   fast-import               rev-parse
   fetch                     revert
   fetch-pack                rm
-  filter-branch             send-pack
-  fmt-merge-msg             sh-i18n--envsubst
-  for-each-ref              shell
-  format-patch              shortlog
-  fsck                      show
-  fsck-objects              show-branch
-  gc                        show-index
-  get-tar-commit-id         show-ref
-  grep                      stage
-  gui                       stash
-  gui--askpass              status
-  hash-object               stripspace
-  help                      submodule
-  http-backend              subtree
-  http-fetch                symbolic-ref
-  http-push                 tag
-  imap-send                 unpack-file
-  index-pack                unpack-objects
-  init                      update-index
-  init-db                   update-ref
-  instaweb                  update-server-info
-  interpret-trailers        upload-archive
-  log                       upload-pack
-  ls-files                  var
-  ls-remote                 verify-commit
-  ls-tree                   verify-pack
-  mailinfo                  verify-tag
-  mailsplit                 web--browse
-  merge                     whatchanged
-  merge-base                worktree
-  merge-file                write-tree
-  merge-index
+  filter-branch             send-email
+  fmt-merge-msg             send-pack
+  for-each-ref              sh-i18n--envsubst
+  format-patch              shell
+  fsck                      shortlog
+  fsck-objects              show
+  gc                        show-branch
+  get-tar-commit-id         show-index
+  grep                      show-ref
+  gui                       stage
+  gui--askpass              stash
+  hash-object               status
+  help                      stripspace
+  http-backend              submodule
+  http-fetch                subtree
+  http-push                 svn
+  imap-send                 symbolic-ref
+  index-pack                tag
+  init                      tar-tree
+  init-db                   unpack-file
+  instaweb                  unpack-objects
+  log                       update-index
+  lost-found                update-ref
+  ls-files                  update-server-info
+  ls-remote                 upload-archive
+  ls-tree                   upload-pack
+  mailinfo                  var
+  mailsplit                 verify-pack
+  merge                     verify-tag
+  merge-base                web--browse
+  merge-file                whatchanged
+  merge-index               write-tree
 
-'git help -a' and 'git help -g' list available subcommands and some
+'git help -a' and 'git help -g' lists available subcommands and some
 concept guides. See 'git help <command>' or 'git help <concept>'
 to read about a specific subcommand or concept.
 ```
@@ -349,49 +360,53 @@ git help -a
 ```
 usage: git [--version] [--help] [-C <path>] [-c name=value]
            [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
-           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
            [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
            <command> [<args>]
 
-available git commands in '/usr/lib/git-core'
+disponível comandos git em '/usr/lib/git-core'
 
   add                       merge-octopus
   add--interactive          merge-one-file
   am                        merge-ours
   annotate                  merge-recursive
   apply                     merge-resolve
-  archive                   merge-subtree
-  bisect                    merge-tree
-  bisect--helper            mergetool
-  blame                     mktag
-  branch                    mktree
-  bundle                    mv
-  cat-file                  name-rev
-  check-attr                notes
+  archimport                merge-subtree
+  archive                   merge-tree
+  bisect                    mergetool
+  bisect--helper            mktag
+  blame                     mktree
+  branch                    mv
+  bundle                    name-rev
+  cat-file                  notes
+  check-attr                p4
   check-ignore              pack-objects
   check-mailmap             pack-redundant
   check-ref-format          pack-refs
   checkout                  patch-id
-  checkout-index            prune
-  cherry                    prune-packed
-  cherry-pick               pull
-  citool                    push
-  clean                     quiltimport
-  clone                     read-tree
-  column                    rebase
-  commit                    receive-pack
-  commit-tree               reflog
-  config                    relink
-  count-objects             remote
-  credential                remote-ext
-  credential-cache          remote-fd
-  credential-cache--daemon  remote-ftp
-  credential-store          remote-ftps
-  daemon                    remote-http
-  describe                  remote-https
-  diff                      remote-testsvn
-  diff-files                repack
-  diff-index                replace
+  checkout-index            peek-remote
+  cherry                    prune
+  cherry-pick               prune-packed
+  citool                    pull
+  clean                     push
+  clone                     quiltimport
+  column                    read-tree
+  commit                    rebase
+  commit-tree               receive-pack
+  config                    reflog
+  count-objects             relink
+  credential                remote
+  credential-cache          remote-ext
+  credential-cache--daemon  remote-fd
+  credential-store          remote-ftp
+  cvsexportcommit           remote-ftps
+  cvsimport                 remote-http
+  cvsserver                 remote-https
+  daemon                    remote-testpy
+  describe                  remote-testsvn
+  diff                      repack
+  diff-files                replace
+  diff-index                repo-config
   diff-tree                 request-pull
   difftool                  rerere
   difftool--helper          reset
@@ -399,40 +414,40 @@ available git commands in '/usr/lib/git-core'
   fast-import               rev-parse
   fetch                     revert
   fetch-pack                rm
-  filter-branch             send-pack
-  fmt-merge-msg             sh-i18n--envsubst
-  for-each-ref              shell
-  format-patch              shortlog
-  fsck                      show
-  fsck-objects              show-branch
-  gc                        show-index
-  get-tar-commit-id         show-ref
-  grep                      stage
-  gui                       stash
-  gui--askpass              status
-  hash-object               stripspace
-  help                      submodule
-  http-backend              subtree
-  http-fetch                symbolic-ref
-  http-push                 tag
-  imap-send                 unpack-file
-  index-pack                unpack-objects
-  init                      update-index
-  init-db                   update-ref
-  instaweb                  update-server-info
-  interpret-trailers        upload-archive
-  log                       upload-pack
-  ls-files                  var
-  ls-remote                 verify-commit
-  ls-tree                   verify-pack
-  mailinfo                  verify-tag
-  mailsplit                 web--browse
-  merge                     whatchanged
-  merge-base                worktree
-  merge-file                write-tree
-  merge-index
+  filter-branch             send-email
+  fmt-merge-msg             send-pack
+  for-each-ref              sh-i18n--envsubst
+  format-patch              shell
+  fsck                      shortlog
+  fsck-objects              show
+  gc                        show-branch
+  get-tar-commit-id         show-index
+  grep                      show-ref
+  gui                       stage
+  gui--askpass              stash
+  hash-object               status
+  help                      stripspace
+  http-backend              submodule
+  http-fetch                subtree
+  http-push                 svn
+  imap-send                 symbolic-ref
+  index-pack                tag
+  init                      tar-tree
+  init-db                   unpack-file
+  instaweb                  unpack-objects
+  log                       update-index
+  lost-found                update-ref
+  ls-files                  update-server-info
+  ls-remote                 upload-archive
+  ls-tree                   upload-pack
+  mailinfo                  var
+  mailsplit                 verify-pack
+  merge                     verify-tag
+  merge-base                web--browse
+  merge-file                whatchanged
+  merge-index               write-tree
 
-'git help -a' and 'git help -g' list available subcommands and some
+'git help -a' and 'git help -g' lists available subcommands and some
 concept guides. See 'git help <command>' or 'git help <concept>'
 to read about a specific subcommand or concept.
 ```
@@ -496,7 +511,7 @@ git init
 ```
 
 ```
-Initialized empty Git repository in /home/walmes/GitLab/git-tutorial/meu1repo/.git/
+Initialized empty Git repository in /media/acn13/- Arquivos -/Projetos_GIT/apostila-git/meu1repo/.git/
 ```
 
 O Git retorna a mensagem de inicilização do repositório. Nesse momento
@@ -588,16 +603,16 @@ git status
 ```
 
 ```
-On branch master
+No ramo master
 
-Initial commit
+Submissão inicial.
 
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+Arquivos não monitorados:
+  (utilize "git add <arquivo>..." para incluir o que será submetido)
 
 	README.txt
 
-nothing added to commit but untracked files present (use "git add" to track)
+nada adicionado ao envio mas arquivos não registrados estão presentes (use "git add" to registrar)
 ```
 
 Para que o arquivo seja incluído no monitoramento é necessário que ele
@@ -626,12 +641,12 @@ git status
 ```
 
 ```
-On branch master
+No ramo master
 
-Initial commit
+Submissão inicial.
 
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
+Mudanças a serem submetidas:
+  (utilize "git rm --cached <arquivo>..." para não apresentar)
 
 	new file:   README.txt
 ```
@@ -652,7 +667,19 @@ git commit -m "Cria arquivo com título."
 ```
 
 ```
-[master (root-commit) d464172] Cria arquivo com título.
+[master (root-commit) f818570] Cria arquivo com título.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
  1 file changed, 1 insertion(+)
  create mode 100644 README.txt
 ```
@@ -737,19 +764,19 @@ git status
 ```
 
 ```
-On branch master
+No ramo master
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (utilize "git add <arquivo>..." para atualizar o que será submetido)
+  (utilize "git checkout -- <arquivo>..." para descartar mudanças no diretório de trabalho)
 
-	modified:   README.txt
+	modificado: README.txt
 
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+Arquivos não monitorados:
+  (utilize "git add <arquivo>..." para incluir o que será submetido)
 
 	porqueLinux.txt
 
-no changes added to commit (use "git add" and/or "git commit -a")
+nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git commit -a")
 ```
 
 O Git retornou dois campos. No primeiro ele diz que existem mudanças no
@@ -773,9 +800,9 @@ git log
 ```
 
 ```
-commit d464172b670744c31c52728bbf3c06931824afd2
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:38 2015 -0300
+commit f81857012d082089a8f23c787253b7739ea1a628
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:10 2015 -0300
 
     Cria arquivo com título.
 ```
@@ -818,17 +845,17 @@ git status
 ```
 
 ```
-On branch master
-Changes to be committed:
+No ramo master
+Mudanças a serem submetidas:
   (use "git reset HEAD <file>..." to unstage)
 
 	new file:   porqueLinux.txt
 
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (utilize "git add <arquivo>..." para atualizar o que será submetido)
+  (utilize "git checkout -- <arquivo>..." para descartar mudanças no diretório de trabalho)
 
-	modified:   README.txt
+	modificado: README.txt
 ```
 
 
@@ -838,7 +865,19 @@ git commit -m "Lista de inicial de o porquê usar o Linux."
 ```
 
 ```
-[master 401c4e3] Lista de inicial de o porquê usar o Linux.
+[master ee16ea9] Lista de inicial de o porquê usar o Linux.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
  1 file changed, 5 insertions(+)
  create mode 100644 porqueLinux.txt
 ```
@@ -849,14 +888,14 @@ git status
 ```
 
 ```
-On branch master
+No ramo master
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (utilize "git add <arquivo>..." para atualizar o que será submetido)
+  (utilize "git checkout -- <arquivo>..." para descartar mudanças no diretório de trabalho)
 
-	modified:   README.txt
+	modificado: README.txt
 
-no changes added to commit (use "git add" and/or "git commit -a")
+nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git commit -a")
 ```
 
 Ainda resta o `REAMDE.txt` para receber registro. Você não precisa fazer
@@ -876,11 +915,11 @@ git status
 ```
 
 ```
-On branch master
-Changes to be committed:
+No ramo master
+Mudanças a serem submetidas:
   (use "git reset HEAD <file>..." to unstage)
 
-	modified:   README.txt
+	modificado: README.txt
 ```
 
 
@@ -890,7 +929,19 @@ git commit -m "Adiciona frase do Linux Torvalds."
 ```
 
 ```
-[master eafb4ca] Adiciona frase do Linux Torvalds.
+[master 76dc040] Adiciona frase do Linux Torvalds.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
  1 file changed, 4 insertions(+)
 ```
 
@@ -904,9 +955,9 @@ git log --oneline
 ```
 
 ```
-eafb4ca Adiciona frase do Linux Torvalds.
-401c4e3 Lista de inicial de o porquê usar o Linux.
-d464172 Cria arquivo com título.
+76dc040 Adiciona frase do Linux Torvalds.
+ee16ea9 Lista de inicial de o porquê usar o Linux.
+f818570 Cria arquivo com título.
 ```
 
 Por meio dos *sha1*, podemos aplicar o *diff* para visitarmos as
@@ -998,14 +1049,14 @@ git status
 ```
 
 ```
-On branch master
+No ramo master
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (utilize "git add <arquivo>..." para atualizar o que será submetido)
+  (utilize "git checkout -- <arquivo>..." para descartar mudanças no diretório de trabalho)
 
-	modified:   porqueLinux.txt
+	modificado: porqueLinux.txt
 
-no changes added to commit (use "git add" and/or "git commit -a")
+nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git commit -a")
 ```
 
 O Git sugere você aplicar *add* para preparar para *commit*. Caso as
@@ -1065,8 +1116,8 @@ git status
 ```
 
 ```
-On branch master
-nothing to commit, working directory clean
+No ramo master
+nada a submeter, diretório de trabalho vazio
 ```
 
 Vamos seguir com as modificações em `porqueLinux.txt` que corrigem o
@@ -1080,14 +1131,14 @@ git status
 ```
 
 ```
-On branch master
+No ramo master
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (utilize "git add <arquivo>..." para atualizar o que será submetido)
+  (utilize "git checkout -- <arquivo>..." para descartar mudanças no diretório de trabalho)
 
-	modified:   porqueLinux.txt
+	modificado: porqueLinux.txt
 
-no changes added to commit (use "git add" and/or "git commit -a")
+nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git commit -a")
 ```
 
 O `diff` vazio compara o diretório de trabalho com o último registro
@@ -1204,9 +1255,9 @@ git reflog
 ```
 
 ```
-eafb4ca HEAD@{0}: commit: Adiciona frase do Linux Torvalds.
-401c4e3 HEAD@{1}: commit: Lista de inicial de o porquê usar o Linux.
-d464172 HEAD@{2}: commit (initial): Cria arquivo com título.
+76dc040 HEAD@{0}: commit: Adiciona frase do Linux Torvalds.
+ee16ea9 HEAD@{1}: commit: Lista de inicial de o porquê usar o Linux.
+f818570 HEAD@{2}: commit (initial): Cria arquivo com título.
 ```
 
 
@@ -1217,7 +1268,19 @@ git commit -m "Novos argumentos."
 ```
 
 ```
-[master e72af47] Novos argumentos.
+[master 09cc9b3] Novos argumentos.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
  1 file changed, 4 insertions(+), 1 deletion(-)
 ```
 
@@ -1232,11 +1295,11 @@ git blame README.txt
 ```
 
 ```
-^d464172 (Walmes Zeviani 2015-09-23 21:02:38 -0300 1) Meu primeiro repositório Git
-eafb4cab (Walmes Zeviani 2015-09-23 21:02:39 -0300 2) 
-eafb4cab (Walmes Zeviani 2015-09-23 21:02:39 -0300 3) A filosofia do Linux é 'Ria na face do perigo'.
-eafb4cab (Walmes Zeviani 2015-09-23 21:02:39 -0300 4) Ôpa. Errado. 'Faça você mesmo'. É, é essa.
-eafb4cab (Walmes Zeviani 2015-09-23 21:02:39 -0300 5)                             -- Lunus Torvalds
+^f818570 (Teste 2015-09-30 17:47:10 -0300 1) Meu primeiro repositório Git
+76dc040a (Teste 2015-09-30 17:47:11 -0300 2) 
+76dc040a (Teste 2015-09-30 17:47:11 -0300 3) A filosofia do Linux é 'Ria na face do perigo'.
+76dc040a (Teste 2015-09-30 17:47:11 -0300 4) Ôpa. Errado. 'Faça você mesmo'. É, é essa.
+76dc040a (Teste 2015-09-30 17:47:11 -0300 5)                             -- Lunus Torvalds
 ```
 
 ****
@@ -1301,8 +1364,8 @@ git status
 ```
 
 ```
-On branch feature01
-nothing to commit, working directory clean
+No ramo feature01
+nada a submeter, diretório de trabalho vazio
 ```
 
 
@@ -1312,10 +1375,10 @@ git log --oneline
 ```
 
 ```
-e72af47 Novos argumentos.
-eafb4ca Adiciona frase do Linux Torvalds.
-401c4e3 Lista de inicial de o porquê usar o Linux.
-d464172 Cria arquivo com título.
+09cc9b3 Novos argumentos.
+76dc040 Adiciona frase do Linux Torvalds.
+ee16ea9 Lista de inicial de o porquê usar o Linux.
+f818570 Cria arquivo com título.
 ```
 
 Veja que o novo ramo não começa no zero ou vazio (sem arquivos) e sim a
@@ -1336,7 +1399,7 @@ wget 'http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R'
 
 
 ```
---2015-09-23 21:02:39--  http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R
+--2015-09-30 17:47:11--  http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R
 Resolving people.ufpr.br (people.ufpr.br)... ???.??.???.??, 2801:82:8020:0:8377:0:100:20
 Connecting to people.ufpr.br (people.ufpr.br)|???.??.???.??|:80... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -1345,7 +1408,7 @@ Saving to: ‘vif.R’
 
      0K                                                       100% 44,0M=0s
 
-2015-09-23 21:02:39 (44,0 MB/s) - ‘vif.R’ saved [560/560]
+2015-09-30 17:47:11 (44,0 MB/s) - ‘vif.R’ saved [560/560]
 ```
 
 
@@ -1355,13 +1418,13 @@ git status
 ```
 
 ```
-On branch feature01
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+No ramo feature01
+Arquivos não monitorados:
+  (utilize "git add <arquivo>..." para incluir o que será submetido)
 
 	vif.R
 
-nothing added to commit but untracked files present (use "git add" to track)
+nada adicionado ao envio mas arquivos não registrados estão presentes (use "git add" to registrar)
 ```
 
 
@@ -1371,7 +1434,19 @@ git commit -m "Adiciona função R para VIF."
 ```
 
 ```
-[feature01 91b3d67] Adiciona função R para VIF.
+[feature01 b83b2e8] Adiciona função R para VIF.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
  1 file changed, 20 insertions(+)
  create mode 100644 vif.R
 ```
@@ -1398,12 +1473,12 @@ git reflog
 ```
 
 ```
-91b3d67 HEAD@{0}: commit: Adiciona função R para VIF.
-e72af47 HEAD@{1}: checkout: moving from master to feature01
-e72af47 HEAD@{2}: commit: Novos argumentos.
-eafb4ca HEAD@{3}: commit: Adiciona frase do Linux Torvalds.
-401c4e3 HEAD@{4}: commit: Lista de inicial de o porquê usar o Linux.
-d464172 HEAD@{5}: commit (initial): Cria arquivo com título.
+b83b2e8 HEAD@{0}: commit: Adiciona função R para VIF.
+09cc9b3 HEAD@{1}: checkout: moving from master to feature01
+09cc9b3 HEAD@{2}: commit: Novos argumentos.
+76dc040 HEAD@{3}: commit: Adiciona frase do Linux Torvalds.
+ee16ea9 HEAD@{4}: commit: Lista de inicial de o porquê usar o Linux.
+f818570 HEAD@{5}: commit (initial): Cria arquivo com título.
 ```
 
 
@@ -1412,8 +1487,8 @@ git status
 ```
 
 ```
-On branch feature01
-nothing to commit, working directory clean
+No ramo feature01
+nada a submeter, diretório de trabalho vazio
 ```
 
 Então acabamos de acrescentar um novo aquivo ao projeto. Agora que as
@@ -1506,7 +1581,7 @@ git merge feature01 master
 ```
 
 ```
-Updating e72af47..91b3d67
+Updating 09cc9b3..b83b2e8
 Fast-forward
  vif.R | 20 ++++++++++++++++++++
  1 file changed, 20 insertions(+)
@@ -1519,11 +1594,11 @@ git log --oneline
 ```
 
 ```
-91b3d67 Adiciona função R para VIF.
-e72af47 Novos argumentos.
-eafb4ca Adiciona frase do Linux Torvalds.
-401c4e3 Lista de inicial de o porquê usar o Linux.
-d464172 Cria arquivo com título.
+b83b2e8 Adiciona função R para VIF.
+09cc9b3 Novos argumentos.
+76dc040 Adiciona frase do Linux Torvalds.
+ee16ea9 Lista de inicial de o porquê usar o Linux.
+f818570 Cria arquivo com título.
 ```
 
 É possível criar um ramo a partir de um *commit* ancestral ao atual. Isso
@@ -1537,14 +1612,14 @@ git reflog
 ```
 
 ```
-91b3d67 HEAD@{0}: merge feature01: Fast-forward
-e72af47 HEAD@{1}: checkout: moving from feature01 to master
-91b3d67 HEAD@{2}: commit: Adiciona função R para VIF.
-e72af47 HEAD@{3}: checkout: moving from master to feature01
-e72af47 HEAD@{4}: commit: Novos argumentos.
-eafb4ca HEAD@{5}: commit: Adiciona frase do Linux Torvalds.
-401c4e3 HEAD@{6}: commit: Lista de inicial de o porquê usar o Linux.
-d464172 HEAD@{7}: commit (initial): Cria arquivo com título.
+b83b2e8 HEAD@{0}: merge feature01: Fast-forward
+09cc9b3 HEAD@{1}: checkout: moving from feature01 to master
+b83b2e8 HEAD@{2}: commit: Adiciona função R para VIF.
+09cc9b3 HEAD@{3}: checkout: moving from master to feature01
+09cc9b3 HEAD@{4}: commit: Novos argumentos.
+76dc040 HEAD@{5}: commit: Adiciona frase do Linux Torvalds.
+ee16ea9 HEAD@{6}: commit: Lista de inicial de o porquê usar o Linux.
+f818570 HEAD@{7}: commit (initial): Cria arquivo com título.
 ```
 
 
@@ -1563,9 +1638,9 @@ state without impacting any branches by performing another checkout.
 If you want to create a new branch to retain commits you create, you may
 do so (now or later) by using -b with the checkout command again. Example:
 
-  git checkout -b <new-branch-name>
+  git checkout -b new_branch_name
 
-HEAD is now at e72af47... Novos argumentos.
+HEAD is now at 09cc9b3... Novos argumentos.
 ```
 
 
@@ -1575,8 +1650,8 @@ git status
 ```
 
 ```
-HEAD detached at e72af47
-nothing to commit, working directory clean
+HEAD detached at 09cc9b3
+nada a submeter, diretório de trabalho vazio
 ```
 
 
@@ -1586,13 +1661,13 @@ git log --name-only --oneline
 ```
 
 ```
-e72af47 Novos argumentos.
+09cc9b3 Novos argumentos.
 porqueLinux.txt
-eafb4ca Adiciona frase do Linux Torvalds.
+76dc040 Adiciona frase do Linux Torvalds.
 README.txt
-401c4e3 Lista de inicial de o porquê usar o Linux.
+ee16ea9 Lista de inicial de o porquê usar o Linux.
 porqueLinux.txt
-d464172 Cria arquivo com título.
+f818570 Cria arquivo com título.
 README.txt
 ```
 
@@ -1629,7 +1704,7 @@ git branch
 ```
 
 ```
-* (HEAD detached at e72af47)
+* (detached from 09cc9b3)
   feature01
   master
 ```
@@ -1645,7 +1720,7 @@ git checkout master
 ```
 
 ```
-Previous HEAD position was e72af47... Novos argumentos.
+Previous HEAD position was 09cc9b3... Novos argumentos.
 Switched to branch 'master'
 ```
 
@@ -1655,8 +1730,8 @@ git status
 ```
 
 ```
-On branch master
-nothing to commit, working directory clean
+No ramo master
+nada a submeter, diretório de trabalho vazio
 ```
 
 
@@ -1665,11 +1740,11 @@ git log --oneline
 ```
 
 ```
-91b3d67 Adiciona função R para VIF.
-e72af47 Novos argumentos.
-eafb4ca Adiciona frase do Linux Torvalds.
-401c4e3 Lista de inicial de o porquê usar o Linux.
-d464172 Cria arquivo com título.
+b83b2e8 Adiciona função R para VIF.
+09cc9b3 Novos argumentos.
+76dc040 Adiciona frase do Linux Torvalds.
+ee16ea9 Lista de inicial de o porquê usar o Linux.
+f818570 Cria arquivo com título.
 ```
 
 
@@ -1690,16 +1765,16 @@ git reflog
 ```
 
 ```
-91b3d67 HEAD@{0}: checkout: moving from e72af47b79b09cef3910a2f31b7c3961cee04bab to master
-e72af47 HEAD@{1}: checkout: moving from master to HEAD@{4}
-91b3d67 HEAD@{2}: merge feature01: Fast-forward
-e72af47 HEAD@{3}: checkout: moving from feature01 to master
-91b3d67 HEAD@{4}: commit: Adiciona função R para VIF.
-e72af47 HEAD@{5}: checkout: moving from master to feature01
-e72af47 HEAD@{6}: commit: Novos argumentos.
-eafb4ca HEAD@{7}: commit: Adiciona frase do Linux Torvalds.
-401c4e3 HEAD@{8}: commit: Lista de inicial de o porquê usar o Linux.
-d464172 HEAD@{9}: commit (initial): Cria arquivo com título.
+b83b2e8 HEAD@{0}: checkout: moving from 09cc9b3b69fe624cdc5df7882bd81671d9cc0e8c to master
+09cc9b3 HEAD@{1}: checkout: moving from master to HEAD@{4}
+b83b2e8 HEAD@{2}: merge feature01: Fast-forward
+09cc9b3 HEAD@{3}: checkout: moving from feature01 to master
+b83b2e8 HEAD@{4}: commit: Adiciona função R para VIF.
+09cc9b3 HEAD@{5}: checkout: moving from master to feature01
+09cc9b3 HEAD@{6}: commit: Novos argumentos.
+76dc040 HEAD@{7}: commit: Adiciona frase do Linux Torvalds.
+ee16ea9 HEAD@{8}: commit: Lista de inicial de o porquê usar o Linux.
+f818570 HEAD@{9}: commit (initial): Cria arquivo com título.
 ```
 
 Vamos começar a ser ousados. Vamos voltar no passado, adicionar um
@@ -1721,9 +1796,9 @@ state without impacting any branches by performing another checkout.
 If you want to create a new branch to retain commits you create, you may
 do so (now or later) by using -b with the checkout command again. Example:
 
-  git checkout -b <new-branch-name>
+  git checkout -b new_branch_name
 
-HEAD is now at e72af47... Novos argumentos.
+HEAD is now at 09cc9b3... Novos argumentos.
 ```
 
 
@@ -1756,13 +1831,13 @@ git status
 ```
 
 ```
-HEAD detached at e72af47
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+HEAD detached at 09cc9b3
+Arquivos não monitorados:
+  (utilize "git add <arquivo>..." para incluir o que será submetido)
 
 	pimentel_racoes.txt
 
-nothing added to commit but untracked files present (use "git add" to track)
+nada adicionado ao envio mas arquivos não registrados estão presentes (use "git add" to registrar)
 ```
 
 
@@ -1773,7 +1848,19 @@ git commit -m "Adiciona aquivo de dados de experimento com rações."
 ```
 
 ```
-[detached HEAD 50570e8] Adiciona aquivo de dados de experimento com rações.
+[detached HEAD f874a15] Adiciona aquivo de dados de experimento com rações.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
  1 file changed, 24 insertions(+)
  create mode 100644 pimentel_racoes.txt
 ```
@@ -1784,8 +1871,8 @@ git status
 ```
 
 ```
-HEAD detached from e72af47
-nothing to commit, working directory clean
+HEAD detached from 09cc9b3
+nada a submeter, diretório de trabalho vazio
 ```
 
 
@@ -1795,13 +1882,13 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* 50570e8 (HEAD) Adiciona aquivo de dados de experimento com rações.
-| * 91b3d67 (master, feature01) Adiciona função R para VIF.
+* f874a15 (HEAD) Adiciona aquivo de dados de experimento com rações.
+| * b83b2e8 (master, feature01) Adiciona função R para VIF.
 |/  
-* e72af47 Novos argumentos.
-* eafb4ca Adiciona frase do Linux Torvalds.
-* 401c4e3 Lista de inicial de o porquê usar o Linux.
-* d464172 Cria arquivo com título.
+* 09cc9b3 Novos argumentos.
+* 76dc040 Adiciona frase do Linux Torvalds.
+* ee16ea9 Lista de inicial de o porquê usar o Linux.
+* f818570 Cria arquivo com título.
 ```
 
 No nosso projeto temos o *master* e o *feature01* em igual condição, sem
@@ -1816,7 +1903,7 @@ git branch
 ```
 
 ```
-* (HEAD detached from e72af47)
+* (detached from 09cc9b3)
   feature01
   master
 ```
@@ -1848,13 +1935,13 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* 50570e8 (HEAD -> feature02) Adiciona aquivo de dados de experimento com rações.
-| * 91b3d67 (master, feature01) Adiciona função R para VIF.
+* f874a15 (HEAD, feature02) Adiciona aquivo de dados de experimento com rações.
+| * b83b2e8 (master, feature01) Adiciona função R para VIF.
 |/  
-* e72af47 Novos argumentos.
-* eafb4ca Adiciona frase do Linux Torvalds.
-* 401c4e3 Lista de inicial de o porquê usar o Linux.
-* d464172 Cria arquivo com título.
+* 09cc9b3 Novos argumentos.
+* 76dc040 Adiciona frase do Linux Torvalds.
+* ee16ea9 Lista de inicial de o porquê usar o Linux.
+* f818570 Cria arquivo com título.
 ```
 
 Vamos explorar bem a funcionalidade. Vamos voltar para o `feature01` e
@@ -1876,7 +1963,7 @@ Switched to branch 'feature01'
 ```
 Diretório existe.
 Arquivo brasilCopa2014.txt já existe.
-‘brasilCopa2014.txt’ -> ‘../meu1repo/brasilCopa2014.txt’
+“brasilCopa2014.txt” -> “../meu1repo/brasilCopa2014.txt”
 ```
 
 
@@ -1886,7 +1973,7 @@ wget 'http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt'
 
 
 ```
---2015-09-23 21:02:40--  http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt
+--2015-09-30 17:47:12--  http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt
 Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
 Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -1895,7 +1982,7 @@ Saving to: ‘brasilCopa2014.txt’
 
      0K .                                                     100% 69,6M=0s
 
-2015-09-23 21:02:40 (69,6 MB/s) - ‘brasilCopa2014.txt’ saved [1254/1254]
+2015-09-30 17:47:12 (69,6 MB/s) - ‘brasilCopa2014.txt’ saved [1254/1254]
 ```
 
 
@@ -1905,7 +1992,19 @@ git commit -m "Arquivo sobre copa 2014 celeção brasileira."
 ```
 
 ```
-[feature01 391678a] Arquivo sobre copa 2014 celeção brasileira.
+[feature01 72107bf] Arquivo sobre copa 2014 celeção brasileira.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
  1 file changed, 22 insertions(+)
  create mode 100644 brasilCopa2014.txt
 ```
@@ -1916,14 +2015,14 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* 391678a (HEAD -> feature01) Arquivo sobre copa 2014 celeção brasileira.
-* 91b3d67 (master) Adiciona função R para VIF.
-| * 50570e8 (feature02) Adiciona aquivo de dados de experimento com rações.
+* 72107bf (HEAD, feature01) Arquivo sobre copa 2014 celeção brasileira.
+* b83b2e8 (master) Adiciona função R para VIF.
+| * f874a15 (feature02) Adiciona aquivo de dados de experimento com rações.
 |/  
-* e72af47 Novos argumentos.
-* eafb4ca Adiciona frase do Linux Torvalds.
-* 401c4e3 Lista de inicial de o porquê usar o Linux.
-* d464172 Cria arquivo com título.
+* 09cc9b3 Novos argumentos.
+* 76dc040 Adiciona frase do Linux Torvalds.
+* ee16ea9 Lista de inicial de o porquê usar o Linux.
+* f818570 Cria arquivo com título.
 ```
 
 Agora nos temos o *feature01* na frente do master e o *feature02* ao
@@ -1955,7 +2054,7 @@ git merge feature01 master
 ```
 
 ```
-Updating 91b3d67..391678a
+Updating b83b2e8..72107bf
 Fast-forward
  brasilCopa2014.txt | 22 ++++++++++++++++++++++
  1 file changed, 22 insertions(+)
@@ -1981,16 +2080,16 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-*   c352044 (HEAD -> master) Merge branch 'feature02'
+*   13bc039 (HEAD, master) Merge branch 'feature02'
 |\  
-| * 50570e8 (feature02) Adiciona aquivo de dados de experimento com rações.
-* | 391678a (feature01) Arquivo sobre copa 2014 celeção brasileira.
-* | 91b3d67 Adiciona função R para VIF.
+| * f874a15 (feature02) Adiciona aquivo de dados de experimento com rações.
+* | 72107bf (feature01) Arquivo sobre copa 2014 celeção brasileira.
+* | b83b2e8 Adiciona função R para VIF.
 |/  
-* e72af47 Novos argumentos.
-* eafb4ca Adiciona frase do Linux Torvalds.
-* 401c4e3 Lista de inicial de o porquê usar o Linux.
-* d464172 Cria arquivo com título.
+* 09cc9b3 Novos argumentos.
+* 76dc040 Adiciona frase do Linux Torvalds.
+* ee16ea9 Lista de inicial de o porquê usar o Linux.
+* f818570 Cria arquivo com título.
 ```
 
 
@@ -2029,8 +2128,8 @@ git branch
 ```
 
 ```
-Deleted branch feature01 (was 391678a).
-Deleted branch feature02 (was 50570e8).
+Deleted branch feature01 (was 72107bf).
+Deleted branch feature02 (was f874a15).
 * master
 ```
 
@@ -2040,16 +2139,16 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-*   c352044 (HEAD -> master) Merge branch 'feature02'
+*   13bc039 (HEAD, master) Merge branch 'feature02'
 |\  
-| * 50570e8 Adiciona aquivo de dados de experimento com rações.
-* | 391678a Arquivo sobre copa 2014 celeção brasileira.
-* | 91b3d67 Adiciona função R para VIF.
+| * f874a15 Adiciona aquivo de dados de experimento com rações.
+* | 72107bf Arquivo sobre copa 2014 celeção brasileira.
+* | b83b2e8 Adiciona função R para VIF.
 |/  
-* e72af47 Novos argumentos.
-* eafb4ca Adiciona frase do Linux Torvalds.
-* 401c4e3 Lista de inicial de o porquê usar o Linux.
-* d464172 Cria arquivo com título.
+* 09cc9b3 Novos argumentos.
+* 76dc040 Adiciona frase do Linux Torvalds.
+* ee16ea9 Lista de inicial de o porquê usar o Linux.
+* f818570 Cria arquivo com título.
 ```
 
 Agora vou criar um novo ramo, adicionar um arquivo e encurtar o nome das
@@ -2075,7 +2174,7 @@ wget 'http://www.leg.ufpr.br/~walmes/data/bib1.txt'
 
 
 ```
---2015-09-23 21:02:40--  http://www.leg.ufpr.br/~walmes/data/bib1.txt
+--2015-09-30 17:47:12--  http://www.leg.ufpr.br/~walmes/data/bib1.txt
 Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
 Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -2084,7 +2183,7 @@ Saving to: ‘bib1.txt’
 
      0K                                                       100% 35,0M=0s
 
-2015-09-23 21:02:40 (35,0 MB/s) - ‘bib1.txt’ saved [535/535]
+2015-09-30 17:47:12 (35,0 MB/s) - ‘bib1.txt’ saved [535/535]
 ```
 
 
@@ -2125,7 +2224,19 @@ git commit -m "Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos."
 ```
 
 ```
-[feature03 6c78f58] Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+[feature03 0777eb0] Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
  1 file changed, 58 insertions(+)
  create mode 100644 bib1.txt
 ```
@@ -2176,7 +2287,19 @@ git commit -m "Arquivo de experimento em BIB. Cabeçalho em caixa alta."
 ```
 
 ```
-[master 5b66f25] Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+[master f6c63b4] Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
  1 file changed, 58 insertions(+)
  create mode 100644 bib1.txt
 ```
@@ -2205,19 +2328,19 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* 5b66f25 (HEAD -> master) Arquivo de experimento em BIB. Cabeçalho em caixa alta.
-| * 6c78f58 (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+* 0777eb0 (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+| * f6c63b4 (HEAD, master) Arquivo de experimento em BIB. Cabeçalho em caixa alta.
 |/  
-*   c352044 Merge branch 'feature02'
+*   13bc039 Merge branch 'feature02'
 |\  
-| * 50570e8 Adiciona aquivo de dados de experimento com rações.
-* | 391678a Arquivo sobre copa 2014 celeção brasileira.
-* | 91b3d67 Adiciona função R para VIF.
+| * f874a15 Adiciona aquivo de dados de experimento com rações.
+* | 72107bf Arquivo sobre copa 2014 celeção brasileira.
+* | b83b2e8 Adiciona função R para VIF.
 |/  
-* e72af47 Novos argumentos.
-* eafb4ca Adiciona frase do Linux Torvalds.
-* 401c4e3 Lista de inicial de o porquê usar o Linux.
-* d464172 Cria arquivo com título.
+* 09cc9b3 Novos argumentos.
+* 76dc040 Adiciona frase do Linux Torvalds.
+* ee16ea9 Lista de inicial de o porquê usar o Linux.
+* f818570 Cria arquivo com título.
 ```
 
 
@@ -2228,8 +2351,8 @@ git merge feature03 master
 
 
 ```
-Auto-merging bib1.txt
-CONFLICT (add/add): Merge conflict in bib1.txt
+Mesclagem automática de bib1.txt
+CONFLITO (adicionar/adicionar): conflito de mesclagem em bib1.txt
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
@@ -2239,16 +2362,16 @@ git status
 ```
 
 ```
-On branch master
-You have unmerged paths.
-  (fix conflicts and run "git commit")
+No ramo master
+Você tem caminhos não mesclados.
+  (fixar conflitos e executar "git commit")
 
-Unmerged paths:
-  (use "git add <file>..." to mark resolution)
+Caminhos não mesclados:
+  (usar "git add <arquivo>..." para marcar resolução)
 
-	both added:      bib1.txt
+	ambos adicionaram:  bib1.txt
 
-no changes added to commit (use "git add" and/or "git commit -a")
+nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git commit -a")
 ```
 
 
@@ -2302,16 +2425,16 @@ git status
 ```
 
 ```
-On branch master
-You have unmerged paths.
-  (fix conflicts and run "git commit")
+No ramo master
+Você tem caminhos não mesclados.
+  (fixar conflitos e executar "git commit")
 
-Unmerged paths:
-  (use "git add <file>..." to mark resolution)
+Caminhos não mesclados:
+  (usar "git add <arquivo>..." para marcar resolução)
 
-	both added:      bib1.txt
+	ambos adicionaram:  bib1.txt
 
-no changes added to commit (use "git add" and/or "git commit -a")
+nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git commit -a")
 ```
 
 
@@ -2321,7 +2444,18 @@ git commit -m "Resolve conflito, trunca com caixa alta."
 ```
 
 ```
-[master bacc71d] Resolve conflito, trunca com caixa alta.
+[master cc324cb] Resolve conflito, trunca com caixa alta.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
 ```
 
 
@@ -2330,8 +2464,8 @@ git status
 ```
 
 ```
-On branch master
-nothing to commit, working directory clean
+No ramo master
+nada a submeter, diretório de trabalho vazio
 ```
 
 
@@ -2340,21 +2474,21 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-*   bacc71d (HEAD -> master) Resolve conflito, trunca com caixa alta.
+*   cc324cb (HEAD, master) Resolve conflito, trunca com caixa alta.
 |\  
-| * 6c78f58 (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-* | 5b66f25 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+| * 0777eb0 (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+* | f6c63b4 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
 |/  
-*   c352044 Merge branch 'feature02'
+*   13bc039 Merge branch 'feature02'
 |\  
-| * 50570e8 Adiciona aquivo de dados de experimento com rações.
-* | 391678a Arquivo sobre copa 2014 celeção brasileira.
-* | 91b3d67 Adiciona função R para VIF.
+| * f874a15 Adiciona aquivo de dados de experimento com rações.
+* | 72107bf Arquivo sobre copa 2014 celeção brasileira.
+* | b83b2e8 Adiciona função R para VIF.
 |/  
-* e72af47 Novos argumentos.
-* eafb4ca Adiciona frase do Linux Torvalds.
-* 401c4e3 Lista de inicial de o porquê usar o Linux.
-* d464172 Cria arquivo com título.
+* 09cc9b3 Novos argumentos.
+* 76dc040 Adiciona frase do Linux Torvalds.
+* ee16ea9 Lista de inicial de o porquê usar o Linux.
+* f818570 Cria arquivo com título.
 ```
 
 
@@ -2363,29 +2497,29 @@ git reflog
 ```
 
 ```
-bacc71d HEAD@{0}: commit (merge): Resolve conflito, trunca com caixa alta.
-5b66f25 HEAD@{1}: commit: Arquivo de experimento em BIB. Cabeçalho em caixa alta.
-c352044 HEAD@{2}: checkout: moving from feature03 to master
-6c78f58 HEAD@{3}: commit: Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-c352044 HEAD@{4}: checkout: moving from master to feature03
-c352044 HEAD@{5}: merge feature02: Merge made by the 'recursive' strategy.
-391678a HEAD@{6}: merge feature01: Fast-forward
-91b3d67 HEAD@{7}: checkout: moving from feature01 to master
-391678a HEAD@{8}: commit: Arquivo sobre copa 2014 celeção brasileira.
-91b3d67 HEAD@{9}: checkout: moving from feature02 to feature01
-50570e8 HEAD@{10}: checkout: moving from 50570e8650d6295f94565b92b7a7b3551f2d7395 to feature02
-50570e8 HEAD@{11}: commit: Adiciona aquivo de dados de experimento com rações.
-e72af47 HEAD@{12}: checkout: moving from master to HEAD@{6}
-91b3d67 HEAD@{13}: checkout: moving from e72af47b79b09cef3910a2f31b7c3961cee04bab to master
-e72af47 HEAD@{14}: checkout: moving from master to HEAD@{4}
-91b3d67 HEAD@{15}: merge feature01: Fast-forward
-e72af47 HEAD@{16}: checkout: moving from feature01 to master
-91b3d67 HEAD@{17}: commit: Adiciona função R para VIF.
-e72af47 HEAD@{18}: checkout: moving from master to feature01
-e72af47 HEAD@{19}: commit: Novos argumentos.
-eafb4ca HEAD@{20}: commit: Adiciona frase do Linux Torvalds.
-401c4e3 HEAD@{21}: commit: Lista de inicial de o porquê usar o Linux.
-d464172 HEAD@{22}: commit (initial): Cria arquivo com título.
+cc324cb HEAD@{0}: commit (merge): Resolve conflito, trunca com caixa alta.
+f6c63b4 HEAD@{1}: commit: Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+13bc039 HEAD@{2}: checkout: moving from feature03 to master
+0777eb0 HEAD@{3}: commit: Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+13bc039 HEAD@{4}: checkout: moving from master to feature03
+13bc039 HEAD@{5}: merge feature02: Merge made by the 'recursive' strategy.
+72107bf HEAD@{6}: merge feature01: Fast-forward
+b83b2e8 HEAD@{7}: checkout: moving from feature01 to master
+72107bf HEAD@{8}: commit: Arquivo sobre copa 2014 celeção brasileira.
+b83b2e8 HEAD@{9}: checkout: moving from feature02 to feature01
+f874a15 HEAD@{10}: checkout: moving from f874a157cb59ccea849cb23bb02cc02f19c01503 to feature02
+f874a15 HEAD@{11}: commit: Adiciona aquivo de dados de experimento com rações.
+09cc9b3 HEAD@{12}: checkout: moving from master to HEAD@{6}
+b83b2e8 HEAD@{13}: checkout: moving from 09cc9b3b69fe624cdc5df7882bd81671d9cc0e8c to master
+09cc9b3 HEAD@{14}: checkout: moving from master to HEAD@{4}
+b83b2e8 HEAD@{15}: merge feature01: Fast-forward
+09cc9b3 HEAD@{16}: checkout: moving from feature01 to master
+b83b2e8 HEAD@{17}: commit: Adiciona função R para VIF.
+09cc9b3 HEAD@{18}: checkout: moving from master to feature01
+09cc9b3 HEAD@{19}: commit: Novos argumentos.
+76dc040 HEAD@{20}: commit: Adiciona frase do Linux Torvalds.
+ee16ea9 HEAD@{21}: commit: Lista de inicial de o porquê usar o Linux.
+f818570 HEAD@{22}: commit (initial): Cria arquivo com título.
 ```
 
 ## Trabalhando com cópias
@@ -2405,7 +2539,7 @@ pwd
 ```
 
 ```
-/home/walmes/maquina2
+/home/est/acn13/maquina2
 ```
 
 
@@ -2438,9 +2572,10 @@ git status
 ```
 
 ```
-On branch master
+No ramo master
 Your branch is up-to-date with 'origin/master'.
-nothing to commit, working directory clean
+
+nada a submeter, diretório de trabalho vazio
 ```
 
 
@@ -2468,8 +2603,8 @@ git remote -v
 ```
 
 ```
-origin	/home/walmes/GitLab/git-tutorial/meu1repo/.git (fetch)
-origin	/home/walmes/GitLab/git-tutorial/meu1repo/.git (push)
+origin	/media/acn13/- Arquivos -/Projetos_GIT/apostila-git/meu1repo/.git (fetch)
+origin	/media/acn13/- Arquivos -/Projetos_GIT/apostila-git/meu1repo/.git (push)
 ```
 
 
@@ -2478,17 +2613,17 @@ git log --oneline
 ```
 
 ```
-bacc71d Resolve conflito, trunca com caixa alta.
-5b66f25 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
-6c78f58 Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-c352044 Merge branch 'feature02'
-391678a Arquivo sobre copa 2014 celeção brasileira.
-50570e8 Adiciona aquivo de dados de experimento com rações.
-91b3d67 Adiciona função R para VIF.
-e72af47 Novos argumentos.
-eafb4ca Adiciona frase do Linux Torvalds.
-401c4e3 Lista de inicial de o porquê usar o Linux.
-d464172 Cria arquivo com título.
+cc324cb Resolve conflito, trunca com caixa alta.
+f6c63b4 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+0777eb0 Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+13bc039 Merge branch 'feature02'
+72107bf Arquivo sobre copa 2014 celeção brasileira.
+f874a15 Adiciona aquivo de dados de experimento com rações.
+b83b2e8 Adiciona função R para VIF.
+09cc9b3 Novos argumentos.
+76dc040 Adiciona frase do Linux Torvalds.
+ee16ea9 Lista de inicial de o porquê usar o Linux.
+f818570 Cria arquivo com título.
 ```
 
 
@@ -2544,7 +2679,7 @@ cp -v diasbarros_feijao.txt ~/maquina2/meu1repo/
 ```
 Diretório existe.
 Arquivo diasbarros_feijao.txt já existe.
-‘diasbarros_feijao.txt’ -> ‘/home/walmes/maquina2/meu1repo/diasbarros_feijao.txt’
+“diasbarros_feijao.txt” -> “/home/est/acn13/maquina2/meu1repo/diasbarros_feijao.txt”
 ```
 
 
@@ -2555,7 +2690,7 @@ wget 'http://www.leg.ufpr.br/~walmes/data/diasbarros_feijao.txt'
 
 
 ```
---2015-09-23 21:02:41--  http://www.leg.ufpr.br/~walmes/data/diasbarros_feijao.txt
+--2015-09-30 17:47:14--  http://www.leg.ufpr.br/~walmes/data/diasbarros_feijao.txt
 Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
 Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -2564,7 +2699,7 @@ Saving to: ‘diasbarros_feijao.txt’
 
      0K                                                       100% 40,2M=0s
 
-2015-09-23 21:02:41 (40,2 MB/s) - ‘diasbarros_feijao.txt’ saved [487/487]
+2015-09-30 17:47:14 (40,2 MB/s) - ‘diasbarros_feijao.txt’ saved [487/487]
 ```
 
 
@@ -2573,13 +2708,13 @@ git status
 ```
 
 ```
-On branch feature04
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+No ramo feature04
+Arquivos não monitorados:
+  (utilize "git add <arquivo>..." para incluir o que será submetido)
 
 	diasbarros_feijao.txt
 
-nothing added to commit but untracked files present (use "git add" to track)
+nada adicionado ao envio mas arquivos não registrados estão presentes (use "git add" to registrar)
 ```
 
 
@@ -2589,7 +2724,19 @@ git commit -m "Dados de experimento com feijão."
 ```
 
 ```
-[feature04 6031024] Dados de experimento com feijão.
+[feature04 aee3795] Dados de experimento com feijão.
+ Committer: Teste <acn13@inf.ufpr.br>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
  1 file changed, 37 insertions(+)
  create mode 100644 diasbarros_feijao.txt
 ```
@@ -2600,7 +2747,7 @@ git push origin feature04
 ```
 
 ```
-To /home/walmes/GitLab/git-tutorial/meu1repo/.git
+To /media/acn13/- Arquivos -/Projetos_GIT/apostila-git/meu1repo/.git
  * [new branch]      feature04 -> feature04
 ```
 
@@ -2612,7 +2759,7 @@ pwd
 ```
 
 ```
-/home/walmes/GitLab/git-tutorial/meu1repo
+/media/acn13/- Arquivos -/Projetos_GIT/apostila-git/meu1repo
 ```
 
 
@@ -2621,8 +2768,8 @@ git status
 ```
 
 ```
-On branch master
-nothing to commit, working directory clean
+No ramo master
+nada a submeter, diretório de trabalho vazio
 ```
 
 
@@ -2655,7 +2802,7 @@ git merge feature04 master
 ```
 
 ```
-Updating bacc71d..6031024
+Updating cc324cb..aee3795
 Fast-forward
  diasbarros_feijao.txt | 37 +++++++++++++++++++++++++++++++++++++
  1 file changed, 37 insertions(+)
@@ -2668,22 +2815,22 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* 6031024 (HEAD -> master, feature04) Dados de experimento com feijão.
-*   bacc71d Resolve conflito, trunca com caixa alta.
+* aee3795 (HEAD, master, feature04) Dados de experimento com feijão.
+*   cc324cb Resolve conflito, trunca com caixa alta.
 |\  
-| * 6c78f58 (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-* | 5b66f25 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+| * 0777eb0 (feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+* | f6c63b4 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
 |/  
-*   c352044 Merge branch 'feature02'
+*   13bc039 Merge branch 'feature02'
 |\  
-| * 50570e8 Adiciona aquivo de dados de experimento com rações.
-* | 391678a Arquivo sobre copa 2014 celeção brasileira.
-* | 91b3d67 Adiciona função R para VIF.
+| * f874a15 Adiciona aquivo de dados de experimento com rações.
+* | 72107bf Arquivo sobre copa 2014 celeção brasileira.
+* | b83b2e8 Adiciona função R para VIF.
 |/  
-* e72af47 Novos argumentos.
-* eafb4ca Adiciona frase do Linux Torvalds.
-* 401c4e3 Lista de inicial de o porquê usar o Linux.
-* d464172 Cria arquivo com título.
+* 09cc9b3 Novos argumentos.
+* 76dc040 Adiciona frase do Linux Torvalds.
+* ee16ea9 Lista de inicial de o porquê usar o Linux.
+* f818570 Cria arquivo com título.
 ```
 
 
@@ -2692,7 +2839,7 @@ pwd
 ```
 
 ```
-/home/walmes/maquina2/meu1repo
+/home/est/acn13/maquina2/meu1repo
 ```
 
 
@@ -2701,9 +2848,9 @@ git pull origin master
 ```
 
 ```
-From /home/walmes/GitLab/git-tutorial/meu1repo/
+From /media/acn13/- Arquivos -/Projetos_GIT/apostila-git/meu1repo/
  * branch            master     -> FETCH_HEAD
-   bacc71d..6031024  master     -> origin/master
+   cc324cb..aee3795  master     -> origin/master
 Already up-to-date.
 ```
 
@@ -2713,22 +2860,22 @@ git log --graph --oneline --decorate --date=relative --all
 ```
 
 ```
-* 6031024 (HEAD -> feature04, origin/master, origin/feature04, origin/HEAD) Dados de experimento com feijão.
-*   bacc71d (master) Resolve conflito, trunca com caixa alta.
+* aee3795 (HEAD, origin/master, origin/feature04, origin/HEAD, feature04) Dados de experimento com feijão.
+*   cc324cb (master) Resolve conflito, trunca com caixa alta.
 |\  
-| * 6c78f58 (origin/feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
-* | 5b66f25 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
+| * 0777eb0 (origin/feature03) Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
+* | f6c63b4 Arquivo de experimento em BIB. Cabeçalho em caixa alta.
 |/  
-*   c352044 Merge branch 'feature02'
+*   13bc039 Merge branch 'feature02'
 |\  
-| * 50570e8 Adiciona aquivo de dados de experimento com rações.
-* | 391678a Arquivo sobre copa 2014 celeção brasileira.
-* | 91b3d67 Adiciona função R para VIF.
+| * f874a15 Adiciona aquivo de dados de experimento com rações.
+* | 72107bf Arquivo sobre copa 2014 celeção brasileira.
+* | b83b2e8 Adiciona função R para VIF.
 |/  
-* e72af47 Novos argumentos.
-* eafb4ca Adiciona frase do Linux Torvalds.
-* 401c4e3 Lista de inicial de o porquê usar o Linux.
-* d464172 Cria arquivo com título.
+* 09cc9b3 Novos argumentos.
+* 76dc040 Adiciona frase do Linux Torvalds.
+* ee16ea9 Lista de inicial de o porquê usar o Linux.
+* f818570 Cria arquivo com título.
 ```
 
 
@@ -2737,104 +2884,104 @@ git log --stat
 ```
 
 ```
-commit 6031024b71ee0ee97d3af69aa485d8e338ef7929
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:41 2015 -0300
+commit aee379549c1d639a7197f57a02c31823d2cd702e
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:14 2015 -0300
 
     Dados de experimento com feijão.
 
  diasbarros_feijao.txt | 37 +++++++++++++++++++++++++++++++++++++
  1 file changed, 37 insertions(+)
 
-commit bacc71df93719925fd1bdf73bb1083bb1db1d951
-Merge: 5b66f25 6c78f58
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:41 2015 -0300
+commit cc324cb62feeb006408ad8b661bfc8b334376d94
+Merge: f6c63b4 0777eb0
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:12 2015 -0300
 
     Resolve conflito, trunca com caixa alta.
 
-commit 5b66f2509ff6f59b9bd81c0c69f7a231abc183d1
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:41 2015 -0300
+commit f6c63b454f6465cca052ed3b2efddad31b2f27f9
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:12 2015 -0300
 
     Arquivo de experimento em BIB. Cabeçalho em caixa alta.
 
  bib1.txt | 58 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 58 insertions(+)
 
-commit 6c78f58c21e6bc0177cefb5cbe27303538e17d89
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:40 2015 -0300
+commit 0777eb06480ca7f7a40b6f31c0550bc402cb4a33
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:12 2015 -0300
 
     Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos.
 
  bib1.txt | 58 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 58 insertions(+)
 
-commit c352044c873439dbfe3846b21babb9c703d399bc
-Merge: 391678a 50570e8
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:40 2015 -0300
+commit 13bc03992dc3dcb556aac727d776965393682cbe
+Merge: 72107bf f874a15
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:12 2015 -0300
 
     Merge branch 'feature02'
 
-commit 391678af4a0c6f202fb42c6e8f2c5b6b917ebe86
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:40 2015 -0300
+commit 72107bf4a59380db6fd877011ca052ce4d614778
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:12 2015 -0300
 
     Arquivo sobre copa 2014 celeção brasileira.
 
  brasilCopa2014.txt | 22 ++++++++++++++++++++++
  1 file changed, 22 insertions(+)
 
-commit 50570e8650d6295f94565b92b7a7b3551f2d7395
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:40 2015 -0300
+commit f874a157cb59ccea849cb23bb02cc02f19c01503
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:12 2015 -0300
 
     Adiciona aquivo de dados de experimento com rações.
 
  pimentel_racoes.txt | 24 ++++++++++++++++++++++++
  1 file changed, 24 insertions(+)
 
-commit 91b3d672e792fb908dcb425b61f91a610b8bdf4b
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:39 2015 -0300
+commit b83b2e8a0c16d4b7af5e8e7d103949a7a4207742
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:11 2015 -0300
 
     Adiciona função R para VIF.
 
  vif.R | 20 ++++++++++++++++++++
  1 file changed, 20 insertions(+)
 
-commit e72af47b79b09cef3910a2f31b7c3961cee04bab
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:39 2015 -0300
+commit 09cc9b3b69fe624cdc5df7882bd81671d9cc0e8c
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:11 2015 -0300
 
     Novos argumentos.
 
  porqueLinux.txt | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
-commit eafb4cab14b4df52a01b109ca8fd997e8d5ca20b
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:39 2015 -0300
+commit 76dc040ae9496ce463e222e2e4e3169cfe0d8bd3
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:11 2015 -0300
 
     Adiciona frase do Linux Torvalds.
 
  README.txt | 4 ++++
  1 file changed, 4 insertions(+)
 
-commit 401c4e371a79fcd94ccc99c014f49a8de8d86256
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:39 2015 -0300
+commit ee16ea96da7d554eb4d5f5f8fa80d54958c78a44
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:10 2015 -0300
 
     Lista de inicial de o porquê usar o Linux.
 
  porqueLinux.txt | 5 +++++
  1 file changed, 5 insertions(+)
 
-commit d464172b670744c31c52728bbf3c06931824afd2
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:38 2015 -0300
+commit f81857012d082089a8f23c787253b7739ea1a628
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:10 2015 -0300
 
     Cria arquivo com título.
 
@@ -2848,9 +2995,9 @@ git log -p -2
 ```
 
 ```
-commit 6031024b71ee0ee97d3af69aa485d8e338ef7929
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:41 2015 -0300
+commit aee379549c1d639a7197f57a02c31823d2cd702e
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:14 2015 -0300
 
     Dados de experimento com feijão.
 
@@ -2898,10 +3045,10 @@ index 0000000..2525ebf
 +11	2	45.9
 +11	3	46.3
 
-commit bacc71df93719925fd1bdf73bb1083bb1db1d951
-Merge: 5b66f25 6c78f58
-Author: Walmes Zeviani <walmes@ufpr.br>
-Date:   Wed Sep 23 21:02:41 2015 -0300
+commit cc324cb62feeb006408ad8b661bfc8b334376d94
+Merge: f6c63b4 0777eb0
+Author: Teste <acn13@inf.ufpr.br>
+Date:   Wed Sep 30 17:47:12 2015 -0300
 
     Resolve conflito, trunca com caixa alta.
 ```
@@ -2910,6 +3057,103 @@ Date:   Wed Sep 23 21:02:41 2015 -0300
 
 ****
 ## Ignorando arquivos e diretórios
+
+Há momentos em que é necessário a criação de arquivos e pastas, dentro do 
+repositório git, que não devem ser versionados, como é o caso de uma 
+compilação Latex, que gera arquivos auxiliares que não é necessário deixar 
+disponível à terceiros. Para esse intuito, o git possui um recurso que permite
+que arquivos e pastas fiquem "invisíveis" para o software.
+
+Para que isso ocorra, é necessario a criação de um arquivo com extensão 
+`.gitignore`, que o git irá reconhecer e efetuar sua leitura a procura de 
+pastas e arquivos a ignorar. Dentro deste arquivo, é necessário que seja
+escrito, por linha, somente um nome de pasta ou arquivo a ser ignorado.
+
+### Padrões de formatos para o `.gitignore`
+
+* Linhas em branco não são lidas, servindo apenas como modo de separar e 
+organizar o arquivo.
+
+* Os caracteres ` # ` e ` ! ` são reservado do git. Para pastas ou arquivos
+que os nomes comecem com ` # ` (Exemplo: #git.txt) ou ` ! ` (Exemplo: !git.txt), 
+deve-se usar uma barra invertida na frente do padrão (Exemplo: \\#ddd.txt, \\!ddd.txt).
+
+* O caracter ` # ` serve para efetuar comentários, ou seja, a linha que iniciar com `#`
+não será interpretada pelo git.
+
+* O caracter `!` serve para negar um padrão, por exemplo, pode-se mandar o git 
+ignorar todos os arquivos de determinada pasta (Usando: Nome_Dir/*) 
+mas deixar de ignorar um arquivo específico dentro dela 
+(Exemplo: !Nome_Dir/Arquivo.txt).
+
+* O asterisco ` * ` pode ser usado para subistituir parte do nome de 
+arquivos ou pastas ou o nome inteiro. Isto é valido também para a 
+extensão do arquivo.
+
+* Para ignorar um arquivo, ele pode ser adicionado com seu nome e 
+extensão a lista, com um ` * ` substituindo o nome ou a extensão.
+
+* Um diretório pode ser ignorado adicionando seu nome e uma barra ao final deste.
+
+* Dois asteriscos ` ** ` podem ser usados para substituir caminhos de subpastas, 
+como por exemplo, para ignorar o diretório Subpasta, 
+o caminho `/Exercicio/Teste/Pasta/Subpasta/` pode ser substituido por `/**/Subpasta/`.
+
+
+### Exemplo
+
+O código abaixo é um exemplo de um arquivo com extenção `.gitignore`:
+
+
+```sh
+# Esta linha é um comentário.
+
+# Ignorando arquivos com extenção .aux menos o arquivo EXEMPLO.aux:
+
+*.aux
+!EXEMPLO.aux
+
+# Ignorando todos os arquivos com nome EXEMPLO:
+
+EXEMPLO.*
+  
+# Ignorando arquivos que possuam EX no nome:
+  
+EX*.*
+  
+# Ignorando as Subpastas e os arquivos da pasta DIR:
+  
+DIR/*
+
+# Não ignorar apenas a Subpasta1 da pasta DIR:
+  
+!DIR/Subpasta1/
+  
+```
+
+
+### Tornando Global
+
+Cada vez que cria-se um novo projeto, para que arquivos sejam ignorados, 
+deve-se criar um novo arquivo `.gitignore`. Para que isso não ocorra, e 
+possível configurar o arquivo globalmente, ou seja, ele estará incorporado
+as configurações do git do seu computador.
+
+
+
+```sh
+git config --global core.excludesfile ~/.gitignore_global
+```
+
+ Depois de executar o código acima, o `.gitignore` da pasta atual 
+ (pasta do seu projeto) será atribuido como global no arquivo de 
+ configuração do git (`.gitconfig`).
+
+ Uma observação importante a ser feita é que, se adicionado como global 
+ uma exclusão a arquivos PDF (Usando: *.pdf), por exemplo, todos os arquivos com esta 
+ extensão serão ignorados pelo git, não somente os do projeto atual. 
+ Portanto, é recomendado somente definir um `.gitignore` como global, se ele possuir
+ apenas exclusões de arquivos auxiliares, que não são necessários para compilação.
 
 ****
 ## Autenticando em contas do GitLab (c3sl) e GitHub
