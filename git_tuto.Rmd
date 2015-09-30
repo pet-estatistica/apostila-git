@@ -1835,6 +1835,30 @@ opts_chunk$set(eval=FALSE)
 ****
 ## Ignorando arquivos e diretórios
 
+Há momentos em que é necessário a criação de arquivos e pastas dentro do repositório git que não devem serem versionados, como é o caso de uma compilação \Latex, que gera arquivos auxiliares que não é necessário deixar disponível à terceiros. Para esse intuito, o git possui um recurso que permite que arquivos e pastas fiquem "invísiveis" para o software.
+
+Para que isso ocorra, é necessario a criação de um arquivo com extenção `.gitignore`, que o git irá reconhecer e efetuar sua leitura a procura de pastas e arquivos a ignorar. Dentro do deste arquivo, é necessário que seja escrito somente um nome de pasta ou arquivo a ser ignorado por linha.
+
+### Padrões de formatos para o `.gitignore`
+
+* Linhas em branco não são lidas, servindo apenas como modo de separar e organizar o arquivo.
+
+* Os caracteres # e ! são reservado do git, o primeiro para expressar comentários e o segundo para negar algum padrão. Para pastas ou arquivos que comecem com # (Exemplo: #git.txt) ou ! (Exemplo: !git.txt), deve-se usar uma barra invertida na frente do padrão (Exemplo: \#ddd.txt, \!ddd.txt).
+
+### Tornando Global
+
+Cada vez que cria-se um novo projeto, para que arquivos sejam ignorados, deve-se criar um novo arquivo `.gitignore`. Para que isso não ocorra, e possível configurar o arquivo globalmente, ou seja, ele estara incorporado as configurações do git do seu computador.
+
+```{r, engine="bash", echo=-c(1:2)}
+cp ~/workspace/meupc/meu1repo/.gitignore ~/
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+
+git config --global core.excludesfile ~/.gitignore
+
+```
+
 ****
 ## Autenticando em contas do GitLab (c3sl) e GitHub
 
