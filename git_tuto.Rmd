@@ -1840,7 +1840,7 @@ opts_chunk$set(eval=FALSE)
 Há momentos em que é necessário a criação de arquivos e pastas, dentro do 
 repositório git, que não devem ser versionados, como é o caso de uma 
 compilação Latex, que gera arquivos auxiliares que não é necessário deixar 
-disponível à terceiros. Para esse intuito, o git possui um recurso que permite
+disponível a terceiros. Para esse intuito, o git possui um recurso que permite
 que arquivos e pastas fiquem "invisíveis" para o software.
 
 Para que isso ocorra, é necessario a criação de um arquivo com extensão 
@@ -1861,11 +1861,11 @@ deve-se usar uma barra invertida na frente do padrão (Exemplo: \\#ddd.txt, \\!d
 não será interpretada pelo git.
 
 * O caracter `!` serve para negar um padrão, por exemplo, pode-se mandar o git 
-ignorar todos os arquivos de determinada pasta (Usando: Nome_Dir/*) 
+ignorar todos os arquivos de determinada pasta (Usando: Nome_Dir/*),
 mas deixar de ignorar um arquivo específico dentro dela 
 (Exemplo: !Nome_Dir/Arquivo.txt).
 
-* O asterisco ` * ` pode ser usado para subistituir parte do nome de 
+* O asterisco ` * ` pode ser usado para substituir parte do nome de 
 arquivos ou pastas ou o nome inteiro. Isto é valido também para a 
 extensão do arquivo.
 
@@ -1881,12 +1881,12 @@ o caminho `/Exercicio/Teste/Pasta/Subpasta/` pode ser substituido por `/**/Subpa
 
 ### Exemplo
 
-O código abaixo é um exemplo de um arquivo com extenção `.gitignore`:
+O código abaixo é um exemplo de um arquivo com extensão `.gitignore`:
 
 ```{r, engine="sh", eval=FALSE}
 # Esta linha é um comentário.
 
-# Ignorando arquivos com extenção .aux menos o arquivo EXEMPLO.aux:
+# Ignorando arquivos com extensão .aux menos o arquivo EXEMPLO.aux:
 
 *.aux
 !EXEMPLO.aux
