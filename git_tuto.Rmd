@@ -1841,10 +1841,10 @@ compilação Latex, que gera arquivos auxiliares que não é necessário deixar
 disponível à terceiros. Para esse intuito, o git possui um recurso que permite
 que arquivos e pastas fiquem "invísiveis" para o software.
 
-Para que isso ocorra, é necessario a criação de um arquivo com extenção 
+Para que isso ocorra, é necessario a criação de um arquivo com extensão 
 `.gitignore`, que o git irá reconhecer e efetuar sua leitura a procura de 
-pastas e arquivos a ignorar. Dentro do deste arquivo, é necessário que seja
-escrito somente um nome de pasta ou arquivo a ser ignorado por linha.
+pastas e arquivos a ignorar. Dentro deste arquivo, é necessário que seja
+escrito, por linha, somente um nome de pasta ou arquivo a ser ignorado.
 
 ### Padrões de formatos para o `.gitignore`
 
@@ -1856,22 +1856,41 @@ comentários e o segundo para negar algum padrão. Para pastas ou arquivos
 que comecem com # (Exemplo: #git.txt) ou ! (Exemplo: !git.txt), deve-se 
 usar uma barra invertida na frente do padrão (Exemplo: \#ddd.txt, \!ddd.txt).
 
+* O asterisco ("*") pode ser usado para subistituir parte do nome de arquivos ou pastas ou o nome inteiro. Isto é valido também para a extensão do arquivo.
+
+* Para ignorar um arquivo, ele pode ser adicionado com seu nome e extensão a lista, com um "*" substituindo o nome ou a extensão, ou substituindo âmbos.
+
+* Um diretório pode ser ignorado adicionando seu nome e uma barra invertida ao final deste.
+
 ### Tornando Global
 
 Cada vez que cria-se um novo projeto, para que arquivos sejam ignorados, 
 deve-se criar um novo arquivo `.gitignore`. Para que isso não ocorra, e 
-possível configurar o arquivo globalmente, ou seja, ele estara incorporado
+possível configurar o arquivo globalmente, ou seja, ele estará incorporado
 as configurações do git do seu computador.
+
+É preciso copiar o arquivo `.gitignore` da pasta do projeto para a pasta 
+de usuário. Isso pode ser feito usando-se o comando abaixo:
 
 ```{r, engine="bash", echo=-c(1:2)}
 cp ~/workspace/meupc/meu1repo/.gitignore ~/
 ```
 
+Depois de efetuar a cópia, é preciso marcar seu arquivo como global,
+adicionando-o no `.gitconfig`. Isso pode ser feito de forma automatica 
+usando-se o comando abaixo:
+
 ```{r, engine="bash", echo=-c(1:2)}
-
 git config --global core.excludesfile ~/.gitignore
-
 ```
+
+ Depois de efetuar esses dois passos, seu `.gitignore` estará como global.
+ 
+ Uma observação importante a ser feita é que, se adicionado como global 
+ uma exclusão a arquivos PDF (Usando *.pdf), todos os arquivos com esta 
+ extensão serão ignorados pelo git, não somente o do projeto atual. 
+ Postanto, é recomendado somente adicionar globalmente arquivos auxiliares,
+ que não são necessários para compilação.
 
 ****
 ## Autenticando em contas do GitLab (c3sl) e GitHub
