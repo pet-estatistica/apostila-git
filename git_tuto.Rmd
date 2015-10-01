@@ -1839,13 +1839,13 @@ opts_chunk$set(eval=FALSE)
 
 Há momentos em que é necessário a criação de arquivos e pastas, dentro do 
 repositório git, que não devem ser versionados, como é o caso de uma 
-compilação Latex, que gera arquivos auxiliares que não é necessário deixar 
+compilação Latex, que gera arquivos auxiliares que não é preciso deixar 
 disponível a terceiros. Para esse intuito, o git possui um recurso que permite
 que arquivos e pastas fiquem "invisíveis" para o software.
 
-Para que isso ocorra, é necessario a criação de um arquivo com extensão 
-`.gitignore`, que o git irá reconhecer e efetuar sua leitura a procura de 
-pastas e arquivos a ignorar. Dentro deste arquivo, é necessário que seja
+Para que isso ocorra, é indispensável a criação de um arquivo com extensão 
+`.gitignore`, que o git irá reconhecer e efetuar leitura a procura de 
+pastas e arquivos a ignorar. Dentro deste arquivo, é imprescindível que seja
 escrito, por linha, somente um nome de pasta ou arquivo a ser ignorado.
 
 ### Padrões de formatos para o `.gitignore`
@@ -1866,11 +1866,8 @@ mas deixar de ignorar um arquivo específico dentro dela
 (Exemplo: !Nome_Dir/Arquivo.txt).
 
 * O asterisco ` * ` pode ser usado para substituir parte do nome de 
-arquivos ou pastas ou o nome inteiro. Isto é valido também para a 
+arquivos e pastas, ou o nome inteiro. Isso é valido também para a 
 extensão do arquivo.
-
-* Para ignorar um arquivo, ele pode ser adicionado com seu nome e 
-extensão a lista, com um ` * ` substituindo o nome ou a extensão.
 
 * Um diretório pode ser ignorado adicionando seu nome e uma barra ao final deste.
 
@@ -1895,9 +1892,9 @@ O código abaixo é um exemplo de um arquivo com extensão `.gitignore`:
 
 EXEMPLO.*
   
-# Ignorando arquivos que possuam EX no nome:
+# Ignorando arquivos que possuam HTML no nome:
   
-EX*.*
+HTML*.*
   
 # Ignorando as Subpastas e os arquivos da pasta DIR:
   
@@ -1909,6 +1906,9 @@ DIR/*
   
 ```
 
+Vale ressaltar que, no exemplo acima, por mais que esteja sendo ignorado arquivos 
+com o nome EXEMPLO, e arquivos com extensão .aux, 
+o arquivo EXEMPLO.aux (que está pecedido do sinal `!`) não será ignorado.
 
 ### Tornando Global
 
@@ -1926,11 +1926,13 @@ git config --global core.excludesfile ~/.gitignore_global
  (pasta do seu projeto) será atribuido como global no arquivo de 
  configuração do git (`.gitconfig`).
 
- Uma observação importante a ser feita é que, se adicionado como global 
- uma exclusão a arquivos PDF (Usando: *.pdf), por exemplo, todos os arquivos com esta 
- extensão serão ignorados pelo git, não somente os do projeto atual. 
- Portanto, é recomendado somente definir um `.gitignore` como global, se ele possuir
- apenas exclusões de arquivos auxiliares, que não são necessários para compilação.
+ Uma observação importante a ser feita é que, se adicionado arquivos para
+ serem ignorados globalmente, como arquivos PDF (Usando: *.pdf), por exemplo,
+ todos os arquivos  com essa extensão serão ignorados pelo git,
+ não somente os do projeto atual. 
+ Portanto, é recomendado somente definir um `.gitignore` como global, 
+ se ele apenas desconsiderar arquivos auxiliares, ou seja, que não serão necessários
+ para compilações futuras.
 
 ****
 ## Autenticando em contas do GitLab (c3sl) e GitHub
