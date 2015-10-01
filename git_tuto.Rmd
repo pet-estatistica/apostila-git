@@ -89,6 +89,11 @@ e no final o Git faz o trabalho de juntar todos os arquivos mostrando se há
 algum conflito. Integrantes podem mandar sugestões de alterações, e cabe ao
 responsável pelo projeto incorporar ou não essas alterações.
 
+Criado em 2005 por Linus Torvalds, também criador do Linux, o Git surgiu 
+a partir da necessidade de desenvolver uma ferramenta básica que pudesse 
+lidar com projetos grandes de maneira eficaz. Linus colocou o nome Git 
+em referência a si mesmo, que no inglês britânico é uma gíria para "cabeça-dura". 
+
 ****
 ## Download e instalação
 
