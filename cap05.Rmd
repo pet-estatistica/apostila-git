@@ -1,0 +1,81 @@
+---
+title: "Serviços Web para Projetos Git"
+author: "PET Estatística UFPR"
+output:
+  html_document:
+    highlight: pygments
+    toc: true
+    theme: flatly
+    keep_md: true
+---
+
+```{r, include=FALSE}
+library(knitr)
+opts_chunk$set(comment=NA)
+```
+
+## Serviços Web para Git ##
+
+No capítulo anterior vimos ...
+O Git tem muitos serviços web ...
+O objetivo é ...
+
+### GitHub ###
+
+### GitLab ###
+
+Pode ser instalado em servidores propríos. Talvez seja o único nessa
+categoria.
+
+### Outros ###
+
+<http://www.git-tower.com/blog/git-hosting-services-compared/>
+
+## Criar um perfil
+
+Ilustrar o simples processo de criar um perfil. Explorar um pouco das
+interfaces. Terminar com o campo das chaves públicas para então fazer
+uso na seção seguinte.
+
+### Habilitar comunição ###
+
+Geração e configuração das chaves públicas.
+Incluir screenshots.
+
+### Generciar repositórios ###
+
+Criar, renomear, deletar. Públicos e privados. Adicionar README.
+
+## Fluxo de trabalho ##
+
+<https://www.atlassian.com/git/>
+
+clone, add, commit, branch, push, fetch, pull.
+
+## Macanísmos de colaboração ##
+
+### Issues ###
+
+Correções e aperfeiçoamento.
+
+### Fork ###
+
+<https://help.github.com/articles/fork-a-repo/>
+<https://confluence.atlassian.com/bitbucket/forking-a-repository-221449527.html>
+
+É uma cópia livre e independente que você pode usar para
+acrescentar/corrigir o projeto origem ou usar como ponto de partida para
+outro projeto.
+
+Você não precisa ser colaborador do projeto para dar *fork*, basta estar
+na mesma plataforma. Você pode submeter a sua colaboração para o dono
+por meio de *Merge Request*.
+
+### Merge Request ###
+
+Funciona para *branches* e *forks*.
+
+## Integração contínua ##
+
+Permite chegar se o projeto, no caso de softwares, está
+funcionando/instalando sem erros.
