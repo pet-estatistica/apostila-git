@@ -1,0 +1,12 @@
+## Clonar, Modificar e Enviar
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Clonar o projeto desta apostila:
+git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
+```
+
+## Deletar Ramos
+
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+git branch -d "nome_ramo"
+```
+
