@@ -1,26 +1,27 @@
 ---
-output: pdf_document
+output: html_document
 ---
 Dicionario de Termos
 ====================
 
 ## Repositório
 
-Um repositório é uma pasta gerenciada pelo git. A partir da criação deste,
-podemos marcar pontos de mudanças significativas nos arquivos gerenciados,
-sendo possível transitar entre as diferentes verões a medida do necessário.
+Um repositório é uma pasta gerenciada pelo git. A partir da criação 
+deste, podemos marcar pontos de mudanças significativas nos arquivos 
+gerenciados, sendo possível transitar entre as diferentes verões a 
+medida que for necessário.
 
-```{r, engine='bash', eval=FALSE}
+```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Iniciar repositório na pasta atual:
 git init
 ```
 
 ## Stagin Area
 
-A stagin area é um espaço na pasta gerenciada pelo git, onde ficam os arquivos
-antes de ser marcados como uma versão definitiva. Em tradução livre, stagin area
-é area de estágio, e podemos imaginar que o arquivo está estagiando antes de
-ser promovido a um arquivo definitivo.
+A stagin area é um espaço na pasta gerenciada pelo git, onde ficam os 
+arquivos antes de ser marcados como uma versão definitiva. Em tradução 
+livre, stagin area é area de estágio, e podemos imaginar que o arquivo 
+está estagiando antes de ser promovido a um arquivo definitivo.
 
 
 ## Add
@@ -28,7 +29,7 @@ ser promovido a um arquivo definitivo.
 O `add` adiciona (envia) os arquivos para a stagin area, para que 
 possa ser marcado no tempo por um commit.
 
-```{r, engine="bash", eval=FALSE}
+```{r, engine="bash", echo=TRUE, eval=FALSE}
 # Adicionar todos os arquivos a stagin area:
 git add *
 ```
@@ -47,29 +48,28 @@ git commit -m "Meu primeiro commit"
 
 ## Branch
 
-Os `branchs` são uma cópia dos arquivos do ultimo commit
-para um ambiente de desenvolvimento paralelo, ou seja, 
-ele cria uma cópia da sua pasta gerenciada, permitindo que as modificações
-em um branch não afete os arquivos em outro. Os branchs também são chamados
-de ramos de desenvolvimento.
+Os `branchs` são uma cópia dos arquivos do ultimo commit para um 
+ambiente de desenvolvimento paralelo, ou seja,  ele cria uma cópia da 
+sua pasta gerenciada, permitindo que as modificações em um branch não 
+afete os arquivos em outro. Os branchs também são chamados de ramos de 
+desenvolvimento.
 
-```{r, engine='bash', eval=FALSE}
+```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Cria um branch chamado novoBranch
 git branch novoBranch
 ```
 
 ## Checkout
 
-`Checkout` serve para transitar entre branchs e commits. Usando o
+`Checkout` serve para transitar entre branchs e commits. Usando o 
 checkout é possivel voltar a commits anteriores.
 
 ## Remote
 
-Remote é utilizado o servidor remoto aonde o
-seus os arquivos git estão hospedados. O remote padrão
-geralmente é criado com o nome de `origin`, 
+Remote é utilizado o servidor remoto aonde o seus os arquivos git estão 
+hospedados. O remote padrão geralmente é criado com o nome de `origin`, 
 e é possível adicionar outros remotes utilizando nomes diferentes.
 
-```{r, engine='bash', eval=FALSE}
+```{r, engine='bash', echo=TRUE, eval=FALSE}
 git remote add origin "git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git"
 ```
