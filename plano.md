@@ -20,14 +20,19 @@
    1. Configuração de conexão ssh com servidor
    2. Chaves públicas
    3. clone, push, pull, fetch
-5. Projetos GitHub/GitLab etc
-   1. Serviços web para projetos Git (github, gitlab, bitbucket, ...)
-   2. Criar repositórios
-   3. Chaves públicas
-   4. clone, push, pull, fetch
-   5. Issues, fork
-   6. Merge request
-   7. Integração contínua
+5. Serviços web para Git
+   1. Serviços
+      1. GitHub
+      2. GitLab
+      3. Outros
+   2. Criar perfil
+      1. Habilitar comunicação
+      2. Gerenciar repositórios
+   3. Fluxo de trabalho
+   4. Macanísmos de colaboração
+      1. Issues e merge request
+      2. Fork e pull request
+   5. Integração contínua
 6. Ferramentas gráficas
    1. Git GUI
    2. Gitk, Gitg, Giggle
