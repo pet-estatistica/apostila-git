@@ -58,7 +58,29 @@
       8. Rescrever uma mensagem de commit
       9. ...
 
-## A definir
+## Produto e prazo
 
-  * Tipo de arquivo final: pdf, html ou?
-  * Prazo para o produto final:
+  + Tipo de arquivo final: Apostila em pdf com capa, folhas de rosto,
+    prefácio, sumário, capítulos e apêndices.
+  + Prazo para o produto final: 2015-12-15.
+
+## Afazeres
+
+1. 2015-10-27:
+   + Ângela, Gabriel, Jhenifer e Alessandra: Criar o *milestone* (MS),
+     criar o primeiro *issue* (IS) e adicionar arquivo com o anteprojeto
+     (AP), que são as seções se subseções acompanhadas de um breve
+     descritivo.
+   + Eduardo: transferir o `issue#4` para um IS novo em sua MS e
+     adicionar o AP.
+   + Daniel: Criar MS e IS com arquivo de AP para o capítulo 1, RStudio
+     e *Cheat Sheet*.
+   + Walmes: Deixar pronto o conteúdo referente ao GitHub dentro do
+     capítulo 5.
+2. 2015-11-03:
+3. 2015-11-10:
+4. 2015-11-17:
+5. 2015-11-24:
+6. 2015-12-01:
+7. 2015-12-08:
+8. 2015-12-15: Apostila Git concluída!
