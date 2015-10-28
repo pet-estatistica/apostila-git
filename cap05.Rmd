@@ -22,10 +22,129 @@ O objetivo é ...
 
 ### GitHub ###
 
+![](./images/github-octocat.png)
+
+O [GitHub] é um serviço Web para hospedagem, gestão e compartilhamento de
+repositórios Git que oferece recursos para desenvolvimento e
+colaboração. A principal slogam do GitHub é: "Build software better,
+together." Justamente enfatiza a o compromisso principal que é dar
+suporte a colaboração.
+
+O GitHub foi fundado em 8 de Fevereiro de 2008, em São Francisco, por
+quatro pessoas: Tom Preston-Werner, Chris Wanstrath, PJ Hyett e Scott
+Chacon. Em 2015, o GitHub ultrapassou a marca de 10 milhões de usuários.
+
+De acordo com o <http://githut.info/>, no quarto trimestre de 2014
+haviam 22 milhões de repositórios. A linguagem `JavaScript` teve o maior
+número de repositórios ativos (>320 mil) e total de *pushes* enquanto
+que a `R` foi a com maior número de novos cópias por repositório (6.45).
+
+Diferente a forma tradicional de usar o Git, por linha de comando, que
+fizemos até agora, o GitHub tem uma interface web (gráfica) repleta de
+funções para o desenvolvimento e supervisão/acompanhamento de um projeto
+Git. Tais recursos vão desde administrar tarefas até a permitir a
+colaboração de outras pessoas, até mesmo desconhecidos. Dentre os
+recursos disponíveis tem-se:
+  * README: é um arquivo texto escrito em liguagem de marcação
+    renderizada para exibição (Markdown, RST, Textile, Org, etc). O
+    README é a capa do seu repositório, ou seja, o conteúdo apresentado
+    na *home* do projeto e serve para informar o leitor dos objetivos
+    repositório seu projeto, seus desenvolvedores e pode conter
+    instruções de instalação e colaboração.
+  * Wiki: a Wiki de cada repositório serve para divulgação e
+    documentação. O serviço automaticamente converte de linguagem de
+    marcação para HTML, tornando fácil a leitura e navegação. Como a
+    Wiki é também um repositório Git, ela pode inclive ser editada
+    dentro do prórpio GitHub, além de versionada, claro. Com isso, não
+    diferente do restante, a edição da Wiki também é colaborativa.
+  * *Issues*: Por *issues* é que se faz a correção de bugs e agendamento
+    de tarefas. Quando um usuário ou desenvolvedor cria um *issue*
+    notificar um bug encontrado de forma que ele possa ser rapidamente
+    corrigido. Criar *issues* também serve como ferramenta de
+    admistração de tarefas nas quais os *issues* descrevem algo a ser
+    feito e por quem.
+  * *Milestones*: são pedras de milha, ou seja, marcam uma distância
+    percorrida. No GitHub, descrever o que precisa ser desenvolvido para
+    que ocorra uma mundança de versão e estabalecer um prazo para
+    conclusão, por exemplo.
+  * *Pull request* ou *merge request* (MR): é requisição de fusão. Os
+    membros da equipe fazer suas contribuições em ramos de
+    desenvolvimento e ao concluir, pedem um MR pela interface. Nesta, o
+    responsável pode ver os *diffs* no arquivos e fazer o merge por
+    lá. Então não é preciso baixar o ramo, aplicar o merge e subí-lo.
+  * *Fork*: é uma forma de se fazer uma cópia do projeto de alguém para
+    livremente experimentar modificações sem afetar o projeto
+    original. A cópia vem para a sua conta e funciona como qualquer
+    outro repositório seu. A ideia do *fork* é dar liberdade de
+    contribuição (não supervisionada) a qualquer pessoa interessada de
+    modo que esta possa submeter as contribuições para a origem (por MR)
+    ou até mesmo usar como ponto de partida para um projeto.
+
+De acordo com [Klint Finley], *fork* e MR são o que tornam o GitHub tão
+poderoso. Quando o mantenedor recebe um MR ele pode ver o perfil do
+contribuidor que lista todos os projetos no qual ele deu
+contribuição. Ao aceitar o MR, o colaborador acrescenta mais uma
+colaboração a sua reputação. Esse mecanísmo, então, beneficia as duas
+partes.
+
+Além dessas características chaves, o GitHub permite que você acompanhe
+(*watch*) e favorite (*star*) repositórios. Também dá para seguir
+pessoas e participar de organizações (grupo de usuários) que podem ter
+repositórios, ideal para projetos em equipe. No perfil de cada usuário
+tem-se um registro das atividades e dentro de cada projeto pode-se
+acompanhar as contribuições de cada colaborador.
+
+Em cada repositório pode-se navegar pelo histórico de commits, ver as
+modificações no código (*diffs*) entre commits e branches.
+
+É possível hospedar dados, por exemplo, em formato texto (csv), e
+disponibilizá-los por meio da URL para download.
+
+Com o plano *free* do GitHub, você pode ter inúmeros repositórios
+públicos e inúmeros colaboradores, pode ter o *fork* de quantos
+repositórios quiser e participar de quantas organizações precisar. Para
+ter repositórios privados, o plano mais básico custa U$ 7 e dá direito a
+5 repositórios. Existem outros planos individuais, e também planos
+organizacionais, para todos os tamanhos de projeto e equipe. Além dessas
+formas, pode-se ter o GitHub em um servidor próprio, o GitHub
+Interprise, que tem vantagens além das já mencionadas, no entanto, tal
+com qualquer plano não público, tem seu custo (ou investimento).
+
+É uma fonte de conhecimento onde você encontra *scripts* nas mais
+diferentes linguagens de programação. Você pode livremente estudar o
+código dos repositórios, ver como o código evoluiu *commit* após
+*commit* e como um *bug* foi resolvido. Qualquer pessoa, mesmo sem
+perfil no GitHub, pode clonar um repositório público (pelo protocolo
+*http*). A GitHub reconhece 382 linguagens que compreendem as de
+programação (293: C++, Python, R, JavaScript), as de *markup* (34: HTML,
+TeX, MarkDown), de dados (40: JSON, SQL, XML, csv) e aplica os destaques
+(highlights) para cada linguagem, o que facilita a leitura do código.
+
+O GitHub é serviço web para Git mais popular quanto ao número de
+projetos hospedados. No entanto, existem serviços com as mesmas e até
+com funcionalidades que o GiHub não oferece. O GitLab e o Bitbucket
+estão entre os 5 mais populares e permitem, por exemplo, ter alguns
+repositórios privados com a conta *free*.
+
 ### GitLab ###
+
+![](./images/gitlab-raccoon.jpg)
+
+http://slides.com/axil/what-is-gitlab#/
+https://en.wikipedia.org/wiki/GitLab
+https://about.gitlab.com/2015/05/18/simple-words-for-a-gitlab-newbie/
+https://about.gitlab.com/better-than-github/
+https://www.upwork.com/hiring/development/gitlab-vs-github-how-are-they-different/
+https://git-scm.com/book/en/v2/Git-on-the-Server-GitLab
+https://www.safaribooksonline.com/library/view/gitlab-repository-management/9781783281794/pr05.html
+http://info.eps.surrey.ac.uk/IT/FAQ/gitlab-faq.php
+https://books.google.com.br/books?id=tUYiAgAAQBAJ&source=gbs_navlinks_s
+http://events.linuxfoundation.org/sites/events/files/slides/gitlab-linuxcon-presentation.pdf
 
 Pode ser instalado em servidores propríos. Talvez seja o único nessa
 categoria.
+
+Mascot é raccoon: guaxinim
 
 ### Outros ###
 
@@ -38,6 +157,8 @@ interfaces. Terminar com o campo das chaves públicas para então fazer
 uso na seção seguinte.
 
 ### Habilitar comunição ###
+
+http://www.vogella.com/tutorials/GitHosting/article.html
 
 Geração e configuração das chaves públicas.
 Incluir screenshots.
@@ -54,10 +175,6 @@ clone, add, commit, branch, push, fetch, pull.
 
 ## Macanísmos de colaboração ##
 
-### Issues ###
-
-Correções e aperfeiçoamento.
-
 ### Fork ###
 
 <https://help.github.com/articles/fork-a-repo/>
@@ -71,6 +188,13 @@ Você não precisa ser colaborador do projeto para dar *fork*, basta estar
 na mesma plataforma. Você pode submeter a sua colaboração para o dono
 por meio de *Merge Request*.
 
+Mostrar um pull request que acrescenta pgf e pgs como renderização Tex.
+https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
+
+### Issues ###
+
+Correções e aperfeiçoamento.
+
 ### Merge Request ###
 
 Funciona para *branches* e *forks*.
@@ -79,3 +203,9 @@ Funciona para *branches* e *forks*.
 
 Permite chegar se o projeto, no caso de softwares, está
 funcionando/instalando sem erros.
+
+<!---------------------------------------------------------------------- -->
+
+[Klint Finley]: http://techcrunch.com/2012/07/14/what-exactly-is-github-anyway/
+[GitLab]: https://about.gitlab.com/
+[GitHub]: https://github.com/
