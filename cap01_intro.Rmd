@@ -1,0 +1,31 @@
+---
+title: "Tutorial de Git"
+author: "PET Estatística UFPR"
+output:
+  html_document:
+    highlight: pygments
+    toc: true
+    theme: flatly
+    keep_md: true
+---
+
+
+Sistemas de controle de versão
+   Por que versionar?
+      Versionamento
+    	Portabilidade
+      Equipe
+      Funcionalidade
+  Git / SVN / Mercurial
+  Breve Histórico
+	Github (news and network)
+  Estrutura
+
+
+Onde falar do class e do io?
+
+http://pt.stackoverflow.com/questions/43896/por-que-usar-git-para-desenvolvimento-individual
+https://git-scm.com/book/pt-br/v1/Primeiros-passos-No%C3%A7%C3%B5es-B%C3%A1sicas-de-Git
+http://www.maplestecnologia.com.br/ja-usou-git-veja-como-funciona-esse-sistema-de-controle-de-versoes/
+http://udgwebdev.com/5-motivos-para-usar-github/
+http://blog.justdigital.com.br/git-celebra-10-anos-de-existencia-e-uma-historia-de-sucesso-na-comunidade-drupal
