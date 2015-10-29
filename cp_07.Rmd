@@ -1,0 +1,26 @@
+---
+title: "Capítulo 7: Trabalhando em equipe"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+1.Boas práticas de colaboração
+
+- Repositórios: níveis de acesso, adicionar colaboradores, configuração 
+inicial do repositório
+
+- Commits: convenções gerais e específicas
+
+
+2.Modelos de fluxos de trabalho
+
+- Descrever os quatro principais tipos de workflow (Centralized workflow,
+Feature branch workflow, gitflow workflow e Forking workflow)
+
+- Materiais de apoio <a href="http://git.leg.ufpr.br/leg/gitlab-rautu/blob/master/CONTRIBUTING.md">
+gitlab-rautu do Fernando Mayer</a> ; 
+<a href="https://prezi.com/_lm8kozmii8n/git-workflow/"> apresentação do Diego G. Pasqualin</a>
+
+
+3.Fluxo de trabalho PET no GitLab
