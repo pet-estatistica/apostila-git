@@ -38,13 +38,16 @@
    2. Gitk, Gitg, Giggle
    3. Meld, Kdiff3
    4. Plugins para Geany, Gedit, Nautilus, Nemo
-   5. RStudio??
-   6. Emacs??
-7. Trabalhando em equipe
+   5. Emacs??
+7. Git no Rstudio
+   1. Interface
+   2. Configuração
+   3. Gestionando Projeto
+8. Trabalhando em equipe
    1. Boas práticas de colaboração
    2. Modelos de fluxos de trabalho
    3. Fluxo de trabalho PET no GitLab
-8. Apêndice
+9. Apêndice
    1. Dicionário de termos
    2. Cheat sheet
    3. Exemplos de rotinas
