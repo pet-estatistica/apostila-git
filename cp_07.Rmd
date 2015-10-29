@@ -1,11 +1,38 @@
 ---
 title: "Capítulo 7: Trabalhando em equipe"
+author: "PET-Estatística UFPR"
 output: 
   html_document: 
     keep_md: yes
 ---
 
-1.Boas práticas de colaboração
+##1.Boas práticas de colaboração
+
+Repositório é onde são armazenados os arquivos de um projeto. Existem 
+três níveis de acesso permitidos:
+
+- **Private**: é o repositório fechado, onde apenas o criador (Owner) tem 
+permissão de leitura e escrita. Se um repositório privado for criado 
+dentro de um grupo, todos do grupo terão permissão de leitura e escrita.
+
+
+- **Internal**: é o repositório é fechado para usuários externos ao
+grupo, mas qualquer usuário cadastrado no grupo terá permissão de leitura
+e escrita no repositório.
+
+
+- **Public**: é o repositório é aberto para qualquer pessoa, e fica
+visível para qualquer um (usuário do grupo ou não). Usuários do grupo
+tem permissão de leitura e escrita no repositório. Usuários sem conta 
+no grupo podem clonar o repositório, mas não tem permissão para alterar 
+o repositório (enviar merge requests por exemplo).
+
+É possível adicionar usuários para colaborar em um repositório. Cada 
+usuário pode ter um nível de acesso diferente: **Guest**, **Reporter**,
+**Developer**, **Master**. Em <a href="https://gitlab.c3sl.ufpr.br/help/permissions/permissions">
+permissões</a> é possível visualizar as habilidades concedidas a cada 
+nível.
+
 
 - Repositórios: níveis de acesso, adicionar colaboradores, configuração 
 inicial do repositório
@@ -13,14 +40,17 @@ inicial do repositório
 - Commits: convenções gerais e específicas
 
 
-2.Modelos de fluxos de trabalho
+##2.Modelos de fluxos de trabalho
 
 - Descrever os quatro principais tipos de workflow (Centralized workflow,
 Feature branch workflow, gitflow workflow e Forking workflow)
 
 - Materiais de apoio <a href="http://git.leg.ufpr.br/leg/gitlab-rautu/blob/master/CONTRIBUTING.md">
 gitlab-rautu do Fernando Mayer</a> ; 
-<a href="https://prezi.com/_lm8kozmii8n/git-workflow/"> apresentação do Diego G. Pasqualin</a>
+<a href="https://prezi.com/_lm8kozmii8n/git-workflow/"> apresentação do 
+Diego G. Pasqualin</a>
 
 
-3.Fluxo de trabalho PET no GitLab
+##3.Fluxo de trabalho PET no GitLab
+
+- Funcionamento da elaboração da apostila
