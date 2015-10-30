@@ -62,10 +62,39 @@ realizadas entre uma versão e outra (principalmente para softwares).
 Criando esse arquivo com estas informações, ele aparecerá automaticamente 
 em uma aba na página inicial do projeto. 
 
-- *Repositórios: níveis de acesso, adicionar colaboradores, configuração 
-inicial do repositório*
+Outra parte fundamental do git, são os **commits**. Além de salvarem as
+alterações realizadas nos arquivos, também são responsáveis por documentar
+as alterações feitas por qualquer usuário e em qualquer arquivo.
+Por causa dessa importância, uma mensagem bem escrita é a melhor forma 
+de se comunicar a alteração para os demais membros do grupo e para você 
+mesmo. Essas mensagens também aparecerão no git log do projeto,
+por isso é essencial que sejam bem escritas, de forma clara e sigam um 
+padrão.
 
-- *Commits: convenções gerais e específicas*
+Algumas **regras de ouro** para que um projeto versionado com git 
+seja bem sucedido são:
+
+- Faça commits regularmente: isso faz com que as mudanças de código 
+entre um commit e outro sejam menores, tornando mais fácil para todos 
+acompanhar as alterações;
+- Não faça commits de trabalhos pela metade: faça um commit apenas 
+quando tiver finalizado o que estava propondo. Isso irá forçar você a 
+deixar o trabalho em pedaços menores, e por consequência realizar
+commits regularmente.
+- Teste antes de fazer um commit: resista à tentação de fazer um commit 
+que você pensa que está completo. Teste toda a sua realização para 
+ter certeza de que não causará um efeito colateral no projeto.
+- Escreva boas mensagens de commit: seja claro e objetivo ao escrever 
+as mensagens de commit. No entanto, tome cuidado para não ser vago, ou 
+escrever apenas `mudança`, `mais mudanças`, etc. Se uma mensagem curta for suficiente, use `git commit -m 'Mensagem'`, mas lembre-se de ser 
+informativo sobre a alteração realizada, para ser útil para todos do 
+projeto.
+
+
+- **Repositórios: níveis de acesso, adicionar colaboradores, configuração 
+inicial do repositório**
+
+- **Commits: convenções gerais** e *específicas*
 
 
 ## 2.Modelos de fluxos de trabalho
