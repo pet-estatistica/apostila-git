@@ -178,6 +178,12 @@ Ilustrar o simples processo de criar um perfil. Explorar um pouco das
 interfaces. Terminar com o campo das chaves públicas para então fazer
 uso na seção seguinte.
 
+Criar uma conta no Github é muito simples. Basta entrar em
+<https://github.com/join>, preencher os dados pessoais, escolher um
+plano (free/público, pago/privado) e fazer um tour pela interface. Como
+não existe segredo em preencher os dados pessoais, vamos fazer uma breve
+descrição da interface do GitHub.
+
 ### Habilitar comunição ###
 
 http://www.vogella.com/tutorials/GitHosting/article.html
@@ -186,6 +192,26 @@ Geração e configuração das chaves públicas.
 Incluir screenshots.
 
 ### Generciar repositórios ###
+
+No canto superior direito da página tem um ícone $+$ que permite criar
+um novo repositório ou uma nova organização. Escolha um nome para
+representar o seu repositório e adicione uma breve descrição à ele. Na
+etapa seginte, defina o nível de visibilidade: publico ou
+privado. Lembre-se que repositórios privados só podem ser criados para
+planos não *free*.
+
+Ao criar o repositório você pode inicilizado criando um arquivo
+`README.md`. Como já mencionamos, esse arquivo é a capa do seu
+repositório e serve para documentar o objetivo. Você pode editar esse
+arquivo, ou qualquer outro, de dentro do GitHub e, claro, *commitar* as
+alterações que fizer. Depois de criado, é possível clonar o repositório
+pelo endereço que é composto pelo seu nome de usuário e nome do
+repositório. O repositório `ola-mundo` da conta do `fulano` pode ser
+clonado com
+
+```sh
+git clone git@github.com:fulano/ola-mundo.git
+```
 
 Criar, renomear, deletar. Públicos e privados. Adicionar README.
 
