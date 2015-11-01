@@ -5,6 +5,7 @@ PET Estatística
 ## 4. Projetos remotos ##
 
 ### 4.1 - Configuração de conexão ssh com servidor ###
+* Criando repositório: como criar o primeiro repositório. 
 * Chaves públicas: introdução e breve descrição, facilidade da criação de um repositório devido a disponibilidade do servidor c3sl;
 * Criando chave pública ssh: como gerar uma chave pública ssh que realizará uma conexão segura entre a máquina e o servidor;
 
