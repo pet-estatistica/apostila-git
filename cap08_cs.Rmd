@@ -1,0 +1,45 @@
+---
+title: "Cheat Sheet"
+output: html_document
+---
+
+Iniciando um Git
+	init
+	clone
+	config
+
+Atividades Locais
+	status
+	add
+	commit
+	log
+	diff
+	blame
+	show
+	rm
+	mv
+	ls-files
+
+Atividades Remotas
+	pull
+	push
+	remote
+	fetch
+	ls-remote
+
+Branch (ramo)
+	branch
+	checkout
+
+Merge (mesclar arquivos)
+	merge
+
+Comandos Avançado
+	stage
+	stash
+	rebase
+	reset
+	revert
+	submodule
+	co
+	
