@@ -1,0 +1,19 @@
+---
+title: 'Capítulo 2: Instalação e Configuração'
+author: "Jhenifer"
+date: "29/10/2015"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. Instalação:
+ - Escrever passo a passo a instalação do Git nos sistemas operacionais citados abaixo.
+1.1 Windows
+1.2 Linux
+1.3 MacOS
+
+2. Configurando Perfil
+- Comandos necessários para configurar nome de usuáro e email.
