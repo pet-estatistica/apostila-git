@@ -7,13 +7,45 @@ output:
     keep_md: yes
 ---
 
+Configurações Iniciais 
 
-## Repositório Local
+Abrindo o shell do seu computador:
 
-Git init
-Git add
-Git commit
-Git merge
-Git checkout
-Git Log
+## Configurações Iniciais
 
+Git Init  
+The working tree
+
+Inicia um repositório, 
+```{r, engine = 'sh'}
+git init
+
+```
+git init --bare <directory>
+
+# Configurações
+config --global user.name "seu nome"
+config --global user.email "seu Email"
+
+
+## Repositório Local - Imagens (Inferno, Terra e Céu)
+
+git add
+git commit
+git tag
+
+## Git Commit - Boas Práticas 
+
+Maus Exemplos
+
+## Comandos De Verificação
+git diff
+git log
+git status
+
+## Back to Past (Imagem de Volta para o Futuro)
+
+git checkout
+git mv *Não é bem assim
+
+## Não sei
