@@ -4,6 +4,27 @@ output: html_document
 Dicionario de Termos
 ====================
 
+## Config
+
+O `config` é um comando usado para ajustar as configurações padrão do git.
+Há duas configurações básicas a serem feitas: a inclusão do e-mail e 
+do nome do usuário git.
+Todas as configurações são globais e ficam armazenadas em um arquivo 
+chamado `.gitconfig`, que fica localizado no diretório padrão do usuário.
+
+### Exemplo
+
+```{r, engine='bash', eval=FALSE}
+# Configurando o usuário Ezio Auditore:
+git config --global user.name "Ezio Auditore"
+# Configurando o e-mail:
+git config --global user.email ezio.auditore@exemple.com
+```
+
+## ssh-keygen
+
+## Help
+
 ## Repositório
 
 Um repositório é uma pasta gerenciada pelo git. A partir da criação deste,
@@ -18,11 +39,13 @@ git init
 
 ## Stagin Area
 
-A stagin area é um espaço na pasta gerenciada pelo git, onde ficam os arquivos
+A stagin area é um espaço temporário na pasta gerenciada pelo git, onde ficam os arquivos
 antes de ser marcados como uma versão definitiva. Em tradução livre, stagin area
 é area de estágio, e podemos imaginar que o arquivo está estagiando antes de
 ser promovido a um arquivo definitivo.
 
+
+## Clone
 
 ## Add
 
@@ -62,10 +85,14 @@ de ramos de desenvolvimento.
 git branch novoBranch
 ```
 
+## HEAD
+
 ## Checkout
 
 `Checkout` serve para transitar entre branchs e commits. Usando o
 checkout é possivel voltar a commits anteriores.
+
+## Reset
 
 ## Remote
 
@@ -97,3 +124,23 @@ gerente de projetos decidir que parte do código deve permanecer.
 git merge novoBranch
 ```
 
+## Status
+
+## Rm
+
+## Mv
+
+## Stash
+
+## Tag
+
+## Fetch 
+
+## Pull
+
+## Rebase
+
+## Bisect
+
+
+[Pro Git](http://git-scm.com/book/en/v2) , escrito por Scott Chacon.
