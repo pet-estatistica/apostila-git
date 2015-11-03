@@ -1,7 +1,7 @@
 ---
 output: html_document
 ---
-Dicionario de Termos
+Dicionário de Termos
 ====================
 
 ## Config
@@ -13,7 +13,6 @@ Todas as configurações são globais e ficam armazenadas em um arquivo
 chamado `.gitconfig`, que fica localizado no diretório padrão do usuário.
 
 ### Exemplo
-
 ```{r, engine='bash', eval=FALSE}
 # Configurando o usuário Ezio Auditore:
 git config --global user.name "Ezio Auditore"
@@ -23,7 +22,17 @@ git config --global user.email ezio.auditore@exemple.com
 
 ## ssh-keygen
 
+
 ## Help
+
+Todo comando git tem um manual de ajuda que pode ser exibido na tela
+com o comando `--help`.
+
+### Exemplo
+```{r, engine='bash', eval=FALSE}
+# Exibir ajuda do comando status:
+git status --help
+```
 
 ## Repositório
 
@@ -44,8 +53,24 @@ antes de ser marcados como uma versão definitiva. Em tradução livre, stagin a
 é area de estágio, e podemos imaginar que o arquivo está estagiando antes de
 ser promovido a um arquivo definitivo.
 
-
 ## Clone
+
+O `clone` é usado quando deseja-se clonar um repositório que está
+disponível em um servidor remoto para o servidor local.
+Depois da clonagem, estará disponível todos os arquivos e todo o 
+histórico de controle de versões sem a necessidade de uso da internet.
+
+É importante salientar que quando é usado o `clone`, o servidor remoto
+é adicionado automaticamente, podendo ser acessado atravéz do nome 
+`origin`.
+
+### Exemplo
+```{r, engine='bash', eval=FALSE}
+# Clonando o projeto desta apostila:
+git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
+# Exibindo os servidores remotos:
+git remote
+```
 
 ## Add
 
