@@ -8,32 +8,41 @@ Abrindo o shell do seu computador:
 
 ## Configurações Iniciais
 
+Git Init  
+The working tree
+
+Inicia um repositório, 
+
 ```sh
 git init
 
 ```
 
+```
+## Reinitialized existing Git repository in /home/gabriel/apostila-git/.git/
+```
+git init --bare <directory>
 
-Reinitialized existing Git repository in /home/gabriel/apostila-git/.git/
 
-config --global user.name "seu nome"
-config --global user.email "seu Email"
-
-Descrição Básica:
-
-## Repositório Local
-
-git init
-
-Descrição Básica:
-
+## Repositório Local - Imagens (Inferno, Terra e Céu)
 
 git add
 git commit
+git tag
+
+## Git Commit - Boas Práticas 
+
+Maus Exemplos
+
+## Comandos De Verificação
 git diff
-git checkout
 git log
+git status
+ref log
 
+## Back to Past (Imagem de Volta para o Futuro)
 
+git checkout
+git mv *Não é bem assim
 
 

@@ -11,7 +11,7 @@ Configurações Iniciais
 
 Abrindo o shell do seu computador:
 
-## Configurações Iniciais
+## Primeira Sessão
 
 Git Init  
 The working tree
@@ -19,16 +19,11 @@ The working tree
 Inicia um repositório, 
 ```{r, engine = 'sh'}
 git init
-
 ```
 git init --bare <directory>
 
-# Configurações
-config --global user.name "seu nome"
-config --global user.email "seu Email"
 
-
-## Repositório Local - Imagens (Inferno, Terra e Céu)
+## Imagens (Inferno, Terra e Céu)
 
 git add
 git commit
@@ -42,10 +37,17 @@ Maus Exemplos
 git diff
 git log
 git status
+ref log
 
 ## Back to Past (Imagem de Volta para o Futuro)
 
 git checkout
 git mv *Não é bem assim
+git reset 
 
-## Não sei
+## Complementos
+git blame
+git show
+git rm
+git ls-files
+
