@@ -45,6 +45,11 @@ git checkout
 git mv *Não é bem assim
 git reset 
 
+## Ramificações 
+
+Master
+Branch
+
 ## Complementos
 git blame
 git show
