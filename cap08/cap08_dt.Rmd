@@ -1,0 +1,171 @@
+---
+output: html_document
+---
+Dicionário de Termos
+====================
+
+## Config
+
+O `config` é um comando usado para ajustar as configurações padrão do git.
+Há duas configurações básicas a serem feitas: a inclusão do e-mail e 
+do nome do usuário git.
+Todas as configurações são globais e ficam armazenadas em um arquivo 
+chamado `.gitconfig`, que fica localizado no diretório padrão do usuário.
+
+### Exemplo
+```{r, engine='bash', eval=FALSE}
+# Configurando o usuário Ezio Auditore:
+git config --global user.name "Ezio Auditore"
+# Configurando o e-mail:
+git config --global user.email ezio.auditore@exemple.com
+```
+
+## ssh-keygen
+
+
+## Help
+
+Todo comando git tem um manual de ajuda que pode ser exibido na tela
+com o comando `--help`.
+
+### Exemplo
+```{r, engine='bash', eval=FALSE}
+# Exibir ajuda do comando status:
+git status --help
+```
+
+## Repositório
+
+Um repositório é uma pasta gerenciada pelo git. A partir da criação deste,
+podemos marcar pontos de mudanças significativas nos arquivos gerenciados,
+sendo possível transitar entre as diferentes verões a medida do necessário.
+
+### Exemplo
+```{r, engine='bash', eval=FALSE}
+# Iniciar repositório na pasta atual:
+git init
+```
+
+## Stagin Area
+
+A stagin area é um espaço temporário na pasta gerenciada pelo git, onde ficam os arquivos
+antes de ser marcados como uma versão definitiva. Em tradução livre, stagin area
+é area de estágio, e podemos imaginar que o arquivo está estagiando antes de
+ser promovido a um arquivo definitivo.
+
+## Clone
+
+O `clone` é usado quando deseja-se clonar um repositório que está
+disponível em um servidor remoto para o servidor local.
+Depois da clonagem, estará disponível todos os arquivos e todo o 
+histórico de controle de versões sem a necessidade de uso da internet.
+
+É importante salientar que quando é usado o `clone`, o servidor remoto
+é adicionado automaticamente, podendo ser acessado atravéz do nome 
+`origin`.
+
+### Exemplo
+```{r, engine='bash', eval=FALSE}
+# Clonando o projeto desta apostila:
+git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
+# Exibindo os servidores remotos:
+git remote
+```
+
+## Add
+
+O `add` adiciona (envia) os arquivos para a stagin area, para que 
+possa ser marcado no tempo por um commit.
+
+### Exemplo
+```{r, engine="bash", eval=FALSE}
+# Adicionar todos os arquivos a stagin area:
+git add *
+```
+
+
+## Commmit
+
+O `commit` marca os arquivos da stagin area como uma
+versão definitiva, para que posteriormente, caso algum erro ocorra, 
+possamos voltar para commits anteriores onde o código está 
+em pleno funcionamento.
+
+### Exemplo
+```{r, engine="bash", echo=TRUE, eval=FALSE}
+git commit -m "Meu primeiro commit"
+```
+
+## Branch
+
+Os `branchs` são uma cópia dos arquivos do ultimo commit
+para um ambiente de desenvolvimento paralelo, ou seja, 
+ele cria uma cópia da sua pasta gerenciada, permitindo que as modificações
+em um branch não afete os arquivos em outro. Os branchs também são chamados
+de ramos de desenvolvimento.
+
+### Exemplo
+```{r, engine='bash', eval=FALSE}
+# Cria um branch chamado novoBranch
+git branch novoBranch
+```
+
+## HEAD
+
+## Checkout
+
+`Checkout` serve para transitar entre branchs e commits. Usando o
+checkout é possivel voltar a commits anteriores.
+
+## Reset
+
+## Remote
+
+Remote é utilizado o servidor remoto aonde o
+seus os arquivos git estão hospedados. O remote padrão
+geralmente é criado com o nome de `origin`, 
+e é possível adicionar outros remotes utilizando nomes diferentes.
+
+### Exemplo
+```{r, engine='bash', eval=FALSE}
+git remote add origin "git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git"
+```
+
+## Merge
+
+Com o `merge` é possivel a fusão dos dois ramos em um.
+
+Quando se trabalha em ramos diferentes (diferentes branchs) e precisa-se
+posteriormente juntar o trabalho dos dois, o `merge` (fundir) é usado, 
+permitindo que o trabalho seja centralizado novamente. A fusão é feita 
+de forma automática, mas conflitos podem ocorrer, como por exemplo,
+quando duas ou mais pessoas modificam a mesma parte do código. 
+Estes conflitos devem ser resolvidos manualmente, deixando a cargo do
+gerente de projetos decidir que parte do código deve permanecer.
+
+### Exemplo
+```{r, engine='bash', eval=FALSE}
+# Faz merge do branch chamado novoBranch com o branch atual:
+git merge novoBranch
+```
+
+## Status
+
+## Rm
+
+## Mv
+
+## Stash
+
+## Tag
+
+## Fetch 
+
+## Pull
+
+## Rebase
+
+## Bisect
+
+
+[Pro Git](http://git-scm.com/book/en/v2) , escrito por Scott Chacon.
