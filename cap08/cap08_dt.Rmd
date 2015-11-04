@@ -12,7 +12,7 @@ do nome do usuário git.
 Todas as configurações são globais e ficam armazenadas em um arquivo 
 chamado `.gitconfig`, que fica localizado no diretório padrão do usuário.
 
-### Exemplo
+**Exemplo:**
 ```{r, engine='bash', eval=FALSE}
 # Configurando o usuário Ezio Auditore:
 git config --global user.name "Ezio Auditore"
@@ -20,7 +20,22 @@ git config --global user.name "Ezio Auditore"
 git config --global user.email ezio.auditore@exemple.com
 ```
 
-## ssh-keygen
+## SSH Key
+
+É uma chave de autenticação, baseada em criptografia de chave pública
+(chave assimétrica), que torna o processo transferência de arquivos
+entre o cliente e o servidor mais segura. 
+
+Para que o git local consiga se conectar a um servidor git remoto, é 
+necessário que esta chave seja gerada e que as devidas configurações
+sejam feitas tanto localmente quanto no servidor remoto. 
+Caso contrário é exibido um erro e a conexão é interrompida.
+
+**Exemplo:**
+```{r, engine='bash', eval=FALSE}
+# Gerando chave SSH:
+ssh-keygen
+```
 
 
 ## Help
@@ -28,7 +43,7 @@ git config --global user.email ezio.auditore@exemple.com
 Todo comando git tem um manual de ajuda que pode ser exibido na tela
 com o comando `--help`.
 
-### Exemplo
+**Exemplo:**
 ```{r, engine='bash', eval=FALSE}
 # Exibir ajuda do comando status:
 git status --help
@@ -40,7 +55,7 @@ Um repositório é uma pasta gerenciada pelo git. A partir da criação deste,
 podemos marcar pontos de mudanças significativas nos arquivos gerenciados,
 sendo possível transitar entre as diferentes verões a medida do necessário.
 
-### Exemplo
+**Exemplo:**
 ```{r, engine='bash', eval=FALSE}
 # Iniciar repositório na pasta atual:
 git init
@@ -64,7 +79,7 @@ histórico de controle de versões sem a necessidade de uso da internet.
 é adicionado automaticamente, podendo ser acessado atravéz do nome 
 `origin`.
 
-### Exemplo
+**Exemplo:**
 ```{r, engine='bash', eval=FALSE}
 # Clonando o projeto desta apostila:
 git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
@@ -77,7 +92,7 @@ git remote
 O `add` adiciona (envia) os arquivos para a stagin area, para que 
 possa ser marcado no tempo por um commit.
 
-### Exemplo
+**Exemplo:**
 ```{r, engine="bash", eval=FALSE}
 # Adicionar todos os arquivos a stagin area:
 git add *
@@ -91,7 +106,7 @@ versão definitiva, para que posteriormente, caso algum erro ocorra,
 possamos voltar para commits anteriores onde o código está 
 em pleno funcionamento.
 
-### Exemplo
+**Exemplo:**
 ```{r, engine="bash", echo=TRUE, eval=FALSE}
 git commit -m "Meu primeiro commit"
 ```
@@ -104,20 +119,52 @@ ele cria uma cópia da sua pasta gerenciada, permitindo que as modificações
 em um branch não afete os arquivos em outro. Os branchs também são chamados
 de ramos de desenvolvimento.
 
-### Exemplo
-```{r, engine='bash', eval=FALSE}
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Cria um branch chamado novoBranch
 git branch novoBranch
 ```
 
-## HEAD
-
 ## Checkout
 
-`Checkout` serve para transitar entre branchs e commits. Usando o
-checkout é possivel voltar a commits anteriores.
+O `checkout` serve para transitar entre branchs e commits. 
+Usando o checkout é possivel voltar a commits anteriores.
 
-## Reset
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Mudar do branch atual para o branch teste:
+git checkout teste
+```
+
+## HEAD
+
+`HEAD` é um arquivo que contém um apontador para o `branch` atual.
+Quando o `checkout` é executado para a mudança do `branch`, 
+esse arquivo é automaticamente modificado apontando agora para o
+novo local, permitindo que, quando o computador for desligado e depois
+ligado novamente, o git ainda esteja trabalhando com o mesmo `branch`
+de antes.
+
+## Tag
+
+As tags são usadas para marcar pontos específicos do desenvolvimento.
+Geralmente são usadas para marcar versões definitivas, como a v1.0, v2.0
+e assim por diante.
+
+Elas são divididas em dois tipos: leve e anotada.
+A `tag` leve simplemente aponta para um `commit` específico, já a `tag` 
+anotada é guardada como objtos inteiros, possuindo algumas informações
+relacionadas a ela, como o nome da pessoa que criou, a data, uma mensagem
+semelhante a de `commit`, entre outras.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Criando tag leve:
+git tag -l "v1.0.0"
+
+# Criando tag anotada:
+git tag -a v1.0 -m "Minha primeira tag anotada."
+```
 
 ## Remote
 
@@ -126,8 +173,9 @@ seus os arquivos git estão hospedados. O remote padrão
 geralmente é criado com o nome de `origin`, 
 e é possível adicionar outros remotes utilizando nomes diferentes.
 
-### Exemplo
+**Exemplo:**
 ```{r, engine='bash', eval=FALSE}
+# Adicionando um servidor remoto:
 git remote add origin "git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git"
 ```
 
@@ -143,7 +191,7 @@ quando duas ou mais pessoas modificam a mesma parte do código.
 Estes conflitos devem ser resolvidos manualmente, deixando a cargo do
 gerente de projetos decidir que parte do código deve permanecer.
 
-### Exemplo
+**Exemplo:**
 ```{r, engine='bash', eval=FALSE}
 # Faz merge do branch chamado novoBranch com o branch atual:
 git merge novoBranch
@@ -151,13 +199,53 @@ git merge novoBranch
 
 ## Status
 
+O status exibe a diferença entre o estado atual dos arquivos e o estado
+do ultimo `commit` do mesmo `branch`.
+
+**Exemplo:**
+```{r, engine='bash', eval=FALSE}
+# Pedindo o status:
+git status
+```
+
 ## Rm
+
+O `git rm` serve para remover um arquivo de forma que ele deixe de ser 
+gerenciado pelo git e seja excluido do disco rígido. Também é possível 
+que o arquivo deixe de ser gerenciado e permaneça no disco.
+
+Uma das vantagens é que, quando o arquivo é removido pelo `git rm`, ele 
+não aparece como não adicionado a stagin area, precisando somente que 
+a exclusão seja commitada.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Remover arquivo teste.tex do gerenciamento e do disco:
+git rm teste.tex
+
+# Remover arquivo teste.tex apenas do gerenciamento:
+git rm --cached teste.tex
+```
 
 ## Mv
 
+O `git mv` move ou renomeia arquivos, informando ao git que eles foram
+movido ou renomeados é que não se tratam de um novos arquivos.
+
+Caso a mudança seja feita sem esse comando o git entende que o arquivo
+foi deletado e que um novo arquivo foi criado, deixando de fora, 
+por exemplo, a ligação existente entre o arquivo e seus commits.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Renomeando o arquivo teste.tex para arquivo1.tex:
+git mv teste.tex arquivo1.tex
+```
+
+
 ## Stash
 
-## Tag
+## Reset
 
 ## Fetch 
 
