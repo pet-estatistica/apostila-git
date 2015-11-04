@@ -1,0 +1,58 @@
+---
+title: "cap3"
+author: "Gabriel Sartori"
+date: "29/10/2015"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+Configurações Iniciais 
+
+Abrindo o shell do seu computador:
+
+## Primeira Sessão
+
+Git Init  
+The working tree
+
+Inicia um repositório, 
+```{r, engine = 'sh'}
+git init
+```
+git init --bare <directory>
+
+
+## Imagens (Inferno, Terra e Céu)
+
+git add
+git commit
+git tag
+
+## Git Commit - Boas Práticas 
+
+Maus Exemplos
+
+## Comandos De Verificação
+git diff
+git log
+git status
+ref log
+
+## Back to Past (Imagem de Volta para o Futuro)
+
+git checkout
+git mv *Não é bem assim
+git reset 
+
+## Ramificações 
+
+Master
+Branch
+
+## Complementos
+git blame
+git show
+git rm
+git ls-files
+
