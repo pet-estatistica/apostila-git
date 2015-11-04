@@ -69,7 +69,7 @@
 
 ## Afazeres
 
-1. 2015-10-27:
+1. 2015-10-27 [week01]:
    + Ângela, Gabriel, Jhenifer e Alessandra: Criar o *milestone* (MS),
      criar o primeiro *issue* (IS) e adicionar arquivo com o anteprojeto
      (AP), que são as seções se subseções acompanhadas de um breve
