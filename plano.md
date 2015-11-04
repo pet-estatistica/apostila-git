@@ -81,6 +81,22 @@
    + Walmes: Deixar pronto o conteúdo referente ao GitHub dentro do
      capítulo 5.
 2. 2015-11-03:
+   + Walmes: terminar o que tem para ser feito para GitHub, adicionar
+     chaves, verificar conexão, criar renomear projeto, clonar,
+     modificar e subir. Renomear, deletar e transferir projeto.
+   + Gabriel: Descrever o usdo do `init`, `add`, `commit`, definir as
+     três áreas de presença das modificações e acompanhar modificações
+     com `diff`, `log`, `status` e `reflog`.
+   + Ângela: Incluir as ilustrações dos modelos de workflow.
+   + Jhenifer: migrar o conteúdo sobre instalação e configuração da
+     versão preliminar da apostila correspondentes à Linux e Windows.
+   + Eduardo: concluir as seções sobre uso da `git gui`, `gitk`, `gitg`
+     e `gitx`.
+   + Alessandra: configurar conexão serviador via ssh, criar e
+     transferir as chaves públicas, criar um repositório no servidor e
+     cloná-lo.
+   + Alcides: concluir o dicionário de termos.
+   + Daniel: concluir o conteúdo do *cheat sheet*.
 3. 2015-11-10:
 4. 2015-11-17:
 5. 2015-11-24:
