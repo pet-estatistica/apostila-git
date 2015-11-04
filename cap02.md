@@ -1,15 +1,8 @@
----
-title: 'Capítulo 2: Instalação e Configuração'
-author: "Jhenifer"
-date: "29/10/2015"
-output: 
-  html_document: 
-    keep_md: yes
----
+# Capítulo 2: Instalação e Configuração
+Jhenifer  
+29/10/2015  
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## Instalação:
  - Escrever passo a passo a instalação do Git nos sistemas operacionais citados abaixo.
