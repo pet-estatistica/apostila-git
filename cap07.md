@@ -148,70 +148,148 @@ deixar de fora como você fez as modificações, pois o código alterado já
 deverá ser auto-explicativo. 
 
 
-### Esqueleto do tópico
-
-- Repositórios: níveis de acesso, adicionar colaboradores, configuração 
-inicial do repositório
-
-- Commits: convenções gerais específicas
-
-
 ## 2.Modelos de fluxos de trabalho
 
 A escolha do *workflow* (fluxo de trabalho) depende de cada projeto e das preferências pessoais. Podemos utilizar as informações sobre cada *workflow*, e decidir qual é mais adequado para cada projeto. Existem quatro maneiras 
 principais de trabalhar em colaboração com o git e o GitLab:
 
-- **Centralized workflow**: recomendado para projetos pequenos, e/ou que
-não necessitam de muitas alterações. Nesse workflow, o repositório possui
-apenas um brach (`master`) e as alterações são feitas nesse branch. As 
-revisões só poderão ser realizadas depois que tudo foi enviado para o 
-servidor remoto. Com isso, há uma grande chance de ocorrerem conflitos.
+- #### **Centralized workflow**: 
+recomendado para projetos pequenos, e/ou que não necessitam de muitas 
+alterações. Nesse workflow, o repositório possui apenas um brach (`master`) 
+e as alterações são feitas nesse branch. As revisões só poderão ser 
+realizadas depois que tudo foi enviado para o servidor remoto. Com isso, 
+há uma grande chance de ocorrerem conflitos.
 
-- **Feature branch workflow**: recomendado para projetos pequenos e grandes
-que envolvam mais de um colaborador. O projeto principal é mantido no
-branch master. Se um membro quiser realizar alguma alteração, deverá criar
-um novo branch `feature`, e fazer as alterações nesse branch e sugerir um 
-`merge request`. Com isso, os demais colaboradores poderão revisar
-as alterações sugeridas e discutir as modificações, até que uma pessoa
-habilitada faça o merge desse branch `freature` para o branch `master`.
+
+      **Exemplo**
+
+      Após iniciar um repositório central, os colaboradores devem clonar
+      o repositório.
+
+      ![](./images/traba-central-1.png)
+
+      FIGURA: Colaboradores clonando o repositório central
+
+      Depois de um colaborador terminar seu trabalho remotamente, ele 
+      publica as modificações para o repositório central, para que os 
+      demais membros possam ter acesso.
+
+      ![](./images/traba-central-2.png)
+
+      FIGURA: Colaborador publicando as modificações no repositório central
+
+      Outro membro também termina seu trabalho e resolve publicar no 
+      repositório central, porém não irá conseguir. O repositório central 
+      está diferente do seu repositório local.
+
+      ![](./images/traba-central-3.png)
+
+      FIGURA: Colaborador não conseguindo publicar as modificações no 
+      repositório central
+      
+      Para conseguir enviar as modificações realizadas, o colaborador
+      precisa puxar as atualizações feitas para  o seu repositório, 
+      integrá-los com as suas alterações locais, e em seguida, tentar 
+      novamente.
+      
+      ![](./images/traba-central-4.png)
+
+      FIGURA: Colaborador puxando as modificações do repositório central
+      
+      Após feito isso, será possível o colaborador fazer as modificações.
+      
+      ![](./images/traba-central-5.png)
+
+      FIGURA: Colaborador publica modificações do repositório central
+
+- #### **Feature branch workflow**: 
+recomendado para projetos pequenos e grandes que envolvam mais de um 
+colaborador. O projeto principal é mantido nobranch master. Se um membro 
+quiser realizar alguma alteração, deverá criar um novo branch `feature`, 
+e fazer as alterações nesse branch e sugerir um `merge request`. Com isso, 
+os demais colaboradores poderão revisar as alterações sugeridas e discutir as modificações, até que uma pessoa habilitada faça o merge desse branch 
+`freature` para o branch `master`.
 Dessa forma, evita-se os possíveis conflitos e garante que tais alterações
 não causaram algum problema. Esse workflow é altamente recomendado por
 ser simples de gerenciar, evitar grandes conflitos, e ser relativamente 
 fácil para usuários novos do git.
 
 
-- **Gitflow workflow**: indicado para projetos maiores e/ou com um grande 
-número de colaboradores. Esse workflow envolve a criação de alguns branches 
-com funções específicas. Todo o desenvolvimento é realizado no branch 
-`develop`. Quando uma versão está pronta, ela é movida para o branch 
-`release`, onde é testada e finalmente incorporada ao ramo master, 
-que contém apenas versões finais (estáveis). É extremamente recomendado
-esse workflow para desenvolvimento de softwares, porém exige de mais
-familiaridade com o git. Permite, por exemplo, que os usuários de um 
-software, instalem tanto uma versão estável (do branch `master`) quanto 
-uma versão em desenvolvimento (do branch `develop`).
+      **Exemplo**
 
-- **Forking workflow**: recomendado para projetos abertos, onde se espera
-usuários externos façam contribuições. Esse workflow consiste de um repositório oficial, de onde os colaboradores fazem um `fork` desse repositório, e passam 
-a desenvolver o projeto de maneira independente. Assim, cada colaborador
-poderá adotar o workflow de preferência, e não precisará ter acesso ao
-repositório oficial, apenas colaborar enviando `merge`.
+      Antes de começar a desenvolver um recurso, é preciso de criar um 
+      ramo isolado para trabalhar
 
-Independente da escolha do workflow para cada projeto é importante sempre
+      ![](./images/traba-feature-1.png)
+
+      FIGURA: Criando um novo ramo para o trabalho
+
+      Com isso, o membro poderá iniciar o seu trabalho, e realizar o que
+      for necessário nesse ramo (brach). Após finalizar o projeto, o colaborador
+      envia suas modificações, irá requirir um `merge request` para que 
+      as alterações feitas nesse branch, sejam incorporadas no `master`. Os 
+      demais membros, poderão avaliar se tais modificações são pertinentes
+      para o projeto.
+
+      ![](./images/traba-feature-2.png)
+
+      FIGURA: Colaborador solicita merge, e aguarda revisão dos demais
+      colaboradores
+
+      Quando as alterações sugeridas para o colaborador forem incorporadas
+      o branch poderá ser movido para o `master`.
+
+      ![](./images/traba-feature-3.png)
+
+      FIGURA: Movendo ramo para o master
+
+- #### **Gitflow workflow**: 
+indicado para projetos maiores e/ou com um grande número de colaboradores. 
+Esse workflow envolve a criação de alguns branches com funções específicas. 
+Todo o desenvolvimento é realizado no branch `develop`. Quando uma versão 
+está pronta, ela é movida para o branch `release`, onde é testada e 
+finalmente incorporada ao ramo master, que contém apenas versões finais
+(estáveis). É extremamente recomendado esse workflow para desenvolvimento 
+de softwares, porém exige de mais familiaridade com o git. Permite, por 
+exemplo, que os usuários de um software, instalem tanto uma versão estável 
+(do branch `master`) quanto uma versão em desenvolvimento 
+(do branch `develop`).
+
+      **Exemplo**
+
+      São criados branches com funções específicas, como no exemplo `Hotfix`,
+      `Release` e `Develop`.
+
+      ![](./images/traba-git-1.png)
+
+      FIGURA: Ilustração dos branches específicos
+
+      *Develop* é semelhante ao master do feature branch workflow. *Release*
+      serve "lançar" possíveis bugs gerados no código. *Hotfix* contém as
+      correções dos bugs do release que não podem aguardar o lançamento
+      do mesmo.
+
+
+- #### **Forking workflow**: 
+recomendado para projetos abertos, onde se espera usuários externos façam contribuições. Esse workflow consiste de um repositório oficial, de onde 
+os colaboradores fazem um `fork` desse repositório, e passam a desenvolver 
+o projeto de maneira independente. Assim, cada colaborador poderá adotar 
+o workflow de preferência, e não precisará ter acesso ao repositório 
+oficial, apenas colaborar enviando `merge`.
+
+      **Exemplo**
+
+      Criado o repositório central, os colaboradores fazem um `fork`
+      poderão trabalhar de maneira independente. 
+
+      ![](./images/traba-forking-1.png)
+
+      FIGURA: Ilustração dos forks de um projeto
+
+   Independente da escolha do workflow para cada projeto é importante sempre
 informar o método que está sendo utilizado para seus colaboradores,
 para que eles possam seguir o mesmo padrão. Essas informações poderão ser
 descritas em `README.md` ou no `CONTRIBUTING.md`.
-
-### Esqueleto do tópico
-- *Descrever os quatro principais tipos de workflow (Centralized workflow,
-Feature branch workflow, gitflow workflow e Forking workflow)*
-
-- *Materiais de apoio* 
-<a href="http://git.leg.ufpr.br/leg/gitlab-rautu/blob/master/CONTRIBUTING.md">
-gitlab-rautu do Fernando Mayer</a> ; 
-<a href="https://prezi.com/_lm8kozmii8n/git-workflow/"> apresentação do 
-Diego G. Pasqualin</a>
-
 
 ## 3.Fluxo de trabalho PET no GitLab
 
@@ -240,5 +318,11 @@ Após o `git push`, a próxima etapa é  a requisição de `merge`. Com esse
 certeza dessa contribuição, era movida para o ramo `master`.
 
 
-### Esqueleto do tópico
-- *Funcionamento da elaboração da apostila*
+### Referências
+https://git-scm.com/book/pt-br/v1/Git-Distribu%C3%ADdo-Contribuindo-Para-Um-Projeto
+
+https://prezi.com/_lm8kozmii8n/git-workflow/ 
+
+https://www.atlassian.com/zh/git/workflows\#!workflow-overview
+
+http://git.leg.ufpr.br/leg/gitlab-rautu/blob/master/CONTRIBUTING.md
