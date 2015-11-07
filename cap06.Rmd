@@ -16,21 +16,39 @@ opts_chunk$set(comment = NA)
 
 ## Ferramentas gráficas ##
 
-Definir *GUI's (Graphical User Interfaces)*. Particularizar e motivar,
-com situações exemplo, a utilização de interfaces gráficas no fluxo de
-trabalho de um projeto com versionamento **GIT**.
+No GIT, como vimos até agora, todo o gerenciamento do projeto é
+realizado via *CLI (Command line interface)*, linhas de comando
+interpretadas, geralmente pelo *bash*. Isso confere um maior controle e
+segurança nas ações realizadas, mas em muitas situações os comandos e
+*outpus* GIT não se apresentam de forma tão amigável seja pela difícil
+memorização ou pela interatividade limitada.
+
+Os comandos mais usuais como `git add`, `git commit` se tornam simples,
+pois, mesmo para um usuário iniciante eles fazem parte do cotidiano em
+um projeto sob versionamento GIT. Mas algumas situações que não ocorrem
+com frequência, como por exemplo voltar a versão de um arquivo ou do
+repositório, requerem comandos que são pouco utilizados e, não raramente
+para realizá-las é necessário a consulta de algum material sobre
+GIT. Outra situação onde a utilização dos comandos é dificultada, ocorre
+para projetos maiores, onde muitos arquivos são alterados
+simultaneamente e o procedimento de *commit* se torna trabalhoso, pois
+é necessário listar todos os arquivos que fazem parte de um *commit*
+no commando `git add`. Uma última situação exemplo em que o uso de *CLI*
+não parece satisfatório é na comparação de arquivos, já usamos o comando
+`git diff` na seção 3 e o *output* deste comando foi de simples
+visualização, mas em arquivos maiores (com muitas linhas) a navegação
+para verificar as alterações do arquivo não é tão amigável. Para
+facilitar essas e outras situações surgem as *GUI's (Graphical User
+Interfaces)*, interfaces gráficas para o usuário que incorporam comandos
+GIT em *widgets*(botões, caixas de texto etc.) dispostos em um janela
+gráfica de seu sistema operacional.
+
+Neste capítulo apresentamos as principais *GUI's* para GIT em diferentes
+plataformas sistemas UNIX, Mac OS X e Windows. Detalhes de download,
+instalação e exemplos da utilização destas interfaces no fluxo de
+trabalho de um projeto com versionamento **GIT** são descritos.
 
 ## Interfaces GIT ##
-
-Interfaces para gestão de um repositório **GIT**. Estas facilitam a
-utilização das principais instruções **GIT** (`git add`, `git commit`,
-`git push`) e a visualização dos arquivos e alterações no repositório.
-
-Conteúdo de cada interface:
-
-* *Scrennshots* 
-* Intruções para *download* e instalação
-* Facilidades e limitações
 
 ### git-gui (Nativo) ###
 
