@@ -257,12 +257,44 @@ git stash
 git stash list
 ```
 
-
 ## Reset
+
+Enquanto o `git checkout` somente transita entre os `commits`, 
+o `reset` pode também alterar o histórico, fazendo `commits` serem 
+apagados de maneira irreversível (--hard), ou serem apenas resetados ao estado
+de não commitado (--soft).
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Apagando o ultimo commit (Voltando ao anterior):
+git reset --hard HEAD~1
+```
+
 
 ## Fetch 
 
+O `fetch` busca no repositório remoto os dados e arquivos que
+não estão no repositório local. É impostante frisar que o `fetch` não 
+faz o merge dos arquivos, deixando isso para ser feito manualmente 
+pelo usuário.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Buscando arquivos no servidor remoto origin:
+git fetch origin
+```
+
 ## Pull
+
+O `pull` é semelhante ao comando `fetch`, porém, puxa os 
+arquivos do servidor remoto fazendo merge. Caso haja algum conflito de
+merge, estes deverão ser resolvidos manualmente.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Puxando arquivos no servidor remoto origin:
+git pull origin
+```
 
 ## Rebase
 
@@ -281,8 +313,33 @@ fluxo de trabalho linear.
 git rebase teste
 ```
 
+## Blame
+
+Pesquisa qual `commit` modificou determinado arquivo, com o objetivo
+de encontrar quem inseriu um erro e quando foi inserido.
+ Esse método também e chamado de anotação de arquivo.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Fazer
+```
 
 ## Bisect
+
+O `bisect` realiza uma pesquisa binária (binary search) a procura de 
+erros. Para que a pesquisa ocorra, é necessário um ponto no tempo em que 
+no `commit` esteja tudo funcionando e um em que não esteja.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Pesquisa Binária:
+# Iniciando a pesquisa.
+git bisect start
+# Marcando o commit atual como não funcionando.
+git bisect bad
+# Marcando o commit com nome commit1 como funcionando:
+git bisect good commit1 
+```
 
 
 [Pro Git](http://git-scm.com/book/en/v2) , escrito por Scott Chacon.
