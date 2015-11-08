@@ -35,7 +35,7 @@ simultaneamente e o procedimento de *commit* se torna trabalhoso, pois
 é necessário listar todos os arquivos que fazem parte de um *commit*
 no commando `git add`. Uma última situação exemplo em que o uso de *CLI*
 não parece satisfatório é na comparação de arquivos, já usamos o comando
-`git diff` na seção 3 e o *output* deste comando foi de simples
+`git diff` na capítulo 3 e o *output* deste comando foi de simples
 visualização, mas em arquivos maiores (com muitas linhas) a navegação
 para verificar as alterações do arquivo não é tão amigável. Para
 facilitar essas e outras situações surgem as *GUI's (Graphical User
@@ -50,7 +50,161 @@ trabalho de um projeto com versionamento **GIT** são descritos.
 
 ## Interfaces GIT ##
 
-### git-gui (Nativo) ###
+Neste material chamaremos de **Interfaces GIT** as *GUI's* para gestão de um
+repositório **GIT**. Estas facilitam a utilização das principais
+instruções **GIT** (`git add`, `git commit`, `git push`, `git pull`) e a
+visualização dos arquivos e alterações no repositório.
+
+Desde o surgimento do GIT diversas *GUI's* foram propostas. Este
+capítulo ter por objetivo apresentar as mais usuais interfaces dos
+sistemas operacionais UNIX, Mac OS X e Windowns.
+
+### git-gui ###
+
+Baseada em *Tcl/Tk* a *GUI* chamada `git gui` é mantida como projeto
+independente do GIT, mas as versões estáveis são distribuídas junto com
+o programa principal. Portanto não é necessário o download e
+instalação. A interface é voltada para realizar alterações no
+repositório. `git gui` permite a realização de diversas modificações no
+repositório, desde as mais simples como *commitar* arquivos até mais
+específicas como voltar estágios ou reescrever o último *commit* (muito
+útil quando notamos erros de gramática logo após a submissão).
+
+`git gui`, no Windows, pode ser aberto pelo menu iniciar. Nesta
+plataforma, ao instalar o GIT (conforme visto no capítulo 2) duas
+aplicações ficam disponíveis **git BASH** e **git GUI**. Em sistemas
+LINUX podemos criar um *alias* (criar e editando adequadamente um
+arquivo em */usr/share/applications*) para que `git gui` fique listada
+junto as aplicações do sistema. --Descobrir no MAC se `git gui` fica no
+lançador automaticamente. De forma geral, independente da plataforma de
+trabalho `git gui` pode ser iniciada a partir de um terminal `bash`, com
+o comando:
+
+```sh
+git gui
+```
+
+Para exemplificar a utilização desta interface vamos alterar alguns
+arquivos do repositório `meu1repo`, criado no capítulo 2.
+
+```{r, engine = "bash", include = FALSE}
+if [ -d meu1repo ]; then
+    sudo rm -R meu1repo
+fi
+
+mkdir meu1repo
+cd meu1repo/
+git init
+
+echo "O que é GNU/Linux
+
+Linux é o núcleo do sistema operacional, programa responsável pelo
+funcionamento do computador, que faz a comunicação entre hardware
+(impressora, monitor, mouse, teclado) e software (aplicativos em
+geral). O conjunto do kernel e demais programas responsáveis por
+interagir com este é o que denominamos sistema operacional. O kernel é o
+coração do sistema.
+
+Os principais programas responsáveis por interagir com o kernel foram
+criados pela fundação GNU. Por este motivo é mais correto nos
+referenciarmos ao sistema operacional como GNU/Linux ao invés de apenas
+Linux.
+
+Uma distribuição nada mais é que o conjunto de kernel, programas de
+sistema e aplicativos reunidos num único CD-ROM (ou qualquer outro tipo
+de mídia). Hoje em dia temos milhares de aplicativos para a plataforma
+GNU/Linux, onde cada empresa responsável por uma distro escolhe os
+aplicativos que nela deverão ser inclusos. " > README
+
+git add .
+git commit -m "Adiciona README"
+
+git checkout -b newbranch
+
+echo " Lista de afazeres:
+* tarefa 1
+* tarefa 2
+* tarefa 2
+* tarefa 3
+* tarefa 4
+* tarefa 5" > TODO.txt
+
+git add .
+git commit -m "Adiciona TODO list"
+
+git checkout master
+
+echo "            --- vivaolinux.com" >> README
+
+git add .
+git commit -m "Adiciona referência do texto"
+
+git checkout newbranch
+
+echo "##-------------------------------------------
+## Arquivo R
+
+plot(iris)" > arquivo.R
+
+git add .
+git commit -m "Adiciona arquivo.R"
+
+git checkout master
+
+git merge master newbranch
+git branch -d newbranch
+
+```
+
+```{r, engine = "bash", include = TRUE}
+cd meu1repo/
+
+echo $(tr '[[:lower:][:upper:]]' '[[:upper:][:lower:]]' < README) > README
+
+echo "Lista de afazeres:
+-------------------------------------------
+* tarefa 1
+* tarefa 2
+* tarefa 3
+* tarefa 4
+* tarefa 5
+* tarefa 6" > TODO.txt
+
+echo "
+Mais um arquivo criado" > OTHER.txt
+```
+
+Após as alterações a interface gráfica é chamada.
+
+```sh
+git gui
+```
+
+<!-- ![](./images/gitgui1) -->
+FIGURA: Inteface `git gui`
+
+A interface `git gui` se apresenta de forma bem simples, o que facilita
+sua utilização. Na figura ?? detacamos as quatro áreas que compreendem a
+interface. Na primeira porção temos listados os arquivos presentes no
+*working directory*, os arquivos criados aparecem com ícone em branco e
+os modificados com linhas em azul. E aqui a interface implementa
+interativamente o comando `git add`, pois ao clicar no ícone de um
+arquivo ele é automaticamente adicionado à *staging area*. Na segunda
+parte são listados os arquivos na *staging area* com ícone de *check
+mark*. Na terceira parte destacada temos a implementação do comando
+`git diff` para qualquer arquivo selecionado. Com destaque de cores a
+interface apresenta em vermelho as deleções e verde as adições. Por fim
+temos no canto inferior direito a área para escrever *commits* com
+botões para submissão de ação. Um detalhe importante do `git gui` é que
+o idioma do sistema operacional é verificado para sua construção, ou
+seja, os botões da interface na figura ?? são *push*, *commit*, *sign
+off*, etc pois o idioma do sistema operacional em que essa interface foi
+executado é o inglês. Para português (Brasil) as mensagem ficam .....
+
+Além das quatro áreas principais da interface, que facilitam
+interativamente atividades como `git status`, `git diff`, `git add`,
+`git commit` e `git push`, temos mais implementações no menu da
+interface para procedimentos não cotidianos. 
 
 ### gitk (Tcl/Tk) / gitg (Gtk) / gitx (MacOS) ###
 
@@ -104,3 +258,7 @@ grande valia.
 Citar materiais de referência para instalação e
 utilização.
 
+<!-- Exclui o repositório criado para exemplicação -->
+```{r, engine = "bash", include = FALSE, eval = FALSE}
+sudo rm -R meu1repo
+```
