@@ -9,17 +9,35 @@ output:
 
 Configurações Iniciais 
 
-Abrindo o shell do seu computador:
+Neste capítulo, as instruções serão todas feitas no terminal mesmo que
+existam alternativas gráficas para as mesmas. Isso enfatiza no que está
+sendo feito além do fato de que no terminal todos devem ter os mesmos
+recursos e os comandos irão produzir os mesmos resultados, o que faz
+esse tutorial algo reproduzível. Para usufruir das ferramentas gráfica vá até o capítulo 6.
 
 ## Primeira Sessão
 
-Git Init  
-The working tree
+### Instruções do Git
+
+Já temos o Git devidamente e com credenciais (nome e email) e
+configurações aplicadas. Vamos então ver como o sistema de controle de
+versão acontece.
+
+Todas as instruções do Git são sinalizadas por começar com `git` seguido
+da instrução/comando e seus argumentos complementares, se
+existirem/necessários. Abrindo o shell do seu computador:
+
+
 
 Inicia um repositório, 
-```{r, engine = 'sh'}
+```{r, engine = 'sh',results="hold"}
 git init
 ```
+
+```{r}
+
+```
+
 git init --bare <directory>
 
 
@@ -55,4 +73,9 @@ git blame
 git show
 git rm
 git ls-files
+
+
+## Ajuda
+
+Git help
 
