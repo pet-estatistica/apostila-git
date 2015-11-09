@@ -162,5 +162,5 @@ git config user.name "Knight Rider"
 git config user.email "batman@justiceleague.org"
 ```
 
-Uma vez configurado o perfil, 
+Uma vez configurado o perfil, o Git está pronto para uso.
 
