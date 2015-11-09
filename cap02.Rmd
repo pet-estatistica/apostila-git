@@ -42,25 +42,23 @@ Aqui, o instalador nos oferece a oportunidade de mudar o nome da pasta no menu i
 
 
 
-Na tela de configuração "PATH environment", podemos escolher as formas de integração do Git em nosso sistema. 
-
-A primeira opção nos permite usar o Git apenas pelo "Git Bash" (é o prompt de comando do Git), a segunda opção nos possibilita executar os comandos no "Git Bash"" e no prompt de comando do Windows (cmd.exe), e a terceira opção é a junção das duas de cima, porém alguns comandos do Windows serão substituídos por comandos Unix com mesmo nome.
+Na tela de configuração "PATH environment", podemos escolher as formas de integração do Git em nosso sistema.  
+A primeira opção nos permite usar o Git apenas pelo "Git Bash" (é o prompt de comando do Git), a segunda opção nos possibilita executar os comandos no "Git Bash"" e no prompt de comando do Windows (cmd.exe), e a terceira opção é a junção das duas de cima, porém alguns comandos do Windows serão substituídos por comandos Unix com mesmo nome.  
 Essa última opção não é recomendada, portanto a primeira opção é a desejável. 
 
 ![](./images/figura5.png)
 
 
 
-<p> Abaixo, a configuração de quebra de linha. Windows e sistemas Unix (Linux, Mac) possuem formatos diferentes de quebra de linha em arquivos de texto. Se você escreve um código com quebras de linha no formato Windows, outra pessoa pode ter problemas ao abrir o mesmo arquivo em um Linux, e vice-versa. Esta opção, portanto, permite normalizar isso. 
-<p>A primeira opção converte automaticamente os arquivos para padrão Windows quando receber algum arquivo e converterá para padrão Unix quando “comitar” (enviar alterações) no repositório. A segunda opção, não faz nenhuma conversão ao receber arquivos, mas convertem para padrão Unix ao “comitar”. Já a terceira opção, o Git não fará nenhuma conversão. 
-<p> Recomenda-se a seleção da opção "Checkout Windows-style, commit Unix-Style line endings".
+Abaixo, a configuração de quebra de linha. Windows e sistemas Unix (Linux, Mac) possuem formatos diferentes de quebra de linha em arquivos de texto. Se você escreve um código com quebras de linha no formato Windows, outra pessoa pode ter problemas ao abrir o mesmo arquivo em um Linux, e vice-versa. Esta opção, portanto, permite normalizar isso.  
+A primeira opção converte automaticamente os arquivos para padrão Windows quando receber algum arquivo e converterá para padrão Unix quando “comitar” (enviar alterações) no repositório. A segunda opção, não faz nenhuma conversão ao receber arquivos, mas convertem para padrão Unix ao “comitar”. Já a terceira opção, o Git não fará nenhuma conversão.  
+Recomenda-se a seleção da opção "Checkout Windows-style, commit Unix-Style line endings".
 
 ![](./images/figura6.png)
 
 
 
-Aqui, a configuração do emulador de terminal para usar com o Git Bash.
-
+Aqui, a configuração do emulador de terminal para usar com o Git Bash.  
 A primeira opção utiliza o terminal MSys2 (Shell), que permite utilizar comandos Unix no Windows. E a segunda opção, utiliza o terminal padrão do Windows. A melhor opção é a primeira. Feito isso, dê continuidade a instalação.
 
 ![](./images/figura7.png)
@@ -76,7 +74,72 @@ Feito isso, “Next”, “Finish” e o Git está instalado.
 
 #### Linux
 
+Em qualquer sistema Linux, pode-se utilizar o gerenciador de pacotes da respectiva distribuição para instalar o Git.
+Basta executar o código de instalação de sua respectiva distribuição. 
+
+
+**Debian**
+
+Em uma sessão de terminal Linux de distribuições Debian (Ubuntu, Mint), execute o código abaixo.  
+Adicione o ppa para obter a versão mais recente do Git.
+```{r, engine="sh", eval=FALSE}
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+```
+
+Agora, execute o comando abaixo para instalação do Git.  
+Siga as instruções do prompt de comando, primeiro confirmando a instalação dos pacotes e suas dependências, depois confirmando a instalação do pacote git-core.
+```{r, engine="sh", eval=FALSE}
+sudo apt-get install git git-core git-man git-gui git-doc \
+    ssh openssh-server openssh-client
+git --version
+```
+
+Para adicionar ferramentas complementares, execute:
+```{r, engine="sh", eval=FALSE}
+sudo apt-get install gitk meld
+```
+
+
+**Arch**
+
+```{r, engine="sh", eval=FALSE}
+pacman -S git openssh meld
+git --version
+```
+
+
+**Fedora**
+
+```{r, engine="sh", eval=FALSE}
+Yum install git
+git --version
+```
+
+Usuários de outra versão do Linux dever visitar [Download for Linux](https://git-scm.com/download/linux).
+
+
 #### MacOS
+Exitem duas maneiras de instalar o Git no Mac, uma pelo instalador e outra através do MacPorts.
+
+**Utiizando o Instalador**
+
+O usuário deverá acessar [Download for Mac](http://git-scm.com/downloads), clicar em "Download" e baixar o arquivo ".dmg".
+
+Após o download, é necessário clicar duas vezes para ter acesso ao pacote de instalação. Dentro do arquivo ".dmg", execute o arquivo ".pkg" para iniciar a instalação. 
+Siga os passos até concluir a instalação. É recomendável utilizar a instalação padrão. 
+
+Para testar a instalação, abra o terminal e digite o comando “git”. A saída deverá ser similar à imagem:
+
+![](./images/figura9.png)
+
+**Utiizando o MacPorts**
+
+A maneira mais fácil de instalar Git no Mac é via [MacPorts](http://www.macports.org), para isso basta executar o seguinte comando:
+```{r, engine="sh", eval=FALSE}
+sudo port install git-core
+```
+
 
 ## Configurando Perfil
 - Comandos necessários para configurar nome de usuáro e email.
