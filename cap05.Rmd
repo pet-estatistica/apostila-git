@@ -174,15 +174,14 @@ Mascot é raccoon: guaxinim
 
 ## Criar um perfil
 
-Ilustrar o simples processo de criar um perfil. Explorar um pouco das
-interfaces. Terminar com o campo das chaves públicas para então fazer
-uso na seção seguinte.
-
-Criar uma conta no Github é muito simples. Basta entrar em
-<https://github.com/join>, preencher os dados pessoais, escolher um
-plano (free/público, pago/privado) e fazer um tour pela interface. Como
-não existe segredo em preencher os dados pessoais, vamos fazer uma breve
-descrição da interface do GitHub.
+Criar uma conta no Github é tão simples como uma conta de email ou de
+rede social. Acesse o endereço <https://github.com/join> para preencher
+seus dados pessoais e escolher um plano. Nenhum dos planos tem limitação
+quanto ao número de repositórios ou colaboradores. O que muda é a
+quantidade de reposiórios privados. No plano *free*, só são criados
+repositórios públicos. Dos planos pagos, o menor deles permite 5
+repositórios privados por um custo de U$ 5 por mês. Acesse
+<https://github.com/pricing> para mais detalhes.
 
 ### Habilitar comunição ###
 
@@ -191,29 +190,129 @@ http://www.vogella.com/tutorials/GitHosting/article.html
 Geração e configuração das chaves públicas.
 Incluir screenshots.
 
-### Generciar repositórios ###
+Uma vez criada uma conta, é necessário habilitar a comunicação entre sua
+máquina e o (servidor do) GitHub. A comunicação se baseia no protocolo
+ssh, o qual já usamos no capítulo anterior para hospedar o repositório
+em um servidor remoto.
 
-No canto superior direito da página tem um ícone $+$ que permite criar
-um novo repositório ou uma nova organização. Escolha um nome para
-representar o seu repositório e adicione uma breve descrição à ele. Na
-etapa seginte, defina o nível de visibilidade: publico ou
-privado. Lembre-se que repositórios privados só podem ser criados para
-planos não *free*.
+Para gerar as chaves públicas, você precisa executar:
+```{sh}
+## Gera chaves públicas.
+ssh-keygen -t rsa -C "seu_email@seu.provedor"
+```
+
+O endereço padrão para os arquivos criados e o diretório `~/.ssh/`. Os
+arquivos serão reescritos caso já existam arquivos de chaves públicas
+lá. Toda novo par de chaves é único. Então, se você reescreveu os
+arquivos anteriores, terá atualizar as chaves públicas em todos os
+serviços web que fazem uso desse recurso e com todos os servidores com o
+qual você tem autenticação por chaves.
+
+No GitHub acesse <https://github.com/settings/ssh> para então adicionar
+chaves públicas (Figura XXX). Clique em `Add SSH key`, cole o conteúdo
+copiado do arquivo `*.pub` no campo `key`. No campo `Title` identifique
+a máquina correspndente àquela chave. Use, por exemplo, `laptop` ou
+`trabalho` para facilitar o reconhecimento. É comum trabalhar-se com
+mais de um máquina, como uma em casa e outra no trabalho.
+
+![](./images/github_sshkeys.png)
+
+FIGURA XXX: *Printscreen* da página de configurações pessoais do
+GitHub. No menu `SSH Keys` pode-se ver e adicionar chaves públicas.
+
+Para testar a comunição entre o GitHub e a sua máquina, execute:
+```{sh}
+## Testa comunição. Retorna um "Welcome" em caso positivo.
+ssh -T git@github.com
+
+## Se falhar, habilite o modo verbose para rastrear o erro.
+ssh -vT git@github.com
+```
+
+### Gerenciar repositórios ###
+
+A comunicação com o GitHub acabou de ser estabelecida. Agora podemos
+criar repositórios e começar a mostrar nosso trabalho para o mundo e
+colaborar de forma eficiente.
+
+No canto superior direito das páginas do GitHub existe um ícone $+$ que
+permite criar um novo repositório ou uma nova organização. Clique em
+*New repository* ou acesso o endereço <https://github.com/new>. Na
+janela que abrir, dê um nome para o seu projeto e adicione uma breve
+descrição à ele (Figura XXX). Na etapa seguinte, defina o nível de
+visibilidade: público ou privado. Lembre-se que os planos *free* so
+permitem repositórios públicos.
+
+![](./images/github_new_repo.png)
+
+FIGURA XXX: Janela para a criação de um novo repositório no GitLab.
+
+Para criar o projeto dentro de uma Organização, no campo Owner que fica
+a esquerda do campo para o nome do repositório, selecione a Organização
+na *drop list*.
 
 Ao criar o repositório você pode inicilizado criando um arquivo
 `README.md`. Como já mencionamos, esse arquivo é a capa do seu
-repositório e serve para documentar o objetivo. Você pode editar esse
-arquivo, ou qualquer outro, de dentro do GitHub e, claro, *commitar* as
-alterações que fizer. Depois de criado, é possível clonar o repositório
-pelo endereço que é composto pelo seu nome de usuário e nome do
-repositório. O repositório `ola-mundo` da conta do `fulano` pode ser
-clonado com
+repositório e serve para documentar o seu objetivo, formas de
+colaboração, colaboradores, formas de instalação do software, caso seja
+um.
 
-```sh
+Você pode editar o arquivo `README.md` (ou qualquer outro) de dentro do
+GitHub. As moficações que fizer devem ser *commitadas*. O arquivo de
+`README.md`, que é linguagem de marcação MarkDown, é automaticamente
+renderizado pelo GitHub fazendo com que urls sejam clicáveis e códigos
+estejam em ambientes de fonto monoespaço.
+
+Depois de criar o repositório, você já pode cloná-lo. O endereço do
+repositório é composto pelo seu nome de usuário e nome do repositório. O
+repositório `ola-mundo` da conta do `fulano` pode ser clonado com:
+
+```{sh}
+## Clone pelo protocolo ssh. Requer chaves públicas.
 git clone git@github.com:fulano/ola-mundo.git
 ```
 
-Criar, renomear, deletar. Públicos e privados. Adicionar README.
+Pode-se clonar repositórios pelo protocolo `http` também. Em geral, para
+clonar repositórios de outros usuários e fazer testes, usa-se
+`http`. Prefira o *SSH* para trabalhar com os seus repositórios. O
+endereço para a ser:
+
+```{sh}
+git clone https://github.com/fulano/ola-mundo.git
+```
+
+Por padrão, ao clonar o repositório fica dentro de uma pasta de mesmo
+nome. Em caso de preferir outro nome, por exemplo, `OlaMundo`, use:
+
+```{sh}
+git clone https://github.com/fulano/ola-mundo.git OlaMundo
+```
+
+Existe outra situação que é quando você já tem repositório Git no
+qual já está trabalhando e quer tê-lo no GitHub. Nesse caso, você faz os
+mesmos passos, exceto que não irá cloná-lo, apenas adicionar a url do
+repositório GitHub ao repositório local. Vamos supor que o repositório
+seja um artigo científico de nome `Artigo`. Ao criar o repositório com
+esse nome no GitHub, o endereço fica
+`git@github.com:fulano/Artigo.git`. Então é só adicionar esse endereço
+ao projeto Git:
+
+```{sh}
+## Adiciona endereço de "origin" ao repositório.
+git remote add origin git@github.com:fulano/Artigo.git
+
+## Sobe o conteúdo do repositório.
+git push -u origin master
+```
+
+O seu projeto é configurado em
+<https://github.com/walmes/emacs/settings/>.  Para renomear, deletar ou
+trasferir o projeto para outro usuário ou organização, vá em
+*Options*. Em *Collaborators* você administra os colaboradores do
+projeto. Para genrenciar os ramos de trabalho, como proteger ou remover
+ramos, vá em *Branches*. O uso de de serviços web é configurado no
+*Webhooks & services*. O *Deploy keys* permite adicionar chaves
+públicas.
 
 ## Fluxo de trabalho ##
 
