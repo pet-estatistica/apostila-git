@@ -11,7 +11,7 @@ Usuários Windows devem visitar [Git for Windows](https://git-for-windows.github
 
 Após o download, execute o arquivo e você terá essa tela: 
 
-![](./images/figura1.png)
+![](./images/inst01.png)
 
 
 
@@ -19,19 +19,19 @@ Como de costume, clice em "Next". Para dar continuidade a instalação aceite a 
 
 O diretório apresentado na figura a baixo vem como default, porém é possível alterar a instalação para um diretório de sua preferência. Depois de selecionado o caminho da instalação, clique em "Next" para prosseguir.
 
-![](./images/figura2.png)
+![](./images/inst02.png)
 
 
 
 Na tela de componentes podemos definir atalhos, integração ao menu de contexto do Windows Explorer, associação de arquivos e uso de font TrueType. O Git Bash é o prompt de comandos próprio, que além dos comandos Git também fornece alguns comandos Unix que podem ser bem úteis. E o Git GUI que é uma interface para trabalhar com Git. É recomendável a seleção de ambos os itens. Depois de selecionado os componentes de sua preferência, dê continuidade.
 
-![](./images/figura3.png)
+![](./images/inst03.png)
 
 
 
 Aqui, o instalador nos oferece a oportunidade de mudar o nome da pasta no menu iniciar, recomenda-se deixar o padrão para fácil localização posteriormente.
 
-![](./images/figura4.png)
+![](./images/inst04.png)
 
 
 
@@ -39,7 +39,7 @@ Na tela de configuração "PATH environment", podemos escolher as formas de inte
 A primeira opção nos permite usar o Git apenas pelo "Git Bash" (é o prompt de comando do Git), a segunda opção nos possibilita executar os comandos no "Git Bash"" e no prompt de comando do Windows (cmd.exe), e a terceira opção é a junção das duas de cima, porém alguns comandos do Windows serão substituídos por comandos Unix com mesmo nome.  
 Essa última opção não é recomendada, portanto a primeira opção é a desejável. 
 
-![](./images/figura5.png)
+![](./images/inst05.png)
 
 
 
@@ -47,19 +47,19 @@ Abaixo, a configuração de quebra de linha. Windows e sistemas Unix (Linux, Mac
 A primeira opção converte automaticamente os arquivos para padrão Windows quando receber algum arquivo e converterá para padrão Unix quando “comitar” (enviar alterações) no repositório. A segunda opção, não faz nenhuma conversão ao receber arquivos, mas convertem para padrão Unix ao “comitar”. Já a terceira opção, o Git não fará nenhuma conversão.  
 Recomenda-se a seleção da opção "Checkout Windows-style, commit Unix-Style line endings".
 
-![](./images/figura6.png)
+![](./images/inst06.png)
 
 
 
 Aqui, a configuração do emulador de terminal para usar com o Git Bash.  
 A primeira opção utiliza o terminal MSys2 (Shell), que permite utilizar comandos Unix no Windows. E a segunda opção, utiliza o terminal padrão do Windows. A melhor opção é a primeira. Feito isso, dê continuidade a instalação.
 
-![](./images/figura7.png)
+![](./images/inst07.png)
 
 
 E por último, configurando ajustes de performance. Essa opção é para habilitar o sistema de cache de arquivo.
 
-![](./images/figura8.png)
+![](./images/inst08.png)
 
 
 Feito isso, “Next”, “Finish” e o Git está instalado.
@@ -129,7 +129,7 @@ Siga os passos até concluir a instalação. É recomendável utilizar a instala
 
 Para testar a instalação, abra o terminal e digite o comando “git”. A saída deverá ser similar à imagem:
 
-![](./images/figura9.png)
+![](./images/inst09.png)
 
 **Utiizando o MacPorts**
 
@@ -141,4 +141,27 @@ sudo port install git-core
 
 
 ## Configurando Perfil
-- Comandos necessários para configurar nome de usuáro e email.
+As configurações vão determinar algumas opções globais do Git e é necessário fazê-las apenas uma vez. 
+
+Os comandos abaixo vão configurar o nome de usuário e endereço de e-mail. Esta informação é importante pois anexa os commits que você realiza, ou seja, as configurações ficarão associadas ao trabalho em desenvolvimento, permitindo que os colaboradores/gestores do projeto identifiquem suas contribuições.
+
+Caso o projeto seja individual, a importância de configurar usuário e e-mail se mantém, uma vez que se trabalha com duas máquinas, é possível a identificação no nome de usuário. 
+
+Em um terminal Bash, execute o código abaixo:
+
+```sh
+git config --global user.name "Knight Rider"
+git config --global user.email "batman@justiceleague.org"
+```
+
+A opção `--global` usará essa informação para todo projeto Git da máquina. 
+É possível fazer definições para cada projeto, ou seja, não globais. Para isso é necessário executar o comando a seguir sem a opção `--global`.
+
+
+```sh
+git config user.name "Knight Rider"
+git config user.email "batman@justiceleague.org"
+```
+
+Uma vez configurado o perfil, 
+
