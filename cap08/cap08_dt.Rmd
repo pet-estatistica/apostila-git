@@ -104,6 +104,18 @@ git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
 git remote
 ```
 
+## Status
+
+O status exibe a diferença entre o estado atual dos arquivos e o estado
+do ultimo `commit` do mesmo `branch`. São três estados possíveis:
+consolidado (committed), modificado (modified) e preparado (staged).
+
+**Exemplo:**
+```{r, engine='bash', eval=FALSE}
+# Pedindo o status:
+git status
+```
+
 ## Add
 
 O `add` adiciona (envia) os arquivos para a stagin area, para que 
@@ -115,8 +127,7 @@ possa ser marcado no tempo por um commit.
 git add *
 ```
 
-
-## Commmit
+## Commit
 
 O `commit` marca os arquivos da stagin area como uma
 versão definitiva, para que posteriormente, caso algum erro ocorra, 
@@ -130,11 +141,10 @@ git commit -m "Meu primeiro commit"
 
 ## Branch
 
-Os `branchs` são uma cópia dos arquivos do ultimo commit
-para um ambiente de desenvolvimento paralelo, ou seja, 
-ele cria uma cópia da sua pasta gerenciada, permitindo que as modificações
-em um branch não afete os arquivos em outro. Os branchs também são chamados
-de ramos de desenvolvimento.
+Os `branchs` são como uma cópia dos arquivos do ultimo commit
+para um ambiente de desenvolvimento paralelo, o que
+permite que as modificações em um `branch` não afete os arquivos em outro.
+Os branchs também são chamados de ramos de desenvolvimento.
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -169,18 +179,6 @@ gerente de projetos decidir que parte do código deve permanecer.
 ```{r, engine='bash', eval=FALSE}
 # Faz merge do branch chamado novoBranch com o branch atual:
 git merge novoBranch
-```
-
-## Status
-
-O status exibe a diferença entre o estado atual dos arquivos e o estado
-do ultimo `commit` do mesmo `branch`. São três estados possíveis:
-consolidado (committed), modificado (modified) e preparado (staged).
-
-**Exemplo:**
-```{r, engine='bash', eval=FALSE}
-# Pedindo o status:
-git status
 ```
 
 ## Rm
@@ -220,12 +218,14 @@ git mv teste.tex arquivo1.tex
 
 ## Push
 
---------
+O `push` é usado para "empurrar" os arquivos do repositório local 
+para o servidor remoto.
 
-O `push` é usado para empurrar as o repositório local para o servidor
-remoto.
-
---------
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Atualizado o branch master (remoto), com o branch atual (local):
+git push origin master
+```
 
 ## Fetch 
 
@@ -302,15 +302,14 @@ git stash list
 
 Enquanto o `git checkout` somente transita entre os `commits`, 
 o `reset` pode também alterar o histórico, fazendo `commits` serem 
-apagados de maneira irreversível (--hard), ou serem apenas resetados ao estado
-de não commitado (--soft).
+apagados de maneira irreversível (--hard), ou serem apenas resetados 
+ao estado de não commitado (--soft).
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Apagando o ultimo commit (Voltando ao anterior):
 git reset --hard HEAD~1
 ```
-
 
 
 ## Rebase
@@ -357,6 +356,3 @@ git bisect bad
 # Marcando o commit com nome commit1 como funcionando:
 git bisect good commit1 
 ```
-
-
-[Pro Git](http://git-scm.com/book/en/v2) , escrito por Scott Chacon.
