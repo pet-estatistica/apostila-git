@@ -9,8 +9,9 @@ Dicionário de Termos
 O `config` é um comando usado para ajustar as configurações padrão do git.
 Há duas configurações básicas a serem feitas: a inclusão do e-mail e 
 do nome do usuário git.
-Todas as configurações são globais e ficam armazenadas em um arquivo 
-chamado `.gitconfig`, que fica localizado no diretório padrão do usuário.
+Todas as configurações definidas como globais ficam armazenadas em um 
+arquivo chamado `.gitconfig`, que fica localizado no diretório padrão 
+do usuário.
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -22,14 +23,14 @@ git config --global user.email ezio.auditore@exemple.com
 
 ## SSH Key
 
-É uma chave de autenticação, baseada em criptografia de chave pública
-(chave assimétrica), que torna o processo transferência de arquivos
-entre o cliente e o servidor mais segura. 
+É uma chave de autenticação baseada em criptografia de chave pública
+(chave assimétrica). Essa criptografia torna o processo transferência 
+de arquivos entre o cliente e o servidor mais segura. 
 
 Para que o git local consiga se conectar a um servidor git remoto, é 
 necessário que esta chave seja gerada e que as devidas configurações
-sejam feitas tanto localmente quanto no servidor remoto. 
-Caso contrário é exibido um erro e a conexão é interrompida.
+sejam feitas tanto localmente quanto no servidor remoto,
+caso contrário, é exibido um erro e a conexão é interrompida.
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -63,10 +64,26 @@ git init
 
 ## Stagin Area
 
-A stagin area é um espaço temporário na pasta gerenciada pelo git, onde ficam os arquivos
-antes de ser marcados como uma versão definitiva. Em tradução livre, stagin area
-é area de estágio, e podemos imaginar que o arquivo está estagiando antes de
+A stagin area é um espaço temporário na pasta gerenciada pelo git. É 
+aonde ficam os arquivos antes de ser marcados como uma versão definitiva. 
+Em tradução livre, stagin area é area de estágio, 
+podemos assim imaginar que o arquivo está estagiando antes de
 ser promovido a um arquivo definitivo.
+
+## Remote
+
+O `remote` mostra o servidor remoto aonde o
+seus arquivos git estão hospedados. O remote padrão
+geralmente é criado com o nome de `origin`, mas
+é possível adiciona-lo utilizando outros nomes e 
+até mesmo adicionar outros servidores remotos juntamente ao `origin`.
+
+**Exemplo:**
+```{r, engine='bash', eval=FALSE}
+# Adicionando um servidor remoto com nome origin:
+git remote add origin "git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git"
+```
+
 
 ## Clone
 
@@ -136,6 +153,106 @@ Usando o checkout é possivel voltar a commits anteriores.
 git checkout teste
 ```
 
+## Merge
+
+Com o `merge` é possivel a fusão dos dois ramos em um.
+
+Quando se trabalha em ramos diferentes (diferentes branchs) e precisa-se
+posteriormente juntar o trabalho dos dois, o `merge` (fundir) é usado, 
+permitindo que o trabalho seja centralizado novamente. A fusão é feita 
+de forma automática, mas conflitos podem ocorrer, como por exemplo,
+quando duas ou mais pessoas modificam a mesma parte do código. 
+Estes conflitos devem ser resolvidos manualmente, deixando a cargo do
+gerente de projetos decidir que parte do código deve permanecer.
+
+**Exemplo:**
+```{r, engine='bash', eval=FALSE}
+# Faz merge do branch chamado novoBranch com o branch atual:
+git merge novoBranch
+```
+
+## Status
+
+O status exibe a diferença entre o estado atual dos arquivos e o estado
+do ultimo `commit` do mesmo `branch`. São três estados possíveis:
+consolidado (committed), modificado (modified) e preparado (staged).
+
+**Exemplo:**
+```{r, engine='bash', eval=FALSE}
+# Pedindo o status:
+git status
+```
+
+## Rm
+
+O `git rm`, na sua forma mais comum, serve para remover um arquivo de 
+forma que ele deixe de sergerenciado pelo git e seja excluido do disco 
+rígido. Também é possível que o arquivo deixe de ser gerenciado 
+e permaneça no disco.
+
+Uma das vantagens é que, quando o arquivo é removido pelo `git rm`, ele 
+já aparece como preparado (staged), precisando somente que 
+a exclusão seja commitada.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Remover arquivo teste.tex do gerenciamento e do disco:
+git rm teste.tex
+
+# Remover arquivo teste.tex apenas do gerenciamento:
+git rm --cached teste.tex
+```
+
+## Mv
+
+O `git mv` move ou renomeia arquivos, informando ao git que eles foram
+movidos ou renomeados.
+
+Caso a mudança seja feita sem esse comando o git entende que o arquivo
+foi deletado e que um novo arquivo foi criado, deixando de fora, 
+por exemplo, a ligação existente entre o arquivo e seus commits.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Renomeando o arquivo teste.tex para arquivo1.tex:
+git mv teste.tex arquivo1.tex
+```
+
+## Push
+
+--------
+
+O `push` é usado para empurrar as o repositório local para o servidor
+remoto.
+
+--------
+
+## Fetch 
+
+O `fetch` busca no repositório remoto os dados e arquivos que
+não estão no repositório local. É impostante frisar que o `fetch` não 
+faz o merge dos arquivos, deixando isso para ser feito manualmente 
+pelo usuário.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Buscando arquivos no servidor remoto origin:
+git fetch origin
+```
+
+## Pull
+
+O `pull` é semelhante ao comando `fetch`, porém, puxa os 
+arquivos do servidor remoto fazendo merge. Caso haja algum conflito de
+merge, estes deverão ser resolvidos manualmente.
+
+**Exemplo:**
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Puxando arquivos no servidor remoto origin:
+git pull origin
+```
+
+
 ## HEAD
 
 `HEAD` é um arquivo que contém um apontador para o `branch` atual.
@@ -164,82 +281,6 @@ git tag -l "v1.0.0"
 
 # Criando tag anotada:
 git tag -a v1.0 -m "Minha primeira tag anotada."
-```
-
-## Remote
-
-Remote é utilizado o servidor remoto aonde o
-seus os arquivos git estão hospedados. O remote padrão
-geralmente é criado com o nome de `origin`, 
-e é possível adicionar outros remotes utilizando nomes diferentes.
-
-**Exemplo:**
-```{r, engine='bash', eval=FALSE}
-# Adicionando um servidor remoto:
-git remote add origin "git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git"
-```
-
-## Merge
-
-Com o `merge` é possivel a fusão dos dois ramos em um.
-
-Quando se trabalha em ramos diferentes (diferentes branchs) e precisa-se
-posteriormente juntar o trabalho dos dois, o `merge` (fundir) é usado, 
-permitindo que o trabalho seja centralizado novamente. A fusão é feita 
-de forma automática, mas conflitos podem ocorrer, como por exemplo,
-quando duas ou mais pessoas modificam a mesma parte do código. 
-Estes conflitos devem ser resolvidos manualmente, deixando a cargo do
-gerente de projetos decidir que parte do código deve permanecer.
-
-**Exemplo:**
-```{r, engine='bash', eval=FALSE}
-# Faz merge do branch chamado novoBranch com o branch atual:
-git merge novoBranch
-```
-
-## Status
-
-O status exibe a diferença entre o estado atual dos arquivos e o estado
-do ultimo `commit` do mesmo `branch`.
-
-**Exemplo:**
-```{r, engine='bash', eval=FALSE}
-# Pedindo o status:
-git status
-```
-
-## Rm
-
-O `git rm` serve para remover um arquivo de forma que ele deixe de ser 
-gerenciado pelo git e seja excluido do disco rígido. Também é possível 
-que o arquivo deixe de ser gerenciado e permaneça no disco.
-
-Uma das vantagens é que, quando o arquivo é removido pelo `git rm`, ele 
-não aparece como não adicionado a stagin area, precisando somente que 
-a exclusão seja commitada.
-
-**Exemplo:**
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-# Remover arquivo teste.tex do gerenciamento e do disco:
-git rm teste.tex
-
-# Remover arquivo teste.tex apenas do gerenciamento:
-git rm --cached teste.tex
-```
-
-## Mv
-
-O `git mv` move ou renomeia arquivos, informando ao git que eles foram
-movido ou renomeados é que não se tratam de um novos arquivos.
-
-Caso a mudança seja feita sem esse comando o git entende que o arquivo
-foi deletado e que um novo arquivo foi criado, deixando de fora, 
-por exemplo, a ligação existente entre o arquivo e seus commits.
-
-**Exemplo:**
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-# Renomeando o arquivo teste.tex para arquivo1.tex:
-git mv teste.tex arquivo1.tex
 ```
 
 ## Stash
@@ -271,30 +312,6 @@ git reset --hard HEAD~1
 ```
 
 
-## Fetch 
-
-O `fetch` busca no repositório remoto os dados e arquivos que
-não estão no repositório local. É impostante frisar que o `fetch` não 
-faz o merge dos arquivos, deixando isso para ser feito manualmente 
-pelo usuário.
-
-**Exemplo:**
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-# Buscando arquivos no servidor remoto origin:
-git fetch origin
-```
-
-## Pull
-
-O `pull` é semelhante ao comando `fetch`, porém, puxa os 
-arquivos do servidor remoto fazendo merge. Caso haja algum conflito de
-merge, estes deverão ser resolvidos manualmente.
-
-**Exemplo:**
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-# Puxando arquivos no servidor remoto origin:
-git pull origin
-```
 
 ## Rebase
 
