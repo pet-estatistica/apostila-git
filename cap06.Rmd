@@ -211,15 +211,13 @@ interface para procedimentos não cotidianos.
 * https://git-scm.com/docs/gitk
 * https://lostechies.com/joshuaflanagan/2010/09/03/use-gitk-to-understand-git/
 
-### RabbitVCS (Linux/Unix) ###
-
-### GitHub (MacOS e Windows) ###
-
 ### Outras Interfaces ###
 
 Citar materiais de referência para instalação e utilização. 
 Interfaces a serem comentadas:
 
+* RabbitVCS (Linux/Unix)  
+* GitHub (MacOS e Windows)  
 * git-cola  
 * Smart-Git  
 
