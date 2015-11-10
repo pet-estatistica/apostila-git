@@ -3,6 +3,8 @@ title: "Cheat Sheet"
 output: html_document
 ---
 
+.
+
 Iniciando um Git
 	init
 	clone
