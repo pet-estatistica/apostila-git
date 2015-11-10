@@ -5,74 +5,103 @@ output: html_document
 
 
 ### Iniciando um Git
+
 #### $ git init
 Configura o diretório atual para um projeto Git
+
 #### $ git config --global user.name "Seu nome" 
 Configura o nome que será visualizado nos commit
+
 #### $ git config --global user.email "Seu email"
 Configura o email que será associado ao seu nome
+
 #### $ git clone git://github.com/usuario/projeto.git
 Clona um projeto git já existente
 
 ### Atividades Locais
+
 #### $ git status
 Informa a situação do projeto
+
 #### $ git add [arquivo]
 Adiciona o arquivo a receber commit
+
 #### $ git stage [arquivo]
 O mesmo que git add
+
 #### $ git commit - m "mensagem"
 Grava a cópia atual dos arquivos no histórico de versão
+
 #### $ git log
 Lista o histórico de versão do branch atual
+
 #### $ git log --follow [arquivo]
 Lista o histórico de versão de um arquivo específico
+
 #### $ git diff [branch 1] [branch 2]
 Mostra a diferença entre dois branchs
+
 #### $ git blame [arquivo]
 Mostra quem editou cada linha de um arquivo específico
 
 #### $ git show
 Mostra as mudanças do último commit ou do especificado
+
 #### $ git rm
 Renomeia um arquivo sem perder o histórico
+
 #### $ git mv
 Move um arquivo sem perder o histórico
+
 #### $ git ls-files
 Lista todos os arquivos do branch atual
 
 ### Atividades Remotas
+
 #### $ git pull
 Copia as atualizações do servidor remoto para o local
+
 #### $ git push
 Copia as atualizações do computador local para o servidor
+
 #### $ git remote [operação]
 Executa as operações no servidor
+
 #### $ git fetch
 Atualiza as referências remotas
+
 #### $ git ls-remote
 Lista as referências remotas
 
 ### Branch (ramificação)
+
 #### $ git branch
 Lista todos os branchs no repositório local
+
 #### $ git branch [novo branch]
 Cria um novo branchs no repositório local
+
 #### $ git checkout [branch]
 Muda de branch
 
 ### Merge (mesclar arquivos)
+
 #### $ git merge [branch]
 Mescla o branch especificado ao atual
 
 ### Comandos Avançado
+
 #### $ git stash
 Armazena temporariamente as modificações dos arquivos
+
 #### $ git rebase
 Permite modificar todo o histórico dos commits
+
 #### $ git reset
 Desfaz todos os commit a partir do commit especificado
+
 #### $ git revert
 Reverte para um commit especificado
+
 #### $ git submodule
 Cria, atualiza ou inspeciona um submodulo (sub branch)
