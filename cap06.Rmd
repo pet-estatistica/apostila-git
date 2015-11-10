@@ -180,7 +180,7 @@ Após as alterações a interface gráfica é chamada.
 git gui
 ```
 
-<!-- ![](./images/gitgui1) -->
+![](./images/git-gui1.png)  
 FIGURA: Inteface `git gui`
 
 A interface `git gui` se apresenta de forma bem simples, o que facilita
@@ -207,6 +207,9 @@ interativamente atividades como `git status`, `git diff`, `git add`,
 interface para procedimentos não cotidianos. 
 
 ### gitk (Tcl/Tk) / gitg (Gtk) / gitx (MacOS) ###
+
+* https://git-scm.com/docs/gitk
+* https://lostechies.com/joshuaflanagan/2010/09/03/use-gitk-to-understand-git/
 
 ### RabbitVCS (Linux/Unix) ###
 
