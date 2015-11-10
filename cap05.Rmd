@@ -179,9 +179,13 @@ rede social. Acesse o endereço <https://github.com/join> para preencher
 seus dados pessoais e escolher um plano. Nenhum dos planos tem limitação
 quanto ao número de repositórios ou colaboradores. O que muda é a
 quantidade de reposiórios privados. No plano *free*, só são criados
-repositórios públicos. Dos planos pagos, o menor deles permite 5
-repositórios privados por um custo de U$ 5 por mês. Acesse
+repositórios públicos enquanto que nos planos pagos, o menor deles
+permite 5 repositórios privados por um custo de U$ 5 por mês. Acesse
 <https://github.com/pricing> para mais detalhes.
+
+Ao preencher o formulário de criação de conta, você receberá um email
+com uma ulr de ativação. Se optar por planos pagos, terá informar número
+do cartão de crédito para que seja feito o pagamento mensalmente.
 
 ### Habilitar comunição ###
 
@@ -194,6 +198,14 @@ Uma vez criada uma conta, é necessário habilitar a comunicação entre sua
 máquina e o (servidor do) GitHub. A comunicação se baseia no protocolo
 ssh, o qual já usamos no capítulo anterior para hospedar o repositório
 em um servidor remoto.
+
+Para relembrar, a maioria dos servidores suporta a autenticação por SSH
+(*secure shell*). Para que seja automática, ou seja, sem precisar
+fornecer login e senha a cada acesso, usamos o recurso de pares de
+chaves. Este serve para fazer a máquina remota (servidor) reconhecer a
+máquina local (sua máquina) por da autenticação do par de chaves. É como
+se o servidor fosse um cadeado e a sua máquina local tem a chave que o
+abre.
 
 Para gerar as chaves públicas, você precisa executar:
 ```{sh}
@@ -208,12 +220,13 @@ arquivos anteriores, terá atualizar as chaves públicas em todos os
 serviços web que fazem uso desse recurso e com todos os servidores com o
 qual você tem autenticação por chaves.
 
-No GitHub acesse <https://github.com/settings/ssh> para então adicionar
-chaves públicas (Figura XXX). Clique em `Add SSH key`, cole o conteúdo
-copiado do arquivo `*.pub` no campo `key`. No campo `Title` identifique
-a máquina correspndente àquela chave. Use, por exemplo, `laptop` ou
-`trabalho` para facilitar o reconhecimento. É comum trabalhar-se com
-mais de um máquina, como uma em casa e outra no trabalho.
+Acesse <https://github.com/settings/ssh> para então adicionar chaves
+públicas (Figura XXX) ao seu perfil. Você precisa estar logado. Clique
+em `Add SSH key`, cole o conteúdo copiado do arquivo `*.pub` no campo
+`key`. No campo `Title` identifique a máquina correspndente àquela
+chave. Use, por exemplo, `laptop` ou `trabalho` para facilitar o
+reconhecimento. É comum trabalhar-se com mais de um máquina, como uma em
+casa e outra no trabalho.
 
 ![](./images/github_sshkeys.png)
 
@@ -222,7 +235,7 @@ GitHub. No menu `SSH Keys` pode-se ver e adicionar chaves públicas.
 
 Para testar a comunição entre o GitHub e a sua máquina, execute:
 ```{sh}
-## Testa comunição. Retorna um "Welcome" em caso positivo.
+## Testa comunição. Retorna um "Welcome!" em caso positivo.
 ssh -T git@github.com
 
 ## Se falhar, habilite o modo verbose para rastrear o erro.
@@ -237,65 +250,68 @@ colaborar de forma eficiente.
 
 No canto superior direito das páginas do GitHub existe um ícone $+$ que
 permite criar um novo repositório ou uma nova organização. Clique em
-*New repository* ou acesso o endereço <https://github.com/new>. Na
+*New repository* ou acesse o endereço <https://github.com/new>. Na
 janela que abrir, dê um nome para o seu projeto e adicione uma breve
 descrição à ele (Figura XXX). Na etapa seguinte, defina o nível de
-visibilidade: público ou privado. Lembre-se que os planos *free* so
+visibilidade: público ou privado. Lembre-se que os planos *free* só
 permitem repositórios públicos.
 
 ![](./images/github_new_repo.png)
 
-FIGURA XXX: Janela para a criação de um novo repositório no GitLab.
+FIGURA XXX: Janela para a criação de um novo repositório no GitHub.
 
-Para criar o projeto dentro de uma Organização, no campo Owner que fica
-a esquerda do campo para o nome do repositório, selecione a Organização
-na *drop list*.
+Para criar o projeto dentro de uma Organização, selecione a Organização
+na *drop list* que fica no no campo Owner, a esquerda do campo para o
+nome do repositório.
 
-Ao criar o repositório você pode inicilizado criando um arquivo
-`README.md`. Como já mencionamos, esse arquivo é a capa do seu
+Você pode inicilizar o repositório com um arquivo `README.md`, o que é
+altamente recomendado. Como já mencionamos, esse arquivo é a capa do seu
 repositório e serve para documentar o seu objetivo, formas de
 colaboração, colaboradores, formas de instalação do software, caso seja
 um.
 
-Você pode editar o arquivo `README.md` (ou qualquer outro) de dentro do
-GitHub. As moficações que fizer devem ser *commitadas*. O arquivo de
+Você pode editar o arquivo `README.md` (ou qualquer outro) no GitHub. As
+moficações que fizer devem ser *commitadas* para serem salvas. O arquivo de
 `README.md`, que é linguagem de marcação MarkDown, é automaticamente
 renderizado pelo GitHub fazendo com que urls sejam clicáveis e códigos
-estejam em ambientes de fonto monoespaço.
+estejam em ambientes de fonto monoespaço, além de ter títulos com
+tamanho de fonte apropriado e as demais renderizações.
 
-Depois de criar o repositório, você já pode cloná-lo. O endereço do
-repositório é composto pelo seu nome de usuário e nome do repositório. O
-repositório `ola-mundo` da conta do `fulano` pode ser clonado com:
+Depois de criar o repositório, você já pode cloná-lo para trabalhar
+localmente. O endereço do repositório é composto pelo seu nome de
+usuário e nome do repositório. O repositório `ola-mundo` da conta do
+`fulano` pode ser clonado com:
 
 ```{sh}
 ## Clone pelo protocolo ssh. Requer chaves públicas.
 git clone git@github.com:fulano/ola-mundo.git
 ```
 
-Pode-se clonar repositórios pelo protocolo `http` também. Em geral, para
-clonar repositórios de outros usuários e fazer testes, usa-se
-`http`. Prefira o *SSH* para trabalhar com os seus repositórios. O
-endereço para a ser:
+Pode-se clonar repositórios pelo protocolo `http` (*Hypertext Transfer
+Protocol*) também. Em geral, para clonar repositórios de outros usuários
+e fazer testes, usa-se `http`. Embora você possa usar `http` nos seus
+repositórios, prefira o *SSH*. Com `http`, o endereço para a ser:
 
 ```{sh}
 git clone https://github.com/fulano/ola-mundo.git
 ```
 
-Por padrão, ao clonar o repositório fica dentro de uma pasta de mesmo
-nome. Em caso de preferir outro nome, por exemplo, `OlaMundo`, use:
+Por padrão, ao clonar o repositório, um diretório de mesmo nome é criado
+com o projeto em seu interior. Em caso de preferir outro nome para esse
+diretório, por exemplo, `OlaMundo`, use:
 
 ```{sh}
 git clone https://github.com/fulano/ola-mundo.git OlaMundo
 ```
 
-Existe outra situação que é quando você já tem repositório Git no
-qual já está trabalhando e quer tê-lo no GitHub. Nesse caso, você faz os
+Existe outra situação que é quando você já tem repositório Git no qual
+já está trabalhando e quer tê-lo no GitHub. Nesse caso, você faz os
 mesmos passos, exceto que não irá cloná-lo, apenas adicionar a url do
-repositório GitHub ao repositório local. Vamos supor que o repositório
-seja um artigo científico de nome `Artigo`. Ao criar o repositório com
-esse nome no GitHub, o endereço fica
+repositório GitHub ao repositório local e fazer um *push*. Vamos supor
+que o repositório seja um artigo científico de nome `Artigo`. Ao criar o
+repositório com esse nome no GitHub, o endereço fica
 `git@github.com:fulano/Artigo.git`. Então é só adicionar esse endereço
-ao projeto Git:
+como `origin` do projeto Git:
 
 ```{sh}
 ## Adiciona endereço de "origin" ao repositório.
@@ -313,6 +329,45 @@ projeto. Para genrenciar os ramos de trabalho, como proteger ou remover
 ramos, vá em *Branches*. O uso de de serviços web é configurado no
 *Webhooks & services*. O *Deploy keys* permite adicionar chaves
 públicas.
+
+![](./images/github_repo_home.png)
+
+Vamos considerar um repositório de bastante atividade para conhecermos
+um pouco mais dos recursos do GitHub. O repositório
+<https://github.com/yihui/knitr> é o sítio de desenvolvimento do pacote
+`knitr` do R, o principal pacote para a geração de relatórios
+dinâmicos. Nesse repositório tem-se acesso aos fontes.
+
+Na figura XXX, logo abaixo do título, tem-se quatro quantificadores:
+
+  * *commits*: ao clinar neste tem-se o histórico de *commits* com
+    autor, mensagem e sha1. É possível comparar estados dos arquivos
+    (*diff*) ao clinar no sha1.
+  * *branches*: este lista os *branches* do projeto, permite comparar
+    ramos.
+  * *releases*: documenta as modificações de uma versão para outra e
+    lista os *commits* que tem *tags*. Essa é uma fonte importate.
+  * *contributors*: dá um resumo das atividades dos colaboradores do
+    projeto. Na aba *members* tem-se uma lista de todos os usuários que
+    fizeram o *fork* do seu projeto. Falaremos de *fork* adiante.
+
+No menu da direita existem links para acessos a mais coisas:
+
+  * code: estão visíveis os diretórios e arquivos do projeto. Pode-se
+    navegar entre eles. Ao visualizar um arquivo, ele é renderizado de
+    acordo com a linguagem de código que contém para facilitar a
+    compreensão. Ao abrir um arquivo, no topo aparecer um botões de
+    exibição/ação: *Raw* é para ver o arquivo cru. A url quando estiver
+    nessa exibição pode ser usada para carregar arquivos de dados ou
+    scripts direto da web. *Blame* mostra o arquivo com autor para cada
+    porção do código. O *History* mostra o histórico de *commits*. Os
+    dos ícones seguintes permitem editar o arquivo ou deletar.
+  * issues: acesso aos *issues* do projeto. Dentro dessa página tem-se
+    acesso às *Milestones* e requisições de merge.
+  * pull requests:
+  * wiki:
+  * pulse:
+  * graphics:
 
 ## Fluxo de trabalho ##
 
