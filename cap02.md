@@ -1,15 +1,8 @@
----
-title: 'Capítulo 2: Instalação e Configuração'
-author: "Jhenifer"
-date: "29/10/2015"
-output: 
-  html_document: 
-    keep_md: yes
----
+# Capítulo 2: Instalação e Configuração
+Jhenifer  
+29/10/2015  
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## Instalação:
 
@@ -82,28 +75,32 @@ Basta executar o código de instalação de sua respectiva distribuição.
 
 Em uma sessão de terminal Linux de distribuições Debian (Ubuntu, Mint), execute o código abaixo.  
 Adicione o ppa para obter a versão mais recente do Git.
-```{r, engine="sh", eval=FALSE}
+
+```sh
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
 ```
 
 Agora, execute o comando abaixo para instalação do Git.  
 Siga as instruções do prompt de comando, primeiro confirmando a instalação dos pacotes e suas dependências, depois confirmando a instalação do pacote git-core.
-```{r, engine="sh", eval=FALSE}
+
+```sh
 sudo apt-get install git git-core git-man git-gui git-doc \
     ssh openssh-server openssh-client
 git --version
 ```
 
 Para adicionar ferramentas complementares, execute:
-```{r, engine="sh", eval=FALSE}
+
+```sh
 sudo apt-get install gitk meld
 ```
 
 
 **Arch**
 
-```{r, engine="sh", eval=FALSE}
+
+```sh
 pacman -S git openssh meld
 git --version
 ```
@@ -111,7 +108,8 @@ git --version
 
 **Fedora**
 
-```{r, engine="sh", eval=FALSE}
+
+```sh
 Yum install git
 git --version
 ```
@@ -136,7 +134,8 @@ Para testar a instalação, abra o terminal e digite o comando “git”. A saí
 **Utiizando o MacPorts**
 
 A maneira mais fácil de instalar Git no Mac é via [MacPorts](http://www.macports.org), para isso basta executar o seguinte comando:
-```{r, engine="sh", eval=FALSE}
+
+```sh
 sudo port install git-core
 ```
 
@@ -149,7 +148,8 @@ Os comandos abaixo vão configurar o nome de usuário e endereço de e-mail. Est
 Caso o projeto seja individual, a importância de configurar usuário e e-mail se mantém, uma vez que se trabalha com duas máquinas, é possível a identificação no nome de usuário. 
 
 Em um terminal Bash, execute o código abaixo:
-```{r, engine="sh", eval=FALSE}
+
+```sh
 git config --global user.name "Knight Rider"
 git config --global user.email "batman@justiceleague.org"
 ```
@@ -157,10 +157,11 @@ git config --global user.email "batman@justiceleague.org"
 A opção `--global` usará essa informação para todo projeto Git da máquina. 
 É possível fazer definições para cada projeto, ou seja, não globais. Para isso é necessário executar o comando a seguir sem a opção `--global`.
 
-```{r, engine="sh", eval=FALSE}
+
+```sh
 git config user.name "Knight Rider"
 git config user.email "batman@justiceleague.org"
 ```
 
-Uma vez configurado o perfil, o Git está pronto para uso.
+Uma vez configurado o perfil, 
 
