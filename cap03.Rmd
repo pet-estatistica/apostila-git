@@ -7,37 +7,209 @@ output:
     keep_md: yes
 ---
 
-Configurações Iniciais 
+Neste capítulo, as instruções serão todas feitas no terminal mesmo que
+existam alternativas gráficas para as mesmas. Isso enfatiza no que está
+sendo feito além do fato de que no terminal todos devem ter os mesmos
+recursos e os comandos irão produzir os mesmos resultados, o que faz
+esse tutorial algo reproduzível. Para usufruir das ferramentas gráfica va até o capitulo 8.
 
-Abrindo o shell do seu computador:
 
-## Primeira Sessão
+### Meu primeiro repositório
 
-Git Init  
-The working tree
+Já temos o Git devidamente e com credenciais (nome e email) e
+configurações aplicadas. Vamos então ver como o sistema de controle de
+versão acontece.
 
-Inicia um repositório, 
-```{r, engine = 'sh'}
-git init
+Todas as instruções do Git são sinalizadas por começar com `git` seguido
+da instrução/comando e seus argumentos complementares, se
+existirem/necessários. Abrindo o shell do seu computador:
+
+**git init** 
+
+O primeiro comando que inicia o processo de git. Escolha um pasta de preferência. Criar um pasta com arquivos de interesse a serem versionados:
+
+
+
+```{r, engine = 'sh', eval= FALSE}
+git init 
 ```
-git init --bare <directory>
+
+```
+Initialized empty Git repository in /home/gabriel/Suporte/PET/Projeto/Apostila/Git/.git/
+
+```
+Visualizando modificações ao criar o repositório git da pasta
+
+```{r, engine ="bash", eval = FALSE}
+tree -a 
+```
+
+```
+.
+└── .git
+    ├── branches
+    ├── config
+    ├── description
+    ├── HEAD
+    ├── hooks
+    │   ├── applypatch-msg.sample
+    │   ├── commit-msg.sample
+    │   ├── post-update.sample
+    │   ├── pre-applypatch.sample
+    │   ├── pre-commit.sample
+    │   ├── prepare-commit-msg.sample
+    │   ├── pre-push.sample
+    │   ├── pre-rebase.sample
+    │   └── update.sample
+    ├── info
+    │   └── exclude
+    ├── objects
+    │   ├── info
+    │   └── pack
+    └── refs
+        ├── heads
+        └── tags
+
+10 directories, 13 files
+
+```
+
+**NOTA**: o `tree` é um programa instalado a parte (*third party
+software*) que retorna arte ASCII representado a estrutura de
+diretórios. Se você usa distribuição Debian, instale com `sudo apt-get
+install tree`. Windows: [tree][].
+
+O Git retorna a mensagem de inicilização do repositório. Nesse momento
+ele cria um diretório oculto `.git/` com subdiretórios que são o coração
+do sistema de versionamento. Você não deve modificar nada nesse
+diretório. É por essa razão que ele é oculto. Alterar o conteúdo pode
+prejudicar ou interromper o funcionamento do Git. Se você quiser
+encerrar o processo de versionamento fazendo com que esse diretório seja
+como qualquer outro diretório, é só excluir a diretório `.git/`. Cada
+subdiretório do `.git/` tem um propósito mas deixaremos os
+esclarecimentos para o futuro. 
+Por agora vamos apenas estrutur a minha primeira sessão.
+
+Primeiro vamos entender a principal ideia do versionamento do git através desta imagem :
 
 
-## Imagens (Inferno, Terra e Céu)
+Nossos arquivos estão apenas no nosso diretório do seu computador. No git há 3 estágios o que estamos (diretório de trabalho), os arquivos na fase Index(área temporária), e na head (área de rastreio). Cada uma dessas etapas há um comando específico que veremos adiante.
 
-git add
-git commit
-git tag
+**Vou criar um documento de código: porqueLinux.txt - Nome arbitrário e para facilitar um documento tipo texto**
 
-## Git Commit - Boas Práticas 
+Vamos aplicar o primeiro *add* ao `porqueLinux.txt.txt` para que ele começe
+a ser versionado.
 
-Maus Exemplos
+**git add <arquivo>** Adicionarei o arquivo para na área temporária
 
-## Comandos De Verificação
-git diff
-git log
+```{r, engine ="bash", eval = FALSE}
+git add "PorqueoLinux.txt"
+```
+
+Adciona para a área temporária, porém não há retorno de mensagem na execução do comando.
+
+**git commit -m "Texto de referências de Mudança"** 
+
+Adiciona para a área de rastreio, porém é necessário comentar sobre o que foi feito no arquivo para facilitar o rastreiamento.
+
+```{r, engine ="bash", eval = FALSE}
+git commit -m "Adiciona o arquivo porqueLinux.txt para rastreio"
+
+```
+
+```
+[master (root-commit) 319ee41] Adicionar o arquivo para ser rastreado
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 porqueLinux.txt
+```
+Saída
+
+Exemplos de maus commits: 
+
+"blablabla"
+"Hoje o dia rendeu, trabalhei pra caramba"
+"Estou muito cansado"
+"Finalmente terminei este BUG"
+
+Boas práticas do uso de Commits
+
+- Tempo verbal presente
+- Uma funcionalidade por vez
+- Corpo da mensagem deve explicar o que e por que, não como
+- Não há necessidade em terminar com ponto
+
+
+## Comandos de Verificação: 
+
+Nesta secção aprenderemos as funcionalidades dos seguintes comandos do git:
+
+- *status*
+- *diff*
+- *log*
+- *checkout*
+
+Ainda no arquivo `porqueLinux.txt`, vamos escrever algo meramente didático, por exemplo: motivos para usar o linux; altere qualquer no seu documento os resultados a seguir equivalem a este. 
+
+**git status** - Verificação das atividades
+```{r, engine="bash", eval = FALSE}
 git status
-ref log
+```
+
+
+```
+No ramo master
+Changes not staged for commit:
+  (utilize "git add <arquivo>..." para atualizar o que será submetido)
+  (utilize "git checkout -- <arquivo>..." para descartar mudanças no diretório de trabalho)
+
+	modificado: porqueLinux.txt
+
+nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git commit -a")
+
+```
+Na 1° linha diz que estamos no ramo master porém não vem esclarecer com muitos detalhes agora,  
+Na 2 ° linha diz que mudanças foram feitas no arquivo, e não estão sendo rastreadas. Logo abaixo é citado os comandos que utilizamos na seção anterior para o arquivo se tornar rastreado.
+
+O comando `git status` é recomendado que se utilize sempre após algum outro comando git quando você está na fase inicial de aprendizagem.
+
+
+
+```{r, engine = "bash", eval = FALSE}
+
+git add porquelinux.txt
+git status
+
+```
+
+
+```
+No ramo master
+Mudanças a serem submetidas:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modificado: porqueLinux.txt
+```
+2° linha diz que mudanças foram submetidas, e logo abaixo diz caso eu queria retornar esta execução utilizando o comando `git reset`,mais pra frente veremos com detalhes. 
+Vamos *commitar* 
+
+
+
+
+```{r, engine="bash", eval = FALSE}
+git commit -m "tópico dos motivos de usar Linux"
+git status
+```
+
+
+```
+No ramo master
+nada a submeter, diretório de trabalho vazio
+```
+
+Printei apenas a saida do comando git status, no qual diz que nao ha nada a se fazer pois os arquivos estao rastreados.
+
+**git diff** : Verificação das linhas de mudanças entre o diretório de trabalho com o arquivo da área temporária ou o rastreado (último commite). 
+
 
 ## Back to Past (Imagem de Volta para o Futuro)
 
@@ -56,3 +228,7 @@ git show
 git rm
 git ls-files
 
+
+## Ajuda
+
+Git help
