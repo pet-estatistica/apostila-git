@@ -98,6 +98,21 @@
    + Alcides: concluir o dicionário de termos.
    + Daniel: concluir o conteúdo do *cheat sheet*.
 3. 2015-11-10:
+   + Walmes: escrever para o GitLab o mesmo contúdo para presente para o
+     GitHub. Isso vai de uma breve descrição das funcionalidades, como
+     criar conta e gerenciar um repositório.
+   + Gabriel: **finalizar o trabalho da semana anterior**. Escrever
+     sobre o uso de *branches*, *checkout* e *merge*.
+   + Ângela: fazer revisão, acréscimos e acabamento.
+   + Jhenifer: escrever sobre configurações pessoais: aliases para o
+     Git, para o sistema operacional e como ignorar arquivos.
+   + Eduardo: **finalizar o trabalho da semana anterior**. Documentar o
+     uso da gitk, gitg e gitx para assim terminar a parte de interfaces
+     de execução e exibição com Git.
+   + Alcides: Concluir os exemplos de rotinas. Revisar o capítulo da
+     Jhenifer.
+   + Daniel: Definir o conteúdo previsto no *cheat sheet* e concluir o
+     capítulo sobre SCV. Revisar o capítulo da Ângela.
 4. 2015-11-17:
 5. 2015-11-24:
 6. 2015-12-01:
