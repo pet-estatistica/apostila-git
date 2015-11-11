@@ -52,20 +52,20 @@ tree -a
     ├── description
     ├── HEAD
     ├── hooks
-    │   ├── applypatch-msg.sample
-    │   ├── commit-msg.sample
-    │   ├── post-update.sample
-    │   ├── pre-applypatch.sample
-    │   ├── pre-commit.sample
-    │   ├── prepare-commit-msg.sample
-    │   ├── pre-push.sample
-    │   ├── pre-rebase.sample
-    │   └── update.sample
+    │   ├── applypatch-msg.sample
+    │   ├── commit-msg.sample
+    │   ├── post-update.sample
+    │   ├── pre-applypatch.sample
+    │   ├── pre-commit.sample
+    │   ├── prepare-commit-msg.sample
+    │   ├── pre-push.sample
+    │   ├── pre-rebase.sample
+    │   └── update.sample
     ├── info
-    │   └── exclude
+    │   └── exclude
     ├── objects
-    │   ├── info
-    │   └── pack
+    │   ├── info
+    │   └── pack
     └── refs
         ├── heads
         └── tags
