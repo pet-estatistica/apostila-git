@@ -1,12 +1,59 @@
-## Clonar, Modificar e Enviar
+## Clonar, Modificar e Subir
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Clonar o projeto desta apostila:
 git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
+
+# Modifique o projeto antes de executar o código abaixo.
+
+# Commitar o projeto:
+git commit -a -m "Sua Mensagem de Commit"
+# Enviar projeto ao servidor (branch master, servidor origin):
+git push origin master
+
+```
+
+## Resolver conflito de merge
+
+```{r, engine='bash', eval=FALSE, echo=TRUE}
+# Requisitar merge:
+git merge ramo_teste
+
+# Resolver conflitos manualmente.
+
+# Finalizar merge com o commit:
+git commit -a -m "Merge do ramo_teste"
+
+```
+
+## Incorporar o remoto ao local
+
+```{r, engine='bash', eval=FALSE, echo=TRUE}
+# Adicionando novo remote com nome remoto:
+git remote add remoto git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git  
+
 ```
 
 ## Deletar Ramos
 
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Deletar ramo local:
 git branch -d "nome_ramo"
+# Deletar ramo remoto:
+git push origin :nome_ramo
 ```
+
+## Criar ramo de um commit passado
+
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Verificar código commit:
+git log
+# Criando branch com commit do código
+# ec3650c8661d75b486a236e3d416ab58db1d596a:
+git branch novo_branch ec3650c8661d75b486a236e3d416ab58db1d596a
+
+# Mudando para novo_branch
+git checkout novo_branch
+
+```
+
 
