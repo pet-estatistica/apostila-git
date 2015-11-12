@@ -143,6 +143,8 @@ sudo port install git-core
 ## Configurando Perfil
 As configurações vão determinar algumas opções globais do Git e é necessário fazê-las apenas uma vez. 
 
+**Usuário**
+
 Os comandos abaixo vão configurar o nome de usuário e endereço de e-mail. Esta informação é importante pois anexa os commits que você realiza, ou seja, as configurações ficarão associadas ao trabalho em desenvolvimento, permitindo que os colaboradores/gestores do projeto identifiquem suas contribuições.
 
 Caso o projeto seja individual, a importância de configurar usuário e e-mail se mantém, uma vez que se trabalha com duas máquinas, é possível a identificação no nome de usuário. 
@@ -163,5 +165,63 @@ git config user.name "Knight Rider"
 git config user.email "batman@justiceleague.org"
 ```
 
-Uma vez configurado o perfil, 
+Uma vez configurado o perfil, o Git está pronto para uso.
 
+
+**Atalhos**
+
+Os atalhos no Git são chamados de *Alias*. Com ele podemos mapear comandos que repetidamente usamos para algumas poucas teclas. Estes atalhos podem ser criados de dois modos: através do comando no terminal ou editando diretamente no arquivo `/.gitconfig`.
+
+* Pelo terminal:
+
+Execute o comando abaixo com o atalho de sua preferência e o nome completo do camando o qual deseja criar o alias.
+
+
+```sh
+git config --global alias.nome_do_alias "comando inteiro"
+```
+
+Um exemplo bem simples é o seguinte:
+
+
+```sh
+git config --global alias.st "status"
+```
+
+Assim, ao executar git st é o mesmo que executar git status.
+
+Pelo método citado acima, o alias é adicionado automaticamente no seu arquivo `/.gitconfig`. 
+
+* Pelo arquivo `/.gitconfig`:
+
+Pode-se criar atalhos atravéz de um bloco no seu arquivo de configuração. Para isso, é necessário localizar o diretório do Git e adicionar a lista de comandos desejada, como no exemplo:
+
+
+```sh
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+```
+
+Assim que adicionar este bloco com os comandos de sua escolha, ele irá funcionar imediatamente.
+
+Segue abaixo os caminhos para encontrar o arquivo `/.gitconfig` no sistemas operacionais:
+
++ Windows:  
+1 - C:\\Pasta_do_seu_projeto\\.git\\config  
+2 – C:\\Documents and Settings\\Seu_usuario\\.gitconfig  
+3 – C:\\Arquivos de programas\\Git\\etc\\gitconfig  
+
++ Mac:  
+1 - /Pasta_do_seu_projeto/.git/config  
+2 – /Users/Seu_usuario/.gitconfig  
+3 – /usr/local/git/etc/gitconfig  
+Obs: Os arquivos de configuração do Git não tem extensão.
+
++ Linux:  
+Crie um arquivo como sudo dentro da pasta etc/ com nome de gitconfig e coloque os atalhos de sua escolha.  
+
+Não importa o método você utilize, suas configurações sempre ficarão salvas no arquivo `/.gitconfig`.
