@@ -15,7 +15,7 @@ Após o download, execute o arquivo e você terá essa tela:
 
 
 
-Como de costume, clice em "Next". Para dar continuidade a instalação aceite a licença do Git.
+Como de costume, clique em "Next". Para dar continuidade a instalação aceite a licença do Git.
 
 O diretório apresentado na figura a baixo vem como default, porém é possível alterar a instalação para um diretório de sua preferência. Depois de selecionado o caminho da instalação, clique em "Next" para prosseguir.
 
@@ -29,21 +29,21 @@ Na tela de componentes podemos definir atalhos, integração ao menu de contexto
 
 
 
-Aqui, o instalador nos oferece a oportunidade de mudar o nome da pasta no menu iniciar, recomenda-se deixar o padrão para fácil localização posteriormente.
+Aqui, o instalador nos oferece a oportunidade de mudar o nome da pasta no menu inicial, recomenda-se deixar o padrão para fácil localização posteriormente.
 
 ![](./images/inst04.png)
 
 
 
 Na tela de configuração "PATH environment", podemos escolher as formas de integração do Git em nosso sistema.  
-A primeira opção nos permite usar o Git apenas pelo "Git Bash" (é o prompt de comando do Git), a segunda opção nos possibilita executar os comandos no "Git Bash"" e no prompt de comando do Windows (cmd.exe), e a terceira opção é a junção das duas de cima, porém alguns comandos do Windows serão substituídos por comandos Unix com mesmo nome.  
+A primeira opção nos permite usar o Git apenas pelo "Git Bash" (é o prompt de comando do Git), a segunda opção nos possibilita executar os comandos no "Git Bash" e no prompt de comando do Windows (cmd.exe) e a terceira opção é a junção das duas de cima, porém alguns comandos do Windows serão substituídos por comandos Unix com mesmo nome.  
 Essa última opção não é recomendada, portanto a primeira opção é a desejável. 
 
 ![](./images/inst05.png)
 
 
 
-Abaixo, a configuração de quebra de linha. Windows e sistemas Unix (Linux, Mac) possuem formatos diferentes de quebra de linha em arquivos de texto. Se você escreve um código com quebras de linha no formato Windows, outra pessoa pode ter problemas ao abrir o mesmo arquivo em um Linux, e vice-versa. Esta opção, portanto, permite normalizar isso.  
+Abaixo, a configuração de quebra de linha. Windows e sistemas Unix (Linux, Mac) possuem formatos diferentes de quebra de linha em arquivos de texto. Se você escreve um código com quebras de linha no formato Windows, outra pessoa pode ter problemas ao abrir o mesmo arquivo em um Linux, e vice-versa. Esta configuração, portanto, permite normalizar isso.  
 A primeira opção converte automaticamente os arquivos para padrão Windows quando receber algum arquivo e converterá para padrão Unix quando “comitar” (enviar alterações) no repositório. A segunda opção, não faz nenhuma conversão ao receber arquivos, mas convertem para padrão Unix ao “comitar”. Já a terceira opção, o Git não fará nenhuma conversão.  
 Recomenda-se a seleção da opção "Checkout Windows-style, commit Unix-Style line endings".
 
@@ -114,7 +114,7 @@ Yum install git
 git --version
 ```
 
-Usuários de outra versão do Linux dever visitar [Download for Linux](https://git-scm.com/download/linux).
+Usuários de outra versão do Linux podem visitar [Download for Linux](https://git-scm.com/download/linux).
 
 
 #### MacOS
@@ -194,7 +194,7 @@ Pelo método citado acima, o alias é adicionado automaticamente no seu arquivo 
 
 * Pelo arquivo `/.gitconfig`:
 
-Pode-se criar atalhos atravéz de um bloco no seu arquivo de configuração. Para isso, é necessário localizar o diretório do Git e adicionar a lista de comandos desejada, como no exemplo:
+Pode-se criar atalhos através de um bloco no seu arquivo de configuração. Para isso, é necessário localizar o diretório do Git e adicionar a lista de comandos desejada, como no exemplo:
 
 
 ```sh
@@ -208,7 +208,7 @@ Pode-se criar atalhos atravéz de um bloco no seu arquivo de configuração. Par
 
 Assim que adicionar este bloco com os comandos de sua escolha, ele irá funcionar imediatamente.
 
-Segue abaixo os caminhos para encontrar o arquivo `/.gitconfig` no sistemas operacionais:
+Segue abaixo os caminhos para encontrar o arquivo `/.gitconfig` nos sistemas operacionais:
 
 + Windows:  
 1 - C:\\Pasta_do_seu_projeto\\.git\\config  
@@ -222,7 +222,7 @@ Segue abaixo os caminhos para encontrar o arquivo `/.gitconfig` no sistemas oper
 Obs: Os arquivos de configuração do Git não tem extensão.
 
 + Linux:  
-Crie um arquivo como sudo dentro da pasta etc/ com nome de gitconfig e coloque os atalhos de sua escolha.  
+Crie um arquivo como _sudo_ dentro da pasta etc/ com nome de gitconfig e coloque os atalhos de sua escolha.  
 
 Não importa o método você utilize, suas configurações sempre ficarão salvas no arquivo `/.gitconfig`.
 
@@ -246,7 +246,7 @@ A primeira linha fala para o Git ignorar qualquer arquivo finalizado em **.o** o
 
 * Ignorar Arquivos por Usuário (Globalmente):
 
-Para não precisar criar uma lista de comandos para serem ignorados em cada projeto, é possível ignorar arquivos em todos os repositórios. Para isso, basta criar um arquivo `.gitignore` em seu diretório home contendo os padrões os quais deseja ignorar e executar o comando abaixo no terminal a partir da pasta onde está localizado o arquivo `.gitignore`:
+Para não precisar criar uma lista de comandos para serem ignorados em cada projeto, é possível ignorar arquivos em todos os repositórios. Para isso, basta criar um arquivo `.gitignore` em seu diretório _home_ contendo os padrões os quais deseja ignorar e executar o comando abaixo no terminal a partir da pasta onde está localizado o arquivo `.gitignore`:
 
 
 ```sh
