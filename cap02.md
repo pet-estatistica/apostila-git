@@ -225,3 +225,32 @@ Obs: Os arquivos de configuração do Git não tem extensão.
 Crie um arquivo como sudo dentro da pasta etc/ com nome de gitconfig e coloque os atalhos de sua escolha.  
 
 Não importa o método você utilize, suas configurações sempre ficarão salvas no arquivo `/.gitconfig`.
+
+**Ignorar Arquivos**
+
+Usando o arquivo `.gitignore` podemos ignorar arquivos que não desejamos versionar no repositório, pode ser feito por projeto e por usuário.
+Configurar um arquivo `.gitignore` antes de começar a trabalhar,  é importante, pois evita commits acidentais de arquivos que não deveriam ir para o seu repositório Git.
+
+* Ignorar Arquivos por Projeto:
+
+Em todos os projetos que necessitam de um controle de versão há sempre casos em que arquivos não precisam ser versionados. Para isso é preciso criar um arquivo `.gitignore` no diretório raiz do projeto, o qual contém padrões (pattern) que serão ignorados, cada padrão fica em uma linha como no exemplo:
+
+
+```sh
+$ cat .gitignore
+*.[oa]
+*~
+```
+
+A primeira linha fala para o Git ignorar qualquer arquivo finalizado em **.o** ou **.a** e a segunda linha ignora todos os arquivos que terminam com um til **(~)**. Esses padrões podem serem feitos de acordo com a necessidade de cada projeto.
+
+* Ignorar Arquivos por Usuário (Globalmente):
+
+Para não precisar criar uma lista de comandos para serem ignorados em cada projeto, é possível ignorar arquivos em todos os repositórios. Para isso, basta criar um arquivo `.gitignore` em seu diretório home contendo os padrões os quais deseja ignorar e executar o comando abaixo no terminal a partir da pasta onde está localizado o arquivo `.gitignore`:
+
+
+```sh
+git config --global core.excludesfile ~/.gitignore
+```
+
+A partir disso, todos os arquivos que estão na lista serão ignorados pelo usuário.
