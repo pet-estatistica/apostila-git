@@ -18,7 +18,6 @@ git push origin master
 ```
 
 ## Resolver conflito de merge
-
 ```{r, engine='bash', eval=FALSE, echo=TRUE}
 # Requisitar merge:
 git merge ramo_teste
@@ -33,9 +32,12 @@ git commit -a -m "Merge do ramo_teste"
 ## Incorporar o remoto ao local
 
 ```{r, engine='bash', eval=FALSE, echo=TRUE}
+# Listando os servidores remotos:
+git remote
 # Adicionando novo remote com nome remoto:
-git remote add remoto git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git  
-
+git remote add remoto git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
+# Atualizando arquivos locais:
+git pull
 ```
 
 ## Resolver um bug
@@ -53,6 +55,8 @@ git merge bugfix
 git branch -d bugfix
 
 ```
+
+## Deletar ramos
 
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Listar ramos:
@@ -87,4 +91,12 @@ git log --pretty=oneline
 #de identificação é: ec3650c8661d75b486a236e3d416ab58db1d596a.
 git checkout ec3650c8661d75b486a236e3d416ab58db1d596a
 
+```
+
+## Reescrever mensagem de commit
+
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+git log --oneline
+git commit --amend "Correção de Commit"
+git push -f origin master
 ```
