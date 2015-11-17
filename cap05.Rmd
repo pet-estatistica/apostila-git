@@ -200,10 +200,6 @@ GitLab tem repositórios com 5 níveis de acesso (*owner*, *master*,
 *diffs*; permite importar repositórios de outros serviços; permite
 adição de *web hooks*.
 
-https://www.upwork.com/hiring/development/gitlab-vs-github-how-are-they-different/
-https://git-scm.com/book/en/v2/Git-on-the-Server-GitLab
-http://events.linuxfoundation.org/sites/events/files/slides/gitlab-linuxcon-presentation.pdf
-
 ### Outros ###
 
 <http://www.git-tower.com/blog/git-hosting-services-compared/>
@@ -222,6 +218,12 @@ permite 5 repositórios privados por um custo de U$ 5 por mês. Acesse
 Ao preencher o formulário de criação de conta, você receberá um email
 com uma ulr de ativação. Se optar por planos pagos, terá informar número
 do cartão de crédito para que seja feito o pagamento mensalmente.
+
+Para criar uma conta gratuíta no GitLab, acesse
+<https://gitlab.com/users/sign_in>. Os serviços GitLab que usamos são
+instalações em servidoras próprias (do C3SL e do LEG), no entanto, a
+interface do usuário é a mesma, com excessão de alguns privilégios
+administrativos.
 
 ### Habilitar comunição ###
 
@@ -278,7 +280,25 @@ ssh -T git@github.com
 ssh -vT git@github.com
 ```
 
+No GitLab, o cadastro de chaves públicas é um processo semelhante. Uma
+vez autenticado, acesse <https://gitlab.c3sl.ufpr.br/profile/keys> para
+adicionar chaves públicas.  Para testar a comunição entre o GitHub e a
+sua máquina, execute:
+```{sh}
+## Testa comunição. Retorna um "Welcome!" em caso positivo.
+ssh -T git@gitlab.c3sl.ufpr.br
+
+## Se falhar, habilite o modo verbose para rastrear o erro.
+ssh -vT git@gitlab.c3sl.ufpr.br
+```
+
+Lembre-se de que o endereço `gitlab.c3sl.ufpr.br` corresponde ao serviço
+GitLab disponibilidade pelo C3SL. Caso você esteja fazendo a conta no
+GitLab.com, o endereço muda de acordo.
+
 ### Gerenciar repositórios ###
+
+**GitHub**
 
 A comunicação com o GitHub acabou de ser estabelecida. Agora podemos
 criar repositórios e começar a mostrar nosso trabalho para o mundo e
@@ -424,7 +444,42 @@ projetos. Além disso, é o que os alunos usam para fazerem seus trabalhos
 e desenvolverem o TCC. O uso do Git como ferramenta de trabalho passou
 ser estimulado nesse semestre (2015/2).
 
-Basicamente, o GitLab tem os mesmos recursos ...
+**GitLab**
+
+Basicamente, o GitLab tem os mesmos recursos, só estão organizados de
+forma diferente.
+
+O GitLab concentra os acessos à outras páginas em um meno do lado
+esquerdo. Do lado direito pode haver informações extras. O botão para
+criar um novo repositório fica no canto superior direit. Ao lado deste
+tem botões para ir para página de configurações, sair, ajuda e explorar
+o GitLab.
+
+No menu da direita tem-se acesso aos projetos do usuário, ao projetos
+favoritos e aos grupos que parcipa. As extradas *Milestones*, *Issues* e
+*Merge request* reúnem as informações sobre todos os projetos do qual o
+usuário participa.
+
+Assim como acontece com outros serviços web, na página inical do projeto
+é exibido o arquivo de capa, o `README.md`. Centralizado na página
+encontra-se o endereço para clonar o repositório por SSH ou HTTPS. No
+menu da direita estão as principais informações sobre o
+projeto. *Project* é a página inicial; *Activity* e *Commits* listam a
+atividade (predominantemente *commits*); *Files* apresenta diretórios e
+arquivos com opção de mudar o ramo. *Network* o estado de
+desenvolvimento dos ramos do projeto com uma lista de todos os
+*commits*; *Graphs* contém a atividade de cada membro do
+projeto. *Milestones* reúne as marcas de milhas do projeto com progresso
+de cada uma e em *Issues* pode-se gerenciar os *issues* dos
+projetos. *Merge resquests* permite criação e acompanhamento das
+requisições de mescla; *Members* faz a gestão da equipe de trabalho como
+adição e redefinição dos níveis de acesso; *Labels* são usados para
+classificar os *issues* - é comum usar *bug*, *fix*, *review*. *Wiki*
+vai para a página Wiki do repositório, útil para divulgação e
+documentação; Finalmente, em *Settings* são feitas as configurações
+gerais do projeto como definição de nome, descrição, nível de
+visibilidade e adição e *Web Hooks*. Nessa mesma página pode-se
+renomear, transferir ou remover o projeto.
 
 Não usamos a conta no <https://gitlab.com/>, usamos a instalação em
 servidor próprio disponibilizado pelo c3sl - Centro de Computação
