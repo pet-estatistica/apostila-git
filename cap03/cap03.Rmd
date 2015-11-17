@@ -1346,24 +1346,5 @@ cd meu1repo
 git reflog
 ```
 
-## Back to Past (Imagem de Volta para o Futuro)
-
-git checkout
-git mv *Não é bem assim
-git reset 
-
-## Ramificações 
-
-Master
-Branch
-
-## Complementos
-git blame
-git show
-git rm
-git ls-files
 
 
-## Ajuda
-
-Git help
