@@ -109,12 +109,27 @@
    + Eduardo: **finalizar o trabalho da semana anterior**. Documentar o
      uso da gitk, gitg e gitx para assim terminar a parte de interfaces
      de execução e exibição com Git.
+   + Alessandra: Correções e acréscimos.
    + Alcides: Concluir os exemplos de rotinas. Revisar o capítulo da
      Jhenifer.
    + Daniel: Definir o conteúdo previsto no *cheat sheet* e concluir o
      capítulo sobre SCV. Revisar o capítulo da Ângela.
 4. 2015-11-17:
+   + Walmes: descrever os mecanísmos de colaboração com interfaces web:
+     issue, fork e merge request.
+   + Gabriel: Acréscimos de revisão do capítulo. Revisar os apêndices do
+     Alcides.
+   + Ângela: Descrever o fluxo de trabalho do PET. Revisar o capítulo da
+     Jhenifer.
+   + Jhenifer: Acrécimos de revisão. Revisão do capítulo da Alessandra.
+   + Eduardo: Documentar o uso das ferramentas de merge: meld, kdiff3 e
+     p4merge.
+   + Alessandra: Acréscismos e revisão. Revisar o capítulo da Ângela.
+   + Alcides: Acréscismos e revisão. Revisar o capítulo do Gabriel.
+   + Daniel: **finalizar todo o trabalho da semana anterior**. Concluir
+     o capítulo sobre Git com o RStudio
 5. 2015-11-24:
 6. 2015-12-01:
 7. 2015-12-08:
 8. 2015-12-15: Apostila Git concluída!
+
