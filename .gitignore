@@ -11,4 +11,5 @@ meu1repo
 meu1repo/*
 downloads/*
 *.html
+*.orig
 apostila-git.Rproj
