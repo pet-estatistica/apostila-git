@@ -1,3 +1,8 @@
+
+
+Exemplos de Rotinas
+===================
+
 ## Clonar, Modificar e Subir
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Clonar o projeto desta apostila:
@@ -13,7 +18,6 @@ git push origin master
 ```
 
 ## Resolver conflito de merge
-
 ```{r, engine='bash', eval=FALSE, echo=TRUE}
 # Requisitar merge:
 git merge ramo_teste
@@ -28,14 +32,35 @@ git commit -a -m "Merge do ramo_teste"
 ## Incorporar o remoto ao local
 
 ```{r, engine='bash', eval=FALSE, echo=TRUE}
+# Listando os servidores remotos:
+git remote
 # Adicionando novo remote com nome remoto:
-git remote add remoto git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git  
+git remote add remoto git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
+# Atualizando arquivos locais:
+git pull
+```
+
+## Resolver um bug
+
+```{r, engine='bash', eval=FALSE, echo=TRUE}
+
+git branch bugfix
+git checkout bugfix
+
+# Modifica o código de acordo com o necessário.
+
+git commit -a -m "Bug corrigido"
+git checkout master
+git merge bugfix
+git branch -d bugfix
 
 ```
 
-## Deletar Ramos
+## Deletar ramos
 
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Listar ramos:
+git branch
 # Deletar ramo local:
 git branch -d "nome_ramo"
 # Deletar ramo remoto:
@@ -56,4 +81,22 @@ git checkout novo_branch
 
 ```
 
+## Voltar o projeto para um commit
 
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+# Listando commits pelo nome e código de identificação:
+git log --pretty=oneline
+
+# Voltando a um commit anterior, em que seu código 
+#de identificação é: ec3650c8661d75b486a236e3d416ab58db1d596a.
+git checkout ec3650c8661d75b486a236e3d416ab58db1d596a
+
+```
+
+## Reescrever mensagem de commit
+
+```{r, engine='bash', echo=TRUE, eval=FALSE}
+git log --oneline
+git commit --amend "Correção de Commit"
+git push -f origin master
+```
