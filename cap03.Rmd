@@ -1,5 +1,5 @@
 ---
-title: "cap3"
+title: "Repositório Local"
 author: "Gabriel Sartori"
 date: "29/10/2015"
 output: 
@@ -7,14 +7,15 @@ output:
     keep_md: yes
 ---
 
+
+### Instruções do Git
+
 Neste capítulo, as instruções serão todas feitas no terminal mesmo que
 existam alternativas gráficas para as mesmas. Isso enfatiza no que está
 sendo feito além do fato de que no terminal todos devem ter os mesmos
 recursos e os comandos irão produzir os mesmos resultados, o que faz
-esse tutorial algo reproduzível. Para usufruir das ferramentas gráfica va até o capitulo 8.
+esse tutorial algo reproduzível. Para usufruir das ferramentas gráfica va até o capitulo 6 **link*.
 
-
-### Meu primeiro repositório
 
 Já temos o Git devidamente e com credenciais (nome e email) e
 configurações aplicadas. Vamos então ver como o sistema de controle de
@@ -22,62 +23,60 @@ versão acontece.
 
 Todas as instruções do Git são sinalizadas por começar com `git` seguido
 da instrução/comando e seus argumentos complementares, se
-existirem/necessários. Abrindo o shell do seu computador:
+existirem/necessários.
 
-**git init** 
-
-O primeiro comando que inicia o processo de git. Escolha um pasta de preferência. Criar um pasta com arquivos de interesse a serem versionados:
-
-
-
-```{r, engine = 'sh', eval= FALSE}
-git init 
+```{r, engine="sh", include=FALSE}
+if [ -d meu1repo ] # Script para verificação da pasta meurepo1, retorna pasta limpa.
+then
+    echo "Diretório existe. Então apagar pasta .git"
+    cd meu1repo
+    ls -a
+    if [ -d .git ]
+    then
+        echo "Já existe projeto git aqui. Apagar."
+        rm -rf .git/
+        rm -rf *
+    fi
+else
+    echo "Diretório não existe."
+    mkdir meu1repo
+fi
+## Tudo limpo tal como precisamos.
+pwd
+ls -a
 ```
 
-```
-Initialized empty Git repository in /home/gabriel/Suporte/PET/Projeto/Apostila/Git/.git/
-
-```
-Visualizando modificações ao criar o repositório git da pasta
-
-```{r, engine ="bash", eval = FALSE}
-tree -a 
+```{r, engine="sh"}
+cd meu1repo ## Diretório de teste de comandos 
 ```
 
-```
-.
-└── .git
-    ├── branches
-    ├── config
-    ├── description
-    ├── HEAD
-    ├── hooks
-    │   ├── applypatch-msg.sample
-    │   ├── commit-msg.sample
-    │   ├── post-update.sample
-    │   ├── pre-applypatch.sample
-    │   ├── pre-commit.sample
-    │   ├── prepare-commit-msg.sample
-    │   ├── pre-push.sample
-    │   ├── pre-rebase.sample
-    │   └── update.sample
-    ├── info
-    │   └── exclude
-    ├── objects
-    │   ├── info
-    │   └── pack
-    └── refs
-        ├── heads
-        └── tags
+Antes de iniciarmos o repositório, vamos só verificar o cadastro. Se
+você já usa o Git ou fez os procedimento apresentados na primeira
+sessão, o comando abaixo vai retornar o nome e email usados e alguns
+definições adicionais, caso existam. Em caso de ainda não ter
+configurado o seu Git, informe o nome e email conforme apresentado na
+sessão anterior.
 
-10 directories, 13 files
 
+```{r, engine="sh", eval = FALSE }
+## Mostra as informações/definições do usuário.
+git config --list
 ```
 
-**NOTA**: o `tree` é um programa instalado a parte (*third party
-software*) que retorna arte ASCII representado a estrutura de
-diretórios. Se você usa distribuição Debian, instale com `sudo apt-get
-install tree`. Windows: [tree][].
+```sh
+user.name=Knight Rider
+user.email=batman@justiceleague.org
+```
+
+Temos um diretório destinado ao projeto que será mantido sobre
+versionamento, então vamos iniciar um repositório Git nele.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Inicia um repositório sob versionamento Git.
+git init
+```
 
 O Git retorna a mensagem de inicilização do repositório. Nesse momento
 ele cria um diretório oculto `.git/` com subdiretórios que são o coração
@@ -87,148 +86,1265 @@ prejudicar ou interromper o funcionamento do Git. Se você quiser
 encerrar o processo de versionamento fazendo com que esse diretório seja
 como qualquer outro diretório, é só excluir a diretório `.git/`. Cada
 subdiretório do `.git/` tem um propósito mas deixaremos os
-esclarecimentos para o futuro. 
-Por agora vamos apenas estrutur a minha primeira sessão.
+esclarecimentos para o futuro. Por agora vamos apenas conferir a sua
+estrutura.
 
-Primeiro vamos entender a principal ideia do versionamento do git através desta imagem :
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
 
-
-Nossos arquivos estão apenas no nosso diretório do seu computador. No git há 3 estágios o que estamos (diretório de trabalho), os arquivos na fase Index(área temporária), e na head (área de rastreio). Cada uma dessas etapas há um comando específico que veremos adiante.
-
-**Vou criar um documento de código: porqueLinux.txt - Nome arbitrário e para facilitar um documento tipo texto**
-
-Vamos aplicar o primeiro *add* ao `porqueLinux.txt.txt` para que ele começe
-a ser versionado.
-
-**git add <arquivo>** Adicionarei o arquivo para na área temporária
-
-```{r, engine ="bash", eval = FALSE}
-git add "PorqueoLinux.txt"
+## Mostra todo conteúdo do diretório.
+tree -a
 ```
 
-Adciona para a área temporária, porém não há retorno de mensagem na execução do comando.
+**NOTA**: o `tree` é um programa instalado a parte (*third party
+software*) que retorna arte ASCII representado a estrutura de
+diretórios. Se você usa distribuição Debian, instale com `sudo apt-get
+install tree`. Windows: [tree][].
 
-**git commit -m "Texto de referências de Mudança"** 
+## Minha Primeira Sessão
 
-Adiciona para a área de rastreio, porém é necessário comentar sobre o que foi feito no arquivo para facilitar o rastreiamento.
+Vamos começar da maneira mais simples, criando um arquivo com uma linha
+de texto apenas. Bem, vale avisar que ao longo desse tutorial, os
+arquivos serão sempre bem pequenos e dificilmente realistas, mas como o
+enfoque está no funcionamento, não haverá prejuízo.
 
-```{r, engine ="bash", eval = FALSE}
-git commit -m "Adiciona o arquivo porqueLinux.txt para rastreio"
+Vamos criar o arquivo com conteúdo também pelo terminal. Se você
+preferir, abra um editor de texto favorito (Emacs, Gedit, Geany,
+RStudio, Bloco de Notas, etc) e faça algo mais elaborado.
 
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Cria o arquivo README.txt com a linha - Meu primeiro repositório Git.
+echo "Meu primeiro repositório Git" > README.txt
+
+## Lista os arquivos do diretório.
+tree
 ```
 
-```
-[master (root-commit) 319ee41] Adicionar o arquivo para ser rastreado
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 porqueLinux.txt
-```
-Saída
-
-Exemplos de maus commits: 
-
-"blablabla"
-"Hoje o dia rendeu, trabalhei pra caramba"
-"Estou muito cansado"
-"Finalmente terminei este BUG"
-
-Boas práticas do uso de Commits
-
-- Tempo verbal presente
-- Uma funcionalidade por vez
-- Corpo da mensagem deve explicar o que e por que, não como
-- Não há necessidade em terminar com ponto
+Ao criarmos o arquivo e pedirmos a situação (*status*), ele indica que 
+existe um arquivo não restreado (*untracked*) no diretório. Inclusive 
+sugere uma ação que seria adicionar o aquivo (*add*). Se o seu sistema 
+operacional está em português, parte dos outputs do Git podem estar 
+traduzidos.
 
 
-## Comandos de Verificação: 
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
 
-Nesta secção aprenderemos as funcionalidades dos seguintes comandos do git:
-
-- *status*
-- *diff*
-- *log*
-- *checkout*
-
-Ainda no arquivo `porqueLinux.txt`, vamos escrever algo meramente didático, por exemplo: motivos para usar o linux; altere qualquer no seu documento os resultados a seguir equivalem a este. 
-
-**git status** - Verificação das atividades
-```{r, engine="bash", eval = FALSE}
+## Reconhecimento do Git sobre aquivo criado.
 git status
 ```
 
+A situação está o seguinte: figura-cap03-situation:
 
-```
-No ramo master
-Changes not staged for commit:
-  (utilize "git add <arquivo>..." para atualizar o que será submetido)
-  (utilize "git checkout -- <arquivo>..." para descartar mudanças no diretório de trabalho)
-
-	modificado: porqueLinux.txt
-
-nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git commit -a")
-
-```
-Na 1° linha diz que estamos no ramo master porém não vem esclarecer com muitos detalhes agora,  
-Na 2 ° linha diz que mudanças foram feitas no arquivo, e não estão sendo rastreadas. Logo abaixo é citado os comandos que utilizamos na seção anterior para o arquivo se tornar rastreado.
-
-O comando `git status` é recomendado que se utilize sempre após algum outro comando git quando você está na fase inicial de aprendizagem.
+Temos 3 estágios para o controle versionamento, após ter criado o docum
+-ento, está na condição diretório de trabalho. Aonde os arquivos não está
+rastreado, apenas no seu computador como qualquer outro. Para tornar ver
+sionado precisa passar para área temporária (add) e depois confirmar (commit). Após conf
+irmado então o arquivo está tendo controle de versão. Faremos então este
+processo.
 
 
+Para que o arquivo seja incluído no monitoramento é necessário que ele
+receba o primeiro comando *add*. Isso marca a entrada dele no projeto
+como um arquivo que a partir de então será versionado. O *status* agora
+não indica mais que ele está *untracked* mas sim que existem mudanças
+para serem registradas (*changes to be commited*). A melhor tradução de
+*commit*, pensando no seu uso em Git, é **fechar sob segurança**. Quando
+um *commit* é feito, cria-se um instante na linha do tempo que salva o
+estado do projeto. Para esse instante o projeto pode ser retrocedido,
+voltando o condição/conteúdo de todos os arquivos para o momento no qual
+o mencionado *commit* foi feito. Você pode voltar para um *commit* de
+semanas e até anos atrás.
 
-```{r, engine = "bash", eval = FALSE}
+O controle de versão não é apenas voltar os arquivos para o conteúdo que
+eles tinham no passado. Arquivos rastreados que foram deletados ou
+renomeados são recuperados. Até mesmo as permissões de
+leitura/escrita/execussão dos arquivos são comtempladas no
+versionamento.
 
-git add porquelinux.txt
-git status
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
 
-```
-
-
-```
-No ramo master
-Mudanças a serem submetidas:
-  (use "git reset HEAD <file>..." to unstage)
-
-	modificado: porqueLinux.txt
-```
-2° linha diz que mudanças foram submetidas, e logo abaixo diz caso eu queria retornar esta execução utilizando o comando `git reset`,mais pra frente veremos com detalhes. 
-Vamos *commitar* 
-
-
-
-
-```{r, engine="bash", eval = FALSE}
-git commit -m "tópico dos motivos de usar Linux"
+## O primeiro `add` submete o arquivo ao versionamento.
+git add README.txt
 git status
 ```
 
+O arquivo `README.txt` já é visto pelo Git como um arquivo com o qual
+ele deve se "preocupar", pois está sob versionamento. Vamos agora fazer
+um registro definitivo sobre o estado desse arquivo (*commit*). É de
+fundamental importância que a mensagem de notificação, ou mensagem de
+*commit*, reflita as moficações feitas. São as mensagens que serão
+consultadas quando você precisar desfazer/voltar. Ela deve ser curta (<=
+72 caracteres) e ao mesmo tempo informativa. A minha primeira mensagem
+não será, todavia.
+
+
+Boas Práticas de commit: 
+
+- Verbo no indicativo
+- Frases curtas
+- Dizer o que fez e não como fez
+
+Péssimas Práticas de commit:
+
+"BLABLABLABLA"
+"Trabalhei muito hoje"
+"Terminando este trabalho na madruga"
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Registro de versão.
+git commit -m "Cria arquivo com título."
+```
+
+
+O retorno da instrução de *commit* indica o número de arquivos incluídos
+no *commit* e o número de inserções e deleções de linhas. O mais
+importante está na primeira linha que informa o ramo de trabalho atual
+(*branch*) e o *sha1* do *commit*. O *sha1* é uma sequência hexadecimal
+de 40 digitos que representa unicamente o *commit*, então são $16^40$
+possibilidades!. É por meio do *sha1* que podemos retroceder o
+projeto. São mostrados apenas os 7 primeiros digitos porque são
+suficientes para diferenciar *commits* dentro até mesmo de projetos
+moderados ou grandes
+
+
+
+# Aperfeiçoando
+
+Vamos criar mais arquivos e acrescentar conteúdo ao já rastreado pelo
+Git para percebermos o funcionamento. Escrever uma lista de razões para
+usar o Linux. Deixei a lista curta poder ampliar no futuro e com erros
+de português para corrigir depois.
+
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Adiciona mais linhas ao README.txt
+echo "
+A filosofia do Linux é 'Ria na face do perigo'.
+Ôpa. Errado. 'Faça você mesmo'. É, é essa.
+                            -- Lunus Torvalds" >> README.txt
+
+## Cria uma lista de pontos sobre o porquê de usar o Linux.
+echo "Por que usar o Linux?
+
+* É livre
+* É seguro
+* É customizavel" > porqueLinux.txt
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mostra o conteúdo do arquivo.
+less README.txt
+```
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mostra o conteúdo do arquivo.
+less porqueLinux.txt
+```
+
+E o que o Git "acha" de tudo isso? O comando *status* é o mais usado do
+Git, principalmente nas etapas de aprendizado. Uma característica
+diferente do Git, se comparado a outras aplicações de uso por terminal,
+é que ele é realmente camarada. Nas mensagens de *output*, o Gitque
+informa o que aconteceu e também dá sugestões do que fazer.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git status
+```
+
+O Git retornou dois campos. No primeiro ele diz que existem mudanças no
+`README.txt` não encaminhadas para receber registro (*not staged for
+commit*) e no segundo ele aponta que o `porqueLinux.txt` é um arquivo
+não rastreado (fora de monitoramento).
+
+Vamos explorar um pouco mais os recursos do Git antes de adicionar as
+recentes mudanças. Até o momento, temos apenas um *commit* feito. Para
+acessar o histórico de registros usamos `git log`. O histórico mostra o
+*sha1*, o autor, data e mensagem de *commit*. Uma saída mais enxuta é
+obtida com `git log --oneline`, útil quando o histórico é longo. É
+possível fazer restrição no `git log`, como mostrar os *commits* a
+partir de certa data, certo intervalo de datas, para um único autor ou
+único arquivo. Visite: [git-log][].
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mostra o histórico de commits.
+git log
+```
+
+O comando *diff* mostra as diferenças no conteúdo dos
+arquivos/diretório. No caso, apenas o `README.txt` está sendo rastreado,
+por isso o *output* indica a adição (`+`) de novas linhas. Na saída
+tem-se os *sha1* das versões comparadas e o intervalo de linhas
+envolvido na porção modificada (`@@`). Visite: [git-diffs][].
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Diferença nos arquivos versionados.
+git diff
+```
+
+Vamos aplicar o primeiro *add* ao `porqueLinux.txt` para que ele começe
+a ser versionado. Perceba que ao adicioná-lo, as mudanças, no caso a
+criação do arquivo com contúdo, já são separadas para receber registro
+(*changes to be commited*).
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Adiciona o arquivo ao processo de reastreamento.
+git add porqueLinux.txt
+git status
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mensagem que registra as modificações adicionadas.
+git commit -m "Lista de inicial de o porquê usar o Linux."
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git status
+```
+
+Ainda resta o `REAMDE.txt` para receber registro. Você não precisa fazer
+agora. Pode continuar editanto caso não tenha atingido uma quantidade de
+modificação merecedora de *commit*. Lembre-se que registros geram
+conteúdo no diretório `.git`. Quanto mais *commits*, mais conteúdo
+gerado. Mas também, toda vez que você faz um *commit*, você define um
+ponto de retorno, um estado salvo, caso precise no futuro
+recuperar/visitar. O que é uma unidade de modificação comitável você irá
+definir aos poucos com a prática.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Encaminha o arquivo para receber registro.
+git add README.txt
+git status
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Atribui mensagem de notificação.
+git commit -m "Adiciona frase do Linux Torvalds."
+```
+
+Agora temos 3 *commits* e o *log* apresenta os *sha1* e as mensagens
+correspondentes aos mesmos. Com `--oneline` resumimos o *output* mostrando
+apenas o *sha1* e a mensagem de *commit*.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git log --oneline
+```
+
+Por meio dos *sha1*, podemos aplicar o *diff* para visitarmos as
+modificações entre dois *commits*, não necessariamente consecutivos, por
+exemplo. Também podemos retroceder (*checkout*, *reset*, *revert*) o
+projeto para alguns desses pontos.
+
+Abaixo instruímos o Git mostrar as diferenças para um *commit* atrás. A
+cabeça (*HEAD*) é o que se entende como estado mais recente. Usa-se o
+termo *HEAD* (cabeça) pois considera-se um crescimento do histórico
+debaixo para cima no qual um novo *commit* é colocado em cima dos demais
+(empilhado). O `HEAD@{0}` ou apenas `HEAD` representa o último registro
+feito. Não é necessário escrever o último `HEAD` na intrução abaixo.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git diff HEAD@{1}
+```
+
+Agora inspecionado uma distância de 2 *commits* a partir do último. Aqui
+tem-se os dois arquivos envolvidos nesse intervalo de 2 *commits*. Com
+`--name-only` retorna-se só o nome dos arquivos.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git diff HEAD@{2} HEAD@{0}
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git diff --name-only HEAD@{2} HEAD@{0}
+```
+
+Vamos resolver logo o caso da palavra sem acento em
+`porqueLinux.txt`. Você abre o arquivo no seu editor de texto e modifica
+conforme necessário. A modificação compreende um linha apenas mas aí
+lembrei de mais coisas e acrescentei. O `git diff` mostra as
+diferenças. Epa! As diferenças não eram entre *commits*? O conteúdo
+adicionado ainda não recebeu notificação!
+
+```{r, engine="bash", include=FALSE}
+cd meu1repo
+
+echo "Por que usar o Linux?
+
+* É livre
+* É seguro
+* É customizável
+* Tem repositórios de software
+* Atualização constante
+* Desempenho" > porqueLinux.txt
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Depois de corrigir palavras e adicionar conteúdo.
+git status
+```
+
+O Git sugere você aplicar *add* para preparar para *commit*. Caso as
+modificações sejam um engano e não mais desejadas, você pode
+desfazazê-las, abadonar a correção/inclusão das palavras usando
+`checkout`. Vamos aplicá-lo para ver como funciona.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Palavras corrigidas e mais itens adicionados.
+less porqueLinux.txt
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Abandona modificações feitas presentes no arquivo.
+git checkout -- porqueLinux.txt
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+less porqueLinux.txt
+```
+
+Bateu o arrependimento? Tem formas de poder retroceder com mudanças
+ainda não registradas mas mantendo a possibilidade de
+recuperá-las. Mostraremos em breve.
+
+**NOTA**: sempre que quiser testar um comando novo e não está seguro do
+que ele faz ou da extensão dos seus efeitos, faça uma cópia do projeto
+em outro diretório e experimente ele lá. Isso previne sabores amargos,
+pois algumas ações podem ser irreversíveis.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Depois de desfazer as modificações no porqueLinux.txt
+git status
+```
+
+Vamos seguir com as modificações em `porqueLinux.txt` que corrigem o
+texto e acrescentam itens novos.
+
+```{r, engine="bash", include=FALSE}
+cd meu1repo
+
+echo "Por que usar o Linux?
+
+* É livre
+* É seguro
+* É customizável
+* Tem repositórios de software
+* Atualização constante
+* Desempenho" > porqueLinux.txt
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git status
+```
+
+O `diff` vazio compara o diretório de trabalho com o último registro
+(último *commit*). Quando você usa explicitamente na instrução `HEAD@{ }`
+seguido de número, então estão sendo comparadas versões
+"commitadas". Existem variantes de sufixo para usar no `HEAD` que são:
+
+  * `HEAD@{n}`
+  * `HEAD^n`
+  * `HEAD~n`
+
+em que `n` é um número inteiro não negativo. Cada sulfixo tem uma
+finalidade que não detalharemos agora. Visite: [git-caret-and-tilde][].
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Modificações no diretório vs último commit.
+git diff
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Último commit vs dois ancestrais, usando ~.
+git diff HEAD~1 HEAD~0
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Último commit vs seu ancestral, usando @{}.
+git diff HEAD@{1} HEAD@{0}
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Último commit vs dois ancestrais.
+## git diff HEAD~2 HEAD~0
+git diff HEAD@{2} HEAD@{0}
+```
+
+Para ficar claro daqui em diante, você pode ao invés de pedir `log`,
+pedir o `reflog` que incluí as referências em termos da sequência do
+mais rencente para os seus ancestrais.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mostra referências para commits os ancentrais.
+git reflog
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Adiciona e commita.
+git add porqueLinux.txt
+git commit -m "Novos argumentos."
+```
+
+O Git permite um nível de rastreabilidade bem fino. Veja por exemplo que
+é possível saber quem modificou e quando cada linha do arquivo e qual o
+correspondente *sha1* do *commit*.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mostra quem, onde e o que fez em cada arquivo.
+git blame README.txt
+```
+
+
+## Fazendo cópias e trabalhando com ramos
+
+Existem várias formas de se trabalham com ramos. Geralmente os ramos são
+feitos sob demandas para adicionar uma característica ao projeto
+(*feature*) ou corrigir um *bug*. Alguns ramos, por outro lado, são
+ramos fixos destinados a receber o desenvolvimento dos ramos de
+demanda. Esses ramos são geralmente chamados de *devel* (*development*)
+e *release*. O ramo *master* é o default e em geral, para projetos
+grandes, o *master* só recebe versões funcionais do projeito, livre de
+bugs.
+
+Para criar um ramo, usandos `git branch` seguido do nome que se
+deseja. Vamos criar um ramo para adicionar mais arquivos ou modificações
+ao projeto.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Lista ramos (all), locais e remotos.
+## git branch    ## Só ramos locais
+## git branch -r ## Só ramos remotos
+git branch -a ## Todos os ramos.
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Cria um ramo para adição de conteúdo, novo segmento.
+git branch feature01
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Novo ramo criado aparece.
+git branch
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Muda o HEAD de ramo.
+git checkout feature01
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Situação no novo ramo.
+git status
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Histórico de commits.
+git log --oneline
+```
+
+Veja que o novo ramo não começa no zero ou vazio (sem arquivos) e sim a
+partir do ramo que é seu ancestral, ou seja, ele começa a partir do
+último *commit* existente, por padrão. Vamos adicionar um arquivo e
+commitar. O comando `wget` permite baixar arquivos pelo terminal. Será
+baixado um arquivo com um função para calcular o fator de inflação de
+variância (*vif*, variance inflation factor) usado em modelos de
+regressão, disponível na página da [Professora Suely Giolo][].
+
+```{r, engine="bash", include=FALSE}
+## Tenta ir para o diretório downloads, se não conseguir é porque não
+## existe então cria um diretório download para então entrar nele.
+if [ -d downloads ]
+then
+    echo "Diretório existe."
+    cd downloads
+else
+    echo "Diretório não existe."
+    mkdir downloads
+    cd downloads
+fi
+
+## Se não existir o aquivo vif.R, então baixar da internet.
+if [ ! -f vif.R ]
+then
+    echo "Arquivo vif.R não existe. Baixando..."
+    wget 'http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R'
+else
+    echo "Arquivo vif.R já existe."
+fi
+
+## Copiar o arquivo vif.R para o meu1repo (-v: verbose).
+cp -v vif.R ../meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
+cd meu1repo
+
+## Baixando arquivo da internet. Uma função do R.
+wget 'http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R'
+```
+
+```{r, engine="bash", echo=FALSE}
+## Printa o seria o output da wget mas sem usar a wget para não
+## encarecer a compilação. Insere o instante da compilação. Esconde
+## também o IP da máquina com ???.??.???.??.
+
+cat << EOF
+--$(date +"%Y-%m-%d %H:%M:%S")--  http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R
+Resolving people.ufpr.br (people.ufpr.br)... ???.??.???.??, 2801:82:8020:0:8377:0:100:20
+Connecting to people.ufpr.br (people.ufpr.br)|???.??.???.??|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 560
+Saving to: ‘vif.R’
+
+     0K                                                       100% 44,0M=0s
+
+$(date +"%Y-%m-%d %H:%M:%S") (44,0 MB/s) - ‘vif.R’ saved [560/560]
+EOF
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Situação do repositório após o download.
+git status
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git add vif.R
+git commit -m "Adiciona função R para VIF."
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Estrutura do diretório.
+tree
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Histórico de commits.
+git reflog
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git status
+```
+
+Então acabamos de acrescentar um novo aquivo ao projeto. Agora que as
+modificações foram salvas (*commit* feito) podemos trocar de ramo. Você
+vai ver que ao voltarmos para o ramo *master* o arquivo baixado da
+internet vai "desaparecer".
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Volta para o ramo master.
+git checkout master
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Estrutura do diretório.
+tree
+```
+
+O arquivo `vif.R` não sumiu. Ele está no ramo `feature01` e só passará
+para o ramo master quando mesclarmos o que existe no `feature01` ao
+`master`. Então é assim: mudou de ramo, muda o conteúdo do
+diretório. Fazer isso é bem simples, basta dar um `git merge`. Antes
+vamos aprender como saber as diferenças que existem entre ramos.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mostra todas as modificações, cada linha modificada de cada arquivo.
+git diff master feature01
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mostra só os arquivos modificados.
+git diff --name-only master feature01
+```
+
+Como você já havia antecipado, a única diferença entre os ramos `master`
+e `feature01` é o arquivo `vif.R`. Agora é só pedir o `git merge`.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mesclando as modificações em feature01 no master.
+git merge feature01 master
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git log --oneline
+```
+
+É possível criar um ramo a partir de um *commit* ancestral ao atual. Isso
+é extremamente útil para resolver os bugs. Vamos fazer um segundo ramo a
+partir do *commit* anterior a inclusão do arquivo R.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Referencias aos commits.
+git reflog
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Volta para antes do arquivo de baixar o vif.R.
+git checkout HEAD@{4}
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Qual a situação.
+git status
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## O histório existente nesse ponto.
+git log --name-only --oneline
+```
+
+Já que o *commit* mais recente dessa história aponta para o arquivo
+compras, vamos checar o seu conteúdo apenas por medida de segurança.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mostra o conteúdo do arquivo.
+less porqueLinux.txt
+```
+
+Dito e feito! Voltamos no tempo para o instante logo após o *commit* que
+incluí novos itens na lista. Podemos voltar para o presente se
+estivermos satisfeitos com o passeio mas também podemos criar um ramo
+aqui, caso isso seja necessário. Primeiro vamos voltar para o presente
+depois mostramos como criar o ramo.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mostra onde estamos.
+git branch
+```
+
+Se não fizemos nenhuma modificação, voltar é bem simples. Se
+modificações foram feitas é necessário saber se precisam ser mantidas e
+onde ou se devem ser descartadas.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Volta para o presente.
+git checkout master
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git status
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git log --oneline
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Fenda no tempo fechada. Sem sinal do detached HEAD.
+git branch
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Sinal do passeio no tempo.
+git reflog
+```
+
+Vamos começar a ser ousados. Vamos voltar no passado, adicionar um
+arquivo, commitar e ver o que acontece, como o histórico é representado.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Volta no tempo, após commit que aumenta porqueLinux.txt.
+git checkout HEAD@{6}
+```
+
+```{r, engine="bash", include=FALSE}
+## Tenta ir para o diretório downloads, se não conseguir é porque não
+## existe então cria um diretório download para então entrar nele.
+if [ -d downloads ]
+then
+    echo "Diretório existe."
+    cd downloads
+else
+    echo "Diretório não existe."
+    mkdir downloads
+    cd downloads
+fi
+
+## Se não existir o aquivo pimentel_racoes.txt, então baixar da internet.
+if [ ! -f pimentel_racoes.txt ]
+then
+    echo "Arquivo pimentel_racoes.txt não existe. Baixando..."
+    wget 'http://www.leg.ufpr.br/~walmes/data/pimentel_racoes.txt'
+else
+    echo "Arquivo pimentel_racoes.txt já existe."
+fi
+
+## Copiar o arquivo pimentel_racoes.txt para o meu1repo (-v: verbose).
+cp -v pimentel_racoes.txt ../meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
+cd meu1repo
+
+## Baixa arquivo de dados da internet.
+wget 'http://www.leg.ufpr.br/~walmes/data/pimentel_racoes.txt'
+```
+
+```{r, engine="bash", echo=FALSE}
+## Printa o seria o output da wget mas sem usar a wget para não
+## encarecer a compilação. Insere o instante da compilação. Esconde
+## também o IP da máquina com ???.??.???.??.
+
+cat << EOF
+--(date +"%Y-%m-%d %H:%M:%S")--  http://www.leg.ufpr.br/~walmes/data/pimentel_racoes.txt
+Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
+Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 217 [text/plain]
+Saving to: ‘pimentel_racoes.txt’
+
+     0K                                                       100% 68,9M=0s
+
+(date +"%Y-%m-%d %H:%M:%S") (68,9 MB/s) - ‘pimentel_racoes.txt’ saved [217/217]
+
+‘pimentel_racoes.txt’ -> ‘../meu1repo/pimentel_racoes.txt’
+EOF
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git status
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Adiciona para registrar a inclusão do arquivo.
+git add pimentel_racoes.txt
+git commit -m "Adiciona aquivo de dados de experimento com rações."
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git status
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Log num formato gráfico ASCII para mostrar o novo ramo.
+git log --graph --oneline --decorate --date=relative --all
+```
+
+No nosso projeto temos o *master* e o *feature01* em igual condição, sem
+nenhuma diferença. O *commit* recém feito indica um novo seguimento a
+partir daquele onde adicionamos novos itens na lista. Vamos criar um
+novo ramo porque atualmente estamos em um ramos suspenso (*detached
+HEAD*) que não é persistênte.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git branch
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Um novo ramo a partir do atual HEAD.
+git checkout -b feature02
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git branch
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git log --graph --oneline --decorate --date=relative --all
+```
+
+Vamos explorar bem a funcionalidade. Vamos voltar para o `feature01` e
+criar mais coisas lá. Você já deve estar pensando que tudo isso é
+absurdo e jamais alguém firaria indo e voltando assim. Você está certo,
+porém, quando o projeto envolve mais pessoas, cerrtamente as coisas irão
+bifurcar em algum ponto.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git checkout feature01
+```
+
+```{r, engine="bash", echo=FALSE}
+## Tenta ir para o diretório downloads, se não conseguir é porque não
+## existe então cria um diretório download para então entrar nele.
+if [ -d downloads ]
+then
+    echo "Diretório existe."
+    cd downloads
+else
+    echo "Diretório não existe."
+    mkdir downloads
+    cd downloads
+fi
+
+## Se não existir o aquivo brasilCopa2014.txt, então baixar da internet.
+if [ ! -f brasilCopa2014.txt ]
+then
+    echo "Arquivo brasilCopa2014.txt não existe. Baixando..."
+    wget 'http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt'
+else
+    echo "Arquivo brasilCopa2014.txt já existe."
+fi
+
+## Copiar o arquivo brasilCopa2014.txt para o meu1repo (-v: verbose).
+cp -v brasilCopa2014.txt ../meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
+cd meu1repo
+
+wget 'http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt'
+```
+
+```{r, engine="bash", echo=FALSE}
+## Printa o seria o output da wget mas sem usar a wget para não
+## encarecer a compilação. Insere o instante da compilação. Esconde
+## também o IP da máquina com ???.??.???.??.
+
+cat << EOF
+--$(date +"%Y-%m-%d %H:%M:%S")--  http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/brasilCopa2014.txt
+Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
+Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1254 (1,2K) [text/plain]
+Saving to: ‘brasilCopa2014.txt’
+
+     0K .                                                     100% 69,6M=0s
+
+$(date +"%Y-%m-%d %H:%M:%S") (69,6 MB/s) - ‘brasilCopa2014.txt’ saved [1254/1254]
+EOF
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git add brasilCopa2014.txt
+git commit -m "Arquivo sobre copa 2014 celeção brasileira."
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git log --graph --oneline --decorate --date=relative --all
+```
+
+Agora nos temos o *feature01* na frente do master e o *feature02* ao
+lado. O conteúdo dos dois ramos terá que ser incorporado ao *master* em
+algum momento porque é assim que funciona. Mas não há razões para
+preocupação pois o propósito do Git é justamente facilitar esse
+processo. Nesse caso, por exemplo, como as diferenças nos ramos consiste
+na adição de arquivos diferentes, incorporar as modificações no *master*
+será uma tarefa simples para o Git. O agravante é quando em dois ramos
+(ou duas pessoas) o mesmo arquivo é modificado no mesmo intervalo de
+linhas. Nessa situação o *merge* nos arquivos deve ser supervisionado e
+não automático. Vamos incorporar as modificações dos ramos ao master
+então.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Volta para o master.
+git checkout master
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mescla o feature01.
+git merge feature01 master
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mescla o feature02.
+git merge feature02 master
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git log --graph --oneline --decorate --date=relative --all
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+tree
+```
+
+****
+## Resolvendo conflitos
+
+Agora vamos de propósito mostrar uma situação em que não é possível
+fazer o merge automaticamente. Vamos criar um conflito. Para isso vou
+criar um ramo novo, modificar o arquivo na última linha e commitar. Vou
+voltar par ao *master* e fazer o mesmo mas vou usar um texto diferente
+para incluir no arquivo. Já que os ramos *feature01* e *feature02* não
+são mais necessários, podemos removê-los. No entanto, eles permanecem na
+história do projeto e poder resurgir se você voltar no tempo.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Remove ramos.
+git branch -d feature01
+git branch -d feature02
+git branch
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git log --graph --oneline --decorate --date=relative --all
+```
+
+Agora vou criar um novo ramo, adicionar um arquivo e encurtar o nome das
+colunas no cabeçalho.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Muda para um ramo criado na hora.
+git checkout -b feature03
+```
+
+```{r, engine="bash", include=FALSE}
+## Tenta ir para o diretório downloads, se não conseguir é porque não
+## existe então cria um diretório download para então entrar nele.
+if [ -d downloads ]
+then
+    echo "Diretório existe."
+    cd downloads
+else
+    echo "Diretório não existe."
+    mkdir downloads
+    cd downloads
+fi
+
+## Se não existir o aquivo bib1.txt, então baixar da internet.
+if [ ! -f bib1.txt ]
+then
+    echo "Arquivo bib1.txt não existe. Baixando..."
+    wget 'http://www.leg.ufpr.br/~walmes/data/bib1.txt'
+else
+    echo "Arquivo bib1.txt já existe."
+fi
+
+## Copiar o arquivo bib1.txt para o meu1repo (-v: verbose).
+cp -v bib1.txt ../meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
+cd meu1repo
+
+## Baixa o arquivo.
+wget 'http://www.leg.ufpr.br/~walmes/data/bib1.txt'
+```
+
+```{r, engine="bash", echo=FALSE}
+## Printa o seria o output da wget mas sem usar a wget para não
+## encarecer a compilação. Insere o instante da compilação. Esconde
+## também o IP da máquina com ???.??.???.??.
+
+cat << EOF
+--$(date +"%Y-%m-%d %H:%M:%S")--  http://www.leg.ufpr.br/~walmes/data/bib1.txt
+Resolving www.leg.ufpr.br (www.leg.ufpr.br)... ???.??.???.??
+Connecting to www.leg.ufpr.br (www.leg.ufpr.br)|???.??.???.??|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 535 [text/plain]
+Saving to: ‘bib1.txt’
+
+     0K                                                       100% 35,0M=0s
+
+$(date +"%Y-%m-%d %H:%M:%S") (35,0 MB/s) - ‘bib1.txt’ saved [535/535]
+EOF
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Mostra as 4 primeiras linhas.
+head -4 bib1.txt
+```
+
+Ao encurtar o nome para quatro dígitos, fica assim.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Substitui o conteúdo da primeira linha pelos nomes truncados em 4
+## dígidos e separados por tabulação. Etapa que você pode fazer no seu
+## editor de texto.
+sed -i "1s/.*/rept\tvari\tbloc\ty/" bib1.txt
+head -4 bib1.txt
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git add bib1.txt
+git commit -m "Arquivo de experimento em BIB. Trunca cabeçalho 4 digitos."
+```
+
+Baixamos e modificamos o arquivo. Adicionamos e fizemos o registro das
+modificações. Agora vamos voltar ao *master* e baixar o arquivo também,
+fazendo de conta que é outra pessoa trabalhando no mesmo projeto, mas
+essa pessoa vai passar a cabeçalho para caixa alta.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git checkout master
+```
+
+```{r, engine="bash", include=FALSE}
+## Copiar o arquivo bib1.txt para o meu1repo (-v: verbose).
+cd downloads
+cp -v bib1.txt ../meu1repo/
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
+cd meu1repo
+
+## Baixa o arquivo.
+wget 'http://www.leg.ufpr.br/~walmes/data/bib1.txt'
+```
+
+Ao encurtar o nome para quatro dígitos, fica assim.
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Substitui o conteúdo da primeira linha pelo mesmo em caixa alta. Faça
+## isso no seu editor de texto de preferido.
+sed -i '1s/.*/\U&/' bib1.txt
+head -4 bib1.txt
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git add bib1.txt
+git commit -m "Arquivo de experimento em BIB. Cabeçalho em caixa alta."
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git diff master feature03
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git log --graph --oneline --decorate --date=relative --all
+```
+
+```{r, engine="bash", echo=-c(1:2), eval=FALSE}
+cd meu1repo
+
+## Dá mensagem de erro que informa o conflito.
+git merge feature03 master
+```
+
+```{r, warning=FALSE, echo=FALSE}
+x <- system("cd meu1repo && git merge feature03 master", intern=TRUE)
+cat(paste(x, collapse="\n"))
 
 ```
-No ramo master
-nada a submeter, diretório de trabalho vazio
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git status
 ```
 
-Printei apenas a saida do comando git status, no qual diz que nao ha nada a se fazer pois os arquivos estao rastreados.
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
 
-**git diff** : Verificação das linhas de mudanças entre o diretório de trabalho com o arquivo da área temporária ou o rastreado (último commite). 
+## `less` printa o conteúdo do arquivo mas `head` limita para 10 linhas.
+less bib1.txt | head -10
+```
+
+Então deu conflito e o Git informa que ele deve ser resolvido. Resolver
+o conflito aqui significa abrir os arquivos com problema listados no git
+status e editar de tal forma a desconflitar. Nas regiões de conflito o
+Git sinaliza de forma especial, indicando por divisórias (`<<<<<<<`,
+`=======` e `>>>>>>>`) as versões no HEAD (ramo *master*) e no ramos a
+ser incorporado (*feature03*). Então vamos resolver o conflito sem
+favorecer ninguém, ou seja, vamos encurtar para 4 digitos e manter caixa
+alta. Dessa forma o aquivo fica assim.
+
+```{r, engine="bash", echo=-c(1:2), include=FALSE}
+cd meu1repo
+
+sed -i '1,3d;5d' bib1.txt
+sed -i '1s/.*/\U&/' bib1.txt
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+## Arquivo depois da edição que resolve o conflito.
+head -6 bib1.txt
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git status
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git add bib1.txt
+git commit -m "Resolve conflito, trunca com caixa alta."
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git status
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git log --graph --oneline --decorate --date=relative --all
+```
+
+```{r, engine="bash", echo=-c(1:2)}
+cd meu1repo
+
+git reflog
+```
 
 
-## Back to Past (Imagem de Volta para o Futuro)
 
-git checkout
-git mv *Não é bem assim
-git reset 
-
-## Ramificações 
-
-Master
-Branch
-
-## Complementos
-git blame
-git show
-git rm
-git ls-files
-
-
-## Ajuda
-
-Git help
