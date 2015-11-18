@@ -4,9 +4,11 @@ author: "PET Estatística UFPR"
 output:
   html_document:
     highlight: pygments
-    toc: true
+    keep_md: yes
     theme: flatly
-    keep_md: true
+    toc: yes
+  pdf_document:
+    toc: yes
 ---
 
 ```{r, include=FALSE}
@@ -1839,6 +1841,103 @@ opts_chunk$set(eval=FALSE)
 
 ****
 ## Ignorando arquivos e diretórios
+
+Há momentos em que é necessário a criação de arquivos e pastas, dentro do 
+repositório git, que não devem ser versionados, como é o caso de uma 
+compilação Latex, que gera arquivos auxiliares que não é preciso deixar 
+disponível a terceiros. Para esse intuito, o git possui um recurso que permite
+que arquivos e pastas fiquem "invisíveis" para o software.
+
+Para que isso ocorra, é indispensável a criação de um arquivo com extensão 
+`.gitignore`, que o git irá reconhecer e efetuar leitura a procura de 
+pastas e arquivos a ignorar. Dentro deste arquivo, é imprescindível que seja
+escrito, por linha, somente um nome de pasta ou arquivo a ser ignorado.
+
+### Padrões de formatos para o `.gitignore`
+
+* Linhas em branco não são lidas, servindo apenas como modo de separar e 
+organizar o arquivo.
+
+* Os caracteres ` # ` e ` ! ` são reservado do git. Para pastas ou arquivos
+que os nomes comecem com ` # ` (Exemplo: #git.txt) ou ` ! ` (Exemplo: !git.txt), 
+deve-se usar uma barra invertida na frente do padrão (Exemplo: \\#ddd.txt, \\!ddd.txt).
+
+* O caracter ` # ` serve para efetuar comentários, ou seja, a linha que iniciar com `#`
+não será interpretada pelo git.
+
+* O caracter `!` serve para negar um padrão, por exemplo, pode-se mandar o git 
+ignorar todos os arquivos de determinada pasta (Usando: Nome_Dir/*),
+mas deixar de ignorar um arquivo específico dentro dela 
+(Exemplo: !Nome_Dir/Arquivo.txt).
+
+* O asterisco ` * ` pode ser usado para substituir parte do nome de 
+arquivos e pastas, ou o nome inteiro. Isso é valido também para a 
+extensão do arquivo.
+
+* Um diretório pode ser ignorado adicionando seu nome e uma barra ao final deste.
+
+* Dois asteriscos ` ** ` podem ser usados para substituir caminhos de subpastas, 
+como por exemplo, para ignorar o diretório Subpasta, 
+o caminho `/Exercicio/Teste/Pasta/Subpasta/` pode ser substituido por `/**/Subpasta/`.
+
+
+### Exemplo
+
+O código abaixo é um exemplo de um arquivo com extensão `.gitignore`:
+
+```{r, engine="sh", eval=FALSE}
+# Esta linha é um comentário.
+
+# Ignorando arquivos com extensão .aux menos o arquivo EXEMPLO.aux:
+
+*.aux
+!EXEMPLO.aux
+
+# Ignorando todos os arquivos com nome EXEMPLO:
+
+EXEMPLO.*
+  
+# Ignorando arquivos que possuam HTML no nome:
+  
+HTML*.*
+  
+# Ignorando as Subpastas e os arquivos da pasta DIR:
+  
+DIR/*
+
+# Não ignorar apenas a Subpasta1 da pasta DIR:
+  
+!DIR/Subpasta1/
+  
+```
+
+Vale ressaltar que, no exemplo acima, por mais que esteja sendo ignorado arquivos 
+com o nome EXEMPLO, e arquivos com extensão .aux, 
+o arquivo EXEMPLO.aux (que está pecedido do sinal `!`) não será ignorado.
+
+### Tornando Global
+
+Cada vez que cria-se um novo projeto, para que arquivos sejam ignorados, 
+deve-se criar um novo arquivo `.gitignore`. Para que isso não ocorra, e 
+possível configurar o arquivo globalmente, ou seja, ele estará incorporado
+as configurações do git do seu computador.
+
+
+```{r, engine="sh", eval=FALSE}
+git config --global core.excludesfile ~/.gitignore_global
+```
+
+ Depois de executar o código acima, o `.gitignore` da pasta atual 
+ (pasta do seu projeto) será atribuido como global no arquivo de 
+ configuração do git (`.gitconfig`).
+
+ Uma observação importante a ser feita é que, se adicionado arquivos para
+ serem ignorados globalmente, como arquivos PDF (Usando: *.pdf), por exemplo,
+ todos os arquivos  com essa extensão serão ignorados pelo git,
+ não somente os do projeto atual. 
+ Portanto, é recomendado somente definir um `.gitignore` como global, 
+ se ele apenas desconsiderar arquivos auxiliares, ou seja, que não serão necessários
+ para compilações futuras.
 
 ****
 ## Autenticando em contas do GitLab (c3sl) e GitHub
