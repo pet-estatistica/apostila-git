@@ -5,7 +5,7 @@ PET Estatística
 ## 4.1. Criando um repositório Git
     
 Primeiramente é necessário ter acesso a um servidor linux com servidor SSH, no qual o usuário poderá ter seus repositórios. Será utilizado um diretório no qual será armazenado o repositório, que será definido como remoto.
-No exemplo a seguir o usuário cria um repositório remoto chamado `TesteRep`e o armazena em um diretório criado `~/git`:
+No exemplo a seguir é preciso criar um repositório remoto chamado `TesteRep` e o armazenar em um diretório criado `~/git`:
     
 **Exemplo:**
     
@@ -27,21 +27,20 @@ As configurações do servidor estão completas. A partir de agora serão dados 
 
 O git possibilita ao usuário realizar uma chave ssh que fará uma conexão segura da sua máquina com o servidor.
 
-Para obter uma conexão entre a máquina e o servidor, o usuário deve obter uma chave ssh. Para isso começamos com o seguinte comando no terminal:
+Para obter uma conexão entre a máquina e o servidor, deverá obter uma chave ssh. Para isso começamos com o seguinte comando no terminal:
     
 **Exemplo:**
     
     ```sh
     ## Gerando uma chave ssh
     ssh-keygen -t rsa -C "usuario@email.com"
-    
     ```
 
-A partir deste comando, o usuário poderá alterar o diretório onde será salva a chave ssh. O usuário pode permanecer com o diretório padrão, basta apertar Enter.
+A partir deste comando, será possível alterar o diretório onde será salva a chave ssh. O usuário pode permanecer com o diretório padrão, basta apertar Enter.
 Agora foram criados dois arquivos no diretório, `id_rsa` e `id_rsa.pub`. 
-Depois de escolher o diretório onde serão salvos os arquivos, o usuário terá a opção de digitar uma senha ou deixar o espaço em branco.
+Depois de escolher o diretório onde serão salvos os arquivos, terá a opção de digitar uma senha ou deixar o espaço em branco.
 
-Para visualizar a chave basta o usuário digitar o seguinte comando:
+Para visualizar a chave basta digitar o seguinte comando:
     
 **Exemplo:**
     
@@ -50,7 +49,7 @@ Para visualizar a chave basta o usuário digitar o seguinte comando:
     ```
 
 No arquivo `id_rsa.pub` está a chave. O usuário deve copiar o texto deste arquivo na íntegra.
-Para gerar a conexão ssh com o servidor o usuário deve abrir o site [https://gitlab.c3sl.ufpr.br/profile/keys](https://gitlab.c3sl.ufpr.br/profile/keys) e clicar em [Add SSH Key](https://gitlab.c3sl.ufpr.br/profile/keys/new). O usuário deve escrever um título para a sua nova chave, no campo `key` colar o texto copiado do arquivo `id_rsa.pub` e adicionar sua nova chave.
+Para gerar a conexão ssh com o servidor, deve abrir o site [https://gitlab.c3sl.ufpr.br/profile/keys](https://gitlab.c3sl.ufpr.br/profile/keys) e clicar em [Add SSH Key](https://gitlab.c3sl.ufpr.br/profile/keys/new). É necessário escrever um título para a sua nova chave, no campo `key` colar o texto copiado do arquivo `id_rsa.pub` e adicionar sua nova chave.
 
 Para checar a configuração da sua máquina com o sevidor basta realizar o seguinte comando:
     
@@ -67,7 +66,7 @@ Para checar a configuração da sua máquina com o sevidor basta realizar o segu
 
 ### Git clone
 Este comando é usado para clonar um repositório do servidor remoto para um servidor local. Caso o usuário queira copiar um repositório que já existe para realizar colaborações em um projeto que queira participar. 
-O usuário terá acesso a todos os arquivos e poderá verificar as diferentes versões deste.
+O usuário terá acesso a todos os arquivos e poderá verificar as diferentes versões destes.
 No exemplo abaixo temos uma bibliotaca Git, chamada "TesteClone", que será clonado da seguinte forma:
     
 **Exemplo:**
@@ -76,9 +75,10 @@ No exemplo abaixo temos uma bibliotaca Git, chamada "TesteClone", que será clon
     git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/TesteClone.git
     ```
 
-Desta forma o usuário terá um diretório `TesteClone` em seu computador, onde estarão todos os arquivos do projeto nele.
 
-O usuário também terá a opção de clonar o repositório `TesteClone`em um diretório diferente do padrão Git, que no próximo exemplo denominaremos de `DirTeste`:
+Desta forma terá um diretório `TesteClone` em seu computador, onde estarão todos os arquivos do projeto nele.
+
+O usuário também terá a opção de clonar o repositório `TesteClone` em um diretório diferente do padrão Git, que no próximo exemplo denominaremos de `DirTeste`:
     
 **Exemplo:**
     
