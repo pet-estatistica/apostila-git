@@ -52,9 +52,13 @@ git status --help
 
 ## Repositório
 
-Um repositório é uma pasta gerenciada pelo git. A partir da criação deste,
-podemos marcar pontos de mudanças significativas nos arquivos gerenciados,
+
+usufruimos da podemos marcar pontos de mudanças significativas nos arquivos gerenciados,
 sendo possível transitar entre as diferentes verões a medida do necessário.
+
+**Sugestão**: Um repositório é uma pasta gerenciada pelo git. A partir 
+da criação desta, usufruimos dos sistema de versionamento. 
+
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -144,7 +148,8 @@ git commit -m "Meu primeiro commit"
 Os `branchs` são como uma cópia dos arquivos do ultimo commit
 para um ambiente de desenvolvimento paralelo, o que
 permite que as modificações em um `branch` não afete os arquivos em outro.
-Os branchs também são chamados de ramos de desenvolvimento.
+Os branchs também são chamados de ramos de desenvolvimento. Veja com mais
+detalhes no capitulos dos worksflows.
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -184,7 +189,7 @@ git merge novoBranch
 ## Rm
 
 O `git rm`, na sua forma mais comum, serve para remover um arquivo de 
-forma que ele deixe de sergerenciado pelo git e seja excluido do disco 
+forma que ele deixe de ser gerenciado pelo git e seja excluido do disco 
 rígido. Também é possível que o arquivo deixe de ser gerenciado 
 e permaneça no disco.
 
