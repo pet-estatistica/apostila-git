@@ -246,7 +246,7 @@ se o servidor fosse um cadeado e a sua máquina local tem a chave que o
 abre.
 
 Para gerar as chaves públicas, você precisa executar:
-```{sh}
+```{r, engine="bash", eval=FALSE}
 ## Gera chaves públicas.
 ssh-keygen -t rsa -C "seu_email@seu.provedor"
 ```
@@ -272,7 +272,7 @@ FIGURA XXX: *Printscreen* da página de configurações pessoais do
 GitHub. No menu `SSH Keys` pode-se ver e adicionar chaves públicas.
 
 Para testar a comunição entre o GitHub e a sua máquina, execute:
-```{sh}
+```{r, engine="bash", eval=FALSE}
 ## Testa comunição. Retorna um "Welcome!" em caso positivo.
 ssh -T git@github.com
 
@@ -284,7 +284,7 @@ No GitLab, o cadastro de chaves públicas é um processo semelhante. Uma
 vez autenticado, acesse <https://gitlab.c3sl.ufpr.br/profile/keys> para
 adicionar chaves públicas.  Para testar a comunição entre o GitHub e a
 sua máquina, execute:
-```{sh}
+```{r, engine="bash", eval=FALSE}
 ## Testa comunição. Retorna um "Welcome!" em caso positivo.
 ssh -T git@gitlab.c3sl.ufpr.br
 
@@ -338,7 +338,7 @@ localmente. O endereço do repositório é composto pelo seu nome de
 usuário e nome do repositório. O repositório `ola-mundo` da conta do
 `fulano` pode ser clonado com:
 
-```{sh}
+```{r, engine="bash", eval=FALSE}
 ## Clone pelo protocolo ssh. Requer chaves públicas.
 git clone git@github.com:fulano/ola-mundo.git
 ```
@@ -348,7 +348,7 @@ Protocol*) também. Em geral, para clonar repositórios de outros usuários
 e fazer testes, usa-se `http`. Embora você possa usar `http` nos seus
 repositórios, prefira o *SSH*. Com `http`, o endereço para a ser:
 
-```{sh}
+```{r, engine="bash", eval=FALSE}
 git clone https://github.com/fulano/ola-mundo.git
 ```
 
@@ -356,7 +356,7 @@ Por padrão, ao clonar o repositório, um diretório de mesmo nome é criado
 com o projeto em seu interior. Em caso de preferir outro nome para esse
 diretório, por exemplo, `OlaMundo`, use:
 
-```{sh}
+```{r, engine="bash", eval=FALSE}
 git clone https://github.com/fulano/ola-mundo.git OlaMundo
 ```
 
@@ -369,7 +369,7 @@ repositório com esse nome no GitHub, o endereço fica
 `git@github.com:fulano/Artigo.git`. Então é só adicionar esse endereço
 como `origin` do projeto Git:
 
-```{sh}
+```{r, engine="bash", eval=FALSE}
 ## Adiciona endereço de "origin" ao repositório.
 git remote add origin git@github.com:fulano/Artigo.git
 
