@@ -133,11 +133,13 @@
      revisar o capítulo da Ângela que foi assumido pelo Daniel.
    + Ângela: Corrigir o que estiver disponível do capítulo do Walmes.
    + Jhenifer: Corrigir o que estiver disponível do capítulo do Eduardo.
+   + Alessandra: Fazer uma leitura e revisão do próprio capítulo para
+     deixá-lo mais claro.
    + Eduardo: Incluir screenshots das GUI para Git que ficou
      **pendente** e revisar o capítulo do Gabriel.
    + Alcides: Finalizar a correção do capítulo do Gabriel que ficou
-   **pendente** e colecionar exemplos de rotinas disponíveis em todos os
-   capítulos e incluir nos Exemplos de Rotina.
+     **pendente** e colecionar exemplos de rotinas disponíveis em todos
+     os capítulos e incluir nos Exemplos de Rotina.
    + Walmes: Escrever sobre o fluxo de trabalho e integração contínua.
    + Daniel: Concluir o trabalho **acumulado de 2 semanas** e assim
      concluir sobre Sistemas de Controle de Versão, *Cheat Sheet* e uso
