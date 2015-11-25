@@ -14,7 +14,7 @@ library(knitr)
 opts_chunk$set(comment=NA)
 ```
 
-## Serviços Web para Git ##
+# Serviços Web para Git #
 
 No capítulo anterior vimos como configurar um repositório remoto em um
 servidor. Esse procedimento possibilita trabalho em equipe visto que
@@ -36,7 +36,7 @@ configurar uma conta ligada a um repositório local. Além disso, o
 *workflow* básico que considera servições web será descrito, enfatizando
 as funcinalides desses serviçõs voltados à colaboração.
 
-### GitHub ###
+## GitHub ##
 
 ![](./images/github-octocat.png)
 
@@ -148,7 +148,7 @@ com funcionalidades que o GiHub não oferece no plano básico. O GitLab e
 o Bitbucket estão entre os 5 mais populares e permitem, por exemplo, ter
 alguns repositórios privados com a conta *free*.
 
-### GitLab ###
+## GitLab ##
 
 ![](./images/gitlab-raccoon.jpg)
 
@@ -200,11 +200,11 @@ GitLab tem repositórios com 5 níveis de acesso (*owner*, *master*,
 *diffs*; permite importar repositórios de outros serviços; permite
 adição de *web hooks*.
 
-### Outros ###
+## Outros ##
 
 <http://www.git-tower.com/blog/git-hosting-services-compared/>
 
-## Criar um perfil
+# Criar um perfil #
 
 Criar uma conta no Github é tão simples como uma conta de email ou de
 rede social. Acesse o endereço <https://github.com/join> para preencher
@@ -225,7 +225,7 @@ instalações em servidoras próprias (do C3SL e do LEG), no entanto, a
 interface do usuário é a mesma, com excessão de alguns privilégios
 administrativos.
 
-### Habilitar comunição ###
+## Habilitar comunição ##
 
 http://www.vogella.com/tutorials/GitHosting/article.html
 
@@ -296,7 +296,7 @@ Lembre-se de que o endereço `gitlab.c3sl.ufpr.br` corresponde ao serviço
 GitLab disponibilidade pelo C3SL. Caso você esteja fazendo a conta no
 GitLab.com, o endereço muda de acordo.
 
-### Gerenciar repositórios ###
+## Gerenciar repositórios ##
 
 **GitHub**
 
@@ -485,13 +485,13 @@ Não usamos a conta no <https://gitlab.com/>, usamos a instalação em
 servidor próprio disponibilizado pelo c3sl - Centro de Computação
 Científica e Software Livre - da UFPR.
 
-## Fluxo de trabalho ##
+# Fluxo de trabalho #
 
 <https://www.atlassian.com/git/>
 
 clone, add, commit, branch, push, fetch, pull.
 
-## Macanísmos de colaboração ##
+# Macanísmos de colaboração #
 
 Os serviços web para Git, mesmo que você trabalhe sozinho, já são
 interessantes para que você tenha uma cópia (backup) do seu projeto e
@@ -501,7 +501,7 @@ básico sobre isso quando falamos dos recursos de *issue*, *fork* e
 *merge request*. Nas sessões a seguir, vamos nos aprofundar nesses três
 mecanísmos chaves para a colaboração via serviços web para Git.
 
-### Issues ###
+## Issues ##
 
 De acordo com o dicionário [Macmillan], *issue* significa um problema
 que precisa ser considerado. Também significa um assunto que as pessoas
@@ -547,7 +547,7 @@ serviços web até tem formas de fazer *hiperlinks* facilmente para os
 *issues*. No GitLab, usa-se um hash seguido do número identificador
 (e.g. `#45`) para indicar um *issue*.
 
-### Fork ###
+## Fork ##
 
 A palavra *fork*, como substantivo, representa forquilha,
 bifurcação. Como verbo, representa bifurcar. Esse recurso está presente
@@ -592,7 +592,7 @@ o seu perfil. Quando o seu trabalho tiver concluído, você pode fazer um
 os devidos créditos ao dono da cópia, mesmo que lá no futuro, o seu
 projeto e o original sejam completamente diferentes.
 
-### Merge Request ###
+## Merge Request ##
 
 O *merge request* (requisição de mescla/fusão) é o recurso de
 colaboração chave. Ele serve para que pessoas da equipe (segundos) peçam
@@ -691,7 +691,7 @@ git tag
 git tag -a v1.0 -m "Versão 1.0 do software"
 ```
 
-## Integração contínua ##
+# Integração contínua #
 
 Permite chegar se o projeto, no caso de softwares, está
 funcionando/instalando sem erros.
