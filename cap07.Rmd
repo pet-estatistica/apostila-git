@@ -21,15 +21,15 @@ permissão de leitura e escrita. Se um repositório privado for criado
 dentro de um grupo, todos do grupo terão permissão de leitura e escrita.
 
 
-- **Internal**: é o repositório é fechado para usuários externos ao
+- **Internal** repositório fechado para usuários externos ao
 grupo, mas qualquer usuário cadastrado no grupo terá permissão de leitura
 e escrita no repositório.
 
 
-- **Public**: é o repositório é aberto para qualquer pessoa, e fica
-visível para qualquer um (usuário do grupo ou não). Usuários do grupo
-tem permissão de leitura e escrita no repositório. Usuários sem conta 
-no grupo podem clonar o repositório, mas não tem permissão para alterar 
+- **Public**: repositório aberto,
+visível para qualquer pessoa (usuário do grupo ou não). Usuários do grupo
+tem permissão de leitura e escrita no repositório. Usuários sem conta
+no grupo podem clonar o repositório, mas não tem permissão para alterar
 o repositório (enviar merge requests por exemplo).
 
 É possível adicionar usuários para colaborar em um repositório. Cada 
@@ -53,8 +53,8 @@ orientação sobre o uso do projeto (permissão, citação, entre outros).
 Opcionalmente pode-se criar um arquivo *LICENSE* com a licença. 
 Esse arquivo ficará disponível também em uma aba na página inicial do 
 projeto.
-- (**Opcional**): um guia de contribuição, se o projeto pretende que 
-colaboradores externos colaborem e precisam de algumas orientações básicas
+- (**Opcional**): um guia de contribuição, se o (Owner) do projeto pretende que
+usuários externos colaborem, é possível apresentar algumas orientações básicas
 sobre como colaborar. Criando um arquivo `CONTRIBUTING.md` com este guia,
 ele será automaticamente colocado em uma aba na página inicial do projeto.
 - (**Opcional**): um *changelog* para que sejam registradas as modificações 
@@ -118,8 +118,8 @@ letra maiúscula, tanto se for título, corpo da mensagem, ou apenas
 uma mensagem de uma única linha.
 
 4.**Não termine os commits com ponto**: principalmente se for o título 
-de uma mensagem de commit mais longa. Espaço é valioso quando se temos 
-no máximo 50 ou 72 caracteres.
+de uma mensagem de commit mais longa. Espaço é valioso quando dispomos apenas 
+de 50 ou 72 caracteres.
 
 5.**Use o modo imperativo**: no título de commits longos ou em mensagens 
 de commits únicas. O modo imperativo significa escrever como se estivesse 
@@ -149,8 +149,7 @@ de commit mais longa, devemos manter o corpo da mensagem com no máximo
 
 
 7.**Use o corpo da mensagem para explicar "o que" e "porque", e não "como"**: contextualize o que você fez e o motivo. Na maioria dos casos você pode 
-deixar de fora como você fez as modificações, pois o código alterado já 
-deverá ser auto-explicativo. 
+deixar de fora como você fez as modificações, pois o código alterado será auto-explicativo. 
 
 
 ## 2.Modelos de fluxos de trabalho
@@ -184,7 +183,7 @@ há uma grande chance de ocorrerem conflitos.
       FIGURA: Colaborador publicando as modificações no repositório central
 
       Outro membro também termina seu trabalho e resolve publicar no 
-      repositório central, porém não irá conseguir. O repositório central 
+      repositório central, porém não conseguirá. O repositório central 
       está diferente do seu repositório local.
 
       ![](./images/traba-central-3.png)
@@ -208,8 +207,8 @@ há uma grande chance de ocorrerem conflitos.
       FIGURA: Colaborador publica modificações do repositório central
 
 - #### **Feature branch workflow**: 
-recomendado para projetos pequenos e grandes que envolvam mais de um 
-colaborador. O projeto principal é mantido nobranch master. Se um membro 
+recomendado para projetos pequenos e grandes, que envolvam mais de um 
+colaborador. O projeto principal é mantido no branch master. Se um membro 
 quiser realizar alguma alteração, deverá criar um novo branch `feature`, 
 e fazer as alterações nesse branch e sugerir um `merge request`. Com isso, 
 os demais colaboradores poderão revisar as alterações sugeridas e discutir as modificações, até que uma pessoa habilitada faça o merge desse branch 
@@ -222,7 +221,7 @@ fácil para usuários novos do git.
 
       **Exemplo**
 
-      Antes de começar a desenvolver um recurso, é preciso de criar um 
+      Antes de começar a desenvolver um recurso, é preciso criar um 
       ramo isolado para trabalhar
 
       ![](./images/traba-feature-1.png)
@@ -230,8 +229,7 @@ fácil para usuários novos do git.
       FIGURA: Criando um novo ramo para o trabalho
 
       Com isso, o membro poderá iniciar o seu trabalho, e realizar o que
-      for necessário nesse ramo (brach). Após finalizar o projeto, o colaborador
-      envia suas modificações, irá requirir um `merge request` para que 
+      for necessário nesse ramo (branch). O colaborador, após finalizar o projeto, irá requirir um `merge request` para que 
       as alterações feitas nesse branch, sejam incorporadas no `master`. Os 
       demais membros, poderão avaliar se tais modificações são pertinentes
       para o projeto.
@@ -270,13 +268,13 @@ exemplo, que os usuários de um software, instalem tanto uma versão estável
       FIGURA: Ilustração dos branches específicos
 
       *Develop* é semelhante ao master do feature branch workflow. *Release*
-      serve "lançar" possíveis bugs gerados no código. *Hotfix* contém as
+      serve para "lançar" possíveis bugs gerados no código. *Hotfix* contém as
       correções dos bugs do release que não podem aguardar o lançamento
       do mesmo.
 
 
 - #### **Forking workflow**: 
-recomendado para projetos abertos, onde se espera usuários externos façam contribuições. Esse workflow consiste de um repositório oficial, de onde 
+recomendado para projetos abertos, onde se espera que usuários externos façam contribuições. Esse workflow consiste em um repositório oficial, de onde 
 os colaboradores fazem um `fork` desse repositório, e passam a desenvolver 
 o projeto de maneira independente. Assim, cada colaborador poderá adotar 
 o workflow de preferência, e não precisará ter acesso ao repositório 
