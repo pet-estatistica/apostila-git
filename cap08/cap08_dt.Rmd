@@ -6,7 +6,7 @@ Dicionário de Termos
 
 ## Config
 
-O `config` é um comando usado para ajustar as configurações padrão do Git.
+O `config` é um comando usado para ajustar as configurações padrão do git.
 Há duas configurações básicas a serem feitas: a inclusão do e-mail e 
 do nome do usuário Git.
 Todas as configurações definidas como globais ficam armazenadas em um 
@@ -52,9 +52,16 @@ git status --help
 
 ## Repositório
 
-Um repositório é uma pasta gerenciada pelo Git. A partir da criação deste,
-podemos marcar pontos de mudanças significativas nos arquivos gerenciados,
-sendo possível transitar entre as diferentes versões.
+<<<<<<< HEAD
+
+=======
+ Um repositório é uma pasta gerenciada pelo git. A partir 
+da criação desta, usufruimos dos sistema de versionamento, sendo possível
+transitar entre as diferentes versões a medida que necessário. 
+>>>>>>> 07c90afef682bf3d8d8cd150e8145174e3520928
+
+
+
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -138,10 +145,19 @@ git commit -m "Meu primeiro commit"
 
 ## Branch
 
+HEAD
+Os `branchs` são como uma cópia dos arquivos do ultimo commit
+para um ambiente de desenvolvimento paralelo, o que
+permite que as modificações em um `branch` não afete os arquivos em outro.
+Os branchs também são chamados de ramos de desenvolvimento. Veja com mais
+detalhes no capitulos dos worksflows.
+
+
 Os `branchs` são como cópias dos arquivos do último commit para um ambiente 
 de desenvolvimento paralelo, o qual permite que as modificações em um 
 `branch` não afete os arquivos em outro.
 Os branchs também são chamados de ramos de desenvolvimento.
+ 07c90afef682bf3d8d8cd150e8145174e3520928
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -180,9 +196,16 @@ git merge novoBranch
 
 ## Rm
 
+ HEAD
+O `git rm`, na sua forma mais comum, serve para remover um arquivo de 
+forma que ele deixe de ser gerenciado pelo git e seja excluido do disco 
+rígido. Também é possível que o arquivo deixe de ser gerenciado 
+e permaneça no disco.
+
 O `git rm`, de forma mais prática, serve para remover um arquivo deixando
 de ser gerenciado pelo Git e seja excluído do disco rígido. Também é possível 
 que o arquivo deixe de ser gerenciado e permaneça no disco.
+ 07c90afef682bf3d8d8cd150e8145174e3520928
 
 Uma das vantagens é que, quando o arquivo é removido pelo `git rm`, já 
 aparece como preparado (staged), precisando somente que a exclusão seja 
