@@ -129,6 +129,21 @@
    + Daniel: **finalizar todo o trabalho da semana anterior**. Concluir
      o capítulo sobre Git com o RStudio
 5. 2015-11-24:
+   + Gabriel: Concluir a revisão **pendente** do próprio capítulo e
+     revisar o capítulo da Ângela que foi assumido pelo Daniel.
+   + Ângela: Corrigir o que estiver disponível do capítulo do Walmes.
+   + Jhenifer: Corrigir o que estiver disponível do capítulo do Eduardo.
+   + Alessandra: Fazer uma leitura e revisão do próprio capítulo para
+     deixá-lo mais claro.
+   + Eduardo: Incluir screenshots das GUI para Git que ficou
+     **pendente** e revisar o capítulo do Gabriel.
+   + Alcides: Finalizar a correção do capítulo do Gabriel que ficou
+     **pendente** e colecionar exemplos de rotinas disponíveis em todos
+     os capítulos e incluir nos Exemplos de Rotina.
+   + Walmes: Escrever sobre o fluxo de trabalho e integração contínua.
+   + Daniel: Concluir o trabalho **acumulado de 2 semanas** e assim
+     concluir sobre Sistemas de Controle de Versão, *Cheat Sheet* e uso
+     de Git no RStudio.
 6. 2015-12-01:
 7. 2015-12-08:
 8. 2015-12-15: Apostila Git concluída!

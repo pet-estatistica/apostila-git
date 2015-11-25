@@ -2,11 +2,11 @@
 title: "Serviços Web para Projetos Git"
 author: "PET Estatística UFPR"
 output:
-  html_document:
-    highlight: pygments
+  pdf_document:
+    highlight: default
     toc: true
-    theme: flatly
-    keep_md: true
+    toc_depth: 2
+    keep_tex: true
 ---
 
 ```{r, include=FALSE}
@@ -14,7 +14,7 @@ library(knitr)
 opts_chunk$set(comment=NA)
 ```
 
-## Serviços Web para Git ##
+# Serviços Web para Git #
 
 No capítulo anterior vimos como configurar um repositório remoto em um
 servidor. Esse procedimento possibilita trabalho em equipe visto que
@@ -36,7 +36,7 @@ configurar uma conta ligada a um repositório local. Além disso, o
 *workflow* básico que considera servições web será descrito, enfatizando
 as funcinalides desses serviçõs voltados à colaboração.
 
-### GitHub ###
+## GitHub ##
 
 ![](./images/github-octocat.png)
 
@@ -148,7 +148,7 @@ com funcionalidades que o GiHub não oferece no plano básico. O GitLab e
 o Bitbucket estão entre os 5 mais populares e permitem, por exemplo, ter
 alguns repositórios privados com a conta *free*.
 
-### GitLab ###
+## GitLab ##
 
 ![](./images/gitlab-raccoon.jpg)
 
@@ -200,11 +200,11 @@ GitLab tem repositórios com 5 níveis de acesso (*owner*, *master*,
 *diffs*; permite importar repositórios de outros serviços; permite
 adição de *web hooks*.
 
-### Outros ###
+## Outros ##
 
 <http://www.git-tower.com/blog/git-hosting-services-compared/>
 
-## Criar um perfil
+# Criar um perfil #
 
 Criar uma conta no Github é tão simples como uma conta de email ou de
 rede social. Acesse o endereço <https://github.com/join> para preencher
@@ -225,7 +225,7 @@ instalações em servidoras próprias (do C3SL e do LEG), no entanto, a
 interface do usuário é a mesma, com excessão de alguns privilégios
 administrativos.
 
-### Habilitar comunição ###
+## Habilitar comunição ##
 
 http://www.vogella.com/tutorials/GitHosting/article.html
 
@@ -246,7 +246,7 @@ se o servidor fosse um cadeado e a sua máquina local tem a chave que o
 abre.
 
 Para gerar as chaves públicas, você precisa executar:
-```{sh}
+```{r, engine="bash", eval=FALSE}
 ## Gera chaves públicas.
 ssh-keygen -t rsa -C "seu_email@seu.provedor"
 ```
@@ -272,7 +272,7 @@ FIGURA XXX: *Printscreen* da página de configurações pessoais do
 GitHub. No menu `SSH Keys` pode-se ver e adicionar chaves públicas.
 
 Para testar a comunição entre o GitHub e a sua máquina, execute:
-```{sh}
+```{r, engine="bash", eval=FALSE}
 ## Testa comunição. Retorna um "Welcome!" em caso positivo.
 ssh -T git@github.com
 
@@ -284,7 +284,7 @@ No GitLab, o cadastro de chaves públicas é um processo semelhante. Uma
 vez autenticado, acesse <https://gitlab.c3sl.ufpr.br/profile/keys> para
 adicionar chaves públicas.  Para testar a comunição entre o GitHub e a
 sua máquina, execute:
-```{sh}
+```{r, engine="bash", eval=FALSE}
 ## Testa comunição. Retorna um "Welcome!" em caso positivo.
 ssh -T git@gitlab.c3sl.ufpr.br
 
@@ -296,7 +296,7 @@ Lembre-se de que o endereço `gitlab.c3sl.ufpr.br` corresponde ao serviço
 GitLab disponibilidade pelo C3SL. Caso você esteja fazendo a conta no
 GitLab.com, o endereço muda de acordo.
 
-### Gerenciar repositórios ###
+## Gerenciar repositórios ##
 
 **GitHub**
 
@@ -338,7 +338,7 @@ localmente. O endereço do repositório é composto pelo seu nome de
 usuário e nome do repositório. O repositório `ola-mundo` da conta do
 `fulano` pode ser clonado com:
 
-```{sh}
+```{r, engine="bash", eval=FALSE}
 ## Clone pelo protocolo ssh. Requer chaves públicas.
 git clone git@github.com:fulano/ola-mundo.git
 ```
@@ -348,7 +348,7 @@ Protocol*) também. Em geral, para clonar repositórios de outros usuários
 e fazer testes, usa-se `http`. Embora você possa usar `http` nos seus
 repositórios, prefira o *SSH*. Com `http`, o endereço para a ser:
 
-```{sh}
+```{r, engine="bash", eval=FALSE}
 git clone https://github.com/fulano/ola-mundo.git
 ```
 
@@ -356,7 +356,7 @@ Por padrão, ao clonar o repositório, um diretório de mesmo nome é criado
 com o projeto em seu interior. Em caso de preferir outro nome para esse
 diretório, por exemplo, `OlaMundo`, use:
 
-```{sh}
+```{r, engine="bash", eval=FALSE}
 git clone https://github.com/fulano/ola-mundo.git OlaMundo
 ```
 
@@ -369,7 +369,7 @@ repositório com esse nome no GitHub, o endereço fica
 `git@github.com:fulano/Artigo.git`. Então é só adicionar esse endereço
 como `origin` do projeto Git:
 
-```{sh}
+```{r, engine="bash", eval=FALSE}
 ## Adiciona endereço de "origin" ao repositório.
 git remote add origin git@github.com:fulano/Artigo.git
 
@@ -485,39 +485,213 @@ Não usamos a conta no <https://gitlab.com/>, usamos a instalação em
 servidor próprio disponibilizado pelo c3sl - Centro de Computação
 Científica e Software Livre - da UFPR.
 
-## Fluxo de trabalho ##
+# Fluxo de trabalho #
 
 <https://www.atlassian.com/git/>
 
 clone, add, commit, branch, push, fetch, pull.
 
-## Macanísmos de colaboração ##
+# Macanísmos de colaboração #
 
-### Fork ###
+Os serviços web para Git, mesmo que você trabalhe sozinho, já são
+interessantes para que você tenha uma cópia (backup) do seu projeto e
+disponibilize seu trabalho. No entanto, um dos principais objetivos dos
+serviços web é permitir a colaboração entre pessoas. Já mencionamos o
+básico sobre isso quando falamos dos recursos de *issue*, *fork* e
+*merge request*. Nas sessões a seguir, vamos nos aprofundar nesses três
+mecanísmos chaves para a colaboração via serviços web para Git.
 
-<https://help.github.com/articles/fork-a-repo/>
-<https://confluence.atlassian.com/bitbucket/forking-a-repository-221449527.html>
+## Issues ##
 
-É uma cópia livre e independente que você pode usar para
-acrescentar/corrigir o projeto origem ou usar como ponto de partida para
-outro projeto.
+De acordo com o dicionário [Macmillan], *issue* significa um problema
+que precisa ser considerado. Também significa um assunto que as pessoas
+debatem ou o volume de uma revista. Cabe aqui a primeira definição.
 
-Você não precisa ser colaborador do projeto para dar *fork*, basta estar
-na mesma plataforma. Você pode submeter a sua colaboração para o dono
-por meio de *Merge Request*.
+Nos serviços web para Git, *issue* é um recurso da interface que permite
+que as pessoas abram um assunto/tópico referente ao projeto. Em geral,
+com os *issues* as pessoas externas ao projeto indicam um *bug* - uma
+falha a ser corrigida - ou sugerem que o projeto incorpore determinada
+característica desejável. O dono do projeto avalia a proposta e pode
+discutí-la logo em seguida, mantendo as mensagens reunidas e disponíveis
+para outros usuários que acompanham o projeto. Quando a proposta do
+*issue* for implementada, o *issue* pode ser fechado embora continua
+disponível e possa ser referenciado no, tanto para usuários que
+reportarem o problema já solucionado (usuários que não estão usando a
+versão mais recente) quanto para incluir no *change log* do projeto
+(essa versão corrige o bug descrito no *issue#43*, por exemplo).
 
-Mostrar um pull request que acrescenta pgf e pgs como renderização Tex.
-https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
+Quando um projeto é coletivo, como são a maioria dos projetos no PET
+Estatística (<https://gitlab.c3sl.ufpr.br/groups/pet-estatistica>), o
+recurso de *issue* pode ser usado de outra forma: como gerenciador de
+tarefas. Combinado com as *milestones*, cada membro cria um *issue*
+correspondente ao que vai fazer no projeto no período de uma semana. Com
+isso, todos os demais membros são notificados de que alguém já vai
+trabalhar na tarefa A do projeto, eliminando foco duplicado. O *issue* é
+parte do fluxo de trabalho do PET Estatística que será descrito em outro
+capítulo.
 
-### Issues ###
+As *milestones* são uma espécie de coleção de *issues* que tenham algo
+em comum. Considere por exemplo o projeto de um livro. As *milestones*
+podem ser os capítulos a serem escritos e os *issues* podem ser as
+seções. Se for um projeto de software, as *milestones* podem separar os
+*issues* referentes ao aperfeiçoamento da documentação do software e ao
+desenvolvimento do mesmo (escrita de código fonte).
 
-Correções e aperfeiçoamento.
+Criar um issue é muito simples. Tanto no GitHub quanto no GitLab, existe
+um fácil acesso as *issues* do projeto. Na página dos *issues* você pode
+criar um novo *issue*, comentar em um já existente e até reabrir um
+*issue* que já foi fechado (comum quando acredita-se ter resolvido um
+*bug* mas que ainda não foi). Os *issues* são numerados sequencialmente
+e isso faz com que cada *issue* seja único dentro do projeto. Os
+serviços web até tem formas de fazer *hiperlinks* facilmente para os
+*issues*. No GitLab, usa-se um hash seguido do número identificador
+(e.g. `#45`) para indicar um *issue*.
 
-### Merge Request ###
+## Fork ##
 
-Funciona para *branches* e *forks*.
+A palavra *fork*, como substantivo, representa forquilha,
+bifurcação. Como verbo, representa bifurcar. Esse recurso está presente
+nas interfaces web para permitir que usuários facam cópias livres de
+projetos de outras pessoas. Como essa cópia é do projeto em determinado
+instante, há grande chance de divergência entre cópia e original a
+partir desse instante, por isso é apropriado a palavra bifurcamento.
 
-## Integração contínua ##
+As finalidades de um *fork* são duas: 1) ter uma cópia na qual se possa
+acrescentar modificações e enviar para o dono e assim contribuir no
+projeto original ou 2) usar a cópia como ponto de partida para outro
+projeto, sem intenção de voltar ao projeto original.
+
+Com o *fork*, você pode colaborar como um terceiro em um projeto, ou
+seja, sem ser colaborador adicionado pelo dono ao projeto. Nessa cópia
+você tem permissões de *owner* pois na realidade, embora seja uma cópia,
+ela é toda sua. Você faz sua cópia livre, trabalha como quiser e no
+prazo que quiser, e submete ao projeto original o desenvido na sua
+cópia. O dono do projeto não tem como saber por que você fez o *fork*
+(mas você pode criar um *issue*) nem quando irá concluir o que
+almeja. No entanto, quando concluir, para que seu trabalho seja
+incorporado ao original, você terá que fazer um *merge request* (isso só
+é possível entre usuários de um mesmo serviço web).
+
+No GitHub, o acesso ao *fork* é por um botão que fica mais a direita na
+linha de título do projeto. No GitLab, o botão de *fork* fica na página
+inicial do projeto logo acima do endereço para clonar. Em qualquer um
+desses serviços, uma vez logado, ao pedir um *fork*, uma cópia do
+projeto é criada no seu perfil.
+
+Uma vez com a cópia, você pode fazer um clone e começar a desenvolver os
+projetos. Se a sua intenção é submeter modificações ao original, seja
+ainda mais cuidadoso com as mensagens de *issue*. Escreva sempre no
+idioma original do projeto. Muitas vezes, antecipando esse tipo de
+colaboração, os usuários disponibilizam guias de contribuição
+(*contribution guide*) com instruções de como proceder.
+
+Os *branchs* que criar serão na sua cópia os *pushs* que fizer irão para
+o seu perfil. Quando o seu trabalho tiver concluído, você pode fazer um
+*merge request* que descreveremos a seguir. Se a sua intenção foi usar o
+*fork* como semente para um projeto independente, não se esqueça de dar
+os devidos créditos ao dono da cópia, mesmo que lá no futuro, o seu
+projeto e o original sejam completamente diferentes.
+
+## Merge Request ##
+
+O *merge request* (requisição de mescla/fusão) é o recurso de
+colaboração chave. Ele serve para que pessoas da equipe (segundos) peçam
+para incorporar *branches* ao ramo principal (em geral o *master* ou o
+*devel*) e terceiros peçam para incorporar o desenvolvimento do
+*fork*. O GitHub usa o termo *pull request* ao invés de *merge request*
+embora não exista diferença alguma.
+
+Os trabalhos coletivos em projetos Git, para serem bem sucedidos,
+consideram algum esquema de trabalho. A maioria dos esquemas considera o
+desenvolvimento por *branches*. Nada mais justo, já que uma é uma
+característica do Git. Existem ramos permanentes, como o
+*master*, que recebem os desenvolvimento feito em *branches* auxiliares
+ou de demanda. Esses ramos de demanda, como o nome sugere, são criados
+para incorporar algo ao projeto e, portanto, não são permanentes - uma
+vez incorporados, são removidos.
+
+Nos esquemas de trabalho, os membros são instruídos a fazerem o
+desenvolvimentos nos ramos de demandae jamais nos ramos permanentes. Ao
+concluir essa unidade de trabalho, esse *branch* é enviado para o
+servidor com um `push`
+
+```{r, engine="bash", eval=FALSE}
+## Envia o desenvolvido em um ramo.
+git push origin issue#33
+```
+
+Na interface web, o membro faz um *merge request* desse ramo para um
+ramo permamente, que em projetos simples é o *master* mas em projetos
+maiores é usualmente o *devel*.
+
+Em ambos os serviços, o *merge resquest* leva para um página na qual
+você escolhe que ramo de demanda (doador) será incorporado a um ramo
+permamente (receptor). Ao confirmar os ramos envolvidos, tem-se uma
+caixa de texto destinada as informações sobre o que as modificações a
+serem incorporadas. Elas servem para justificar, esclarecer e informar o
+responsável pelo *merge* sobre a incorporação. Quando o projeto é
+coletivo e não individual, um membro pode ser indicado como responsável
+pelo *merge*.
+
+Na situação de um *fork*, o processo ocorre de forma semelhante. A
+sequência de etapas é: fazer o *fork* do projeto para a sua conta, 2)
+clonar o projeto para sua máquina, 3) criar um *branch* e fazer o
+desenvolvimento nele, 4) subir o *branch* (*push*) para a sua conta e 5)
+fazer um *merge request* para incorporar as modificações.
+
+Quando o projeto é um *fork*, na hora de escolher o ramo permanente
+(receptor) tem-se duas opções: 1) incorporar ao *master* da sua cópia
+ou 2) incorporar ao *master* do original. Outra opção é incorporar ao
+*master* da sua cópia e depois pedir um *merge request* do seu *master*
+para o *master* do original. Essa última é útil quando a quantidade de
+modificações é maior e portanto, o trabalho vai levar mais tempo.
+
+O próprio serviço Web tem recurso para a apliação do *merge* sem
+precisar copiar os ramos envolvidos. Isso facilita bastante o
+trabalho. Porém, não haver conflito de *merge* não significa que as
+modificações incorparadas estão funcionais, ou seja, as modificações
+feitas precisam ser testadas localmente para verificar de tiveram
+efeito. É possível habilitar o serviço Git para checar se o projeto é
+executável, em caso de softwares. Esse recurso se chama intergração
+contínua e veremos na próxima sessão.
+
+Em caso de confito de *merge*, tem-se baixar os ramos. Localmente
+pode-se comparar as diferenças entre eles para entender as fontes de
+conflito. Para isso são recomendáveis as interfaces para Git que serão
+discutidas no próximo Capítulo. Uma vez que o *merge* foi resolvido,
+deve-se fazer o *push* o ramo permanente (receptor) para o serviço web
+que já reconheçe que o *merge* foi feito e fecha a requisição.
+
+Recomenda-se que os ramos de demanda sejam removidos após a incorporação
+nos ramos permanentes. Isso torna o projeto mais claro e concentrado em
+ramos definitivos colhedores de desenvolvimento. Pode-se exluir o ramo
+de demanda incorporado direto pela interface. Por linha de comando
+também é possível
+
+```{r, engine="bash", eval=FALSE}
+## Deleta o branch issue#33 no servidor (origin).
+git push origin :issue#33
+
+## Deleta o branch issue#33 localmente.
+git branch -d issue#33
+
+## Deleta a cópia do issue#33 que veio do origin.
+git branch -dr origin/issue#33
+```
+
+Ao concluir incorporar uma contribuição grande, é interessante marcar o
+*commit* vinculado à esse *merge* de uma forma destacável, como por
+exemplo, com uma *tag*.
+
+```{r, engine="bash", eval=FALSE}
+## Lista as tags existentes.
+git tag
+
+## Adiciona uma tag ao último commit.
+git tag -a v1.0 -m "Versão 1.0 do software"
+```
+
+# Integração contínua #
 
 Permite chegar se o projeto, no caso de softwares, está
 funcionando/instalando sem erros.
@@ -532,3 +706,4 @@ funcionando/instalando sem erros.
 [^1]: http://technologyconversations.com/2015/10/16/github-vs-gitlabs-vs-bitbucket-server-formerly-stash/
 [Digital Ocean]: https://www.digitalocean.com/community/tutorials/how-to-use-the-gitlab-one-click-install-image-to-manage-git-repositories
 [GitLab]: https://about.gitlab.com/
+[Macmillan]: http://www.macmillandictionary.com
