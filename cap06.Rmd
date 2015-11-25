@@ -362,28 +362,37 @@ com exemplos e ilustrações voltadas para a comunidade estatística.
 
 ## Interfaces de comparação ##
 
-Interfaces para auxílio na comparação de arquivos, não são exclusivas
-para **GIT**, mas seu uso é intensificado em projetos versionados e/ou
-colaborativos onde arquivos de diferentes versões precisam ser
-comparados.
+Uma das principais vantagens do **GIT** é a possibilidade de trabalho
+paralelo por dois ou mais usuários ou por ramos de desenvolvimentos. E
+como qualquer desenvolvimento pararelelo desejamos, ao final do
+trabalho, mesclar as contribuições realizadas lado a lado. Como vimos no
+capítulo 2 isso é feito no **GIT** com o comando `git merge
+ramo_desenvolvimento` para ramos e com o comando `git push origin`,
+quando estamos trabalhando em equipe e as contribuições são enviadas para
+um servidor remoto. Porém, quando a mesma porção de um mesmo arquivo é
+alterada em duas instâncias distintas (ramos diferentes, usuários
+diferentes etc.) ocorrem conflitos e vimos como o **GIT** os sinaliza
+para que possamos resolvê-los abrindo e alteramos os arquivos em
+conflito. Nesta seção mostraremos as interfaces gráficas dedicadas à
+resolução de conflitos no mesclagem e a visualização da diferença de
+arquivos em estados diferentes do repositório.
 
-Para o **GIT** estas ferramentas de comparação são de utilidade na
-visualização das alterações nas diferentes versões de um arquivo e
-também quando se trabalha colaborativamente, onde no momento de mesclar
-as contribuições de vários autores, pode ocorrer conflito e nessas horas
-a possibilidade visualizar as linhas conflitantes lado a lado é de
-grande valia.
+### Ferramentas de Comparação Padrão ###
 
-### Meld ###
+* meld
+  + Download e Instalação
+  + Utilização básica
+  + Utilização no **GIT** como `difftool` e/ou `mergetool`
+  + screenshots
 
-* Download e Instalação
-* Utilização básica
-* Utilização no **GIT** como `difftool` e/ou `mergetool`
-* screenshots
+* kdiff3
+  + Download e Instalação
+  + Utilização básica
+  + Utilização no **GIT** como `difftool` e/ou `mergetool`
+  + screenshots
 
 ### Outras interfaces ###
 
-* kdiff3
 * P4Merge
 
 Citar materiais de referência para instalação e
