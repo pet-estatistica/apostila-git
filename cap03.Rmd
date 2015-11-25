@@ -67,6 +67,7 @@ git config --list
 user.name=Knight Rider
 user.email=batman@justiceleague.org
 ```
+Initialized empty Git repository in /home/gabriel/Suporte/PET/Projeto/Apostila/Git/.git/
 
 Temos um diretório destinado ao projeto que será mantido sobre
 versionamento, então vamos iniciar um repositório Git nele.
@@ -77,6 +78,39 @@ cd meu1repo
 ## Inicia um repositório sob versionamento Git.
 git init
 ```
+.
+└── .git
+    ├── branches
+    ├── config
+    ├── description
+    ├── HEAD
+    ├── hooks
+    │   ├── applypatch-msg.sample
+    │   ├── commit-msg.sample
+    │   ├── post-update.sample
+    │   ├── pre-applypatch.sample
+    │   ├── pre-commit.sample
+    │   ├── prepare-commit-msg.sample
+    │   ├── pre-push.sample
+    │   ├── pre-rebase.sample
+    │   └── update.sample
+    ├── info
+    │   └── exclude
+    ├── objects
+    │   ├── info
+    │   └── pack
+    └── refs
+        ├── heads
+        └── tags
+
+10 directories, 13 files
+
+```
+
+**NOTA**: o `tree` é um programa instalado a parte (*third party
+software*) que retorna arte ASCII representado a estrutura de
+diretórios. Se você usa distribuição Debian, instale com `sudo apt-get
+install tree`. Windows: [tree][].
 
 O Git retorna a mensagem de inicilização do repositório. Nesse momento
 ele cria um diretório oculto `.git/` com subdiretórios que são o coração
@@ -191,8 +225,8 @@ Boas Práticas de commit:
 
 Péssimas Práticas de commit:
 
-"BLABLABLABLA"
-"Trabalhei muito hoje"
+"BLABLABLABLA" <br>
+"Trabalhei muito hoje" <br>
 "Terminando este trabalho na madruga"
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -318,6 +352,10 @@ cd meu1repo
 ## Mensagem que registra as modificações adicionadas.
 git commit -m "Lista de inicial de o porquê usar o Linux."
 ```
+No ramo master
+Changes not staged for commit:
+  (utilize "git add <arquivo>..." para atualizar o que será submetido)
+  (utilize "git checkout -- <arquivo>..." para descartar mudanças no diretório de trabalho)
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -438,12 +476,17 @@ cd meu1repo
 ## Abandona modificações feitas presentes no arquivo.
 git checkout -- porqueLinux.txt
 ```
+No ramo master
+Mudanças a serem submetidas:
+  (use "git reset HEAD <file>..." to unstage)
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
 
 less porqueLinux.txt
 ```
+2° linha diz que mudanças foram submetidas, e logo abaixo diz caso eu queria retornar esta execução utilizando o comando `git reset`,mais pra frente veremos com detalhes. 
+Vamos *commitar* 
 
 Bateu o arrependimento? Tem formas de poder retroceder com mudanças
 ainda não registradas mas mantendo a possibilidade de
