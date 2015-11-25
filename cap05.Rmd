@@ -2,11 +2,11 @@
 title: "Serviços Web para Projetos Git"
 author: "PET Estatística UFPR"
 output:
-  html_document:
-    highlight: pygments
+  pdf_document:
+    highlight: default
     toc: true
-    theme: flatly
-    keep_md: true
+    toc_depth: 2
+    keep_tex: true
 ---
 
 ```{r, include=FALSE}
