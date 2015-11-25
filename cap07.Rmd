@@ -298,29 +298,39 @@ descritas em `README.md` ou no `CONTRIBUTING.md`.
 
 ## 3.Fluxo de trabalho PET no GitLab
 
-O PET-Estatística UFPR possui um grupo no git para o desenvolvimento de
-projetos. Um desses, é a apostila do git. Esse projeto teve como finalidade 
-melhorar o conhecimento sobre o Git, e documentar em forma de apostila
-para outros usuários do git. 
+O PET-Estatística UFPR possui um grupo no Git para o desenvolvimento de
+projetos. Utilizaremos a seguinte ilustração para entender o fluxo do 
+trabalho do PET.
 
-Para esse projeto, tivemos dois ramos:
+(figura que haverá um dia)
 
-- `devel`: recebeu as contribuições dos membros, e após avaliação,
-a contribuição foi movida para o ramo `master`.
-- `master`: recebeu a versão estável do projeto.
+FIGURA: Ilustração do fluxo de trabalho do PET
 
+Conforme a demanda de projetos, é criado o repositório para armazená-lo. 
+Após isso, são criados as `milestones` - marcadores de 
+classificação dos arquivos. Esses passos são feitos no `Owner`.
 
-Esses ramos só receberam conteúdo provenientes de `merge` dos ramos de 
-demanda (*issue*)
+Indo para o `master`, temos os seguintes passos:
 
-Os membros criaram `issue` para adicionarem suas contribuições. 
-Por exemplo, para adicionar um capítulo sobre o uso do programa, 
-foi criado um ramo para isso, depois de adicionar as contribuições, foi
-submetido esse ramo para o repositório remoto.
+- Conforme a demanda do projeto, é criado um `issue` para adição de 
+contribuições;
+- Atualiza o ramo `devel`;
+- Após isso, é necessário criar um `branch` (ramo) para incluir as 
+contribuições;
 
-Após o `git push`, a próxima etapa é  a requisição de `merge`. Com esse 
-`merge`, era feita as discussões a respeito da contribuição. Após da
-certeza dessa contribuição, era movida para o ramo `master`.
+Entrando no `developer`, teremos o ciclo de trabalho em que adiciona
+as modificações (`git add`), registra as mesmas (`git commit`) e após 
+realizar todo o trabalho, é feito o `git push` enviando ao 
+servidor remoto.
+
+A próxima etapa é a requisição de `merge`. Com esse `merge`, é feita as 
+discussões a respeito da contribuição, assim podendo retornar ao ciclo
+do `developer` para as devidas correções e sugestões. 
+Após a certeza dessa contribuição, é movida para o ramo `devel` e fechado 
+o `issue`referente ao trabalho feito.
+
+Depois de terminar todas etapas do projeto, completa-se as `milestones`,
+realiza o `merge` do `devel` no `master`, e cria a tag de versão.
 
 
 ### Referências
