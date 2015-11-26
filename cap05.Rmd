@@ -693,8 +693,128 @@ git tag -a v1.0 -m "Versão 1.0 do software"
 
 # Integração contínua #
 
-Permite chegar se o projeto, no caso de softwares, está
-funcionando/instalando sem erros.
+Quando você está trabalhando em um projeto Git, cada *commit*, cada
+*branch*, contém algum desenvolvimento. Solucionar conflitos de *merge*
+não é um atarefa complicada, principalmente se forem consideradas as
+ferramentas certas para isso, como será visto no próximo capítulo. No
+entanto, será que o último *commit* ou o novo *branch* estão funcionais?
+O QUE É FUNCIONAL?
+
+Reprodutibilidade é uma questão de fundamental importância em projetos
+coletivos e compartilhados. Tem-se a preocupação de que seu código
+(programa) seja executado (instalado) sem erros nos ambientes dos seus
+desenvolvedores e clientes. O desenvolvimento do código visa
+aperfeiçoá-lo mas o tempo todo estamos sujeitos fazer modificações que
+induzem erros ou encontrar erros não esperados (*bugs*).
+
+Rastrear o projeto atrás de erros não é uma tarefa fácil. Em uma
+situação ideal, alguém teria que testar se o código executa (software
+instala) em uma máquina cliente (com os requisitos mínimos exigidos),
+toda vez que um *commit* fosse feito, já que os *commits* indicam que
+modificações foram feitas. Se o teste for positivo, ok, sem problemas,
+se o teste for negativo, informar a equipe sobre como proceder, onde foi
+o erro.
+
+Não é raro programar alguma rotina (bash, R, etc) que seja bem sucedida
+no ambiente em que foi desenvolvido mas que a execução apresenta falhas
+na máquina de outra pessoa. Garantir reprodutibilidade não é fácil. O
+melhor jeito é testar em um ambiente virgem, numa máquina cliente que
+contenha apenas os requisitos mínimos. Após verificar o código você deve
+voltar o ambiente para a estaca 0 para que possam ser feitos novos
+testes.
+
+Integração contínua significa exatamente isso: seu repositório Git está
+continuamente integrado à um ambiente cliente que faz verificações toda
+vez que surge um novo *commit*. A ideia da integração contínua é bem
+mais simples que a sua implementação, logicamente, como tudo.
+
+Implementar a integração contínua no GitHub e GitLab é diferente. O
+GiHub oferece diversas opções enquanto que o GitLab CE têm o serviço de
+forma nativa.
+
+Seja qual for a opção, as vantagens da IC são:
+  1) Economia de tempo com inspeção de código;
+  2) Verificação em um ambiente virgem;
+  3) Verificação em vários cenários (arquiteturas, SO, dependências e
+     versões);
+  4) Informação coletiva à equipe do erro na hora que ocorre por envio
+     automático de mensagem;
+  5) Indicação de sucesso ou não na home do projeto;
+  6) Entrega de documentação e versões estáveis zipadas, etc.
+  7) Custo computacional reduzido já que é feito em servidor separado.
+  8) Verificação a cada *commit*, status em cada branch e requisiação de
+     merge.
+  
+
+**GitHub**
+
+https://travis-ci.org/
+http://www.codeaffine.com/2014/09/01/travis-continuous-integration-for-github-projects/
+
+Embora exista uma lista grande de serviços de integração contínua
+disponíveis para repositórios GitHub, um dos mais usados é o Travis CI.
+Travis CI (*continuous integration*) é um serviço free e open source
+destinado à integração contínua para projeto **públicos** no GitHub.
+
+Para vincular um projeto no GitHub com IC no Travis CI, você precisa
+logar no <https://travis-ci.org/> com a sua conta do GitHub. Assim que
+você logar, o serviço pede autorização para acessar sua conta, seus
+repositórios. Acesso permitido, uma lista com os seus repositórios será
+exibida na qual você pode marcar os repositórios que usarão o serviço.
+A próxima etapa é criar um arquivo `.travis.yml` na raíz do seu
+repositório Git. Esse arquivo espefica todas as instruções sobre o seu
+repostório de devem ser feitas a fim de verificá-lo. Se seu repositório
+é um pacote R, por exemplo, esse arquivo vai ter instruções de
+instalação do pacote.
+
+Cada projeto, cada linguagem, têm uma forma particular de ser
+testada. Para pacotes R, o Travis CI tem uma documentação de orientação:
+<https://docs.travis-ci.com/user/languages/r/>. Além disso, uma boa
+prática em ver exemplos em uso, como o `.travis.yml` dos pacotes R
+`knitr` (<https://github.com/yihui/knitr>) e `devtools`
+(<https://github.com/hadley/devtools>) que estão na lista dos mais
+utilizados.
+
+Para todas as liguagens e objetivos têm-se exemplos de arquivos
+`.trevis.yml`. Para o Emacs e biblitecas visite
+<https://github.com/rolandwalker/emacs-travis>,
+<https://github.com/Malabarba/elisp-bug-hunter> e
+<https://github.com/abo-abo/tiny>. Para projetos em `C++` e `phyton`,
+assim como o R, o Travis CI tem uma documentação introdutória. Visite
+<https://docs.travis-ci.com/user/language-specific/> para ver a lista de
+documentações.
+
+Além do linguagens de programação, é possível testar inclusive a
+compilação de um documento Latex:
+<http://harshjv.github.io/blog/setup-latex-pdf-build-using-travis-ci/>.
+
+*branch build flow*
+*pull request build flow*
+
+`after_failure` (information, error report)
+`after_success` (deployment, uploads de documentação e versões estáveis)
+
+exibir build status no README
+fazer *webhook* com Slack
+
+**GitLab**
+
+`.gitlab-ci.yml`
+
+```{r, eval=FALSE, engine="yml"}
+job_R:
+  script:
+    - echo $HOME
+    - Rscript -e 'getwd(); .libPaths(); sessionInfo()'
+    - Rscript -e 'library(devtools); check()'
+    - Rscript -e 'library(devtools); .libPaths(new = path.expand("~/R-tests/legTools")); install(local = FALSE)'
+```
+
+https://about.gitlab.com/gitlab-ci/
+https://about.gitlab.com/2015/02/03/7-reasons-why-you-should-be-using-ci/
+http://alanmonger.co.uk/php/continuous/integration/gitlab/ci/docker/2015/08/13/continuous-integration-with-gitlab-ci.html
+
+<https://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software>
 
 <!---------------------------------------------------------------------- -->
 
