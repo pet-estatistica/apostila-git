@@ -697,42 +697,40 @@ Quando você está trabalhando em um projeto Git, cada *commit*, cada
 *branch*, contém algum desenvolvimento. Solucionar conflitos de *merge*
 não é um atarefa complicada, principalmente se forem consideradas as
 ferramentas certas para isso, como será visto no próximo capítulo. No
-entanto, será que o último *commit* ou o novo *branch* estão funcionais?
-O QUE É FUNCIONAL?
+entanto, para cada *commit* tem-se a preocupação: será que o projeto
+está funcional?
 
 Reprodutibilidade é uma questão de fundamental importância em projetos
-coletivos e compartilhados. Tem-se a preocupação de que seu código
+coletivos ou públicos. Existe a preocupação constante de que seu código
 (programa) seja executado (instalado) sem erros nos ambientes dos seus
-desenvolvedores e clientes. O desenvolvimento do código visa
+colaboradores ou usuários. É claro que o desenvolvimento do projeto visa
 aperfeiçoá-lo mas o tempo todo estamos sujeitos fazer modificações que
-induzem erros ou encontrar erros não esperados (*bugs*).
+induzem erros e alguém encontra erros não esperados (*bugs*).
 
-Rastrear o projeto atrás de erros não é uma tarefa fácil. Em uma
-situação ideal, alguém teria que testar se o código executa (software
-instala) em uma máquina cliente (com os requisitos mínimos exigidos),
-toda vez que um *commit* fosse feito, já que os *commits* indicam que
-modificações foram feitas. Se o teste for positivo, ok, sem problemas,
-se o teste for negativo, informar a equipe sobre como proceder, onde foi
-o erro.
+Monitorar erros no projeto em desenvolvimento não é uma tarefa fácil,
+principalmente em trabalhos coletivos nos quais cada colaborator tem um
+ambiente de trabalho. Em uma situação ideal, alguém teria que testar se
+o projeto corre sem erros (código executa, software instala) em uma
+máquina cliente (com os requisitos mínimos exigidos), toda vez que um
+*commit* fosse feito, já que o *commit* indica que modificações foram
+feitas. Então, se correu sem erros, avisar à todos que podem prosseguir,
+mas se falhou, informar a equipe, encontrar e resolver a falha.
 
-Não é raro programar alguma rotina (bash, R, etc) que seja bem sucedida
-no ambiente em que foi desenvolvido mas que a execução apresenta falhas
-na máquina de outra pessoa. Garantir reprodutibilidade não é fácil. O
-melhor jeito é testar em um ambiente virgem, numa máquina cliente que
-contenha apenas os requisitos mínimos. Após verificar o código você deve
-voltar o ambiente para a estaca 0 para que possam ser feitos novos
-testes.
+Não é raro algo ser bem sucedido no ambiente em que foi desenvolvido e
+apresentar falhas na ambiente de outra pessoa. O melhor jeito de
+antecipar erros é testar em um ambiente virgem, uma máquina cliente que
+contenha apenas os requisitos mínimos necessários ao projeto.
 
-Integração contínua significa exatamente isso: seu repositório Git está
-continuamente integrado à um ambiente cliente que faz verificações toda
-vez que surge um novo *commit*. A ideia da integração contínua é bem
-mais simples que a sua implementação, logicamente, como tudo.
+A Integração Contínua (IC) é a solução desse problema. A ideia é manter
+o repositório Git continuamente integrado à um ambiente cliente que faz
+verificações no projeto a cada novo *push*.
 
-Implementar a integração contínua no GitHub e GitLab é diferente. O
-GiHub oferece diversas opções enquanto que o GitLab CE têm o serviço de
-forma nativa.
+Fazer integração contínua no GitHub e GitLab, embora o conceito seja o
+mesmo, tem algumas diferenças. Paro o GitHub existem diversos serviços
+de IC, é algo terceirizado. Já o GitLab CE têm o serviço próprio de
+IC. Apresentaremos cada um deles na sessão seguinte.
 
-Seja qual for a opção, as vantagens da IC são:
+Independe do serviço web, as vantagens da IC são:
   1) Economia de tempo com inspeção de código;
   2) Verificação em um ambiente virgem;
   3) Verificação em vários cenários (arquiteturas, SO, dependências e
@@ -744,7 +742,48 @@ Seja qual for a opção, as vantagens da IC são:
   7) Custo computacional reduzido já que é feito em servidor separado.
   8) Verificação a cada *commit*, status em cada branch e requisiação de
      merge.
-  
+  9) Detecção rápida de erros e informe coletivo instantaneo.
+  10) Aumenta a visilibidade facilitanto a comunicação e reunião de
+      esforços.
+  11) Menos tempo na correção de bug, que devem ser menores, assim
+      deixando mais tempo para desenvolver o que interessa.
+  12) É barato, até mesmo quando custa algo, porque parar o projeto por
+      erro pode custar inclusive mais caro.
+  13) Reduz os problemas com usuários fora dos colaboradores pois testa
+      em máquinas virgens.
+  14) Facilita para os usuários saberem se a última versão é executável.
+  15) Pode automatizar a disponibilização do projeto aos usuários.
+
+A integração contínua não elinima erros, mas faz com que eles sejam mais
+fáceis de identificar e remover.
+
+Sem a automação, os espaços entre verificações podem ficar longos,
+encontrar um bug em tantos commits é mais difícil, encontrar no código é
+mais ainda. Pode atrasar a entrega do projeto e comprometer a receita e
+popularidade. Integrações periodicas são mais fáceis e leves.
+
+O build é automático, faz um self-testing a cada commit.
+
+O fluxo de trabalho de um repositório com IC é basicamente assim:
+
+1) Os desenvolvedores trabalham no projeto em seu workspace
+   privado/local;
+2) Periodicamente fazem *commits* e *push* para o repositório remoto;
+3) O serviço de IC monitora o repositório toda vez que modificações
+   ocorrem;
+4) O serviço de IC corre todos os testes de inspeção que foram
+   configurados (instala dependendencias, executa scripts, cria/tranfere
+   arquivos, etc);
+5) O serviço de IC disponibiliza produtos da verificação, como binários
+   de instalação e documentação (no caso de sucesso) ou log de execussão
+   (no caso de falha);
+6) O serviço de IC assinalá no repositório Git o *status* da
+   verificação: sucesso/fracasso;
+7) O serviço de IC informa a equipe dos resultados por mensagem de email
+   ou webhooks, como o Slack;
+8) A equipe toma das providências cabiveis na primeira oportunidade, como
+   corrigir a falha ou anunciar o sucesso;
+9) O serviço aguarda por mais modificações;
 
 **GitHub**
 
