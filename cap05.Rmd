@@ -491,6 +491,12 @@ Científica e Software Livre - da UFPR.
 
 clone, add, commit, branch, push, fetch, pull.
 
+push branch, delete branch no origin
+
+setar outros remotes
+
+diferença de fetch e pull
+
 # Macanísmos de colaboração #
 
 Os serviços web para Git, mesmo que você trabalhe sozinho, já são
@@ -730,7 +736,7 @@ mesmo, tem algumas diferenças. Paro o GitHub existem diversos serviços
 de IC, é algo terceirizado. Já o GitLab CE têm o serviço próprio de
 IC desde a versão 8.0. Apresentaremos cada um deles na sessão seguinte.
 
-Independe do serviço web, as vantagens da IC são:
+Independe do serviço web, as principais vantagens da IC são:
 
   1) Economia de tempo com supervisão de código e procura de falhas;
   2) Verificação em um ambiente virgem sem efeito de variáveis de
@@ -790,24 +796,23 @@ O fluxo de trabalho de um repositório com IC é basicamente assim:
   
 **GitHub**
 
-https://travis-ci.org/
+
 http://www.codeaffine.com/2014/09/01/travis-continuous-integration-for-github-projects/
 
 Embora exista uma lista grande de serviços de integração contínua
-disponíveis para repositórios GitHub, um dos mais usados é o Travis CI.
-Travis CI (*continuous integration*) é um serviço free e open source
-destinado à integração contínua para projeto **públicos** no GitHub.
+disponíveis para repositórios GitHub, um dos mais usados é o
+[Travis CI].  Travis CI (*continuous integration*) é um serviço free e
+open source destinado à integração contínua para projeto **públicos** no
+GitHub.
 
 Para vincular um projeto no GitHub com IC no Travis CI, você precisa
 logar no <https://travis-ci.org/> com a sua conta do GitHub. Assim que
-você logar, o serviço pede autorização para acessar sua conta, seus
-repositórios. Acesso permitido, uma lista com os seus repositórios será
-exibida na qual você pode marcar os repositórios que usarão o serviço.
-A próxima etapa é criar um arquivo `.travis.yml` na raíz do seu
-repositório Git. Esse arquivo espefica todas as instruções sobre o seu
-repostório de devem ser feitas a fim de verificá-lo. Se seu repositório
-é um pacote R, por exemplo, esse arquivo vai ter instruções de
-instalação do pacote.
+você logar, dê autorização para acessar seus repositórios e em uma lista
+você deve marcar os que usarão o serviço.  A próxima etapa é criar um
+arquivo `.travis.yml` na raíz do seu repositório Git. Esse arquivo
+oculto especifica todas as instruções que devem ser feitas a fim de
+verificar seu repositório. Se seu repositório é um pacote R, por
+exemplo, esse arquivo vai ter instruções de instalação do pacote.
 
 Cada projeto, cada linguagem, têm uma forma particular de ser
 testada. Para pacotes R, o Travis CI tem uma documentação de orientação:
@@ -841,15 +846,48 @@ fazer *webhook* com Slack
 
 **GitLab**
 
-GitLab.com + servidor no digital ocean.
-http://alanmonger.co.uk/php/continuous/integration/gitlab/ci/docker/2015/08/13/continuous-integration-with-gitlab-ci.html
+A Integração Contínua passou fazer parte do GitLab CE na [versão 8.0],
+lançada em setembro de 2015. Diferente do GitHub, essa versão do GitLab
+tem o IC de forma nativa. Você pode configurar servidores externos para
+executarem as verificações ou pode fazê-las no mesmo servidor que roda o
+GitLab.
 
-Integração contínua passou fazer parte do GitLab CE na versão 8.0,
-lançada em 22/09/2015. O GitLab do LEG já faz uso dessa última versão.
-<https://about.gitlab.com/2015/09/22/gitlab-8-0-released/>
+[Alan Monger] descreve como configurar um servidor Ubuntu no
+[Digital Ocean] parar verificar repositórios hospedados no
+<https://gitlab.com/>.
+
+Segundo ele, o primeiro passo é acessar <https://gitlab.com/ci/> para
+adicionar o projeto à integração contínua. Isso vai gerar um *token* de
+registro que será passado para o *runner* que deve estar em uma
+máquina. Na sua matéria, Alan Monger descreve como instalar um *Virtual
+Private Server* com Ubuntu 14.04 no Digital Ocean. Em seguida instala o
+*runner* (`gitlab-ci-multi-runner`), configura e passa o *token*, cria
+uma imagem - algo que executa coisas no sistema mas que propositalmente
+perdidas no final, o sistema é sempre restaturado ao estado virgem. O
+*runner* é então habilitado e por fim o arquivo `.gitlab-ci.yml` é
+criado na home do *repositório*.
 
 As especificação são feitas em um arquivo `.gitlab-ci.yml` na home do
 projeto.
+
+O [GitLab do LEG] tem o CI embutido pois é a versão mais recente do
+serviço. Essa servidora é na realidade um desktop com Ubuntu Server. É
+patrimônio da UFPR de responsabilidade do LEG mas tem uso compartilhado
+com o PET Estatística e colaboradores do Laboratório. Desde a
+disponibilização do GitLab, em julho de 2015, mantemos artigos,
+materiais de ensino (aulas, provas, scripts), tutoriais e materias de
+blog em devolvimento colaborativo, além de pacotes R.
+
+Nessa servidora, criamos um usuário chamado `gitlab-runner` com o qual
+fazemos as integrações contínuas. Toda vez que um projeto com o arquivo
+`.gitlab-ci.yml` recebe um *push*, as instruções nesse arquivo executam
+a IC com o usuário `gitlab-runner`. Tecnicamente podemos correr todo
+tipo de comando ou programa disponível no servidor em questão, um Ubuntu
+Server 14.04. Até então, os repositórios com IC são só dois: [legTools]
+e [mcglm], dois pacotes R.
+
+No caso do pacote LegTools, o arquivo `.gitlab-ci.yml` do repositório
+tem o seguinte conteúdo:
 
 ```{r, eval=FALSE, engine="sh"}
 job_R:
@@ -859,6 +897,24 @@ job_R:
     - Rscript -e 'library(devtools); check()'
     - Rscript -e 'library(devtools); .libPaths(new = path.expand("~/R-tests/legTools")); install(local = FALSE)'
 ```
+
+Estas são instruções em *shell* que chamam o R com expressões passadas
+para `Rscript -e` que executam a instalação do pacote. Na ocorrência da
+primeira falha, o processo é logicamente interrompido e os
+colaboradoradores podem ver a causa em
+<http://git.leg.ufpr.br/leg/legTools/builds>. No caso do *build* correr
+sem falhas, tem-se uma estampa de *success*. Essa estampa também vai
+aparecer no README.md na página de rosto do projeto, basta para isso
+colocar
+
+```
+![](http://git.leg.ufpr.br/ci/projects/1/status.png?ref=master)
+```
+
+Caso queira a estampa para outros ramos, é só acrescentá-los.
+
+A documentação oficial sobre como usar o arquivo `.gitlab-ci.yml`
+encontra-se em: <http://doc.gitlab.com/ce/ci/yaml/README.html>.
 
 https://about.gitlab.com/gitlab-ci/
 https://about.gitlab.com/2015/02/03/7-reasons-why-you-should-be-using-ci/
@@ -876,3 +932,10 @@ https://about.gitlab.com/2015/02/03/7-reasons-why-you-should-be-using-ci/
 [Digital Ocean]: https://www.digitalocean.com/community/tutorials/how-to-use-the-gitlab-one-click-install-image-to-manage-git-repositories
 [GitLab]: https://about.gitlab.com/
 [Macmillan]: http://www.macmillandictionary.com
+[TRavis CI]: https://travis-ci.org/
+[versão 8.0]: https://about.gitlab.com/2015/09/22/gitlab-8-0-released/
+[Digital Ocean]: https://www.digitalocean.com/
+[Alan Monger]: http://alanmonger.co.uk/php/continuous/integration/gitlab/ci/docker/2015/08/13/continuous-integration-with-gitlab-ci.html
+[GitLab do LEG]: http://git.leg.ufpr.br/
+[legTools]: http://git.leg.ufpr.br/leg/legTools
+[mcglm]: http://git.leg.ufpr.br/wbonat/mcglm
