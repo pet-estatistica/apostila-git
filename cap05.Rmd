@@ -728,31 +728,34 @@ verificações no projeto a cada novo *push*.
 Fazer integração contínua no GitHub e GitLab, embora o conceito seja o
 mesmo, tem algumas diferenças. Paro o GitHub existem diversos serviços
 de IC, é algo terceirizado. Já o GitLab CE têm o serviço próprio de
-IC. Apresentaremos cada um deles na sessão seguinte.
+IC desde a versão 8.0. Apresentaremos cada um deles na sessão seguinte.
 
 Independe do serviço web, as vantagens da IC são:
-  1) Economia de tempo com inspeção de código;
-  2) Verificação em um ambiente virgem;
-  3) Verificação em vários cenários (arquiteturas, SO, dependências e
-     versões);
-  4) Informação coletiva à equipe do erro na hora que ocorre por envio
-     automático de mensagem;
+
+  1) Economia de tempo com supervisão de código e procura de falhas;
+  2) Verificação em um ambiente virgem sem efeito de variáveis de
+     ambiente locais;
+  3) Verificação em vários ambientes (sistemas operacionais,
+     arquiteturas, dependências e versões);
+  4) Informação coletiva e imediata à equipe da causa de falha na hora
+     que ela ocorre;
   5) Indicação de sucesso ou não na home do projeto;
-  6) Entrega de documentação e versões estáveis zipadas, etc.
-  7) Custo computacional reduzido já que é feito em servidor separado.
-  8) Verificação a cada *commit*, status em cada branch e requisiação de
-     merge.
-  9) Detecção rápida de erros e informe coletivo instantaneo.
+  6) Entrega de versões estáveis, documentação e arquivos acessórios com
+     *continuous deployment*.
+  7) Custo computacional reduzido já que é feito em um servidor
+     dedicado.
+  8) Verificação a cada *push* feito.
+  9) Status exibido para cada branch e requisição de merge.
   10) Aumenta a visilibidade facilitanto a comunicação e reunião de
       esforços.
-  11) Menos tempo na correção de bug, que devem ser menores, assim
+  12) Menos tempo na correção de bug, que devem ser menores, assim
       deixando mais tempo para desenvolver o que interessa.
-  12) É barato, até mesmo quando custa algo, porque parar o projeto por
+  13) É barato, até mesmo quando custa algo, porque parar o projeto por
       erro pode custar inclusive mais caro.
-  13) Reduz os problemas com usuários fora dos colaboradores pois testa
+  14) Reduz os problemas com usuários fora dos colaboradores pois testa
       em máquinas virgens.
-  14) Facilita para os usuários saberem se a última versão é executável.
-  15) Pode automatizar a disponibilização do projeto aos usuários.
+  15) Facilita para os usuários saberem se a última versão é executável.
+  16) Pode automatizar a disponibilização do projeto aos usuários.
 
 A integração contínua não elinima erros, mas faz com que eles sejam mais
 fáceis de identificar e remover.
@@ -766,25 +769,25 @@ O build é automático, faz um self-testing a cada commit.
 
 O fluxo de trabalho de um repositório com IC é basicamente assim:
 
-1) Os desenvolvedores trabalham no projeto em seu workspace
-   privado/local;
-2) Periodicamente fazem *commits* e *push* para o repositório remoto;
-3) O serviço de IC monitora o repositório toda vez que modificações
-   ocorrem;
-4) O serviço de IC corre todos os testes de inspeção que foram
-   configurados (instala dependendencias, executa scripts, cria/tranfere
-   arquivos, etc);
-5) O serviço de IC disponibiliza produtos da verificação, como binários
-   de instalação e documentação (no caso de sucesso) ou log de execussão
-   (no caso de falha);
-6) O serviço de IC assinalá no repositório Git o *status* da
-   verificação: sucesso/fracasso;
-7) O serviço de IC informa a equipe dos resultados por mensagem de email
-   ou webhooks, como o Slack;
-8) A equipe toma das providências cabiveis na primeira oportunidade, como
-   corrigir a falha ou anunciar o sucesso;
-9) O serviço aguarda por mais modificações;
-
+  1) Os desenvolvedores trabalham no projeto em seu workspace
+     privado/local;
+  2) Periodicamente fazem *commits* e *push* para o repositório remoto;
+  3) O serviço de IC monitora o repositório toda vez que modificações
+     ocorrem;
+  4) O serviço de IC corre todos os testes de inspeção que foram
+     configurados (instala dependendencias, executa scripts,
+     cria/tranfere arquivos, etc);
+  5) O serviço de IC disponibiliza produtos da verificação, como
+     binários de instalação e documentação (no caso de sucesso) ou log
+     de execussão (no caso de falha);
+  6) O serviço de IC assinalá no repositório Git o *status* da
+     verificação: sucesso/fracasso;
+  7) O serviço de IC informa a equipe dos resultados por mensagem de
+     email ou webhooks, como o Slack;
+  8) A equipe toma das providências cabiveis na primeira oportunidade,
+     como corrigir a falha ou anunciar o sucesso;
+  9) O serviço aguarda por mais modificações;
+  
 **GitHub**
 
 https://travis-ci.org/
@@ -838,9 +841,17 @@ fazer *webhook* com Slack
 
 **GitLab**
 
-`.gitlab-ci.yml`
+GitLab.com + servidor no digital ocean.
+http://alanmonger.co.uk/php/continuous/integration/gitlab/ci/docker/2015/08/13/continuous-integration-with-gitlab-ci.html
 
-```{r, eval=FALSE, engine="yml"}
+Integração contínua passou fazer parte do GitLab CE na versão 8.0,
+lançada em 22/09/2015. O GitLab do LEG já faz uso dessa última versão.
+<https://about.gitlab.com/2015/09/22/gitlab-8-0-released/>
+
+As especificação são feitas em um arquivo `.gitlab-ci.yml` na home do
+projeto.
+
+```{r, eval=FALSE, engine="sh"}
 job_R:
   script:
     - echo $HOME
@@ -851,7 +862,6 @@ job_R:
 
 https://about.gitlab.com/gitlab-ci/
 https://about.gitlab.com/2015/02/03/7-reasons-why-you-should-be-using-ci/
-http://alanmonger.co.uk/php/continuous/integration/gitlab/ci/docker/2015/08/13/continuous-integration-with-gitlab-ci.html
 
 <https://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software>
 
