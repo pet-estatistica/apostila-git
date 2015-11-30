@@ -487,15 +487,105 @@ Científica e Software Livre - da UFPR.
 
 # Fluxo de trabalho #
 
-<https://www.atlassian.com/git/>
+O fluxo de trabalho de um projeto Git local e usando um servidor remoto
+já foram apresentados. O fluxo com um repositório Git mantido em um
+serviço, como o GitHub ou Gitlab, não muda muito. A maior diferença não
+é sobre o uso de novas instruções Git mas sim a adoção de uma estratégia
+de trabalho (*workflow*) baseada nos recursos desses serviços, como as
+*milestones* e *issues*.
 
-clone, add, commit, branch, push, fetch, pull.
+Em termos de comandos, acrescenta-se aqueles necessários para se
+comunicar com um repositório remoto. Da mesma forma que o ramo default
+do Git é o `master`, o repositório remoto é por default chamado de
+`origin`.
 
-push branch, delete branch no origin
+Ao considerar um seviço web, você pode começar um repositório novo de
+duas formas: localmente ou pelo serviço.
 
-setar outros remotes
+Pelo serviço, qualquer que seja, crie um novo repositório. GitHub e
+GitLab dão instruções resumidas de como proceder logo que você cria um
+novo repositório, inclusive, incluem opções como criar um repositório
+com arquivo de `README`. Assim que criar, seu repositório terá um
+endereço. Na sessão anterior, **Gerenciar repositórios**, descremos o
+processo de criar e *clonar* o repositório e também de criar local e
+adicionar um endeço do `origin`.
+
+Localmente o repositório segue o ciclo normal de desenvolvimento que
+minimamente contém das intruções `git add` e `git commit`. Os fluxos de
+trabalho em geral preconizam o desenvolvimento a partir de *branches* de
+demanda cujo conteúdo será incorporado aos ramos permanentes (`master`,
+`devel`). Para criar um ramo
+
+```
+## Cria um ramo chamado issue#10.
+git branch issue#10
+
+## Muda do ramo atual para o recém criado.
+git checkout issue#10
+
+## Segue a rotina.
+git add ...
+git commit ...
+
+## Sempre que quiser, suba o trabalho.
+git push origin issue#10
+```
+
+```
+## Lista os ramos locais.
+git branch -l
+
+## Lista os remostos.
+git branch -r
+
+## Lista todos.
+git branch -a
+```
+
+```
+## Remove um ramo local (não mais útil).
+git branch -d issue#10
+
+## Remove um ramo remoto (não mais útil).
+git branch -dr origin/issue#10
+
+## Remove um ramo remoto na origem (duas formas).
+git push origin --delete issue#10
+git push origin :issue#10
+```
+
+```
+## Lista os remotos.
+git remote -v
+
+## Renomeia para um nome melhor
+git remote rename origin servidor
+
+## Remove.
+git remote rm servidor
+
+## Adiciona um endereço de remoto (origin)
+git remote add origin <url>
+git remote add servidor <url>
+
+## Adiciona/remove URLs ao origin.
+git remote set-url origin --add <url>
+git remote set-url origin --delete <url>
+```
 
 diferença de fetch e pull
+https://www.atlassian.com/git/tutorials/syncing/git-push
+https://www.quora.com/Whats-the-difference-between-git-pulland-git-fetch
+
+```
+## https://git-scm.com/docs/git-fetch
+## O remote default é o origin. refspec é um ramo ou commit.
+git fetch <remote> <refspec>
+git fetch --all
+git fetch --verbose
+
+## https://git-scm.com/docs/git-pull
+```
 
 # Macanísmos de colaboração #
 
@@ -845,6 +935,9 @@ fazer *webhook* com Slack
 
 ## GitLab ##
 
+https://about.gitlab.com/gitlab-ci/
+https://about.gitlab.com/2015/02/03/7-reasons-why-you-should-be-using-ci/
+
 A Integração Contínua passou fazer parte do GitLab CE na [versão 8.0],
 lançada em setembro de 2015. Diferente do GitHub, essa versão do GitLab
 tem o IC de forma nativa. Você pode configurar servidores externos para
@@ -854,6 +947,8 @@ GitLab.
 [Alan Monger] descreve como configurar um servidor Ubuntu no
 [Digital Ocean] parar verificar repositórios hospedados no
 <https://gitlab.com/>.
+
+TODO Definir *runner*, *build*, *YAML*.
 
 Segundo ele, o primeiro passo é acessar <https://gitlab.com/ci/> para
 adicionar o projeto à integração contínua. Isso vai gerar um *token* de
@@ -888,7 +983,7 @@ e [mcglm], dois pacotes R.
 ### O arquivo `.gitlab-ci.yml` ###
 
 A documentação oficial sobre como usar o arquivo `.gitlab-ci.yml`
-encontra-se em: <http://doc.gitlab.com/ce/ci/yaml/README.html>.
+encontra-se em <http://doc.gitlab.com/ce/ci/yaml/README.html>.
 
 O arquivo `.gitlab-ci.yml` fica na raíz do projeto. Seu conteúdo define
 todo o processo de verificação do seu repositório a partir de uma série
@@ -908,49 +1003,82 @@ job2:
 Neste exemplo existem dois *jobs* (tarefas). Cada um deles corre
 independente e podem ser executados simultâneamente. O primeiro executa
 um *script* shell e o segundo comandos *shell* em uma lista. Porém, tais
-arquivos podem ser bem mais complexos com campos além do `script:`.
+arquivos podem ser bem mais complexos, com campos além do `script:`. Os
+campos a seguir são todos opcionais:
 
-Todos são opcionais:
-
-  * `image`: para usar uma imagem *docker*. O tutorial de [Alan Monger]
-    considera esse campo.
-  * `services`: também refere ao *docker*. Documentação oficial sobre
-    isso encontra-se em
+  * `image`: para especificar uma imagem [*docker*]. O tutorial de
+    [Alan Monger] considera esse campo.
+  * `services`: também refere ao *docker*. Tais campos são de uso menos
+    frequênte, porém existe uma séria de vantagens neles. A documentação
+    oficial sobre isso encontra-se em
     <http://doc.gitlab.com/ce/ci/docker/README.html>.
   * `before_script`: define comandos/scripts a serem executados antes
-    dos principais. É como se fosse o estágio zero, usado para
-    preparação, do qual não se espera falhas pode não deve depender do
-    projeto.
-  * `stages`: define os estágios de excecução do *jobs* para haver uma
-    exceussão condicional. Jobs de mesmo estágio são executados
-    paralelamente mas àqueles à frente só são executados se houver
-    sucesso dos predecessores.
-  * `variables`: serve para criar variables de ambiente que podem ser
+    dos principais. São instruções de preparação das quais não se espera
+    falhas pois não deve depender do projeto.
+  * `stages`: define a ordem de excecução dos *jobs* que estabalecer uma
+    cadeia de execução condicional. Jobs de mesma ordem ou do mesmo
+    estágio são executados paralelamente mas àqueles à frente só são
+    executados se houver sucesso dos predecessores.
+    ```
+    stages:
+      - construcao
+      - teste
+      - entrega
+    
+    job_contrucao:
+      script: "construcao.sh"
+      stage: construcao
+    
+    job_test:
+      script: "teste_codigofonte.sh"
+      script: "teste_documentacao.sh"
+      stage: teste
+    
+    job_entrega:
+      script: "compacta_transfere.sh"
+      stage: entrega
+    ```  
+  * `variables`: serve para criar variaveis de ambiente que podem ser
     usados por todos os comandos e scripts.
   * `cache`: indica os diretórios e arquivos que serão mantidos entre os
-    jobs (builds).
+    *jobs* (builds), possivelmente porque são aproveitados futuramente.
 
-Exceto os nomes listados acima, um job pode ter um nome qualquer.
-Dentro de um job tem-se uma lista de campos disponíveis também:
+Com excessão dos nomes listados acima, um *job* pode ter qualquer nome,
+desde que seja exclusivo. Dentro de um *job* tem-se também uma lista de
+campos disponíveis para configurá-lo:
 
-  * `script`: é o campo para especificar um arquivo de script *shell* ou
-    uma lista de comandos a serem executadas pelo *runner*.
-  * `only` e `except`: restringem para ou excluem uma lista de
-    referências git (*branches* ou tags*) a aplicação do job. Esse campo
-    entende expressões regulares.
-  * `tags`: são usadas para selecionar os runners na lista de runners
-    disponíveis. Os runners possuem tags.
-  * `allow_failure`:
-  * `when`: é um comando que dispara exceussões condicionais
-    * `on_failure`: são instruções executadas quando algum o job do
+  * `script`: especifica script *shell* ou uma lista de comandos a serem
+    executados.
+  * `stage`: já mencionado anteriormente, serve para dar a ordem de
+    execução dos *jobs*. Vários *jobs* podem ser do mesmo estágio e
+    nesse caso são executados paralelamente.
+  * `only` e `except`: servem para restringir a execução do *job*,
+    incluindo ou excluindo, para uma lista de referências git, como
+    *branches* ou *tags*. Esse campo permite expressões regulares, úteis
+    para incluir (excluir) ramos representáveis por *regex*, como são os
+    ramos de desenvolvimento do nosso workflow, iniciados com *issue*.
+    ```
+    job_test:
+      script: "teste_codigofonte.sh"
+      script: "teste_documentacao.sh"
+      stage: teste
+      only:
+        - /^issue.*$/ ## Os que começam com issue 
+    ```
+  * `tags`: são usadas para indicar o *runner* da lista de
+    disponíveis. Na configuração dos *runners* pode-se atribuir *tags*
+    que servem justamente para esse tipo de pareamento.
+  * `allow_failure`: indica jobs que mesmo que falhem, não serão
+    considerados para dar estampa de sucesso ou falha.
+  * `when`: é um comando que dispara excussões condicionais ao sucesso
+    do *job* anterior
+    * `on_failure`: são instruções executadas quando algum o *job* do
       estágio anterior falhou.
-    * `on_success`: são instruções executadas quando todos os jobs do
+    * `on_success`: são instruções executadas quando todos os *jobs* do
       estágio anterior foram bem sucedidos.
     * `always`: excutados sempre.
-  * `artifacs`:
-  * `cache`: especifa arquivos e diretório mantidos entre um build e outro.
-
-inilimatos jobs ao mesmo tempo.
+  * `cache`: especifica arquivos e diretório mantidos entre um *build* e
+    outro.
 
 No caso do pacote LegTools, o arquivo `.gitlab-ci.yml` do repositório
 tem o seguinte conteúdo:
@@ -983,15 +1111,36 @@ Caso queira a estampa para outros ramos, é só acrescentá-los.
 
 ### Runners ###
 
-Os jobs são executados pelos *runners* dentro de seus ambientes. Cada
-job corre independente do demais TODO qual implicação disso?
+Em poucas palavras, um *runner* é uma máquina que executa o build por
+meio do GitLab CI. Um *runner* pode ser específico de um projeto ou pode
+ser um *runner* compartilhado, disponível à todos os projetos. Estes
+últimos são úteis à projetos que tem necessidades similares, como todos
+àqueles projetos que são pacotes R, por exemplo. Isso facilita a
+administação e atualização. Os específicos, por outro lado, atendem
+projetos com demandas particulares.
 
-TODO http://doc.gitlab.com/ce/ci/runners/README.html
+Apenas usuários com permissões de *admin* podem criar runners
+compartilhados.
 
-https://about.gitlab.com/gitlab-ci/
-https://about.gitlab.com/2015/02/03/7-reasons-why-you-should-be-using-ci/
+Ir em Settings > Services e marcar *active*. Isso vai criar 6 novas
+entradas no menu da esquerda
 
-<https://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software>
+  * *Runners*: contém instruções de como usar um *runner* específicos e
+    compartilhados. 
+  * *Variables*: define variáveis que são omitidas no *log* do *build*,
+     útil para passar senhas.
+  * *Triggers*: servem para ??
+  * *CI Web Hooks*: esse *web hook* pode ser usado para criar eventos
+    quando o build é concluido.
+  * *CI Settings*: configurações gerais
+  * *CI Services*: permite integrar o CI com outros serviços, como email
+    e Slack.
+
+Para habilitar um *runner*, é necessário instalar o
+`gitlab-ci-multi-runner`. O [repositório oficial do *GitLab Runner*]
+contém as instruções de instalação e configuração e a
+documentação oficial sobre [*runners*] indica como tirar melhor proveito
+do recurso.
 
 <!---------------------------------------------------------------------- -->
 
@@ -1011,3 +1160,6 @@ https://about.gitlab.com/2015/02/03/7-reasons-why-you-should-be-using-ci/
 [GitLab do LEG]: http://git.leg.ufpr.br/
 [legTools]: http://git.leg.ufpr.br/leg/legTools
 [mcglm]: http://git.leg.ufpr.br/wbonat/mcglm
+[*docker*]: https://www.docker.com/
+[repositório oficial do *GitLab Runner*]: https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
+[*runners*]: http://doc.gitlab.com/ce/ci/runners/README.html
