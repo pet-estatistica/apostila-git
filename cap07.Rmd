@@ -160,7 +160,7 @@ principais de trabalhar em colaboração com o git e o GitLab:
 
 - #### **Centralized workflow**: 
 recomendado para projetos pequenos, e/ou que não necessitam de muitas 
-alterações. Nesse workflow, o repositório possui apenas um brach (`master`) 
+alterações. Nesse workflow, o repositório possui apenas um branch (`master`) 
 e as alterações são feitas nesse branch. As revisões só poderão ser 
 realizadas depois que tudo foi enviado para o servidor remoto. Com isso, 
 há uma grande chance de ocorrerem conflitos.
@@ -230,7 +230,7 @@ fácil para usuários novos do git.
       FIGURA: Criando um novo ramo para o trabalho
 
       Com isso, o membro poderá iniciar o seu trabalho, e realizar o que
-      for necessário nesse ramo (brach). Após finalizar o projeto, o colaborador
+      for necessário nesse ramo (branch). Após finalizar o projeto, o colaborador
       envia suas modificações, irá requirir um `merge request` para que 
       as alterações feitas nesse branch, sejam incorporadas no `master`. Os 
       demais membros, poderão avaliar se tais modificações são pertinentes
