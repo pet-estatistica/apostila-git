@@ -794,8 +794,7 @@ O fluxo de trabalho de um repositório com IC é basicamente assim:
      como corrigir a falha ou anunciar o sucesso;
   9) O serviço aguarda por mais modificações;
   
-**GitHub**
-
+## GitHub ##
 
 http://www.codeaffine.com/2014/09/01/travis-continuous-integration-for-github-projects/
 
@@ -844,7 +843,7 @@ compilação de um documento Latex:
 exibir build status no README
 fazer *webhook* com Slack
 
-**GitLab**
+## GitLab ##
 
 A Integração Contínua passou fazer parte do GitLab CE na [versão 8.0],
 lançada em setembro de 2015. Diferente do GitHub, essa versão do GitLab
@@ -871,7 +870,7 @@ As especificação são feitas em um arquivo `.gitlab-ci.yml` na home do
 projeto.
 
 O [GitLab do LEG] tem o CI embutido pois é a versão mais recente do
-serviço. Essa servidora é na realidade um desktop com Ubuntu Server. É
+serviço. Essa servidora é na realidade um *desktop* com Ubuntu Server. É
 patrimônio da UFPR de responsabilidade do LEG mas tem uso compartilhado
 com o PET Estatística e colaboradores do Laboratório. Desde a
 disponibilização do GitLab, em julho de 2015, mantemos artigos,
@@ -886,6 +885,73 @@ tipo de comando ou programa disponível no servidor em questão, um Ubuntu
 Server 14.04. Até então, os repositórios com IC são só dois: [legTools]
 e [mcglm], dois pacotes R.
 
+### O arquivo `.gitlab-ci.yml` ###
+
+A documentação oficial sobre como usar o arquivo `.gitlab-ci.yml`
+encontra-se em: <http://doc.gitlab.com/ce/ci/yaml/README.html>.
+
+O arquivo `.gitlab-ci.yml` fica na raíz do projeto. Seu conteúdo define
+todo o processo de verificação do seu repositório a partir de uma série
+de instruções, como execução de comandos diretos ou execução de
+scripts. Abaixo tem-se um exemplo simples de `.gitlab-ci.yml`.
+
+```
+job1:
+  script: "teste_instalacao.sh"
+
+job2:
+  script:
+    - pwd
+    - ls -a
+```
+
+Neste exemplo existem dois *jobs* (tarefas). Cada um deles corre
+independente e podem ser executados simultâneamente. O primeiro executa
+um *script* shell e o segundo comandos *shell* em uma lista. Porém, tais
+arquivos podem ser bem mais complexos com campos além do `script:`.
+
+Todos são opcionais:
+
+  * `image`: para usar uma imagem *docker*. O tutorial de [Alan Monger]
+    considera esse campo.
+  * `services`: também refere ao *docker*. Documentação oficial sobre
+    isso encontra-se em
+    <http://doc.gitlab.com/ce/ci/docker/README.html>.
+  * `before_script`: define comandos/scripts a serem executados antes
+    dos principais. É como se fosse o estágio zero, usado para
+    preparação, do qual não se espera falhas pode não deve depender do
+    projeto.
+  * `stages`: define os estágios de excecução do *jobs* para haver uma
+    exceussão condicional. Jobs de mesmo estágio são executados
+    paralelamente mas àqueles à frente só são executados se houver
+    sucesso dos predecessores.
+  * `variables`: serve para criar variables de ambiente que podem ser
+    usados por todos os comandos e scripts.
+  * `cache`: indica os diretórios e arquivos que serão mantidos entre os
+    jobs (builds).
+
+Exceto os nomes listados acima, um job pode ter um nome qualquer.
+Dentro de um job tem-se uma lista de campos disponíveis também:
+
+  * `script`: é o campo para especificar um arquivo de script *shell* ou
+    uma lista de comandos a serem executadas pelo *runner*.
+  * `only` e `except`: restringem para ou excluem uma lista de
+    referências git (*branches* ou tags*) a aplicação do job. Esse campo
+    entende expressões regulares.
+  * `tags`: são usadas para selecionar os runners na lista de runners
+    disponíveis. Os runners possuem tags.
+  * `allow_failure`:
+  * `when`: é um comando que dispara exceussões condicionais
+    * `on_failure`: são instruções executadas quando algum o job do
+      estágio anterior falhou.
+    * `on_success`: são instruções executadas quando todos os jobs do
+      estágio anterior foram bem sucedidos.
+    * `always`: excutados sempre.
+  * `artifacs`:
+  * `cache`: especifa arquivos e diretório mantidos entre um build e outro.
+
+inilimatos jobs ao mesmo tempo.
+
 No caso do pacote LegTools, o arquivo `.gitlab-ci.yml` do repositório
 tem o seguinte conteúdo:
 
@@ -895,7 +961,9 @@ job_R:
     - echo $HOME
     - Rscript -e 'getwd(); .libPaths(); sessionInfo()'
     - Rscript -e 'library(devtools); check()'
-    - Rscript -e 'library(devtools); .libPaths(new = path.expand("~/R-tests/legTools")); install(local = FALSE)'
+    - Rscript -e 'library(devtools);\
+                  .libPaths(new = path.expand("~/R-tests/legTools"));\
+                  install(local = FALSE)'
 ```
 
 Estas são instruções em *shell* que chamam o R com expressões passadas
@@ -913,8 +981,12 @@ colocar
 
 Caso queira a estampa para outros ramos, é só acrescentá-los.
 
-A documentação oficial sobre como usar o arquivo `.gitlab-ci.yml`
-encontra-se em: <http://doc.gitlab.com/ce/ci/yaml/README.html>.
+### Runners ###
+
+Os jobs são executados pelos *runners* dentro de seus ambientes. Cada
+job corre independente do demais TODO qual implicação disso?
+
+TODO http://doc.gitlab.com/ce/ci/runners/README.html
 
 https://about.gitlab.com/gitlab-ci/
 https://about.gitlab.com/2015/02/03/7-reasons-why-you-should-be-using-ci/
