@@ -5,6 +5,7 @@ graphics: yes
 header-includes: \usepackage{wrapfig}
 output:
   pdf_document:
+    template: template.tex
     highlight: default
     toc: true
     toc_depth: 2
@@ -16,6 +17,8 @@ output:
 library(knitr)
 opts_chunk$set(comment=NA)
 ```
+
+\chapter{Serviços Web para Projetos Git}
 
 # Serviços Web para Git #
 
