@@ -145,6 +145,13 @@
      concluir sobre Sistemas de Controle de Versão, *Cheat Sheet* e uso
      de Git no RStudio.
 6. 2015-12-01:
+   + TODOS: colocar as figuras em ambiente Latex (`center > figure >
+     includegraphics + caption`). Controlar o tamanho das figuras para
+     não ultrapassarem as margens nem ficarem pequenas demais. Colocar
+     os links com âncoras (os não presentes no texto, como
+     `[google](http://www.google.com)`) em
+     `google\footnote{\url{http://www.google.com}}` para aparecer no
+     rodapé das páginas. Usar seções numeradas.
 7. 2015-12-08:
 8. 2015-12-15: Apostila Git concluída!
 
