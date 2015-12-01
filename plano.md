@@ -151,7 +151,25 @@
      os links com âncoras (os não presentes no texto, como
      `[google](http://www.google.com)`) em
      `google\footnote{\url{http://www.google.com}}` para aparecer no
-     rodapé das páginas. Usar seções numeradas.
+     rodapé das páginas. Usar seções numeradas. Considerar como exemplo
+     o YAML do arquivo `cap05.Rmd`.
+   + Walmes: Fazer revisão completa do capítulo 5 até sexta para o
+     Alcides. Disponibilizar o template para cada um fazer os ajustes
+     finais no seu capítulo.
+   + Alessandra: Corrigir o capítulo 1.
+   + Daniel: Concluir o capítulo de RStudio e o *Cheat Sheet*
+     (**pendencias**). Revisar o dicionário de termos e exemplos de
+     rotinas.
+   + Gabriel: Fazer revisão e acréscimos no capítulo 3 e disponibilizar
+     até sexta para o Eduardo.
+   + Jhenifer: Corrigir o capítulo do Eduardo que será disponibilizado
+     na sexta.
+   + Ângela: Corrigir o capítulo de RStudio disponibilizado na sexta.
+   + Eduardo: Revisar o capítulo 6 até sexta para a Jhenifer. Corrigir o
+     capítulo 3 depois de sexta.
+   + Alcides: Corrigir o capítulo 5 disponibilizado na sexta.
+   + Quem se interessar: Pensar numa capa para a apostila, fazer esboço,
+     *brainstorm*.
 7. 2015-12-08:
 8. 2015-12-15: Apostila Git concluída!
 
