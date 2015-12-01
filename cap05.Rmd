@@ -1,12 +1,15 @@
 ---
 title: "Serviços Web para Projetos Git"
 author: "PET Estatística UFPR"
+graphics: yes
+header-includes: \usepackage{wrapfig}
 output:
   pdf_document:
     highlight: default
     toc: true
     toc_depth: 2
     keep_tex: true
+    number_sections: true
 ---
 
 ```{r, include=FALSE}
@@ -38,7 +41,12 @@ as funcinalides desses serviçõs voltados à colaboração.
 
 ## GitHub ##
 
-![](./images/github-octocat.png)
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=5cm]{./images/github-octocat.png}
+  \end{center}
+  \caption{Octocat é o mascote do GitHub.}
+\end{wrapfigure}
 
 O [GitHub] é um serviço Web para hospedagem, gestão e compartilhamento
 de repositórios Git que oferece recursos para desenvolvimento e
@@ -150,9 +158,12 @@ alguns repositórios privados com a conta *free*.
 
 ## GitLab ##
 
-![](./images/gitlab-raccoon.jpg)
-
-FIGURA O guaxinim (*raccoon* em inglês) é o macote do GitLab.
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=5cm]{./images/gitlab-raccoon.jpg}
+  \end{center}
+  \caption{O guaxinim (*raccoon* em inglês) é o macote do GitLab.}
+\end{wrapfigure}
 
 Assim como o GitHub, o [GitLab] é um serviço Web para repositórios
 Git. O GitLab é um projeto *open source* desenvolvido em Ruby que deu
@@ -266,10 +277,14 @@ chave. Use, por exemplo, `laptop` ou `trabalho` para facilitar o
 reconhecimento. É comum trabalhar-se com mais de um máquina, como uma em
 casa e outra no trabalho.
 
-![](./images/github_sshkeys.png)
-
-FIGURA XXX: *Printscreen* da página de configurações pessoais do
-GitHub. No menu `SSH Keys` pode-se ver e adicionar chaves públicas.
+\begin{figure}
+  \begin{center}
+    \includegraphics{./images/github_sshkeys.png}
+  \end{center}
+  \caption{\textit{Printscreen} da página de configurações pessoais do
+    GitHub. No menu \texttt{SSH Keys} pode-se ver e adicionar chaves
+    públicas.}
+\end{figure}
 
 Para testar a comunição entre o GitHub e a sua máquina, execute:
 ```{r, engine="bash", eval=FALSE}
@@ -312,9 +327,12 @@ descrição à ele (Figura XXX). Na etapa seguinte, defina o nível de
 visibilidade: público ou privado. Lembre-se que os planos *free* só
 permitem repositórios públicos.
 
-![](./images/github_new_repo.png)
-
-FIGURA XXX: Janela para a criação de um novo repositório no GitHub.
+\begin{figure}
+  \begin{center}
+    \includegraphics{./images/github_new_repo.png}
+  \end{center}
+  \caption{Janela para a criação de um novo repositório no GitHub.}
+\end{figure}
 
 Para criar o projeto dentro de uma Organização, selecione a Organização
 na *drop list* que fica no no campo Owner, a esquerda do campo para o
@@ -386,7 +404,13 @@ ramos, vá em *Branches*. O uso de de serviços web é configurado no
 *Webhooks & services*. O *Deploy keys* permite adicionar chaves
 públicas.
 
-![](./images/github_repo_home.png)
+\begin{figure}
+  \begin{center}
+    \includegraphics{./images/github_repo_home.png}
+  \end{center}
+  \caption{\textit{Home} de um repositório no GitHub.}
+  \label{github_repo_home}
+\end{figure}
 
 Vamos considerar um repositório de bastante atividade para conhecermos
 um pouco mais dos recursos do GitHub. O repositório
@@ -394,7 +418,8 @@ um pouco mais dos recursos do GitHub. O repositório
 `knitr` do R, o principal pacote para a geração de relatórios
 dinâmicos. Nesse repositório tem-se acesso aos fontes.
 
-Na figura XXX, logo abaixo do título, tem-se quatro quantificadores:
+Na figura \ref{github_repo_home}, logo abaixo do título, tem-se quatro
+quantificadores:
 
   * *commits*: ao clinar neste tem-se o histórico de *commits* com
     autor, mensagem e sha1. É possível comparar estados dos arquivos
@@ -487,17 +512,19 @@ Científica e Software Livre - da UFPR.
 
 # Fluxo de trabalho #
 
+TODO Deixar os chunks dessa sessão reproduzíveis! TODO
+
 O fluxo de trabalho de um projeto Git local e usando um servidor remoto
 já foram apresentados. O fluxo com um repositório Git mantido em um
 serviço, como o GitHub ou Gitlab, não muda muito. A maior diferença não
 é sobre o uso de novas instruções Git mas sim a adoção de uma estratégia
 de trabalho (*workflow*) baseada nos recursos desses serviços, como as
-*milestones* e *issues*.
+*milestones* e *issues*. Esse modelos de trabalho seráo descritos em um
+capítulo à frente.
 
 Em termos de comandos, acrescenta-se aqueles necessários para se
-comunicar com um repositório remoto. Da mesma forma que o ramo default
-do Git é o `master`, o repositório remoto é por default chamado de
-`origin`.
+comunicar com um repositório remoto. Alguns desses comandos, senão
+todos, já foram apresentados no capítulo anterior a esse.
 
 Ao considerar um seviço web, você pode começar um repositório novo de
 duas formas: localmente ou pelo serviço.
@@ -506,17 +533,19 @@ Pelo serviço, qualquer que seja, crie um novo repositório. GitHub e
 GitLab dão instruções resumidas de como proceder logo que você cria um
 novo repositório, inclusive, incluem opções como criar um repositório
 com arquivo de `README`. Assim que criar, seu repositório terá um
-endereço. Na sessão anterior, **Gerenciar repositórios**, descremos o
-processo de criar e *clonar* o repositório e também de criar local e
-adicionar um endeço do `origin`.
+endereço (ssh e http). Na sessão anterior, **Gerenciar repositórios**,
+descremos o processo de criar e *clonar* o repositório e também de criar
+local e adicionar um endeço do `origin`.
 
 Localmente o repositório segue o ciclo normal de desenvolvimento que
 minimamente contém das intruções `git add` e `git commit`. Os fluxos de
 trabalho em geral preconizam o desenvolvimento a partir de *branches* de
 demanda cujo conteúdo será incorporado aos ramos permanentes (`master`,
-`devel`). Para criar um ramo
+`devel`) quando forem concluídos. Abaixo ilustramos a sequência de criar
+um ramo, desenvolvê-lo e por fim subir o seu conteúdo para o repositório
+remoto, que nesse caso é mantido em um servido web.
 
-```
+```{r, engine="bash", eval=FALSE}
 ## Cria um ramo chamado issue#10.
 git branch issue#10
 
@@ -524,29 +553,48 @@ git branch issue#10
 git checkout issue#10
 
 ## Segue a rotina.
-git add ...
-git commit ...
+git add <arquivos>
+git commit -m <mensagem>
 
 ## Sempre que quiser, suba o trabalho.
 git push origin issue#10
 ```
 
-```
+Nessa rotina, consideramos `issue#10` um *issue* criado na interface
+para atender uma demanda, como por exemplo, corrigir um *bug*. Da mesma
+forma que o ramo default do Git é o `master`, o repositório remoto é por
+default chamado de `origin`, então subimos o conteúdo desse ramo para o
+servidor que mantém o repositório sob o serviço web.
+
+Não há limites para o número de ramos. Ramos podem ser locais, remotos
+ou ambos. Quando você cria um ramo, como nos comandos acima, ele é um
+ramo remoto. Quando você sobre esse ramo, ele passa ter sua parte remota
+também. E quando você clona um repositório, você traz todos os ramos que
+ele possui, que são ramos remotos. Ao escolher um ramos desse para
+trabalhar, ele passar ser também um ramo local. Abaixo formas de listas
+os ramos do projeto.
+
+```{r, engine="bash", eval=FALSE}
 ## Lista os ramos locais.
 git branch -l
 
 ## Lista os remostos.
 git branch -r
 
-## Lista todos.
+## Lista todos (all).
 git branch -a
 ```
 
-```
+Você pode notar que ramos locais não tem prefixo e que ramos remotos tem
+o prefixo `origin/`. Você pode remover um ramo local mas manter sua
+parte remota e pode também excluir esse ramo por completo de todo o
+sistema, localmente e no servidor, conforme ilustram os códigos abaixo.
+
+```{r, engine="bash", eval=FALSE}
 ## Remove um ramo local (não mais útil).
 git branch -d issue#10
 
-## Remove um ramo remoto (não mais útil).
+## Remove sua cópia remota (não mais útil também).
 git branch -dr origin/issue#10
 
 ## Remove um ramo remoto na origem (duas formas).
@@ -554,37 +602,141 @@ git push origin --delete issue#10
 git push origin :issue#10
 ```
 
-```
+Até aqui, nos referimos ao repositório remoto como `origin` que é o nome
+default. No entanto, um projeto Git pode ter mais de um repositório
+remoto. Considere o caso simples de um repositório para arquivos de uma
+disciplina. Esse repositório contém tanto lista de exercícios para os
+alunos como também as provas com as soluções. Para não entregar as
+provas de bandeija, o diretório de provas existe no ramo `secret` e é
+enviado somente para um repositório privado chamado `provas`. Já o
+conteúdo restante (lista de exercícios, notas de aula, scripts)
+disponibilizado para os alunos fica no ramo `master`, mantido em um
+repositório aberto chamado de `origin`.
+
+Dois repositórios remotos tem endereços distintos pois são projetos
+distintos no serviço web. Você pode ter a parte pública do projeto
+(`origin`) no GitHub e a parte privada, as provas (`secret`) no GitLab
+de forma privada. Abaixo tem-se uma série de comandos para listar,
+renomear, remover e adicionar endereços para remotos.
+
+```{r, engine="bash", eval=FALSE}
 ## Lista os remotos.
 git remote -v
 
 ## Renomeia para um nome melhor
-git remote rename origin servidor
+git remote rename origin profs
 
 ## Remove.
-git remote rm servidor
+git remote rm profs
 
 ## Adiciona um endereço de remoto (origin)
 git remote add origin <url>
-git remote add servidor <url>
+git remote add profs <url>
 
 ## Adiciona/remove URLs ao origin.
 git remote set-url origin --add <url>
 git remote set-url origin --delete <url>
 ```
 
-diferença de fetch e pull
-https://www.atlassian.com/git/tutorials/syncing/git-push
-https://www.quora.com/Whats-the-difference-between-git-pulland-git-fetch
+Quando você trabalha em colaboração ou em mais de uma máquina, vai
+sempre precisar atualizar os repositórios com o conteúdo existente no
+remoto. Existem duas instruções Git para isso: `git fetch` e `git pull`.
 
-```
-## https://git-scm.com/docs/git-fetch
-## O remote default é o origin. refspec é um ramo ou commit.
-git fetch <remote> <refspec>
+As duas traduções mais frequentes do verbo *to fetch* são buscar e
+trazer.  A documentação oficial do comando `git fetch`
+(<https://git-scm.com/docs/git-fetch>) indica que esse comando serve
+para trazer objetos e referências dos repositórios remotos. Abaixo o
+comando padrão considerando um remoto de nome `origin` e algumas
+variações.
+
+```{r, engine="bash", eval=FALSE}
+## Traz todos os ramos do remoto origin.
+git fetch origin
+
+## Traz só do ramo devel.
+git fetch origin devel
+
+## Traz de todos os remotos: origin, profs.
 git fetch --all
-git fetch --verbose
+```
 
-## https://git-scm.com/docs/git-pull
+O comando *fetch* traz os ramos e atualiza a parte remota, por exemplo,
+o `origin/devel`. O ramo local `devel` não tem seu conteúdo modificado
+após o `fetch`. Para transferir o conteúdo o `origin/devel` para o
+`devel` tem-se que usar o `git merge`. No entanto, sempre que haver
+necessidade, antes o *merge* pode-se verificar as diferenças que existem
+entre local e remoto, principalmente quando esse remoto traz
+contribuições de algum colaborador. Os comandos abaixos exibem as
+diferenças entre os ramos e aplicam o merge entre eles.
+
+```{r, engine="bash", eval=FALSE}
+## Muda para o ramo devel.
+git checkout devel
+
+## Mostra as diferenças entre devel local e remoto no terminal.
+git diff devel origin/devel
+
+## Faz o merge do devel remoto no devel local.
+git merge origin/devel
+```
+
+Como você já sabe, os merges podem apresentar conflito. Já vimos como
+fazer isso e no capítulo a seguir apresentaremos interfaces gráficas
+para trabalhar com o Git e dentre elas algumas são para auxiliar a
+resolvê-los.
+
+Em resumo, para passar o conteúdo de um ramo remoto para um local temos
+que fazer `git fetch` e em seguida `git merge`. O comando `git pull` são
+esses dois em um. A documentação do `git pull`
+(<https://git-scm.com/docs/git-pull>) dá uma descrição detalhada do seu
+uso enquanto que os exemplos abaixo ilustram o uso mais simples
+possível.
+
+```{r, engine="bash", eval=FALSE}
+## Traz e junta todos os ramos do remoto origin para os locais.
+git pull origin
+
+## Traz e justa só do ramo devel.
+git pull origin devel
+```
+
+Por fim, para subir o trabalho feito em um ramo, usa-se a intrução `git
+push`. Enviar o seu trabalho com frequência é a melhor forma de ter
+*backups*, exibir e disponibilizar suas contribuições para os seus
+colaboradores. A documentação do `git push` é rica em variações
+(<https://git-scm.com/docs/git-push>) mas a maneira mais simples de
+usá-lo é para subir um ramo para o repositório remoto.
+
+```{r, engine="bash", eval=FALSE}
+## Sobe o ramo issue#10 para o repositório remoto origin.
+git push origin issue#10
+
+## Sobe todos os ramos.
+git push --all origin
+```
+
+Quando você sobe pela primeira vez um ramo local, a sua parte remota é
+criada. Assim, a instrução que colocamos acima criou um ramo remoto
+chamado `origin/issue#10`. Essa é a forma mais natural, e até
+despercebida, de criar ...
+
+Outras maneiras existem. Abaixo fazemos a criação do remoto a partir do
+local sem ser usando o *push*. Esses comandos precisam ser usados uma
+vez apenas.
+
+```{r, engine="bash", eval=FALSE}
+## Duas formas de conectar o local e remoto.
+git branch --set-upstream issue#10 origin/issue#10
+git branch -u issue#10 origin/issue#10
+
+## Cria o ramo issue#11 a partir e vinculado ao devel remoto.
+git checkout -b issue#11 origin/devel
+
+## Cria ramo local issue#12 a partir do remoto com vínculo.
+git checkout --track origin/issue#12
+
+## Mostra as ligações entre pares de ramos: locais e remotos.
+git branch -vv
 ```
 
 # Macanísmos de colaboração #
@@ -1138,9 +1290,10 @@ entradas no menu da esquerda
 
 Para habilitar um *runner*, é necessário instalar o
 `gitlab-ci-multi-runner`. O [repositório oficial do *GitLab Runner*]
-contém as instruções de instalação e configuração e a
-documentação oficial sobre [*runners*] indica como tirar melhor proveito
-do recurso.
+contém as instruções de instalação e configuração e a documentação
+oficial sobre
+*runners*\footnote{\url{http://doc.gitlab.com/ce/ci/runners/README.html}}
+indica como tirar melhor proveito do recurso.
 
 <!---------------------------------------------------------------------- -->
 
@@ -1162,4 +1315,3 @@ do recurso.
 [mcglm]: http://git.leg.ufpr.br/wbonat/mcglm
 [*docker*]: https://www.docker.com/
 [repositório oficial do *GitLab Runner*]: https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
-[*runners*]: http://doc.gitlab.com/ce/ci/runners/README.html
