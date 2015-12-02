@@ -3,21 +3,24 @@ title: "Repositório Local"
 author: "Gabriel Sartori"
 date: "29/10/2015"
 output: 
-  html_document: 
+  html_document:
+    highlight: pygments
+    theme: flatly
     keep_md: yes
 ---
 
+INCLUIR INTRODUÇÃO AO CAPÍTULO
 
-### Instruções do Git
+## Instruções do Git
 
 Neste capítulo, as instruções serão todas feitas no terminal mesmo que
 existam alternativas gráficas para as mesmas. Isso enfatiza no que está
 sendo feito além do fato de que no terminal todos devem ter os mesmos
 recursos e os comandos irão produzir os mesmos resultados, o que faz
-esse tutorial algo reproduzível. Para usufruir das ferramentas gráfica va até o capitulo 6 **link*.
+esse tutorial algo reproduzível. Algumas ferramentas gráficas para uso
+do Git serão abordadas no capítulo 6.
 
-
-Já temos o Git devidamente e com credenciais (nome e email) e
+Já temos o Git devidamente configurado, com credenciais (nome e e-mail) e
 configurações aplicadas. Vamos então ver como o sistema de controle de
 versão acontece.
 
@@ -41,24 +44,23 @@ else
     echo "Diretório não existe."
     mkdir meu1repo
 fi
-## Tudo limpo tal como precisamos.
-pwd
-ls -a
+
 ```
 
-```{r, engine="sh"}
-cd meu1repo ## Diretório de teste de comandos 
+```{r, engine="bash", eval=FALSE}
+## Padrão de instruções Git.
+git <instrução> <complementos ...>
 ```
 
 Antes de iniciarmos o repositório, vamos só verificar o cadastro. Se
 você já usa o Git ou fez os procedimento apresentados na primeira
-sessão, o comando abaixo vai retornar o nome e email usados e alguns
+sessão, o comando abaixo vai retornar o nome e e-mail usados e alguns
 definições adicionais, caso existam. Em caso de ainda não ter
-configurado o seu Git, informe o nome e email conforme apresentado na
+configurado o seu Git, informe o nome e e-mail conforme apresentado na
 sessão anterior.
 
 
-```{r, engine="sh", eval = FALSE }
+```{r, engine="sh", eval = FALSE}
 ## Mostra as informações/definições do usuário.
 git config --list
 ```
@@ -67,58 +69,24 @@ git config --list
 user.name=Knight Rider
 user.email=batman@justiceleague.org
 ```
-Initialized empty Git repository in /home/gabriel/Suporte/PET/Projeto/Apostila/Git/.git/
 
 Temos um diretório destinado ao projeto que será mantido sobre
 versionamento, então vamos iniciar um repositório Git nele.
 
 ```{r, engine="bash", echo=-c(1:2)}
-cd meu1repo
-
+cd meu1repo/
+       
 ## Inicia um repositório sob versionamento Git.
 git init
 ```
-.
-└── .git
-    ├── branches
-    ├── config
-    ├── description
-    ├── HEAD
-    ├── hooks
-    │   ├── applypatch-msg.sample
-    │   ├── commit-msg.sample
-    │   ├── post-update.sample
-    │   ├── pre-applypatch.sample
-    │   ├── pre-commit.sample
-    │   ├── prepare-commit-msg.sample
-    │   ├── pre-push.sample
-    │   ├── pre-rebase.sample
-    │   └── update.sample
-    ├── info
-    │   └── exclude
-    ├── objects
-    │   ├── info
-    │   └── pack
-    └── refs
-        ├── heads
-        └── tags
 
-10 directories, 13 files
-
-```
-
-**NOTA**: o `tree` é um programa instalado a parte (*third party
-software*) que retorna arte ASCII representado a estrutura de
-diretórios. Se você usa distribuição Debian, instale com `sudo apt-get
-install tree`. Windows: [tree][].
-
-O Git retorna a mensagem de inicilização do repositório. Nesse momento
+O Git retorna a mensagem de inicialização do repositório. Nesse momento
 ele cria um diretório oculto `.git/` com subdiretórios que são o coração
 do sistema de versionamento. Você não deve modificar nada nesse
 diretório. É por essa razão que ele é oculto. Alterar o conteúdo pode
 prejudicar ou interromper o funcionamento do Git. Se você quiser
 encerrar o processo de versionamento fazendo com que esse diretório seja
-como qualquer outro diretório, é só excluir a diretório `.git/`. Cada
+como qualquer outro diretório, é só excluir o `.git/`. Cada
 subdiretório do `.git/` tem um propósito mas deixaremos os
 esclarecimentos para o futuro. Por agora vamos apenas conferir a sua
 estrutura.
@@ -138,7 +106,7 @@ install tree`. Windows: [tree][].
 ## Minha Primeira Sessão
 
 Vamos começar da maneira mais simples, criando um arquivo com uma linha
-de texto apenas. Bem, vale avisar que ao longo desse tutorial, os
+de texto apenas. Bem, vale avisar que ao longo desse capítulo, os
 arquivos serão sempre bem pequenos e dificilmente realistas, mas como o
 enfoque está no funcionamento, não haverá prejuízo.
 
@@ -157,12 +125,13 @@ echo "Meu primeiro repositório Git" > README.txt
 tree
 ```
 
-Ao criarmos o arquivo e pedirmos a situação (*status*), ele indica que 
-existe um arquivo não restreado (*untracked*) no diretório. Inclusive 
+Este diretório agora é um diretório sob versionamento Git, portanto
+todas as alterações realizadas serão observadas pelo sistema. Ao
+criarmos o arquivo e pedirmos a situação (*status*), o Git indica que 
+existe um arquivo não rastreado (*untracked*) no diretório. Inclusive 
 sugere uma ação que seria adicionar o aquivo (*add*). Se o seu sistema 
 operacional está em português, parte dos outputs do Git podem estar 
 traduzidos.
-
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -171,32 +140,35 @@ cd meu1repo
 git status
 ```
 
-A situação está o seguinte: figura-cap03-situation:
+![](./images/cap03_situation.png)
 
-Temos 3 estágios para o controle versionamento, após ter criado o docum
--ento, está na condição diretório de trabalho. Aonde os arquivos não está
-rastreado, apenas no seu computador como qualquer outro. Para tornar ver
-sionado precisa passar para área temporária (add) e depois confirmar (commit). Após conf
-irmado então o arquivo está tendo controle de versão. Faremos então este
-processo.
+De forma geral temos 3 estágios de arquivos considerados no sistema de
+controle de versionamento Git. São eles *working directory*, *Staged
+Area* e *Committed*, os discutiremos ao logo do texto. Todo arquivo
+criado em um diretório versionado deve necessariamente passar pelos três
+estágios. Voltando para a nossa situação temos o arquivo `README.txt`
+criado e atualmente ele está no estágio *working directory*, faremos
+todo o procedimento para que chegue ao estágio *committed*.
 
+Alterações em arquivos no *working directory* não são armazenadas, por
+isso o sugestivo nome "diretório de trabalho". Portanto, para que o
+arquivo seja incluído no monitoramento é necessário que ele receba o
+primeiro comando `add`. Isso marca a entrada dele no projeto como um
+arquivo que a partir de então será versionado.
 
-Para que o arquivo seja incluído no monitoramento é necessário que ele
-receba o primeiro comando *add*. Isso marca a entrada dele no projeto
-como um arquivo que a partir de então será versionado. O *status* agora
-não indica mais que ele está *untracked* mas sim que existem mudanças
-para serem registradas (*changes to be commited*). A melhor tradução de
-*commit*, pensando no seu uso em Git, é **fechar sob segurança**. Quando
-um *commit* é feito, cria-se um instante na linha do tempo que salva o
-estado do projeto. Para esse instante o projeto pode ser retrocedido,
-voltando o condição/conteúdo de todos os arquivos para o momento no qual
-o mencionado *commit* foi feito. Você pode voltar para um *commit* de
-semanas e até anos atrás.
+O `status` agora não indica mais que ele está *untracked* mas sim que
+existem mudanças para serem registradas (*changes to be commited*). A
+melhor tradução de *commit*, pensando no seu uso em Git, é **fechar sob
+segurança**. Quando um *commit* é feito, cria-se um instante na linha do
+tempo que salva o estado do projeto. Para esse instante o projeto pode
+ser retrocedido, voltando o condição/conteúdo de todos os arquivos para
+o momento no qual o mencionado *commit* foi feito. Você pode voltar para
+um *commit* de semanas e até anos atrás.
 
 O controle de versão não é apenas voltar os arquivos para o conteúdo que
 eles tinham no passado. Arquivos rastreados que foram deletados ou
 renomeados são recuperados. Até mesmo as permissões de
-leitura/escrita/execussão dos arquivos são comtempladas no
+leitura/escrita/execução dos arquivos são contempladas no
 versionamento.
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -211,11 +183,10 @@ O arquivo `README.txt` já é visto pelo Git como um arquivo com o qual
 ele deve se "preocupar", pois está sob versionamento. Vamos agora fazer
 um registro definitivo sobre o estado desse arquivo (*commit*). É de
 fundamental importância que a mensagem de notificação, ou mensagem de
-*commit*, reflita as moficações feitas. São as mensagens que serão
-consultadas quando você precisar desfazer/voltar. Ela deve ser curta (<=
-72 caracteres) e ao mesmo tempo informativa. A minha primeira mensagem
-não será, todavia.
-
+*commit*, reflita as modificações feitas. São as mensagens que serão
+consultadas quando você precisar desfazer ou voltar para um estado do
+seu projeto. Ela deve ser curta (<= 72 caracteres) e ao mesmo tempo
+informativa. A minha primeira mensagem não será, todavia.
 
 Boas Práticas de commit: 
 
@@ -223,39 +194,37 @@ Boas Práticas de commit:
 - Frases curtas
 - Dizer o que fez e não como fez
 
-Péssimas Práticas de commit:
+Evite mensagens de *commit* como:
 
-"BLABLABLABLA" <br>
-"Trabalhei muito hoje" <br>
-"Terminando este trabalho na madruga"
+- "Modificações realizadas"  
+- "Trabalhei muito hoje"  
+- "Terminando este trabalho na madruga"
 
-```{r, engine="bash", echo=-c(1:2)}
+```{r, engine="bash", echo=-c(1:4)}
 cd meu1repo
+git config user.name "Knight Rider"
+git config user.email "batman@justiceleague.org"
 
 ## Registro de versão.
-git commit -m "Cria arquivo com título."
+git commit -m "Cria arquivo com título"
 ```
-
 
 O retorno da instrução de *commit* indica o número de arquivos incluídos
 no *commit* e o número de inserções e deleções de linhas. O mais
 importante está na primeira linha que informa o ramo de trabalho atual
 (*branch*) e o *sha1* do *commit*. O *sha1* é uma sequência hexadecimal
-de 40 digitos que representa unicamente o *commit*, então são $16^40$
-possibilidades!. É por meio do *sha1* que podemos retroceder o
-projeto. São mostrados apenas os 7 primeiros digitos porque são
-suficientes para diferenciar *commits* dentro até mesmo de projetos
-moderados ou grandes
-
-
+de 40 dígitos que representa unicamente o *commit*, então são $16^{40}$
+possibilidades. É por meio do *sha1* que podemos retroceder o
+projeto. São mostrados apenas os 7 primeiros dígitos porque são
+suficientes para diferenciar *commits*, seja de projetos pequenos ou até
+mesmo de projetos moderados ou grandes.
 
 # Aperfeiçoando
 
 Vamos criar mais arquivos e acrescentar conteúdo ao já rastreado pelo
 Git para percebermos o funcionamento. Escrever uma lista de razões para
-usar o Linux. Deixei a lista curta poder ampliar no futuro e com erros
-de português para corrigir depois.
-
+usar o Linux. A lista é curta poder ampliar no futuro e com erros
+de português para serem corrigidos posteriormente.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -290,8 +259,8 @@ less porqueLinux.txt
 E o que o Git "acha" de tudo isso? O comando *status* é o mais usado do
 Git, principalmente nas etapas de aprendizado. Uma característica
 diferente do Git, se comparado a outras aplicações de uso por terminal,
-é que ele é realmente camarada. Nas mensagens de *output*, o Gitque
-informa o que aconteceu e também dá sugestões do que fazer.
+é que ele é realmente camarada. Nas mensagens de *output*, o Git 
+informa o que aconteceu e também sugere o que fazer.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -333,9 +302,9 @@ cd meu1repo
 git diff
 ```
 
-Vamos aplicar o primeiro *add* ao `porqueLinux.txt` para que ele começe
+Vamos aplicar o primeiro *add* ao `porqueLinux.txt` para que ele comece
 a ser versionado. Perceba que ao adicioná-lo, as mudanças, no caso a
-criação do arquivo com contúdo, já são separadas para receber registro
+criação do arquivo com conteúdo, já são separadas para receber registro
 (*changes to be commited*).
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -346,16 +315,14 @@ git add porqueLinux.txt
 git status
 ```
 
-```{r, engine="bash", echo=-c(1:2)}
+```{r, engine="bash", echo=-c(1:4)}
 cd meu1repo
+git config user.name "Knight Rider"
+git config user.email "batman@justiceleague.org"
 
 ## Mensagem que registra as modificações adicionadas.
 git commit -m "Lista de inicial de o porquê usar o Linux."
 ```
-No ramo master
-Changes not staged for commit:
-  (utilize "git add <arquivo>..." para atualizar o que será submetido)
-  (utilize "git checkout -- <arquivo>..." para descartar mudanças no diretório de trabalho)
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -364,12 +331,12 @@ git status
 ```
 
 Ainda resta o `REAMDE.txt` para receber registro. Você não precisa fazer
-agora. Pode continuar editanto caso não tenha atingido uma quantidade de
+agora. Pode continuar editando caso não tenha atingido uma quantidade de
 modificação merecedora de *commit*. Lembre-se que registros geram
 conteúdo no diretório `.git`. Quanto mais *commits*, mais conteúdo
 gerado. Mas também, toda vez que você faz um *commit*, você define um
 ponto de retorno, um estado salvo, caso precise no futuro
-recuperar/visitar. O que é uma unidade de modificação comitável você irá
+recuperar/visitar. O que é uma unidade de modificação "comitável" você irá
 definir aos poucos com a prática.
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -380,8 +347,10 @@ git add README.txt
 git status
 ```
 
-```{r, engine="bash", echo=-c(1:2)}
+```{r, engine="bash", echo=-c(1:4)}
 cd meu1repo
+git config user.name "Knight Rider"
+git config user.email "batman@justiceleague.org"
 
 ## Atribui mensagem de notificação.
 git commit -m "Adiciona frase do Linux Torvalds."
@@ -397,7 +366,7 @@ cd meu1repo
 git log --oneline
 ```
 
-Por meio dos *sha1*, podemos aplicar o *diff* para visitarmos as
+Por meio dos *sha1*, podemos aplicar o `diff` para visitarmos as
 modificações entre dois *commits*, não necessariamente consecutivos, por
 exemplo. Também podemos retroceder (*checkout*, *reset*, *revert*) o
 projeto para alguns desses pontos.
@@ -407,7 +376,7 @@ cabeça (*HEAD*) é o que se entende como estado mais recente. Usa-se o
 termo *HEAD* (cabeça) pois considera-se um crescimento do histórico
 debaixo para cima no qual um novo *commit* é colocado em cima dos demais
 (empilhado). O `HEAD@{0}` ou apenas `HEAD` representa o último registro
-feito. Não é necessário escrever o último `HEAD` na intrução abaixo.
+feito. Não é necessário escrever o último `HEAD` na instrução abaixo.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -460,7 +429,7 @@ git status
 
 O Git sugere você aplicar *add* para preparar para *commit*. Caso as
 modificações sejam um engano e não mais desejadas, você pode
-desfazazê-las, abadonar a correção/inclusão das palavras usando
+desfazê-las, abandonar a correção/inclusão das palavras usando
 `checkout`. Vamos aplicá-lo para ver como funciona.
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -535,7 +504,7 @@ seguido de número, então estão sendo comparadas versões
   * `HEAD^n`
   * `HEAD~n`
 
-em que `n` é um número inteiro não negativo. Cada sulfixo tem uma
+em que `n` é um número inteiro não negativo. Cada sufixo tem uma
 finalidade que não detalharemos agora. Visite: [git-caret-and-tilde][].
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -569,7 +538,7 @@ git diff HEAD@{2} HEAD@{0}
 
 Para ficar claro daqui em diante, você pode ao invés de pedir `log`,
 pedir o `reflog` que incluí as referências em termos da sequência do
-mais rencente para os seus ancestrais.
+mais recente para os seus ancestrais.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -609,7 +578,7 @@ e *release*. O ramo *master* é o default e em geral, para projetos
 grandes, o *master* só recebe versões funcionais do projeito, livre de
 bugs.
 
-Para criar um ramo, usandos `git branch` seguido do nome que se
+Para criar um ramo, usamos `git branch` seguido do nome que se
 deseja. Vamos criar um ramo para adicionar mais arquivos ou modificações
 ao projeto.
 
@@ -993,7 +962,7 @@ No nosso projeto temos o *master* e o *feature01* em igual condição, sem
 nenhuma diferença. O *commit* recém feito indica um novo seguimento a
 partir daquele onde adicionamos novos itens na lista. Vamos criar um
 novo ramo porque atualmente estamos em um ramos suspenso (*detached
-HEAD*) que não é persistênte.
+HEAD*) que não é persistente.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -1022,8 +991,8 @@ git log --graph --oneline --decorate --date=relative --all
 
 Vamos explorar bem a funcionalidade. Vamos voltar para o `feature01` e
 criar mais coisas lá. Você já deve estar pensando que tudo isso é
-absurdo e jamais alguém firaria indo e voltando assim. Você está certo,
-porém, quando o projeto envolve mais pessoas, cerrtamente as coisas irão
+absurdo e jamais alguém ficaria indo e voltando assim. Você está certo,
+porém, quando o projeto envolve mais pessoas, certamente as coisas irão
 bifurcar em algum ponto.
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -1150,7 +1119,7 @@ criar um ramo novo, modificar o arquivo na última linha e commitar. Vou
 voltar par ao *master* e fazer o mesmo mas vou usar um texto diferente
 para incluir no arquivo. Já que os ramos *feature01* e *feature02* não
 são mais necessários, podemos removê-los. No entanto, eles permanecem na
-história do projeto e poder resurgir se você voltar no tempo.
+história do projeto e poder ressurgir se você voltar no tempo.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -1337,11 +1306,11 @@ less bib1.txt | head -10
 
 Então deu conflito e o Git informa que ele deve ser resolvido. Resolver
 o conflito aqui significa abrir os arquivos com problema listados no git
-status e editar de tal forma a desconflitar. Nas regiões de conflito o
+status e editar de tal forma a "desconflitar". Nas regiões de conflito o
 Git sinaliza de forma especial, indicando por divisórias (`<<<<<<<`,
 `=======` e `>>>>>>>`) as versões no HEAD (ramo *master*) e no ramos a
 ser incorporado (*feature03*). Então vamos resolver o conflito sem
-favorecer ninguém, ou seja, vamos encurtar para 4 digitos e manter caixa
+favorecer ninguém, ou seja, vamos encurtar para 4 dígitos e manter caixa
 alta. Dessa forma o aquivo fica assim.
 
 ```{r, engine="bash", echo=-c(1:2), include=FALSE}
