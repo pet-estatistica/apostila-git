@@ -1,11 +1,153 @@
 # 4. Projetos remotos
 PET Estatística  
-29/10/2015  
+29/11/2015  
+
+
+
+## Introdução
+
+Para colaborar em projetos coletivos no Git é preciso ter um repositório remoto. Este repositório conterá todo o histórico das versões dos arquivos editados. A seguir serão abordados como adicionar, remover e gerenciar repositórios remotos.
+
+Primeiramente será apresentado o comando `git remote`, este é usado para verificar quais repositórios estão configurados.
+
+**Exemplo:** para retornar a lista de repositórios:
+
+
+```bash
+git remote
+```
+
+```
+## MeuRepo
+## RenameRepo
+## origin
+```
+
+No comando acima é possível visualizar o remoto padrão **origin** (URL SSH para onde será possível enviar os seus arquivos).
+
+**Exemplo:** para retornar o nome dos repositórios com a URL onde foram armazanados:
+
+
+```bash
+git remote -v
+```
+
+```
+## MeuRepo	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (fetch)
+## MeuRepo	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (push)
+## RenameRepo	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (fetch)
+## RenameRepo	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (push)
+## origin	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (fetch)
+## origin	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (push)
+```
+
+
+### Adicionando repositórios remotos
+
+O comando `git remote add` adiciona um repositório remoto. No exemplo a seguir será adicionado um repositório chamado **MeuRepo** ao qual será vinculado a URL  `git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git`. Usaremos como exemplo o projeto Git **Apostila-git**.
+
+**Exemplo:**
+
+```bash
+git remote add MeuRepo git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
+# Quando executamos novamente o comando para obter a lista de repositórios:
+git remote -v
+```
+
+```
+## fatal: remote MeuRepo already exists.
+## MeuRepo	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (fetch)
+## MeuRepo	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (push)
+## RenameRepo	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (fetch)
+## RenameRepo	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (push)
+## origin	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (fetch)
+## origin	git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git (push)
+```
+
+Pare acessar localmente o branch master do projeto **Apostila-git** será usado `MeuRepo/master`.
+
+### Obtendo informações de um Remoto
+
+Você pode acessar as informações de qualquer repositório remoto com o comando `git remote show`, que retornará a URL e os `branches`. 
+
+**Exemplo:**
+
+```bash
+git remote show origin
+```
+
+```
+## * remote origin
+##   Fetch URL: git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
+##   Push  URL: git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
+##   HEAD branch: devel
+##   Remote branches:
+##     Issue#49                     tracked
+##     devel                        tracked
+##     issue#15                     new (next fetch will store in remotes/origin)
+##     issue#23                     tracked
+##     issue#36                     tracked
+##     issue#48                     tracked
+##     issue#50                     tracked
+##     issue#51                     tracked
+##     issue#53                     new (next fetch will store in remotes/origin)
+##     issue#54                     new (next fetch will store in remotes/origin)
+##     issue#56                     new (next fetch will store in remotes/origin)
+##     issue#57                     new (next fetch will store in remotes/origin)
+##     master                       tracked
+##     refs/remotes/origin/Issue#39 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#10 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#11 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#12 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#13 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#17 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#21 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#27 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#37 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#38 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#40 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#43 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#44 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#45 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#47 stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#7  stale (use 'git remote prune' to remove)
+##     refs/remotes/origin/issue#9  stale (use 'git remote prune' to remove)
+##   Local branch configured for 'git pull':
+##     devel merges with remote devel
+##   Local ref configured for 'git push':
+##     devel pushes to devel (up to date)
+```
+
+### Renomeado Remotos
+
+O comando `git remote rename` pode modificar o nome de um repositório remoto. A seguir o repositório `MeuRepo`será renomeado para `RenameRepo`. 
+
+**Exemplo:**
+
+```sh
+git remote rename MeuRepo RenameRepo
+```
+
+### Removendo Remotos
+
+Para remover remotos é utilizado o comando `git remote rm`, agora será removido o repositório renomeado anteriormente `RenameRepo`.
+
+**Exemplo:**
+
+```sh
+ git remote rm RenameRepo
+```
+
+**Protocolos Git**
+
+Há quatro tipos diferentes de protocolos Git (Local, Git, HTTP e SSH).
+
+Nesta apostila será abordado apenas o Secure Shell (SSH). Por ser fácil de fazer a configuração do acesso deste protocolo aos servidores, este é o mais usual.
+
+## Criando um Repositório Git
     
-## 4.1. Criando um Repositório Git
-    
-Primeiramente é necessário ter acesso a um servidor Linux com chave SSH, no qual o usuário poderá ter seus repositórios. Será utilizado um diretório no qual será armazenado o repositório, que será definido como remoto.
-No exemplo a seguir é preciso criar um repositório remoto chamado `TesteRep` e o armazenar em um diretório `~/git`:
+Primeiramente é necessário ter acesso a um servidor Linux com chave SSH, no qual você poderá ter seus repositórios. É definido um diretório no qual será armazenado o repositório remoto.
+No próximo exemplo é preciso criar um repositório remoto chamado `MeuRepo` e o armazenar em um diretório `~/git`:
     
 **Exemplo:**
     
@@ -13,17 +155,45 @@ No exemplo a seguir é preciso criar um repositório remoto chamado `TesteRep` e
     # Para criar um diretório git na sua home:
     mkdir ~/git
     # Para criar um repositório git:
-    mkdir TesteRep.git
-    # Para definir TesteRep como um repositório remoto:
+    mkdir MeuRepo.git
+    # Para definir MeuRepo como um repositório remoto:
     git --bare init
     ```
 
-As configurações do servidor estão completas. A partir de agora serão dados os primeiros comandos para iniciar o repositório criado.
+As configurações do servidor estão completas. A partir você pode realizar os primeiros comandos para iniciar o repositório criado.
 
 
+## Git no servidor
+
+Primeiramente, para configurar o Git no Servidor e configurar os protocolos, clonaremos o repositório existente em um repositório limpo. 
+**Observação:** você poderá colocar um repositório no Servidor se este não contém um diretório de trabalho. 
+
+**Exemplo:**
+
+```sh
+ git clone --bare MeuRepo MeuRepo.git
+```
+
+Acima foi criado um repositório limpo `MeuRepo.git`, no qual está armazenada a cópia de todos os arquivos do diretorio Git.
+
+Após este primeiro passo o repositório limpo será colocado no Servidor e configurado os protolocos. 
+No exemplo abaixo, supondo que você tem configurado um servidor `git.servidor.com`, e um diretório `/dir/git`no qual você quer armazenar seus repositórios. Ao copiar o seu repositório limpo, você pode configurar seu novo repositório. 
+
+**Exemplo:**
+    
+    ```sh
+    scp -r MeuRepo.git usuario@git.example.com:/dir/git
+    ```
+
+Agora o repositório pode ser clonado por outros usuários, que podem ter acesso de escrita e de envio de arquivos `push` no diretório. 
+
+    
+    ```sh
+    git clone usuario@git.example.com:/dir/git/MeuRepo.git
+    ```
 
 
-## 4.2. Configuração de Conexão SSH com Servidor
+## Configuração de Conexão SSH com Servidor
 
 O Git possibilita ao usuário realizar uma chave SSH que fará uma conexão segura da sua máquina com o servidor. Para isso começamos com o seguinte comando no terminal:
     
@@ -36,7 +206,7 @@ O Git possibilita ao usuário realizar uma chave SSH que fará uma conexão segu
 
 A partir deste comando, será possível alterar o diretório onde será salva a chave SSH. O usuário tem a opção de permanecer com o diretório padrão, para isso basta apertar Enter.
 A partir disso, são criados dois arquivos no diretório, o `id_rsa` e o `id_rsa.pub`.
-Depois de escolher o diretório onde serão salvos os arquivos, terá a opção de digitar uma senha ou deixar o espaço em branco.
+Após escolher o diretório onde serão salvos os arquivos, você terá a opção de digitar uma senha ou deixar o espaço em branco.
 
 Para visualizar a chave basta digitar o seguinte comando:
     
@@ -56,16 +226,53 @@ Para checar a configuração da sua máquina com o sevidor basta realizar o segu
     ```sh
     ssh -T git@gitlab.c3sl.ufpr.br
     ```
+ 
+ 
+**Configurando o servidor** 
+ 
+Agora será abordado como configurar o acesso SSH do ponto de vista do servidor.
+Você precisa criar um usuário Git e um diretório `.ssh` para este usuário.
+
+**Exemplo:** criar usuário e diretório.
+    
+    ```sh
+    sudo adduser git
+    su git
+    cd
+    mkdir .ssh
+    ```
+
+Agora, você terá um arquivo chamado `authorized_keys` onde será adicionado uma chave pública de algum desenvolvedor. Após obter chaves de alguns usuários, você pode salvá-las no arquivo `authorized_keys`, como no exemplo a seguir.
+
+**Exemplo:**
+
+```sh
+cat /tmp/id_rsa1.pub >> ~/.ssh/authorized_keys # chave do primeiro usuário 
+cat /tmp/id_rsa2.pub >> ~/.ssh/authorized_keys # chave do segundo usuário
+...
+```
+
+Depois de armazenar as chaves dos usuários, basta criar um repositório limpo (sem um diretório de trabalho) para eles. Como visto anteriormente:
+
+**Exemplo:**
+
+```sh
+cd/dir/git
+mkdir NovoProjeto.git
+cd NovoProjeto.git
+git –bare init
+```
+
+Agora os usuários, cujas chaves foram salvas no arquivo `authorized_keys` podem compartilhar arquivos no repositório com os comando `git init`, `git add`, `git commit`, `git remote add` e `git push origin master`.
 
 
-
-
-## 4.3. Comandos clone, push, pull e fetch
+## Comandos clone, push, pull e fetch
 
 ### Git clone
-Este comando é usado para clonar um repositório do servidor remoto para um servidor local, caso o usuário queira copiar um repositório que já existe para realizar colaborações em um projeto que queira participar. 
-O usuário terá acesso a todos os arquivos e poderá verificar as diferentes versões destes.
-No exemplo abaixo temos uma bibliotaca Git, chamada "TesteClone", que será clonado da seguinte forma:
+
+Este comando é usado para clonar um repositório do servidor remoto para um servidor local, caso você queira copiar um repositório que já existe para realizar colaborações em um projeto que queira participar. 
+Você terá acesso a todos os arquivos e poderá verificar as diferentes versões destes.
+No exemplo abaixo temos uma bibliotaca Git, chamada **TesteClone**, que será clonado da seguinte forma:
     
 **Exemplo:**
     
@@ -73,8 +280,7 @@ No exemplo abaixo temos uma bibliotaca Git, chamada "TesteClone", que será clon
     git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/TesteClone.git
     ```
 
-
-Desta forma terá um diretório `TesteClone` em seu computador, onde estarão todos os arquivos do projeto nele.
+Desta forma você terá um diretório `TesteClone` em seu computador, onde estarão todos os arquivos do projeto nele.
 
 O usuário também terá a opção de clonar o repositório `TesteClone` em um diretório diferente do padrão Git, que no próximo exemplo denominaremos de `DirTeste`:
     
@@ -121,9 +327,9 @@ Assim como o comando `Git pull`, o `Git fetch` transfere arquivos do repositóri
 Para verificar as modificações realizadas entre versões de um arquivo basta utilizar o comando `git diff`:
     
 **Exemplo:**
-    
-    ```sh
-    git diff master origin/master
-    ```
+
+```sh
+git diff master origin/master
+```
 
 
