@@ -45,6 +45,8 @@ else
     mkdir meu1repo
 fi
 
+```{r, engine="sh"}
+cd meu1repo ## Diretório de teste de comandos 
 ```
 
 ```{r, engine="bash", eval=FALSE}
@@ -64,6 +66,8 @@ sessão anterior.
 ## Mostra as informações/definições do usuário.
 git config --list
 ```
+Initialized empty Git repository in /home/gabriel/Suporte/PET/Projeto/Apostila/Git/.git/
+
 
 ```sh
 user.name=Knight Rider
@@ -72,30 +76,58 @@ user.email=batman@justiceleague.org
 
 Temos um diretório destinado ao projeto que será mantido sobre
 versionamento, então vamos iniciar um repositório Git nele.
+O Git retorna a mensagem de inicilização do repositório. Nesse momento
+ele cria um diretório oculto `.git/` com subdiretórios que são o coração
+do sistema de versionamento. Você não deve modificar nada nesse
+diretório. É por essa razão que ele é oculto. Alterar o conteúdo pode
+prejudicar ou interromper o funcionamento do Git. Se você quiser
+encerrar o processo de versionamento fazendo com que esse diretório seja
+como qualquer outro diretório, é só excluir a diretório `.git/`. Cada
+subdiretório do `.git/` tem um propósito mas deixaremos os
+esclarecimentos para o futuro. 
+Por agora vamos apenas estrutur a minha primeira sessão.
+
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo/
        
 ## Inicia um repositório sob versionamento Git.
 git init
+
+
+
+```{r, engine ="bash", eval = FALSE}
+tree -a 
 ```
 
-O Git retorna a mensagem de inicialização do repositório. Nesse momento
-ele cria um diretório oculto `.git/` com subdiretórios que são o coração
-do sistema de versionamento. Você não deve modificar nada nesse
-diretório. É por essa razão que ele é oculto. Alterar o conteúdo pode
-prejudicar ou interromper o funcionamento do Git. Se você quiser
-encerrar o processo de versionamento fazendo com que esse diretório seja
-como qualquer outro diretório, é só excluir o `.git/`. Cada
-subdiretório do `.git/` tem um propósito mas deixaremos os
-esclarecimentos para o futuro. Por agora vamos apenas conferir a sua
-estrutura.
+```
+.
+└── .git
+    ├── branches
+    ├── config
+    ├── description
+    ├── HEAD
+    ├── hooks
+    │   ├── applypatch-msg.sample
+    │   ├── commit-msg.sample
+    │   ├── post-update.sample
+    │   ├── pre-applypatch.sample
+    │   ├── pre-commit.sample
+    │   ├── prepare-commit-msg.sample
+    │   ├── pre-push.sample
+    │   ├── pre-rebase.sample
+    │   └── update.sample
+    ├── info
+    │   └── exclude
+    ├── objects
+    │   ├── info
+    │   └── pack
+    └── refs
+        ├── heads
+        └── tags
 
-```{r, engine="bash", echo=-c(1:2)}
-cd meu1repo
+10 directories, 13 files
 
-## Mostra todo conteúdo do diretório.
-tree -a
 ```
 
 **NOTA**: o `tree` é um programa instalado a parte (*third party
@@ -219,6 +251,53 @@ projeto. São mostrados apenas os 7 primeiros dígitos porque são
 suficientes para diferenciar *commits*, seja de projetos pequenos ou até
 mesmo de projetos moderados ou grandes.
 
+Para o registro do desenvolvimento, existe uma outra marcação de projeto 
+que são as tags, que tem o caráter de destacar pontos de destaque da ati
+vidade como por exemplo versão versão alfa, beta.
+
+
+```{r, engine = "sh"}
+git tag versao1
+git status
+```
+
+```{r, engine = "sh"}
+# Podemos marcar uma tag com um commit
+git tag -a versao2 -m "Versão 2 está pronta"
+
+```
+
+
+```{r, engine = "sh"}
+# Ver todas as tags
+git tag
+
+```
+
+
+```{r,engine = "sh"}
+# Excluir tags 
+git tag -d versao1
+
+```
+
+
+
+Caso haja mudança de nome no arquivo o novo arquivo não estará na mesma etapa, portanto o ideal é alterar o nome do arquivo pelo GIT. 
+
+```{r, engine = "sh", eval = FALSE}
+# git mv antigo novo
+
+git mv README LEIAME
+```
+
+Caso você queira excluir o arquivo 
+
+```{r, engine = "sh", eval = FALSE}
+git rm README
+```
+
+
 # Aperfeiçoando
 
 Vamos criar mais arquivos e acrescentar conteúdo ao já rastreado pelo
@@ -242,6 +321,7 @@ echo "Por que usar o Linux?
 * É seguro
 * É customizavel" > porqueLinux.txt
 ```
+Saída
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -315,50 +395,24 @@ git add porqueLinux.txt
 git status
 ```
 
-```{r, engine="bash", echo=-c(1:4)}
-cd meu1repo
-git config user.name "Knight Rider"
-git config user.email "batman@justiceleague.org"
 
-## Mensagem que registra as modificações adicionadas.
-git commit -m "Lista de inicial de o porquê usar o Linux."
 ```
+No ramo master
+Changes not staged for commit:
+  (utilize "git add <arquivo>..." para atualizar o que será submetido)
+  (utilize "git checkout -- <arquivo>..." para descartar mudanças no diretório de trabalho)
 
-```{r, engine="bash", echo=-c(1:2)}
-cd meu1repo
+	modificado: porqueLinux.txt
 
-git status
+nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git commit -a")
+
 ```
+Na 1° linha diz que estamos no ramo master porém não vem esclarecer com muitos detalhes agora,  
+Na 2 ° linha diz que mudanças foram feitas no arquivo, e não estão sendo rastreadas. Logo abaixo é citado os comandos que utilizamos na seção anterior para o arquivo se tornar rastreado.
 
-Ainda resta o `REAMDE.txt` para receber registro. Você não precisa fazer
-agora. Pode continuar editando caso não tenha atingido uma quantidade de
-modificação merecedora de *commit*. Lembre-se que registros geram
-conteúdo no diretório `.git`. Quanto mais *commits*, mais conteúdo
-gerado. Mas também, toda vez que você faz um *commit*, você define um
-ponto de retorno, um estado salvo, caso precise no futuro
-recuperar/visitar. O que é uma unidade de modificação "comitável" você irá
-definir aos poucos com a prática.
+O comando `git status` é recomendado que se utilize sempre após algum outro comando git quando você está na fase inicial de aprendizagem.
 
-```{r, engine="bash", echo=-c(1:2)}
-cd meu1repo
 
-## Encaminha o arquivo para receber registro.
-git add README.txt
-git status
-```
-
-```{r, engine="bash", echo=-c(1:4)}
-cd meu1repo
-git config user.name "Knight Rider"
-git config user.email "batman@justiceleague.org"
-
-## Atribui mensagem de notificação.
-git commit -m "Adiciona frase do Linux Torvalds."
-```
-
-Agora temos 3 *commits* e o *log* apresenta os *sha1* e as mensagens
-correspondentes aos mesmos. Com `--oneline` resumimos o *output* mostrando
-apenas o *sha1* e a mensagem de *commit*.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -425,7 +479,6 @@ cd meu1repo
 
 ## Depois de corrigir palavras e adicionar conteúdo.
 git status
-```
 
 O Git sugere você aplicar *add* para preparar para *commit*. Caso as
 modificações sejam um engano e não mais desejadas, você pode
@@ -1357,6 +1410,4 @@ cd meu1repo
 
 git reflog
 ```
-
-
 
