@@ -2,7 +2,9 @@
 title: "Serviços Web para Projetos Git"
 author: "PET Estatística UFPR"
 graphics: yes
-header-includes: \usepackage{wrapfig}
+header-includes:
+  \usepackage{wrapfig}
+  \usepackage{menukeys}
 output:
   pdf_document:
     template: template.tex
@@ -271,22 +273,51 @@ Geração e configuração das chaves públicas.
 Incluir screenshots.
 
 Uma vez criada uma conta, é necessário habilitar a comunicação entre sua
-máquina e o (servidor do) GitHub. A comunicação se baseia no protocolo
-ssh, o qual já usamos no capítulo anterior para hospedar o repositório
-em um servidor remoto.
+máquina e o (servidor do) GitHub. A comunicação é feita com protocolo
+SSH (*Secure Shell*), o qual já usamos no capítulo anterior para
+hospedar o repositório em um servidor remoto.
 
-Para relembrar, a maioria dos servidores suporta a autenticação por SSH
-(*secure shell*). Para que seja automática, ou seja, sem precisar
-fornecer login e senha a cada acesso, usamos o recurso de pares de
-chaves. Este serve para fazer a máquina remota (servidor) reconhecer a
-máquina local (sua máquina) por da autenticação do par de chaves. É como
-se o servidor fosse um cadeado e a sua máquina local tem a chave que o
-abre.
+Para relembrar, a maioria dos servidores suporta a autenticação por
+SSH. Para que a conexão entre máquinas seja automática, ou seja, sem
+precisar fornecer usuário e senha a cada acesso/transferência, usamos o
+recurso de pares de chaves. Este serve para fazer a máquina remota
+(servidor) reconhecer a máquina local (sua máquina) via autenticação do
+par de chaves. É como se o servidor fosse um cadeado e a sua máquina
+local tem a chave que o abre. Uma vez que as chaves são pareadas e
+compatíveis, ocorre o acesso ou transferência de arquivos.
 
 Para gerar as chaves públicas, você precisa executar:
 ```{r, engine="bash", eval=FALSE}
 ## Gera chaves públicas.
 ssh-keygen -t rsa -C "seu_email@seu.provedor"
+```
+
+```{r, engine="bash", eval=FALSE}
+## Batman gerando chaves públicas.
+ssh-keygen -t rsa -C "batman@justiceleague.org"
+```
+```
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/batman/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/batman/.ssh/id_rsa.
+Your public key has been saved in /home/batman/.ssh/id_rsa.pub.
+The key fingerprint is:
+66:c1:0b:3a:94:25:83:00:81:9f:40:26:f7:aa:af:3a batman@justiceleague.org
+The key's randomart image is:
+          +--[ RSA 2048]----+
+          |                 |
+ ~MMMMMMMMMMMM           MMMMMMMMMMMM~  
+    .MMMMMMMMM.   MMM   .MMMMMMMMM.     
+      MMMMMMMMMMMMMMMMMMMMMMMMMMM       
+       MMMMMMMMMMMMMMMMMMMMMMMMM       
+      .MMMMMMMMMMMMMMMMMMMMMMMMM.        
+              .MMMMMMMMM.               
+                 .MMM.                  
+                   M                    
+          |                 |
+          +-----------------+
 ```
 
 O endereço padrão para os arquivos criados e o diretório `~/.ssh/`. Os
@@ -297,8 +328,8 @@ serviços web que fazem uso desse recurso e com todos os servidores com o
 qual você tem autenticação por chaves.
 
 Acesse <https://github.com/settings/ssh> para então adicionar chaves
-públicas (Figura XXX) ao seu perfil. Você precisa estar logado. Clique
-em `Add SSH key`, cole o conteúdo copiado do arquivo `*.pub` no campo
+públicas (Figura \ref{github_sshkeys}) ao seu perfil. Clique em
+\menu{Add SSH key}, cole o conteúdo copiado do arquivo `*.pub` no campo
 `key`. No campo `Title` identifique a máquina correspndente àquela
 chave. Use, por exemplo, `laptop` ou `trabalho` para facilitar o
 reconhecimento. É comum trabalhar-se com mais de um máquina, como uma em
@@ -311,6 +342,7 @@ casa e outra no trabalho.
   \caption{\textit{Printscreen} da página de configurações pessoais do
     GitHub. No menu \texttt{SSH Keys} pode-se ver e adicionar chaves
     públicas.}
+  \label{github_sshkeys}
 \end{figure}
 
 Para testar a comunição entre o GitHub e a sua máquina, execute:
@@ -324,7 +356,7 @@ ssh -vT git@github.com
 
 No GitLab, o cadastro de chaves públicas é um processo semelhante. Uma
 vez autenticado, acesse <https://gitlab.c3sl.ufpr.br/profile/keys> para
-adicionar chaves públicas.  Para testar a comunição entre o GitHub e a
+adicionar chaves públicas.  Para testar a comunição entre o GitLab e a
 sua máquina, execute:
 
 ```{r, engine="bash", eval=FALSE}
@@ -336,7 +368,7 @@ ssh -vT git@gitlab.c3sl.ufpr.br
 ```
 
 Lembre-se de que o endereço `gitlab.c3sl.ufpr.br` corresponde ao serviço
-GitLab disponibilidade pelo C3SL. Caso você esteja fazendo a conta no
+GitLab disponibilizado pelo C3SL. Caso você esteja fazendo a conta no
 GitLab.com, o endereço muda de acordo.
 
 ## Gerenciar repositórios ##
