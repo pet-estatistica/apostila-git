@@ -51,179 +51,196 @@ voltados à colaboração.
 
 ## GitHub ##
 
-\begin{wrapfigure}{r}{0.4\textwidth}
+O GitHub\footnote{\url{https://github.com/}} é um serviço web para
+hospedagem, gestão e compartilhamento de repositórios Git que oferece
+recursos para desenvolvimento e colaboração. *"Build software better,
+together."* é o principal slogam do GitHub, justamente para enfatizar o
+seu principal compromisso: dar suporte ao desenvolvimento colaborativo.
+
+<!-- \begin{wrapfigure}{r}{0.4\textwidth} -->
+\begin{figure}[h]
   \begin{center}
     \includegraphics[width=5cm]{./images/github-octocat.png}
   \end{center}
   \caption{Octocat é o mascote do GitHub.}
-\end{wrapfigure}
-
-O [GitHub] é um serviço Web para hospedagem, gestão e compartilhamento
-de repositórios Git que oferece recursos para desenvolvimento e
-colaboração. O principal slogam do GitHub é: *"Build software better,
-together."* que justamente enfatiza o principal compromisso que é dar
-suporte ao desenvolvimento colaborativo.
+\end{figure}
+<!-- \end{wrapfigure} -->
 
 O GitHub foi fundado em 8 de Fevereiro de 2008, em São Francisco, por
 quatro pessoas: Tom Preston-Werner, Chris Wanstrath, PJ Hyett e Scott
-Chacon. Antes de terminar 2015, o GitHub já ultrapassou a marca de 10
-milhões de usuários. De acordo com o <http://githut.info/>, no quarto
-trimestre de 2014 haviam 22 milhões de repositórios. A linguagem
+Chacon. Antes de terminar 2015, o GitHub já havia ultrapassado a marca
+de 10 milhões de usuários. De acordo com o <http://githut.info/>, no
+quarto trimestre de 2014 haviam 22 milhões de repositórios. A linguagem
 `JavaScript` teve o maior número de repositórios ativos (>320 mil) e
-total de *pushes* enquanto que a linguagem `R` foi a com maior número de
+total de *pushes*, enquanto que a linguagem `R` teve o maior número de
 novas cópias por repositório (6.45).
 
-Diferente da forma tradicional de usar o Git por linha de comando, o GitHub 
-é um serviço web com interface gráfica repleta de funções para o 
-desenvolvimento e acompanhamento de um projeto Git. Tais recursos vão 
-desde administrar tarefas até permitir a colaboração de outras pessoas, 
-mesmo sendo desconhecidos. Dentre os principais recursos disponíveis, 
-tem-se:
+Diferente da forma tradicional de usar o Git, por linha de comando, o
+GitHub é um serviço web com interface gráfica repleta de funções para o
+desenvolvimento e acompanhamento de um projeto Git. Tais recursos vão
+desde administrar tarefas até permitir a colaboração de outras pessoas,
+mesmo sendo desconhecidas. Dentre os principais recursos disponíveis,
+têm-se:
 
-  * README: é um arquivo texto escrito em liguagem de marcação
-    (Markdown, RST, Textile, Org, etc) no qual é renderizada para
-    exibição. O README é a capa do seu repositório, ou seja, o conteúdo
-    apresentado na *home* do projeto e serve para informar o visitante
-    dos objetivos do repositório, seus desenvolvedores e pode conter
-    instruções de instalação e colaboração.
-  * Wiki: a Wiki de cada repositório serve para divulgação e
-    documentação. Também é escrita em linguagem de marcação, tornando
-    fácil e rápido a escrita pelo desenvolvedor e simples a leitura e a
-    navegação pelo visitante. Como a Wiki é um repositório Git,
-    ela pode inclusive ser editada por meios dos recursos de edição do
-    próprio GitHub, além de ser versionada. Com isso, não diferente
-    do restante, a edição da Wiki também é colaborativa.
-  * *Issues*: Pelos *issues* é que se faz a correção de bugs e agendamento
-    de tarefas. Os usuários criam *issues* para notificar um bug encontrado
-    de forma que ele possa ser rapidamente corrigido. Criar *issues*
-    também serve como ferramenta de admistração de tarefas nas quais os
-    *issues* descrevem algo a ser feito e por quem.
+  * README: é um arquivo que funciona como capa do seu repositório. O
+    seu conteúdo é texto escrito em liguagem de marcação (Markdown, RST,
+    Textile, Org, etc) renderizada para exibição pelo GitHub. Como capa,
+    o conteúdo do README está na *home* do projeto e serve para informar
+    o visitante dos objetivos do repositório, seus desenvolvedores,
+    instruções de instalação/uso e formas de colaboração.
+  * Wiki: a Wiki de cada repositório são um conjunto de páginas que
+    serve para divulgação e documentação do repositório. Estas também
+    são escritas em linguagem de marcação, tornando fácil e rápida a
+    escrita pelo desenvolvedor e simples para o visitante ler e
+    navegar. Como a Wiki é também um repositório Git, ela pode inclusive
+    ser editada por meios dos recursos de edição do próprio GitHub, além
+    de ser versionada. Com isso, não diferente do restante, a edição da
+    Wiki também é colaborativa.
+  * *Issues*: pelos *issues* são feitas as notificações de *bug* e
+    gerenciamento de tarefas. Os usuários criam *issues* para notificar
+    um *bug* encontrado de forma que ele possa ser rapidamente
+    corrigido. Criar *issues* também serve como ferramenta de
+    admistração de tarefas nas quais os *issues* descrevem algo a ser
+    feito par alguém.
   * *Milestones*: são pedras de milha, ou seja, marcam um ponto a ser
-    alcançado. No GitHub, são usadas para descrever o que precisa ser
-    desenvolvido para que ocorra uma mundança de versão e estabalecer um
-    prazo para conclusão, por exemplo.
+    alcançado. São usadas para descrever o que precisa ser desenvolvido
+    para que ocorra uma mundança de versão e estabalecer um prazo para
+    conclusão, por exemplo. As *milestones* agrupam *issues* que indicam
+    as etapas a serem percorridas.
   * *Pull request* ou *merge request* (MR): é uma requisição de
     fusão. Os membros da equipe fazem suas contribuições em ramos de
-    desenvolvimento e ao concluir, pedem um MR pela interface. O
+    desenvolvimento e ao concluir pedem um MR pela interface. O
     responsável por avaliar o MR pode ver os *diffs* nos arquivos e
     fazer o merge direto pela interface, de dentro do serviço sem
-    precisar baixar o ramo, aplicar o merge e subí-lo.
+    precisar baixar (*fetch*) o ramo, aplicar o merge (*merge*) e
+    subí-lo (*push*). Então os desenvolvedores não precisam interromper
+    o trabalho local para fazer um merge já que ele pode ser feito no
+    serviço sem modificações para o *workspace*.
   * *Fork*: é uma forma de se fazer uma cópia do projeto de alguém para
     livremente experimentar modificações sem afetar o projeto
     original. A cópia vem para a sua conta e funciona como qualquer
     outro repositório seu. A ideia do *fork* é dar liberdade de
     contribuição (não supervisionada) a qualquer pessoa interessada de
     modo que esta possa submeter as contribuições para a origem (por MR)
-    ou até mesmo usar como ponto de partida para um projeto.
+    ou até mesmo usar como ponto de partida para um novo projeto.
 
-De acordo com [Klint Finley], *fork* e MR são o que tornam o GitHub tão
-poderoso. Quando o mantenedor recebe um MR ele pode ver o perfil do
-contribuidor onde estão listados todos os projetos no qual este
-contribuiu. Ao aceitar o MR, é acrescentado mais uma colaboração a
-reputação do colaborador. Esse mecanísmo, então, beneficia as duas
-partes.
+De acordo com
+Klint~Finley\footnote{\url{http://techcrunch.com/2012/07/14/what-exactly-is-github-anyway/}},
+*fork* e MR são os recursos que tornam o GitHub tão poderoso. Quando o
+mantenedor recebe um MR ele pode ver o perfil do contribuidor onde estão
+listados todos os projetos no qual este contribuiu. Ao aceitar o MR, é
+acrescentado mais uma colaboração a reputação do colaborador. Esse
+mecanísmo, então, beneficia as duas partes.
 
 Além dessas características chaves, o GitHub permite que você acompanhe
 (*watch*) e favorite (*star*) repositórios. Também dá para seguir
 pessoas e participar de organizações (grupo de usuários) que podem ter
-repositórios próprios, ideal para projetos em equipe. O perfil de cada
-usuário registra suas atividades e dentro de cada projeto pode-se
-acompanhar as contribuições de cada colaborador. Em cada repositório
-pode-se navegar pelo histórico de *commits*, filtrar por colaborador,
-ver as modificações no código (*diffs*) comaprando *commits* e
-*branches*.
+repositórios próprios, ideal para projetos em equipe.
+
+O perfil de cada usuário registra suas atividades em todos os projetos e
+em cada projeto pode-se acompanhar as contribuições de cada
+colaborador. Nos repositórios pode-se navegar pelo histórico de
+*commits*, filtrá-los por colaborador, ver as modificações no código
+(*diffs*) comparando *commits* e *branches*.
 
 O GitHub não hospeda apenas código fonte mas sim todo e qualquer arquivo
 que você tenha sob versionamento. É possível hospedar dados, por
-exemplo, em formato texto (csv), e disponibilizá-los por meio da URL
-para download ou leitura direta. Para usuários de R, essa é uma 
+exemplo, em formato texto (csv, txt), e disponibilizá-los por meio da
+URL para download ou leitura direta. Para usuários de R, essa é uma
 característica que permite não apenas disponibilizar dados, mas também
 coleções de funções que podem ser carregadas com um `source()`.
 
 Com o plano *free* do GitHub, você pode ter inúmeros repositórios
-públicos e inúmeros colaboradores, pode ter o *fork* de quantos
-repositórios quiser e participar de quantas organizações precisar. Para
-ter repositórios privados, o plano mais básico custa U$ 7 e dá direito a
-5 repositórios. Existem outros planos individuais, e também planos
+públicos, inúmeros colaboradores, ter o *fork* de quantos repositórios
+quiser e participar de quantas organizações precisar. Para ter
+repositórios privados, o plano mais básico custa U$ 7 e dá direito à 5
+repositórios. Existem outros planos individuais, e também planos
 organizacionais, para todos os tamanhos de projeto e equipe. Além dessas
-formas, pode-se ter o GitHub em um servidor próprio, o
-[GitHub Interprise], que tem suas vantagens além das já mencionadas, e 
-terá seu custo como qualquer plano privado.
+opções, pode-se ter o GitHub em um servidor próprio, o GitHub
+Interprise\footnote{\url{https://enterprise.github.com}}, com
+recursos e vantagens além das já mencionadas
 
-É uma fonte de conhecimento onde você encontra *scripts* nas mais
-diferentes linguagens de programação. Você pode livremente estudar o
-código dos repositórios, ver como o código evoluiu *commit* após
-*commit* e como um *bug* foi resolvido. Qualquer pessoa, mesmo sem
-perfil no GitHub, pode clonar um repositório público. O GitHub reconhece
-382 linguagens que compreendem as de programação (293: C++, Python, R,
-JavaScript), as de *markup* (34: HTML, TeX, MarkDown), as de dados (40:
-JSON, SQL, XML, csv) e aplica os realces (highlights) que facilitam a
-leitura do código.
+Para muitos programadores, o GitHub é uma fonte de conhecimento. Lá você
+encontra *scripts* de todas as linguagens de programação. Você pode
+livremente estudar o código dos repositórios, ver como o código evoluiu
+*commit* após *commit* e acompanhar como um *bug* foi
+resolvido.
+
+Qualquer pessoa, mesmo sem perfil no GitHub, pode clonar um repositório
+público. O GitHub reconhece 382 linguagens que compreendem as de
+programação (293: C++, Python, R, JavaScript), as de *markup* (34: HTML,
+TeX, MarkDown), as de dados (40: JSON, SQL, XML, csv) e aplica os
+realces de código (highlights) que facilitam a sua compreensão.
 
 O GitHub é o serviço web para Git mais popular quanto ao número de
-projetos hospedados. No entanto, existem serviços com as mesmas 
-funcionalidades e até com outras que o GiHub não oferece no plano básico. 
-O GitLab e o Bitbucket estão entre os 5 mais populares e permitem, 
-por exemplo, ter alguns repositórios privados com a conta *free*.
+projetos hospedados. No entanto, existem serviços com as mesmas
+funcionalidades e até com algumas que o GitHub não oferece no plano
+básico.  O GitLab e o Bitbucket estão entre os 5 mais populares e
+permitem, por exemplo, ter alguns repositórios privados com a conta
+*free*.
+
+Como hopedamos nossos projetos coletivos do PET-Estatística no GitLab do
+C3SL\footnote{\url{https://gitlab.c3sl.ufpr.br/explore}}, não podemos
+deixar de falar sobre ele.
 
 ## GitLab ##
 
-\begin{wrapfigure}{r}{0.4\textwidth}
+O GitLab\footnote{\url{https://about.gitlab.com/}}, assim como o GitHub,
+é um serviço web para repositórios Git. O GitLab é um projeto *open
+source* desenvolvido em Ruby que teve início em 2011 pelo ucrâniano
+Dmitriy Zaporozhets. Em 2013, a Companhia GitLab tinha uma equipe de 11
+funcionios e mais de 10 mil organizações usando o serviço.
+
+<!-- \begin{wrapfigure}{r}{0.4\textwidth} -->
+\begin{figure}[h]
   \begin{center}
     \includegraphics[width=5cm]{./images/gitlab-raccoon.jpg}
   \end{center}
   \caption{O guaxinim (*raccoon* em inglês) é o macote do GitLab.}
-\end{wrapfigure}
-
-Assim como o GitHub, o [GitLab] é um serviço Web para repositórios
-Git. O GitLab é um projeto *open source* desenvolvido em Ruby que deu
-início em 2011 pelo ucrâniano Dmitriy Zaporozhets. Em 2013, a Companhia
-GitLab tinha 11 membros e mais de 10 mil organizações.
+\end{figure}
+<!-- \end{wrapfigure} -->
 
 O GitLab, além de ser um serviço gratuito (com planos extras)
 colaboração, é também um programa que você pode instalar em servidor
-local para ter seus repositórios na intraweb, se for o caso.
+local para ter seus repositórios na intraweb. Esse é o caso do GitLab do
+C3SL e do GitLab do LEG\footnote{\url{http://git.leg.ufpr.br/explore}}.
 
-Como serviço web, o GitLab oferece basicamente todos os recursos do
-GitHub e do BitBucket [^1]. No entanto, com uma conta gratuita no
-<http://gitlab.com> você pode ter, os repositórios públicos e
-colaboradores, ilimitados repositórios privados sem pagar por nada. Isso
-faz do GitLab.com o lugar certo para pequenas equipes com pouco recurso
-ou que desenvolvem trabalhos sem fins lucrativos, como é o caso de
-colaboração em código para análise de dados para publicação científica.
+O GitLab oferece todos os recursos do
+GitHub\footnote{\url{http://technologyconversations.com/2015/10/16/github-vs-gitlabs-vs-bitbucket-server-formerly-stash}}. No
+entanto, com uma conta gratuita no <http://gitlab.com>, você pode ter
+além de repositórios públicos e colaboradores, ilimitados repositórios
+privados sem pagar por nada. Isso faz do GitLab.com o lugar certo para
+pequenas equipes com pouco recurso ou que desenvolvem trabalhos sem fins
+lucrativos, como é o caso de colaboração em código para análise de dados
+para publicação científica. Atualmente existem mais de 69 mil projetos
+públicos e 5840 grupos abertos no GitLab.com.
 
-Atualmente existem mais de 69 mil projetos públicos e 5840 grupos
-abertos no GitLab.com (https://gitlab.com/explore)
-
-A versão paga do GitLab, a *Enterprise Edition* (EE), tem um preço
+A versão paga do GitLab, *Enterprise Edition* (EE), tem um preço
 menor que a equivalente do GitHub.
 
 A versão gratuita do GitLab para servidores, a *Community Edition* (CE),
 pode ser instalada em servidores Linux, Windows, máquinas virtuais e
-servidores na nuvem, além de outras opções. Os serviços
+servidores na nuvem, além de outras opções. Os endereços
 <https://gitlab.c3sl.ufpr.br/explore> e <http://git.leg.ufpr.br/explore>
 são o GitLab CE para servidores rodando no C3SL (Centro de Computação
 Científica e Software Livre) e LEG (Laboratório de Estatística e
-Geoinformação). Estes serviços dão suporte à colaboração em código
-dentro dos departamentos de Informática e Estatística para alunos e
-professores (C3SL) e para a equipe e colaboradores do LEG (LEG).
+Geoinformação). Estes GitLabs dão suporte à colaboração em código dentro
+dos departamentos de Informática e Estatística para alunos e professores
+(C3SL) e para a equipe e colaboradores do LEG.
 
-Em termos finaceiros, vale mais a pena pagar por um servidor na nuvem da
-[Digital Ocean] com o GitLab CE (U$ 5/mês) do que ter uma conta para
-repositórios privados no GitHub (U$ 7/mês) por 5 repositórios
-privados). No entanto, conforme já mencionamos, pequenas equipes podem
-ter repositórios privados na conta gratuita do GitLab.com.
+Em termos finaceiros, custa menos um servidor na nuvem da Digital
+Ocean\footnote{\url{https://www.digitalocean.com/community/tutorials/how-to-use-the-gitlab-one-click-install-image-to-manage-git-repositories}}
+com o GitLab CE (U$ 5/mês) do que ter uma conta para repositórios
+privados no GitHub (U$ 7/mês) por 5 repositórios privados). No entanto,
+conforme já mencionamos, pequenas equipes podem ter repositórios
+privados na conta gratuita do GitLab.com.
 
-Além das características essenciais ou comuns aos demais serviços, como
-*issues*, *fork*, *merge requests*, *wiki* e *snippets*, o
-GitLab tem repositórios com 5 níveis de acesso (*owner*, *master*,
-*developer*, *report* e *guess*); revisão comentada de código nos
-*diffs*; permite importar repositórios de outros serviços; permite
-adição de *web hooks*.
-
-## Outros ##
-
-<http://www.git-tower.com/blog/git-hosting-services-compared/>
+Além das características essenciais e comuns aos demais serviços, como
+*issues*, *fork*, *merge requests*, *wiki* e *snippets*, o GitLab tem 1)
+5 níveis de acesso aos repositórios (*owner*, *master*, *developer*,
+*report* e *guess*), 2) revisão comentada de código nos *diffs*, 3)
+importação repositórios de outros serviços, 4) adição de *web hooks*
+e 5) integração contínua nativa apartir da versão 8.0.
 
 # Criar um perfil #
 
@@ -1307,13 +1324,6 @@ indica como tirar melhor proveito do recurso.
 
 <!---------------------------------------------------------------------- -->
 
-[Klint Finley]: http://techcrunch.com/2012/07/14/what-exactly-is-github-anyway/
-[GitLab]: https://about.gitlab.com/
-[GitHub]: https://github.com/
-[GitHub Interprise]: https://enterprise.github.com
-
-[^1]: http://technologyconversations.com/2015/10/16/github-vs-gitlabs-vs-bitbucket-server-formerly-stash/
-[Digital Ocean]: https://www.digitalocean.com/community/tutorials/how-to-use-the-gitlab-one-click-install-image-to-manage-git-repositories
 [GitLab]: https://about.gitlab.com/
 [Macmillan]: http://www.macmillandictionary.com
 [TRavis CI]: https://travis-ci.org/
