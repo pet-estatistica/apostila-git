@@ -23,24 +23,31 @@ opts_chunk$set(comment=NA)
 # Serviços Web para Git #
 
 No capítulo anterior vimos como configurar um repositório remoto em um
-servidor. Esse procedimento possibilita trabalho em equipe visto que
-todos com acesso à servidora, então podem clonar, subir ramos, etc.
-Apesar do servidor centralizar as contribuições de todos os usuários,
-estes terão que se comunicar e manter os compromissos sobre o projeto em
-de outra forma, por email direto, lista de email, lista de
-discussão. Para que um desenvolvedor saiba o que os outros fizeram, ele
-terá que periodicamente dar `fetch`, navegar no histórico, ver *diffs*,
-etc.
+servidor. Esse procedimento possibilita trabalho em equipe pois
+centraliza o repositório remoto em um servidor que todos têm
+acesso. Assim, todos podem clonar, criar branches, subir as
+contruibuições, etc.  Apesar do servidor centralizar o trabalho de todos
+os usuários, estes terão que se comunicar e fazer a gestão de tarefas
+sobre o projeto em de outra forma como por email direto, lista de
+emails/discussão ou chats coletivos. Para que um desenvolvedor veja o
+que os outros fizeram, ele terá que periodicamente dar `fetch`, ver os
+braches do repositório, navegar no histórico de commits, ver *diffs*
+entre arquivos. Se por um lado existe recurso para um fluxo de
+desenvolvimento orientado dessa forma, também existem recursos para
+tornar o trabalho coletivo mais simples e centralizado. Eles são os
+serviços web para projetos Git.
 
 O Git tem vários serviços web voltados para ter um local que centralize 
-o projeto bem como ofereça recursos administrativos ecolaborativos. 
-Esses serviços possuem contas *free*, entre outros.
+o projeto bem como ofereça recursos administrativos e colaborativos. 
+Esses serviços possuem contas *free*, algums planos pagos e diversos
+recursos para todo tipo de projeto e equipe.
 
-O objetivo desse capítulo é apresentar os serviços web para repositórios
-Git, descrever suas principais características, indicar como criar e
-configurar uma conta ligada a um repositório local. Além disso, o
-*workflow* básico que considera servições web será descrito, enfatizando
-as funcinalides desses serviçõs voltados à colaboração.
+O objetivo desse capítulo são apresentar os serviços web para
+repositórios Git, descrever suas principais características, descrever
+como criar e configurar uma conta e conectar-se a um repositório
+local. Além disso, o *workflow* básico que considera servições web será
+discutido, enfatizando os principais recursos desses serviços
+voltados à colaboração.
 
 ## GitHub ##
 
