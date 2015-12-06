@@ -791,9 +791,8 @@ existem. Abaixo fazemos a criação do remoto a partir do local sem ser
 usando o *push*. Esses comandos precisam ser usados uma vez apenas.
 
 ```{r, engine="bash", eval=FALSE}
-## Duas formas de conectar o local e remoto.
+## Conectar o local e remoto.
 git branch --set-upstream issue#10 origin/issue#10
-git branch -u issue#10 origin/issue#10
 
 ## Cria o ramo issue#11 a partir e vinculado ao devel remoto.
 git checkout -b issue#11 origin/devel
@@ -1352,7 +1351,3 @@ contém as instruções de instalação e configuração e a documentação
 oficial sobre
 *runners*\footnote{\url{http://doc.gitlab.com/ce/ci/runners/README.html}}
 indica como tirar melhor proveito do recurso.
-
-<!---------------------------------------------------------------------- -->
-
-[*docker*]:
