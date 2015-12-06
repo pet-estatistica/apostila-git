@@ -585,36 +585,37 @@ descrever o procedimento de trabalho considerando tais interfaces.
 
 TODO Deixar os chunks dessa sessão reproduzíveis! TODO
 
-O fluxo de trabalho de um projeto Git local e usando um servidor remoto
-já foram apresentados. O fluxo com um repositório Git mantido em um
-serviço, como o GitHub ou Gitlab, não muda muito. A maior diferença não
-é sobre o uso de novas instruções Git mas sim a adoção de uma estratégia
-de trabalho (*workflow*) baseada nos recursos desses serviços, como as
-*milestones* e *issues*. Esse modelos de trabalho seráo descritos em um
-capítulo à frente.
+O fluxo de trabalho de um projeto Git local usando um servidor remoto
+foram apresentados no capítulo anterior. O fluxo com um repositório Git
+mantido em um serviço, como o GitHub ou Gitlab, não muda muito. A maior
+diferença não é sobre o uso de novas instruções Git mas sim a adoção de
+uma estratégia de trabalho (*workflow*) baseada nos recursos desses
+serviços, como as *milestones* e *issues*. Esse modelos de trabalho
+serão descritos em um capítulo à frente.
 
-Em termos de comandos, acrescenta-se aqueles necessários para se
-comunicar com um repositório remoto. Alguns desses comandos, senão
-todos, já foram apresentados no capítulo anterior a esse.
+O fluxo de trabalho com repositórios remotos, em termos de comandos,
+acrescenta àqueles necessários para se comunicar com o
+repositório. Alguns desses comandos, senão todos, já foram apresentados
+no capítulo anterior a esse.
 
 Ao considerar um seviço web, você pode começar um repositório novo de
 duas formas: localmente ou pelo serviço.
 
 Pelo serviço, qualquer que seja, crie um novo repositório. GitHub e
 GitLab dão instruções resumidas de como proceder logo que você cria um
-novo repositório, inclusive, incluem opções como criar um repositório
-com arquivo de `README`. Assim que criar, seu repositório terá um
-endereço (ssh e http). Na sessão anterior, **Gerenciar repositórios**,
-descremos o processo de criar e *clonar* o repositório e também de criar
-local e adicionar um endeço do `origin`.
+novo repositório. Eles inclusive, incluem opções como criar um
+repositório com arquivo de `README`. Assim que criar, seu repositório
+terá um endereço (SSH e HTTP). Na sessão anterior, descremos o processo
+de criar e *clonar* o repositório e também de criar local e adicionar a
+*url* do repositório remoto (`origin`).
 
 Localmente o repositório segue o ciclo normal de desenvolvimento que
 minimamente contém das intruções `git add` e `git commit`. Os fluxos de
-trabalho em geral preconizam o desenvolvimento a partir de *branches* de
-demanda cujo conteúdo será incorporado aos ramos permanentes (`master`,
-`devel`) quando forem concluídos. Abaixo ilustramos a sequência de criar
-um ramo, desenvolvê-lo e por fim subir o seu conteúdo para o repositório
-remoto, que nesse caso é mantido em um servido web.
+trabalho, em geral, preconizam o desenvolvimento a partir de *branches*
+de demanda cujo conteúdo será incorporado aos ramos permanentes
+(`master`, `devel`) quando forem concluídos. Abaixo ilustramos a
+sequência de criar um ramo, desenvolvê-lo e por fim subir o seu conteúdo
+para o repositório remoto, que nesse caso é mantido em um servido web.
 
 ```{r, engine="bash", eval=FALSE}
 ## Cria um ramo chamado issue#10.
@@ -631,7 +632,7 @@ git commit -m <mensagem>
 git push origin issue#10
 ```
 
-Nessa rotina, consideramos `issue#10` um *issue* criado na interface
+Nessa rotina, consideramos `issue#10` um *issue* criado na interface web
 para atender uma demanda, como por exemplo, corrigir um *bug*. Da mesma
 forma que o ramo default do Git é o `master`, o repositório remoto é por
 default chamado de `origin`, então subimos o conteúdo desse ramo para o
@@ -641,8 +642,8 @@ Não há limites para o número de ramos. Ramos podem ser locais, remotos
 ou ambos. Quando você cria um ramo, como nos comandos acima, ele é um
 ramo remoto. Quando você sobre esse ramo, ele passa ter sua parte remota
 também. E quando você clona um repositório, você traz todos os ramos que
-ele possui, que são ramos remotos. Ao escolher um ramos desse para
-trabalhar, ele passar ser também um ramo local. Abaixo formas de listas
+ele possui, que são ramos remotos. Ao escolher um ramo desse para
+trabalhar, ele passa a ser também um ramo local. Abaixo formas de listar
 os ramos do projeto.
 
 ```{r, engine="bash", eval=FALSE}
@@ -673,7 +674,7 @@ git push origin --delete issue#10
 git push origin :issue#10
 ```
 
-Até aqui, nos referimos ao repositório remoto como `origin` que é o nome
+Até aqui nos referimos ao repositório remoto como `origin` que é o nome
 default. No entanto, um projeto Git pode ter mais de um repositório
 remoto. Considere o caso simples de um repositório para arquivos de uma
 disciplina. Esse repositório contém tanto lista de exercícios para os
@@ -714,11 +715,11 @@ sempre precisar atualizar os repositórios com o conteúdo existente no
 remoto. Existem duas instruções Git para isso: `git fetch` e `git pull`.
 
 As duas traduções mais frequentes do verbo *to fetch* são buscar e
-trazer.  A documentação oficial do comando `git fetch`
-(<https://git-scm.com/docs/git-fetch>) indica que esse comando serve
-para trazer objetos e referências dos repositórios remotos. Abaixo o
-comando padrão considerando um remoto de nome `origin` e algumas
-variações.
+trazer.  A documentação oficial do comando `git
+fetch`\footnote{\url{https://git-scm.com/docs/git-fetch}} indica que
+esse comando serve para trazer objetos e referências dos repositórios
+remotos. Abaixo o comando padrão considerando um remoto de nome `origin`
+e algumas variações.
 
 ```{r, engine="bash", eval=FALSE}
 ## Traz todos os ramos do remoto origin.
@@ -735,8 +736,8 @@ O comando *fetch* traz os ramos e atualiza a parte remota, por exemplo,
 o `origin/devel`. O ramo local `devel` não tem seu conteúdo modificado
 após o `fetch`. Para transferir o conteúdo o `origin/devel` para o
 `devel` tem-se que usar o `git merge`. No entanto, sempre que haver
-necessidade, antes o *merge* pode-se verificar as diferenças que existem
-entre local e remoto, principalmente quando esse remoto traz
+necessidade, antes do *merge* pode-se verificar as diferenças que
+existem entre local e remoto, principalmente quando esse remoto traz
 contribuições de algum colaborador. Os comandos abaixos exibem as
 diferenças entre os ramos e aplicam o merge entre eles.
 
@@ -751,32 +752,28 @@ git diff devel origin/devel
 git merge origin/devel
 ```
 
-Como você já sabe, os merges podem apresentar conflito. Já vimos como
-fazer isso e no capítulo a seguir apresentaremos interfaces gráficas
-para trabalhar com o Git e dentre elas algumas são para auxiliar a
-resolvê-los.
-
 Em resumo, para passar o conteúdo de um ramo remoto para um local temos
 que fazer `git fetch` e em seguida `git merge`. O comando `git pull` são
-esses dois em um. A documentação do `git pull`
-(<https://git-scm.com/docs/git-pull>) dá uma descrição detalhada do seu
-uso enquanto que os exemplos abaixo ilustram o uso mais simples
-possível.
+esses dois em um. A documentação do `git
+pull`\footnote{\url{https://git-scm.com/docs/git-pull}} dá uma descrição
+detalhada do seu uso enquanto que os exemplos abaixo ilustram o uso mais
+simples possível.
 
 ```{r, engine="bash", eval=FALSE}
-## Traz e junta todos os ramos do remoto origin para os locais.
+## Traz e junta todos os ramos do remoto com os locais.
 git pull origin
 
-## Traz e justa só do ramo devel.
+## Traz e junta só do ramo devel.
 git pull origin devel
 ```
 
 Por fim, para subir o trabalho feito em um ramo, usa-se a intrução `git
 push`. Enviar o seu trabalho com frequência é a melhor forma de ter
 *backups*, exibir e disponibilizar suas contribuições para os seus
-colaboradores. A documentação do `git push` é rica em variações
-(<https://git-scm.com/docs/git-push>) mas a maneira mais simples de
-usá-lo é para subir um ramo para o repositório remoto.
+colaboradores. A documentação do `git
+push`\footnote{\url{https://git-scm.com/docs/git-push}} é rica em
+variações mas a maneira mais simples de usá-lo é para subir um ramo para
+o repositório remoto.
 
 ```{r, engine="bash", eval=FALSE}
 ## Sobe o ramo issue#10 para o repositório remoto origin.
@@ -789,11 +786,9 @@ git push --all origin
 Quando você sobe pela primeira vez um ramo local, a sua parte remota é
 criada. Assim, a instrução que colocamos acima criou um ramo remoto
 chamado `origin/issue#10`. Essa é a forma mais natural, e até
-despercebida, de criar ...
-
-Outras maneiras existem. Abaixo fazemos a criação do remoto a partir do
-local sem ser usando o *push*. Esses comandos precisam ser usados uma
-vez apenas.
+despercebida, de criar ramos locais com cópias remotas. Outras maneiras
+existem. Abaixo fazemos a criação do remoto a partir do local sem ser
+usando o *push*. Esses comandos precisam ser usados uma vez apenas.
 
 ```{r, engine="bash", eval=FALSE}
 ## Duas formas de conectar o local e remoto.
