@@ -14,6 +14,222 @@ output:
 
 \chapter{Projetos Remotos}
 
+Nos capítulos anteriores descrevemos como instalar o Git e ter projetos
+versionados. No entanto, o uso do Git até então foi apenas local. Os
+arquivos eram mantidos na sua máquina de trabalho e disponíveis só para
+você.
+
+Os recursos do Git, como o desenvolvimento em *branches*, permite que
+vários segmentos sejam conduzidos de forma independente e no futuro,
+quando apropriado, reunidos em um único *branch*. Isso é exatamente o
+que precisamos para trabalhar em equipe, certo? Se cada colaborador
+pudesse ter um ramo separado do projeto para trabalhar, todos poderiam
+trabalhar simultâneamente. Quando oportuno, bastaria fazer merges para
+reunir o trabalho. A questão é: como deixar o projeto disponível para os
+colaboradores?
+
+A resposta é simples: mantenha o projeto em um servidor onde os
+colaboradores tenham acesso. Isso inclusive vai permitir que você acesse
+o projeto de várias outras máquinas, como o *notebook* de casa e o
+desktop do *escritório*.
+
+## Repositório remoto pessoal
+
+O repositório remoto serve de centro do seu repositório Git. Como ele
+está em um servidor que você tem acesso, você pode compartilhar o
+repositório com outras máquinas, clonado de lá. Ele serve como *backup*
+do repositório.
+
+Aqui não se trabalha em colaboração mas o processo permite acessar o
+repositório, transferir arquivos de várias máquinas suas.
+
+```{r, engine="bash", eval=FALSE}
+## Autenticar no servidor (logar).
+ssh eu@servidor
+
+## Verificar se a máquina tem o Git, se não instalar.
+git --version
+
+## Criar um diretório para conter o projeto.
+mkdir -p ~/meusProjetos/meu1repo
+cd ~/meusProjetos/meu1repo
+
+## Começar um projeto Git remoto. Note a opção --bare.
+git --bare init
+```
+
+Apenas isso precisa ser feito no servidor. Você não cria nenhum arquivo
+pelo servidor. Inclusive, muitos dos comandos Git, como `git status` não
+funcionam para repositório iniciados com a opção `git --bare init`.
+
+Caso queira, você também pode usar `git init`. A diferença entre eles é
+só onde ficam os arquivos do versionamento. Com `git init`, um diretório
+oculto `.git/` é o repositório Git e os arquivos de trabalho, como o
+`README.md`, ficam ao lado dele na estrutura de diretório. Com `git
+--bare init` o conteúdo do repositório Git fica na raíz. Essa última
+opção é justamente para criar repositórios remotos que vão justamente
+manter a parte repositório e não os arquivos.
+
+\begin{verbatim}
+git init                  git --bare init
+.                         .
+|-- .git                  |-- branches
+|   |-- branches          |-- config
+|   |-- config            |-- description
+|   |-- description       |-- HEAD
+|   |-- HEAD              |-- hooks
+|   |-- hooks             |-- info
+|   |-- info              |-- objects
+|   |-- objects           +-- refs
+|   +-- refs
++-- README.md
+\end{verbatim}
+
+Uma vez iniciado o repositório no servidor, todo trabalho passa ser
+local. É a vez de adicionar o endereço do diretório no servidor e
+transferir arquivos.
+
+```{r, engine="bash", eval=FALSE}
+## Agora na sua máquina local, adicione o endereço do remoto.
+git remote add eu@server:~/meusProjetos/meu1repo
+
+## Exibir os endereços remotos.
+git remote -v
+```
+
+Esse endereço pode ter IP, porque na realidade, todo servidor tem um
+IP. Por exemplo, o servidor do <github.com> tem o IP
+192.30.252.129. Para saber o IP é só dar um *ping* no endereço.
+
+```{r, engine="bash", eval=FALSE}
+ping github.com
+ping gitlab.com
+ping google.com
+ping cran.r-project.org
+```
+
+Normalmente, servidores de escritório não tem um endereço nominal,
+apenas o IP (numérico). É necessário registrar domínio para ter
+nominal.
+
+```{r, engine="bash", eval=FALSE}
+## Agora na sua máquina local, adicione o endereço do remoto.
+git remote add eu@111.22.333.44:~/meusProjetos/meu1repo
+```
+
+Nesse processo, toda transferência de arquivos vai pedir senha do seu
+usuário no servidor. Para facilitar, pode-se trabalhar com chaves
+públicas.
+
+O arquivo `id_rsa.pub` é a sua chave pública. O `id_rsa` é o seu
+par. RSA é o tipo de encriptação. O nome e caminho do arquivo e a
+encriptação podem ser outros, depende do que você escolher ao gerar o
+par de chaves. Normalmente usa-se RSA e as chaves são criadas no
+diretório `~/.ssh`.
+
+```{r, engine="bash", eval=FALSE}
+## Exibir chaves públicas.
+cat ~/.ssh/id_rsa.pub
+
+## Caso não tenha, gerar.
+ssh-keygen -t rsa -C "eu@dominio.com"
+```
+
+No servidor, o arquivo `authorized_keys2` contém as chaves públicas das
+máquinas com acesso permitido sem senha. Esse arquivo nada mais é que
+uma coleção de chaves. O conteúdo dele são as chaves das suas máquinas,
+ou das máquinas de outros usuários, conteúdo do `id_rsa.pub`, uma
+embaixo da outra, conforme o exemplo abaixo\footnote{O Flash foi o
+primeiro a transferir as chaves para o servidor porque ele é mais
+rápido}.
+
+```{r, engine="bash", eval=FALSE}
+## `authorized_keys` do servidor da Liga da Justiça.
+ssh-rsa IyBUrjvUdSMY... flash@justiceleague.org
+ssh-rsa AAAAB3NzaC1y... batman@justiceleague.org
+ssh-rsa Mdju17IdXhSd... superman@justiceleague.org
+```
+
+```{r, engine="bash", eval=FALSE}
+## Logar no servidor
+ssh eu@111.22.333.44
+
+## Criar o diretório/arquivo para as chaves públicas.
+mkdir ~/.ssh
+ > authorized_keys2
+```
+
+Agora é preciso transferir o conteúdo do seu arquivo local `id_rsa.pub`
+para o `authorized_keys2` que fica no servidor. O jeito mais simples de
+fazer isso é com transferência *scp* mas a instrução *ssh* abaixo também
+resolve.
+
+```{r, engine="bash", eval=FALSE}
+## Transfere arquivo para diretório temporário.
+scp ~/.ssh/id_rsa.pub eu@111.22.333.44:/tmp
+
+## Cola o conteúdo do *.pub no final do authorized_keys.
+ssh eu@111.22.333.44\
+  "cat /tmp/id_rsa.pub ~/.ssh/authorized_keys"
+
+## Faz os dois passos anteriores de uma vez só.
+ssh eu@111.22.333.44\
+  "cat >> ~/.ssh/authorized_keys2" < ~/.ssh/id_rsa.pub
+```
+
+## Repositório remoto coletivo
+
+A única diferença é recomendamos você criar um novo usuário e adicionar
+as chaves públicas de todos os membros. Evite adicionar chaves públicas
+para usuários na sua conta porque isso expõe seus documentos, alguma
+operação desastrosa por parte de alguém pode comprometê-los. Por isso,
+crie um usuário, por exemplo `gitusers`, para na conta manter o
+repositório remoto.
+
+Solicite que os colaboradores gerem as chaves públicas e te enviem o
+arquivo `id_rsa.pub`. Depois você adiciona cada chave ao
+`authorized_keys` da conta `gitusers`. Com chaves autorizadas, os
+colaboradores podem transferir arquivos, podem logar no servidor mas
+não podem instalar nada, a menos que você passe a senha do usuário
+`gitusers`. Para crias usuários no servidor, você precisa de
+privilégios de *admin*.
+
+```{r, engine="bash", eval=FALSE}
+## Logar na servidora.
+ssh eu@servidor
+
+## No servidor, criar uma conta para o projeto.
+sudo adduser gitusers
+```
+
+Vamos assumir que você têm os arquivos `*.pub` dos colaboradores no
+diretório `/chaves` devidamente identificados pelo nome deles. O comando
+abaixo acrescenta as chaves deles uma embaixo da outra no
+`authorized_keys`.
+
+```{r, engine="bash", eval=FALSE}
+## Entra no diretório com os arquivos *.pub.
+## Existem várias: angela.pub, jhenifer.pub, ...
+cd chaves
+
+## Juntar as chaves em um único arquivo.
+cat *.pub > todos.pub
+
+## Copiar o conteúdo do arquivo pro authorized_keys2.
+ssh gitusers@111.22.333.44\
+  "cat >> ~/.ssh/authorized_keys2" < todos.pub
+```
+
+A fazer:
+  1. Fluxo de trabalho com repositório remoto, do *clone* ao *push*;
+  2. Listar branches locais/remotos;
+  3. Adicionar *remote*, renomear, deletar;
+  4. Adicionar mais de uma url para o mesmo *origin*;
+  5. Deletar ramos no servidor;
+  6. Clonar apenas um *branch*, *commit* ou *tag*.
+
+<!---------------------------------------------------------------------- -->
+
 # Introdução #
 
 Para colaborar em projetos coletivos no Git é preciso ter um repositório
