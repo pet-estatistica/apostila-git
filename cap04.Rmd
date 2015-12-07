@@ -323,7 +323,7 @@ criar um repositório remoto chamado `MeuRepo` e o armazenar em um
 diretório `~/git`:
     
 **Exemplo:**
-```{r, engine="bash", eval=FALSE}
+    ```{r, engine="sh", eval=FALSE}
 # Para criar um diretório git na sua home:
 mkdir ~/git
 # Para criar um repositório git:
@@ -357,7 +357,7 @@ qual você quer armazenar seus repositórios. Ao copiar o seu repositório
 limpo, você pode configurar seu novo repositório.
 
 **Exemplo:**
-```{r, engine="bash", eval=FALSE}
+    ```{r, engine="sh", eval=FALSE}
 scp -r MeuRepo.git usuario@git.example.com:/dir/git
 ```
 
@@ -375,7 +375,7 @@ segura da sua máquina com o servidor. Para isso começamos com o seguinte
 comando no terminal:
     
 **Exemplo:**
-```{r, engine="bash", eval=FALSE}
+    ```{r, engine="sh", eval=FALSE}
 ## Gerando uma chave ssh
 ssh-keygen -t rsa -C "usuario@email.com"
 ```
@@ -394,13 +394,8 @@ Para visualizar a chave basta digitar o seguinte comando:
 cat ~/.ssh/id_rsa.pub
 ```
 
-A chave está no arquivo `id_rsa.pub`. O usuário deve copiar o texto
-deste arquivo na íntegra.  Para gerar a conexão ssh com o servidor, deve
-visitar o site <https://gitlab.c3sl.ufpr.br/profile/keys> e clicar em
-\menu{Add SSH Key} (<https://gitlab.c3sl.ufpr.br/profile/keys/new>). É
-necessário escrever um título para a sua nova chave, no campo `key`
-colar o texto copiado do arquivo `id_rsa.pub` e adicionar sua nova
-chave.
+A chave está no arquivo `id_rsa.pub`. O usuário deve copiar o texto deste arquivo na íntegra.
+Para gerar a conexão ssh com o servidor, deve visitar o site [https://gitlab.c3sl.ufpr.br/profile/keys](https://gitlab.c3sl.ufpr.br/profile/keys) e clicar em [Add SSH Key](https://gitlab.c3sl.ufpr.br/profile/keys/new). É necessário escrever um título para a sua nova chave, no campo `key` colar o texto copiado do arquivo `id_rsa.pub` e adicionar sua nova chave.
 
 Para checar a configuração da sua máquina com o sevidor basta realizar o
 seguinte comando:
@@ -430,11 +425,10 @@ de alguns usuários, você pode salvá-las no arquivo `authorized_keys`,
 como no exemplo a seguir.
 
 **Exemplo:**
-```{r, engine="bash", eval=FALSE}
-## chave do primeiro usuário 
-cat /tmp/id_rsa1.pub >> ~/.ssh/authorized_keys
-## chave do segundo usuário
-cat /tmp/id_rsa2.pub >> ~/.ssh/authorized_keys
+```{r, engine="sh", eval=FALSE}
+cat /tmp/id_rsa1.pub >> ~/.ssh/authorized_keys # chave do primeiro usuário 
+cat /tmp/id_rsa2.pub >> ~/.ssh/authorized_keys # chave do segundo usuário
+...
 ```
 
 Depois de armazenar as chaves dos usuários, basta criar um repositório
@@ -442,8 +436,8 @@ limpo (sem um diretório de trabalho) para eles. Como visto
 anteriormente:
 
 **Exemplo:**
-```{r, engine="bash", eval=FALSE}
-cd /dir/git
+```{r, engine="sh", eval=FALSE}
+cd/dir/git
 mkdir NovoProjeto.git
 cd NovoProjeto.git
 git -bare init
@@ -466,7 +460,7 @@ destes.  No exemplo abaixo temos uma bibliotaca Git, chamada
 **TesteClone**, que será clonado da seguinte forma:
     
 **Exemplo:**
-```{r, engine="bash", eval=FALSE}
+    ```{r, engine="sh", eval=FALSE}
 git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/TesteClone.git
 ```
 
