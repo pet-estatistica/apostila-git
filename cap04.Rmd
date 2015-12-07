@@ -2,6 +2,7 @@
 title: "Projetos Remotos"
 author: "PET Estatística UFPR"
 graphics: yes
+header-includes: \usepackage{menukeys}
 output:
   pdf_document:
     template: template.tex
@@ -242,7 +243,7 @@ verificar quais repositórios estão configurados.
 
 **Exemplo:** para retornar a lista de repositórios:
 
-```{r, engine="bash", echo=TRUE}
+```{r, engine="bash", eval=FALSE}
 git remote
 ```
 
@@ -252,7 +253,7 @@ SSH para onde será possível enviar os seus arquivos).
 **Exemplo:** para retornar o nome dos repositórios com a URL onde foram
 armazanados:
 
-```{r, engine="bash", echo=TRUE}
+```{r, engine="bash", echo=TRUE, eval=FALSE}
 git remote -v
 ```
 
@@ -265,7 +266,7 @@ vinculado a URL
 como exemplo o projeto Git **Apostila-git**.
 
 **Exemplo:**
-```{r, engine="bash", echo=TRUE}
+```{r, engine="bash", echo=TRUE, eval=FALSE}
 git remote add MeuRepo git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
 # Quando executamos novamente o comando para obter a lista de repositórios:
 git remote -v
@@ -280,7 +281,7 @@ Você pode acessar as informações de qualquer repositório remoto com o
 comando `git remote show`, que retornará a URL e os `branches`.
 
 **Exemplo:**
-```{r, engine="bash", echo=TRUE}
+```{r, engine="bash", echo=TRUE, eval=FALSE}
 git remote show origin
 ```
 
