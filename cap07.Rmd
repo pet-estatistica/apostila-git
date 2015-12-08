@@ -389,13 +389,3 @@ ao trabalho feito.
 
 Depois de terminar todas etapas do projeto, completa-se as `milestones`, 
 realiza o `merge` do `devel` no `master`, e cria a tag de versão.
-
-
-### Referências
-https://git-scm.com/book/pt-br/v1/Git-Distribu%C3%ADdo-Contribuindo-Para-Um-Projeto
-
-https://prezi.com/_lm8kozmii8n/git-workflow/ 
-
-https://www.atlassian.com/zh/git/workflows\#!workflow-overview
-
-http://git.leg.ufpr.br/leg/gitlab-rautu/blob/master/CONTRIBUTING.md
