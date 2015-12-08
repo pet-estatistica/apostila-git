@@ -38,10 +38,20 @@ já usamos o comando `git diff` no capítulo 3 e o *output* deste comando
 foi de simples visualização, mas em arquivos maiores (com muitas linhas) 
 a navegação para verificar as alterações do arquivo não é tão amigável. Para
 facilitar essas e outras situações surgem as *GUI's (Graphical User 
-Interfaces)*, interfaces gráficas para o usuário que incorpora comandos
+Interfaces)*, interfaces gráficas para o usuário que incorporam comandos
 GIT em *widgets*(botões, caixas de texto etc.) dispostos em uma janela
 gráfica de seu sistema operacional.
 
+Neste capítulo apresentamos as principais *GUI's* para projetos GIT em
+diferentes plataformas, sistemas UNIX, Mac OS X e Windows. Seccionamos
+em dois conjuntos de interfaces. O primeiro chamado de **Interfaces
+GIT** refere-se às ferramentes para alterações e visualizações de
+arquivos no repositório a fim de facilitar as atividades cotidianas já o
+segundo, **Interfaces de comparação** representam as que objetivam
+facilitar a visualização e edição de arquivos com base em suas
+diferentes versões. Detalhes de download, instalação e exemplos da
+utilização destas interfaces no fluxo de trabalho de um projeto com
+versionamento **GIT** são descritos.
 
 # Interfaces GIT #
 
@@ -50,11 +60,11 @@ de um repositório. Estas facilitam a utilização das principais
 instruções **GIT** (`git add`, `git commit`, `git push`, `git pull`), 
 visualização dos arquivos e alterações no repositório.
 
-Desde o surgimento do GIT diversas *GUI's* foram propostas. Neste 
-capítulo apresentamos as principais *GUI's* em diferentes plataformas nos 
-sistemas UNIX, Mac OS X e Windows. Detalhes de download, instalação e 
-exemplos da utilização destas interfaces no fluxo de trabalho de um 
-projeto com versionamento **GIT** são descritos.
+Desde o surgimento do GIT diversas *GUI's* foram propostas. Neste
+capítulo apresentamos as principais *GUI's* disponíveis para as
+diferentes plataformas, sistemas UNIX, Mac OS X e Windows. São
+destacados os comandos implementados pela interface e exemplos de sua
+utilidade em um projeto versionado.
 
 ## git-gui ##
 
@@ -68,16 +78,24 @@ específicas como voltar estágios ou reescrever o último *commit* (muito
 seção abordaremos apenas as alterações mais comuns no repositório.
 
 `git gui`, no Windows, pode ser aberto pelo menu iniciar. Nesta
-plataforma, ao instalar o GIT (conforme visto no capítulo 2) duas
-aplicações ficam disponíveis **git BASH** e **git GUI**. Em sistemas
-LINUX podemos criar um *alias* (criar e editar adequadamente um
-arquivo em */usr/share/applications*) para que a `git gui` fique listada
-junto as aplicações do sistema. --Descobrir no MAC se `git gui` fica no
-lançador automaticamente. Porém, de forma geral, independente da
-plataforma de trabalho, a `git gui` pode ser iniciada a partir de um
-terminal `bash`, com o comando:
+plataforma, ao instalar o GIT (conforme visto no capítulo 2), optamos
+pelos componentes **git BASH** e **git GUI** assim estas duas aplicações
+ficam disponíveis para uso. Em sistemas UNIX, a interface pode ser
+instalada via terminal, também apresentada no capítulo 2:
 
-```sh
+```{r, engine = "bash", eval = FALSE}
+## Instalando a git gui
+sudo apt-get install git-gui
+
+```
+
+Ainda em sistemas Unix podemos criar um *alias* (criar ou editar
+adequadamente um arquivo em */usr/share/applications*) para que a `git
+gui` fique listada junto as aplicações do sistema. Porém, de forma geral,
+independente da plataforma de trabalho, a `git gui` pode ser iniciada a
+partir de um terminal `bash`, com o comando:
+
+```{r, engine = "bash", eval = FALSE}
 git gui
 ```
 
@@ -171,28 +189,30 @@ echo "
 Mais um arquivo criado" > OTHER.txt
 ```
 
-Após as alterações a interface gráfica é chamada.
+A partir daqui poderíamos seguir o fluxo de gestão de versões via
+terminal, apresentado no capítulo 3. Mas faremos isso agora via
+interface `git gui`.
 
 ![](./images/git-gui1.png)  
 FIGURA: Inteface `git gui`
 
-A interface `git gui` se apresenta de forma simples, o que facilita
-sua utilização. Na figura ?? detacamos as quatro áreas que compreendem a
+A interface `git gui` se apresenta de forma simples, o que facilita sua
+utilização. Na figura ?? detacamos as quatro áreas que compreendem a
 interface. Na primeira porção temos listados os arquivos presentes no
 *working directory*, os arquivos criados aparecem com ícone em branco e
 os modificados com linhas em azul, aqui a interface implementa
 interativamente o comando `git add`, pois ao clicar no ícone de um
 arquivo ele é automaticamente adicionado à *staging area*. Na segunda
 parte são listados os arquivos na *staging area* com ícone de *check
-mark*. Na terceira parte temos a implementação do comando
-`git diff` para qualquer arquivo selecionado. Com destaque de cores, a
-interface apresenta em vermelho as deleções e em verde as adições. Por fim
-temos no canto inferior direito a área para escrever *commits* com
-botões para submissão de ação. Um detalhe importante do `git gui` é que
-o idioma do sistema operacional é verificado para sua construção, ou
-seja, os botões da interface na figura ?? são *push*, *commit*, *sign
-off*, etc pois o idioma do sistema operacional em que essa interface foi
-executada é o inglês. Para português (Brasil) as mensagens ficam .....
+mark*. Na terceira parte temos a implementação do comando `git diff`
+para qualquer arquivo selecionado. Com destaque de cores, a interface
+apresenta em vermelho as deleções e em verde as adições. Por fim temos
+no canto inferior direito a área para escrever *commits* com botões para
+submissão de ação. Um detalhe importante do `git gui` é que o idioma do
+sistema operacional é verificado para sua construção, ou seja, os botões
+da interface na figura ?? são *push*, *commit*, *sign off*, etc pois o
+idioma do sistema operacional em que essa interface foi executada é o
+inglês. Para outros idiomas as mensagens podem sofrem alterações.
 
 Além das quatro áreas principais da interface, que facilitam
 interativamente atividades como `git status`, `git diff`, `git add`,
@@ -203,7 +223,7 @@ ser acessadas com um simples clique e são auto-explicativas.
 ## gitk ##
 
 Pioneira dentre as interfaces gráficas, `gitk` foi a primeira
-*GUI* implementada. Também implementada em *Tcl/Tk*, esta *GUI*
+*GUI* implementada. Também escrita em *Tcl/Tk*, esta *GUI*
 tem como objetivo a apresentação do histórico de um projeto. A `gitk`
 é incorporada ao principal repositório do GIT, portanto nas instalações
 completas do GIT esta interface fica disponível sem ser necessário
@@ -211,26 +231,27 @@ download e instalação. Nesta seção apresentamos a `gitk` detalhando a
 disposição dos elementos nesta interface que se mostra muito útil na
 visualização de projetos GIT.
 
-A `gitk` trabalha em conjunto com a `git gui`. Em `git gui` podemos fazer
-alterações de forma rápida e visual nos arquivos que estão na *staging
-area* e *working directory*, porém para visualizar o histórico completo
-de *commits* com ramificações, marcações e demais detalhes, recorremos
-à `gitk`. Essa interface se mostra muito útil também como ferramenta de
-aprendizagem GIT, uma vez que visualizar de forma gráfica as alterações
-que os comandos realizados causam no projeto, torna mais fácil a
-compreensão dos mesmos.
+A `gitk` trabalha em conjunto com a `git gui`. Em `git gui` podemos
+fazer alterações de forma rápida e visual nos arquivos que estão na
+*staging area* e *working directory*, porém para visualizar o histórico
+completo de *commits* com ramificações, marcações e demais detalhes,
+recorremos à `gitk`, tanto é que no menu da `git gui` temos um atalho
+para a `gitk` (`Repository > Visualize History`). Essa interface se
+mostra muito útil também como ferramenta de aprendizagem GIT, uma vez
+que visualizar de forma gráfica as alterações que os comandos realizados
+causam no projeto, torna mais fácil a compreensão dos mesmos.
 
 `gitk`, assim como a `git gui` pode ser chamada atráves de linha de
 comando:
 
-```sh
+```{r, engine = "bash", eval = FALSE}
 gitk
 ```
 
 Para exemplificar a disposição dos elementos nesta interface, seguimos
 com as alterações feitas na seção anterior, lembrando que temos todas as
 alterações já realizadas no capítulo 3 e ainda duas modificações e uma
-inclusão de arquivos não *commitadas*. Visualizando a interface `gitk`
+inclusão de arquivo não *commitadas*. Visualizando a interface `gitk`
 chamada neste estado do repositório temos:
 
 ![](./images/gitk1.png)  
@@ -242,7 +263,7 @@ gui` no que diz respeito à informação. Dividida em apenas duas partes, a
 implementação visual e agradável do comando `git log --graph`. No
 gráfico apresentado na parte superior, as bolinhas azuis representam 
 *commits* passados, a de amarelo indica o estado atual do repositório e 
-em vermelho são asmodificações no *working directory*. Ao lado estão os 
+em vermelho são as modificações no *working directory*. Ao lado estão os 
 autores dos respectivos *commits* e o momento em que foram feitos. Na parte
 inferior da interface temos o detalhamento do *commit* selecionado
 na parte superior. As informações contidas aqui vão desde o
@@ -257,29 +278,18 @@ seu *mouse* em qualquer *commit* listado podemos criar *tags*, reverter o
 repositório neste estado, criar um ramo a partir do *commit* dentre outras 
 opções possíveis atráves da interface.
 
-`gitk` é uma implementação em *Tcl/Tk* para visualização de repositórios
-GIT. Com o mesmo objetivo outras interfaces gráficas foram
-implementadas.
-
-
-Podemos destacar duas delas pela grande similaridade à
-`gitk`, são elas `gitg` e `gitx`. Ambas podem ser instalar em:
-
-* https://git-scm.com/docs/gitk
-* https://lostechies.com/joshuaflanagan/2010/09/03/use-gitk-to-understand-git/
-
 ## Outras Interfaces ##
 
 ### gitg e gitx ###
 
-Estas duas interfaces tentam juntar em uma única as opções proporcionadas 
-pela `git gui` e pela `gitk`. Os layouts e as propostas são similares, a 
-diferença está na portabilidade.
-A `gitg` é implementada em *GTk+* e está disponível para sistemas LINUX e a
-`gitx` foi implementada para Mac OS seguindo o estilo de aplicativos
-deste sistema operacional. De forma geral não há detalhes a serem
-repassados sobre estas interfaces uma vez que as possibilidades já foram
-listadas nas seções sobre `git gui` e `gitk`
+Estas duas interfaces tentam juntar em uma única as opções
+proporcionadas pela `git gui` e pela `gitk`. Os layouts e as propostas
+são bastante similares, a diferença está na portabilidade.  A `gitg` é
+implementada em *GTk+* e está disponível para sistemas UNIX e a `gitx`
+foi implementada para Mac OS seguindo o estilo de aplicativos deste
+sistema operacional. De forma geral não há detalhes a serem repassados
+sobre estas interfaces uma vez que as possibilidades já foram listadas
+nas seções sobre `git gui` e `gitk`
 
 ![](./images/gitg.png)
 FIGURA: Interface `gitg`
@@ -306,19 +316,19 @@ destaque com um outro pequeno ícone na paste inferior. Estes pequenos
 ícones indicam o estado do arquivo sem precisar recorrer ao terminal, ou
 seja, temos um `git status` no próprio navegador de arquivos. Além disso
 `RabbitVCS` complementa o menu de opções acessados com o botão direito
-do mouse. As opções implementadas neste menu são completas, vão
-desde *commits*, criação de *branchs* e *tags* até a ações de
-reverter o estado do repositório.
+do mouse. As opções implementadas neste menu são completas, vão desde
+*commits*, criação de *branchs* e *tags* até a ações de reverter o
+estado do repositório, atualizar com a versão remota, entre outras.
  
 ### git-cola ###
 
 Esta também é uma interface alternativa que se destaca por ser completa
-e pela portabilidade (disponível para sistema LINUX, Windows e
-Mac). Implementada em *python*, `git-cola` é uma alternativa à `git gui`
-e contém praticamente os mesmos elementos para alterações no
-repositório. Como a `git gui` se auxilia da `gitk` para visualização,
-a `git-cola` também tem uma interface de apoio, chamada de `git-dag` que
-vem instalado junto ao `git-cola`.
+e portável (disponível para sistema LINUX, Windows e Mac). Implementada
+em *python*, `git-cola` é uma alternativa à `git gui` e contém
+praticamente os mesmos elementos para alterações no repositório. Como a
+`git gui` se auxilia da `gitk` para visualização, a `git-cola` também
+tem uma interface de apoio, chamada de `git-dag` que vem instalado junto
+ao `git-cola`.
 
 ![](./images/git-cola.png)
 FIGURA: Interface `git-cola` e `git-dag`
@@ -326,7 +336,7 @@ FIGURA: Interface `git-cola` e `git-dag`
 Perceba pela figura ?? que as opções das interfaces são similares
 as apresentadas em `git gui` e `gitk`. As interfaces `git-cola` e
 `git-dag` se destacam pela fácil manipulação do layout exibido, além de
-buscar deixar a interface mais intuitiva possível. Como destaque em
+buscar deixar a interface o mais intuitiva possível. Como destaque em
 implementação de funcionalidade GIT, a `git-cola` se sobressai com relação
 à `git gui` na possibilidade de execução do comando `git rebase` via
 interface. 
@@ -342,56 +352,219 @@ editor.
 
 Destacamos aqui dois editores, comumente utilizados pela comunidade
 estatística, que possuem os comandos **GIT** intergrado à sua
-interface. São eles, o `emacs`, o qual temos as opções de *buffers* nos
-editores onde podemos abrir uma instância *shell* e executar os comandos
+interface. São eles, o `emacs`, o qual temos as opções de *buffers* no
+editor onde podemos abrir uma instância *shell* e executar os comandos
 **GIT** junto com o desenvolvimento do código fonte. Além disso uma
-extensão poderosa chamada `magit`[^magit] está disponível e em 
-desenvolvimento para o **GIT** no `emacs`, esta extensão proporciona 
-opções de comandos e visualização em um *buffer* do editor que facilita 
-o trabalho de versionamento. Outro editor também muito utilizado em 
-Estatística, talvez o mais utilizado pela comunidade, é o RStudio que 
-também implementa em sua interface vários comandos, assim como as 
-interfaces anteriormente descritas e para tarefas não triviais uma 
-chamada do terminal *Shell* é possível dentro do aplicativo. As diversas 
-ferramentas do editor RStudio serão exploradas no capítulo ??, com 
-exemplos e ilustrações voltadas para a comunidade estatística.
+extensão poderosa chamada `magit`[^magit] está disponível e em
+desenvolvimento para o uso do **GIT** no `emacs`, esta extensão
+proporciona opções de comandos e visualização em um *buffer* do editor
+que facilita o trabalho de versionamento. Outro editor também muito
+utilizado em Estatística, talvez o mais utilizado pela comunidade, é o
+RStudio que também implementa em sua interface vários comandos, assim
+como as interfaces anteriormente descritas e para tarefas não triviais
+uma chamada do terminal *Shell* é possível dentro do aplicativo. Devido
+ao seu grande uso o aplicativo RStudio terá uma seção específica onde as
+diversas ferramentas serão exploradas, com exemplos e ilustrações
+voltadas para a comunidade estatística.
 
 # Interfaces de comparação #
 
 Uma das principais vantagens do **GIT** é a possibilidade de trabalho
 paralelo por dois ou mais usuários ou por ramos de desenvolvimento. E
-como qualquer desenvolvimento paralelo, desejamos ao final do trabalho, 
-mesclar as contribuições realizadas lado a lado. Como vimos no capítulo 
-3 isso é feito através do comando `git merge ramo_desenvolvimento` para ramos 
-locais e com o comando `git push origin` quando estamos trabalhando em 
-equipe e as contribuições são enviadas para um servidor remoto, capítulo 
-4. Porém, quando a mesma porção de um mesmo arquivo é alterada em duas 
-instâncias distintas (ramos diferentes, usuários diferentes etc.) ocorrem
-conflitos e vimos como o **GIT** os sinaliza para que possamos resolvê-los. 
-Nesta seção mostraremos as interfaces gráficas dedicadas à resolução de 
-conflitos no mesclagem e a visualização da diferença de arquivos em 
-estados diferentes do repositório.
+como qualquer desenvolvimento paralelo, desejamos ao final do trabalho,
+mesclar as contribuições realizadas lado a lado. Como vimos no capítulo
+3 isso é feito através do comando `git merge ramo_desenvolvimento` para
+ramos locais e com o comando `git push origin` quando estamos
+trabalhando em equipe e as contribuições são enviadas para um servidor
+remoto, capítulo 4. Porém, quando a mesma porção de um mesmo arquivo é
+alterada em duas instâncias distintas (ramos diferentes, usuários
+diferentes etc.)  ocorrem conflitos e vimos como o **GIT** os sinaliza
+para que possamos resolvê-los.  Nesta seção mostraremos como as
+interfaces gráficas dedicadas à resolução de conflitos na mesclagem e à
+visualização da diferença de arquivos em estados diferentes do
+repositório podem nos auxiliar.
 
-## Ferramentas de Comparação Padrão ##
+Há vários programas que objetivam a comparação visualmente agradável de
+arquivos. Aqui iremos abordar o programa `meld`, que é multiplataforma,
+*open source* e tem várias facilidades implementadas, porém outras
+alternativas serão indicadas, e devido à equidade de objetivos todos os
+comentários feitos para o `meld` podem ser adotadas para os demais.
 
-* meld
-  + Download e Instalação
-  + Utilização básica
-  + Utilização no **GIT** como `difftool` e/ou `mergetool`
-  + screenshots
+O programa `meld` é implementado em *python* e se denomina como "uma
+ferramenta de diferenciação e mesclagem voltada para desenvolvedores", o
+programa pode ser baixado para as plataformas sistemas UNIX, Mac OS X e 
+Windows atráves do endereço <http://meldmerge.org/>. `meld` não é uma
+ferramenta específica para o GIT, como as apresentação na seção ??,
+porém pode e será usado para comparar versões de arquivos ou
+repositórios no **GIT**, mas vamos começar apresentando o `meld` como
+programa independente.
 
-* kdiff3
-  + Download e Instalação
-  + Utilização básica
-  + Utilização no **GIT** como `difftool` e/ou `mergetool`
-  + screenshots
+Inicializando o programa, sua tela inicial deverá ser similar a
+apresentada na figura ??, aqui estamos utilizando um sistema operacional
+Ubuntu 14.04. A partir daí podemos escolher quaisquer dois (ou três)
+arquivos ou diretórios para comparação.
 
-## Outras interfaces ##
+> FIGURAMELDINICIAL
 
-* P4Merge
+A partir da escolha, o `meld` apresenta os arquivos ou diretórios lado a
+lado para comparação e destaca as porções dentro dos arquivos que estão
+discordantes. A figura ?? apresenta a comparação de dois arquivos, que
+salvamos como `README_v1` e `README_v2` (relembrando os velhos tempos
+antes de conhecermos o **GIT**).
 
-Citar materiais de referência para instalação e
-utilização.
+> FIGURACOMPARACAOV1_vs_V2
+
+Com isso já podemos notar onde podemos utilizar esta ferramenta no fluxo
+de trabalho de um projeto sob versionamento. Vamos então voltar ao nosso
+projeto `meu1repo`, iniciado no capítulo 3 e alterado na seção de
+Interfaces GIT. As alterações realizadas não foram salvas, então veremos
+elas no `meld`. A inicialização do programa pode ser feita via linha de
+comando atráves do comando **GIT** chamado `git difftool`, só temos que
+lembrar onde está o executável que foi baixado. Nos sistemas UNIX isto
+não é necessário, pois o programa pode ser lançado somente atráves do
+nome `meld`, já no Windows deve-se indicar o caminho para o executável
+(normalmente `C:\\Program Files (x86)\\Meld\\meld\\meld.exe`).
+
+```{r, engine="bash", eval=FALSE}
+## Compara o arquivo README (Windows)
+git difftool -t "C:\\Program Files (x86)\\Meld\\meld\\meld.exe" README.md
+## Verificar se funciona.
+
+## Compara o arquivo README (UNIX)
+git difftool -t meld README.md
+```
+
+> FIGURACOMAPARACAO_README_GIT
+
+Na figura ?? temos a mesma informação trazida pelas interfaces **GIT**,
+onde implementam o comando `git diff`, porém aqui podemos alterar os
+arquivos exibidos, atráves das flechas nas bordas (levando ou trazendo
+as contribuições) ou mesmo editando pela interface. Isso pode ser útil
+caso necessite desfazer parcialmente um *commit*, ou seja, parte das
+alterações de uma versão anterior seria mantida e parte alterada.
+
+Contudo a maior necessidade das ferramentas de comparação não está no
+seu uso como `difftools`, mas sim como `mergetools`. Já vimos no
+capítulo 3 que há momentos em que a mesclagem de ramos gera conflitos e
+estes eram resolvidos abrindo e editando os arquivos conflitantes. Porém
+com `meld`, ou outras interfaces de comparação, podemos realizar a
+resolução de conflitos via interface.
+
+Para exemplificar a utilidade na resolução de conflitos na mesclagem,
+vamos marcar as alterações já feita no `meu1repo` e criar um novo
+*branch* alterando os mesmos arquivos a fim de gerar conflito.
+
+```{r, engine="bash", eval=FALSE}
+```
+
+Tentando incorporar as contribuições realizadas acima, do ramo `changes`
+para o ramo `master` obtemos:
+
+```{r, engine="bash", eval=FALSE}
+## Retorna ao ramo principal
+git checkout master
+
+## Tentativa de mesclagem
+git merge changes
+
+```
+
+E agora, ao invés de editarmos o arquivo em conflito, vamos utilizar a
+ferramenta `meld` para resolver os conflitos induzidos. Executamos no
+terminal:
+
+```{r, engine="bash", eval=FALSE}
+## Lançando a interface `meld` para resolução de conflitos
+git mergetool -t meld
+
+```
+
+> FIGURAMERGETOOL_MELD
+
+Na figura ?? temos a janela do programa `meld` quando usado para
+resolução de conflito, conforme comando descrito anteriormente. São
+apresentados três versões lado a lado de cada arquivo em conflito: à
+direita temos a versão `LOCAL`, com o estado do arquivo no ramo atual; à
+esquerda o `REMOTE`, que representa a versão com as alterações a serem
+mescladas e; finalmente na porção central temos o `BASE`, com o conteúdo
+de uma versão anterior comum a ambos. Assim como apresentado na figura
+??, em que o `meld` foi utilizado como `difftool`, podemos (e neste caso
+devemos) editar um arquivo, no caso o `BASE`. Este arquivo será o
+definitivo ao fim da mesclagem, nele podemos incluir as contribuições
+apresentadas no que batizamos de `LOCAL` e `REMOTE`. Isso facilita a
+resolução de conflitos, pois podemos ver as contribuições lado a lado e
+decidir como deverá ficar o arquivo definitivo.
+
+Após a edição do arquivo o processo de mesclagem pode continuar
+normalmente, abaixo concluímos o processo via linha de comando:
+
+```{r, engine="bash", eval=FALSE}
+## Verificando o estado do repositório
+git status
+
+## Conclui a mesclagem com a mensagem de commit curta
+git commit -m "Resolve conflito via meld"
+
+```
+
+Para resolucão de conflitos via alguma ferramenta gráfica, com o comando
+`git mergetool`, o **GIT** gera arquivos de _backup_ com extensão
+`.orig`, perceba no _output_ gerado pelo `git status`, estes armazenam o
+conteúdo de cada arquivo em conflito com as porções conflitantes
+sinalizadas pelo **GIT**. É recomendável não versionar estes arquivos de
+_backup_. Podemos então simplesmente exluí-los após a mesclagem ou
+ignorá-los, adicionando arquivos com esta extensão no
+`.gitignore`. Outra forma manter seu repositório sem os arquivos
+_backup_ é configurando sua `mergetool` para não criá-los, isso pode ser
+feito com:
+
+```{r, engine="bash", eval=FALSE}
+## Configura a ferramenta de merge para não criar os backups
+git config --global mergetool.keepBackup false
+
+```
+
+Até agora utilizamos o programa `meld` definindo-o na chamada dos
+comandos `difftool` e `mergetool`, com a opção `-t` (ou `--tool`), mas
+podemos também definir globalmente qual será nossa ferramenta de `merge`
+e de `diff`. Para usuários de sistemas Unix, essa configuração pode ser
+feita simplesmente com:
+
+```{r, engine="bash", eval=FALSE}
+## Configura a ferramenta padrão de merge e diff
+git config --global merge.tool meld
+
+```
+
+Já para usuários de Windowns deve-se descrever o caminho para os
+arquivos binários.
+
+
+```{r, engine="bash", eval=FALSE}
+## Configura a ferramenta padrão de merge e diff
+## No Windows
+
+```
+
+Alternativamente pode-se editar o arquivo `.gitconfig` com as mesmas
+informações passadas ao comando `git config --global`. Para verificar
+como altera-se esse arquivo com essas informações abra-o após avaliar os
+comandos descritos.
+
+Com isso já temos nosso **GIT** devidamente configurado para utilizar o
+programada `meld` e já podemos notar sua importância quando se trabalha
+com arquivos versionados. Mas ainda apresentamos somente uma das várias
+interfaces que se dispõem a facilitar a visualização de diferenças e
+mesclagem de arquivos. Podemos citar as interfaces
+[`kdiff3`](http://kdiff3.sourceforge.net/) e
+[`P4Merge`](https://www.perforce.com/product/components/perforce-visual-merge-and-diff-tools),
+como outras interfaces de comparação bastante utilizadas em projetos
+versionados.
+
+É importante salientar que as ferramentas gráficas apresentadas neste
+capítulo não substituem totalmente os comandos via terminal, mas seu uso
+em conjunto com estes facilitam o fluxo de trabalho adotado em um
+projeto sob versionamento **GIT**.
 
 <!-- Exclui o repositório criado para exemplicação -->
 ```{r, engine = "bash", include = FALSE, eval = FALSE}
