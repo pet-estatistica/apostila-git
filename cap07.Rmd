@@ -277,8 +277,7 @@ tais modificações são pertinentes para o projeto.
    \begin{center}
       \includegraphics[width=3cm]{./images/traba-feature-2.png}
    \end{center}
-   \caption{Colaborador solicita merge, e aguarda revisão dos demais
-      colaboradores.}
+   \caption{Colaborador solicita merge, e aguarda revisão dos colaboradores.}
 \end{wrapfigure}
 
 
@@ -312,7 +311,7 @@ São criados branches com funções específicas, como no exemplo `Hotfix`,
 
 \begin{wrapfigure}{r}{0.4\textwidth}
    \begin{center}
-      \includegraphics[width=2.5cm]{./images/traba-git-1.png}
+      \includegraphics[width=5.5cm]{./images/traba-git-1.png}
    \end{center}
    \caption{Ilustração dos branches específicos.}
 \end{wrapfigure}
@@ -338,15 +337,17 @@ trabalhar de maneira independente.
 
 \begin{wrapfigure}{r}{0.4\textwidth}
   \begin{center}
-    \includegraphics[width=6cm]{./images/traba-forking-1.png}
+    \includegraphics[width=5cm]{./images/traba-forking-1.png}
   \end{center}
   \caption{Ilustração dos forks de um projeto.}
 \end{wrapfigure}
 
 Independente da escolha do workflow para cada projeto é importante sempre
 informar o método que está sendo utilizado para seus colaboradores,
-para que eles possam seguir o mesmo padrão. Essas informações poderão ser
-descritas em `README.md` ou no `CONTRIBUTING.md`.
+para que eles possam seguir o mesmo padrão.
+
+Essas informações poderão ser descritas em `README.md` 
+ou no `CONTRIBUTING.md`.
 
 ## Fluxo de trabalho PET no GitLab
 
@@ -354,9 +355,8 @@ O PET-Estatística UFPR possui um grupo no Git para o desenvolvimento de
 projetos. Utilizaremos a seguinte ilustração para entender o fluxo do 
 trabalho do PET.
 
-(figura que haverá um dia)
 
-
+\newpage
 \begin{wrapfigure}{r}{0.4\textwidth}
    \begin{center}
       \includegraphics[width=5cm]{./images/workflowpet.png}
