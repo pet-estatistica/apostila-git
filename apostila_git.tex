@@ -144,6 +144,12 @@
 
 \usepackage{wrapfig}
 
+\usepackage{tikz}
+% Color used in the title page.
+\definecolor[named]{color01}{rgb}{.2,.4,.6} 
+
+\usepackage{wallpaper} 
+
 %-----------------------------------------------------------------------
 
 \begin{document}
@@ -154,11 +160,44 @@
 % Capa.
 
 \begin{titlepage}
-  \centering{{\fontsize{40}{48}\selectfont \thetitle}}\\
- 
-  \vspace{10mm}
-  \centering{\Large{\theauthor}}\\
-  \vspace{\fill} \centering \large{\thedate}
+  % \centering{{\fontsize{40}{48}\selectfont \thetitle}}\\
+  % 
+  % \vspace{10mm}
+  % \centering{\Large{\theauthor}}\\
+  % \vspace{\fill} \centering \large{\thedate}
+
+% Ideia de capa baseada em:
+% http://www.latextemplates.com/template/ebook
+% https://www.overleaf.com/3861001pgjtwv#/11122365/
+\thispagestyle{empty}
+\ThisCenterWallPaper{0.9}{./images/git-agasalho.png}
+% Add the background image, the first argument is the scaling - adjust
+% this as necessary so the image fits the entire page.
+
+\begin{tikzpicture}[remember picture, overlay]
+\node [rectangle, rounded corners, fill=white, opacity=0.75,
+  anchor=south west, minimum width=5cm, minimum height=4cm]
+  (box) at (-0.5,-10) (box){};
+% White rectangle - "minimum width/height" adjust the width and height
+% of the box; "(-0.5,-10)" adjusts the position on the page.
+
+\node[anchor=west,
+  color01,
+  font=\sffamily\bfseries\scshape\Large,
+  xshift=-1.5cm, yshift=-1cm, text width=4cm]
+  at (box.north){\thetitle}; 
+% "Text width" adjusts the wrapping width, "xshift/yshift" adjust the
+% position relative to the white rectangle.
+
+\node[anchor=west,
+  color01,
+  font=\sffamily\bfseries,
+  xshift=-1.5cm, yshift=-2.5cm, text width=4cm]
+  at (box.north){\theauthor};
+% "Text width" adjusts the wrapping width, "xshift/yshift" adjust the
+% position relative to the white rectangle.
+\end{tikzpicture}
+
 \end{titlepage}
 
 %-----------------------------------------------------------------------
@@ -172,7 +211,7 @@
   \Large{
     \parbox{10cm}{
       \begin{raggedright}
-        {\Large 
+        {\Large
           \textit{Não é a vontade de vencer que ganha o jogo, e sim a
             vontade de se preparar para vencê-lo.}
         }
@@ -191,11 +230,9 @@
 %-----------------------------------------------------------------------
 % Tabela de conteúdo.
 
-{
 \hypersetup{linkcolor=black}
 \setcounter{tocdepth}{2}
 \tableofcontents
-}
 
 %-----------------------------------------------------------------------
 % Capítulos.
