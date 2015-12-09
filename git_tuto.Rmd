@@ -444,8 +444,10 @@ consultadas quando você precisar desfazer/voltar. Ela deve ser curta (<=
 72 caracteres) e ao mesmo tempo informativa. A minha primeira mensagem
 não será, todavia.
 
-```{r, engine="bash", echo=-c(1:2)}
+```{r, engine="bash", echo=-c(1:4)}
 cd meu1repo
+git config user.name "Knight Rider"
+git config user.email "batman@justiceleague.org"
 
 ## Registro de versão.
 git commit -m "Cria arquivo com título."
@@ -1683,8 +1685,10 @@ cd ~/maquina2/meu1repo
 git branch -a
 ```
 
-```{r, engine="bash", echo=-c(1:2)}
+```{r, engine="bash", echo=-c(1:4)}
 cd ~/maquina2/meu1repo
+git config user.name "Knight Rider"
+git config user.email "batman@justiceleague.org"
 
 git branch feature04
 git checkout feature04
