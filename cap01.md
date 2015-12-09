@@ -1,13 +1,5 @@
----
-title: "Tutorial de Git"
-author: "PET Estatística UFPR"
-output:
-  html_document:
-    highlight: pygments
-    toc: true
-    theme: flatly
-    keep_md: true
----
+# Tutorial de Git
+PET Estatística UFPR  
 
 
 
