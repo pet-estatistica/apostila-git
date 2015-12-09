@@ -171,5 +171,16 @@
    + Quem se interessar: Pensar numa capa para a apostila, fazer esboço,
      *brainstorm*.
 7. 2015-12-08:
+   + Alcides: Terminar de corrigir o cap 5 (**pendencia**) e colocar o
+     dicionário de termos em um ambiente LaTex apropriado.
+   + Alessandra: Fazer adequações no capítulo 4 e depois de sexta
+     corrigir o capítulo 6.
+   + Ângela: Corrigir o capítulo de RStudio.
+   + Daniel: Concluir todas as **pendências** (RStudio e *Cheat Sheet*),
+     disponibilizar o capítulo de RStudio o quanto antes para Ângela.
+   + Eduardo: Expandir o exemplo de rotinas e depois de sexta corrigir o
+     capítulo 3.
+   + Jhenifer: Concluir correção no capítulo 6 (**pendencia**).
+   + Gabriel: Disponibilizar o capítulo 3 para o Eduardo até sexta.
+   + Walmes: Juntar todos os capítulos e gerar a Apostila Git.
 8. 2015-12-15: Apostila Git concluída!
-
