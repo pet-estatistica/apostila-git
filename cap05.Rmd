@@ -30,7 +30,7 @@ centraliza o repositório remoto em um servidor que todos têm
 acesso. Assim, todos podem clonar, criar branches, subir as
 contruibuições, etc.  Apesar do servidor centralizar o trabalho de todos
 os usuários, estes terão que se comunicar e fazer a gestão de tarefas
-sobre o projeto em de outra forma como por email direto, lista de
+sobre o projeto de outra forma, como por email direto, lista de
 emails/discussão ou chats coletivos. Para que um desenvolvedor veja o
 que os outros fizeram, ele terá que periodicamente dar `fetch`, ver os
 braches do repositório, navegar no histórico de commits, ver *diffs*
@@ -44,7 +44,7 @@ o projeto bem como ofereça recursos administrativos e colaborativos.
 Esses serviços possuem contas *free*, algums planos pagos e diversos
 recursos para todo tipo de projeto e equipe.
 
-O objetivo desse capítulo são apresentar os serviços web para
+Os objetivos desse capítulo são: apresentar os serviços web para
 repositórios Git, descrever suas principais características, descrever
 como criar e configurar uma conta e conectar-se a um repositório
 local. Além disso, o *workflow* básico que considera servições web será
@@ -56,7 +56,7 @@ voltados à colaboração.
 O GitHub\footnote{\url{https://github.com/}} é um serviço web para
 hospedagem, gestão e compartilhamento de repositórios Git que oferece
 recursos para desenvolvimento e colaboração. *"Build software better,
-together."* é o principal slogam do GitHub, justamente para enfatizar o
+together."* é o principal slogan do GitHub, justamente para enfatizar o
 seu principal compromisso: dar suporte ao desenvolvimento colaborativo.
 
 <!-- \begin{wrapfigure}{r}{0.4\textwidth} -->
@@ -102,8 +102,8 @@ têm-se:
     gerenciamento de tarefas. Os usuários criam *issues* para notificar
     um *bug* encontrado de forma que ele possa ser rapidamente
     corrigido. Criar *issues* também serve como ferramenta de
-    admistração de tarefas nas quais os *issues* descrevem algo a ser
-    feito par alguém.
+    admistração de tarefas nas quais eles descrevem algo a ser
+    feito por alguém.
   * *Milestones*: são pedras de milha, ou seja, marcam um ponto a ser
     alcançado. São usadas para descrever o que precisa ser desenvolvido
     para que ocorra uma mundança de versão e estabalecer um prazo para
@@ -117,7 +117,7 @@ têm-se:
     precisar baixar (*fetch*) o ramo, aplicar o merge (*merge*) e
     subí-lo (*push*). Então os desenvolvedores não precisam interromper
     o trabalho local para fazer um merge já que ele pode ser feito no
-    serviço sem modificações para o *workspace*.
+    serviço sem modificações no *workspace*.
   * *Fork*: é uma forma de se fazer uma cópia do projeto de alguém para
     livremente experimentar modificações sem afetar o projeto
     original. A cópia vem para a sua conta e funciona como qualquer
@@ -134,13 +134,13 @@ listados todos os projetos no qual este contribuiu. Ao aceitar o MR, é
 acrescentado mais uma colaboração a reputação do colaborador. Esse
 mecanísmo, então, beneficia as duas partes.
 
-Além dessas características chaves, o GitHub permite que você acompanhe
+Além dessas características chave, o GitHub permite que você acompanhe
 (*watch*) e favorite (*star*) repositórios. Também dá para seguir
 pessoas e participar de organizações (grupo de usuários) que podem ter
 repositórios próprios, ideal para projetos em equipe.
 
 O perfil de cada usuário registra suas atividades em todos os projetos e
-em cada projeto pode-se acompanhar as contribuições de cada
+em cada um pode-se acompanhar as contribuições de cada
 colaborador. Nos repositórios pode-se navegar pelo histórico de
 *commits*, filtrá-los por colaborador, ver as modificações no código
 (*diffs*) comparando *commits* e *branches*.
@@ -198,7 +198,7 @@ funcionios e mais de 10 mil organizações usando o serviço.
   \begin{center}
     \includegraphics[width=5cm]{./images/gitlab-raccoon.jpg}
   \end{center}
-  \caption{O guaxinim (*raccoon* em inglês) é o macote do GitLab.}
+  \caption{O guaxinim (*raccoon* em inglês) é o mascote do GitLab.}
 \end{figure}
 <!-- \end{wrapfigure} -->
 
@@ -256,7 +256,7 @@ permite 5 repositórios privados por um custo de U$ 5 por mês. Acesse
 <https://github.com/pricing> para mais detalhes.
 
 Ao preencher o formulário de criação de conta, você receberá um email
-com uma ulr de ativação. Se optar por planos pagos, terá informar número
+com uma ulr de ativação. Se optar por planos pagos, terá que informar o número
 do cartão de crédito para que seja feito o pagamento mensalmente.
 
 Para criar uma conta gratuita no GitLab, acesse 
@@ -320,10 +320,10 @@ The key's randomart image is:
           +-----------------+
 ```
 
-O endereço padrão para os arquivos criados e o diretório `~/.ssh/`. Os
+O endereço padrão para os arquivos criados é o diretório `~/.ssh/`. Os
 arquivos serão reescritos caso já existam arquivos de chaves públicas
-lá. Toda novo par de chaves é único. Então, se você reescreveu os
-arquivos anteriores, terá atualizar as chaves públicas em todos os
+lá. Todo novo par de chaves é único. Então, se você reescreveu os
+arquivos anteriores, terá que atualizar as chaves públicas em todos os
 serviços web que fazem uso desse recurso e com todos os servidores com o
 qual você tem autenticação por chaves.
 
@@ -386,8 +386,8 @@ organização. Clique em \menu{New repository} ou acesse o endereço
 projeto e adicione uma breve descrição à ele (Figura
 \ref{github_new_repo}). Na etapa seguinte, defina o nível de
 visibilidade: público ou privado. Lembre-se que os planos *free* só
-permitem repositórios públicos. Ao clicar em privado você passar pelos
-formulários de fazer pagamento.
+permitem repositórios públicos. Ao clicar em privado você passará pelos
+formulários para efetuar pagamento.
 
 \begin{figure}
   \begin{center}
@@ -410,8 +410,8 @@ Você pode editar o arquivo `README.md` (ou qualquer outro) no próprio
 GitHub. As moficações que fizer devem ser *commitadas* para serem
 salvas. O arquivo `README.md`, que é linguagem de marcação MarkDown, é
 automaticamente renderizado pelo GitHub fazendo com que *urls* sejam
-clicáveis e códigos estejam em ambientes de fonto monoespaço, além de
-ter títulos com tamanho de fonte apropriado e as demais renderizações.
+clicáveis e códigos estejam em ambientes de fonte monoespaço, além de
+ter títulos com tamanho de fonte apropriado.
 
 Depois de criar o repositório, você já pode cloná-lo para trabalhar
 localmente. O endereço do repositório é composto pelo seu nome de
@@ -426,7 +426,7 @@ git clone git@github.com:batman/bat-rangue.git
 Pode-se clonar repositórios pelo protocolo `http` (*Hypertext Transfer
 Protocol*). Em geral, para clonar repositórios de outros usuários
 e fazer testes, usa-se `http`. Embora você possa usar `http` nos seus
-repositórios, prefira o *SSH*. Com `http`, o endereço para a ser:
+repositórios, prefira o *SSH*. Com `http`, o endereço passa a ser:
 
 ```{r, engine="bash", eval=FALSE}
 git clone https://github.com/batman/bat-rangue.git
@@ -484,9 +484,9 @@ dinâmicos. Nesse repositório tem-se acesso aos fontes.
 Na figura \ref{github_repo_home}, logo abaixo do título, tem-se quatro
 quantificadores:
 
-  * *commits*: ao clinar neste tem-se o histórico de *commits* com
+  * *commits*: ao clicar neste item, tem-se o histórico de *commits* com
     autor, mensagem e SHA1. É possível comparar estados dos arquivos
-    (*diff*) ao clinar no SHA1.
+    (*diff*) ao clicar no SHA1.
   * *branches*: este lista os *branches* do projeto, permite comparar
     ramos.
   * *releases*: documenta as modificações de uma versão para outra e
@@ -558,7 +558,7 @@ principais entradas estão no menu da direita:
   * *Project*: é a página inicial; 
   * *Activity* e *Commits*: listam a atividade (predominantemente
     *commits*); 
-  * *Files*: apresenta diretórios e arquivos com opção de mudar o ramo;
+  * *Files*: apresenta diretórios e arquivos, com opção de mudar o ramo;
   * *Network*: o estado de desenvolvimento dos ramos do projeto com uma
     lista de todos os *commits*;
   * *Graphs*: contém a atividade de cada membro do projeto;
@@ -610,12 +610,12 @@ de criar e *clonar* o repositório e também de criar local e adicionar a
 *url* do repositório remoto (`origin`).
 
 Localmente o repositório segue o ciclo normal de desenvolvimento que
-minimamente contém das intruções `git add` e `git commit`. Os fluxos de
+minimamente contém as intruções `git add` e `git commit`. Os fluxos de
 trabalho, em geral, preconizam o desenvolvimento a partir de *branches*
 de demanda cujo conteúdo será incorporado aos ramos permanentes
 (`master`, `devel`) quando forem concluídos. Abaixo ilustramos a
 sequência de criar um ramo, desenvolvê-lo e por fim subir o seu conteúdo
-para o repositório remoto, que nesse caso é mantido em um servido web.
+para o repositório remoto, que nesse caso é mantido em um servidor web.
 
 ```{r, engine="bash", eval=FALSE}
 ## Cria um ramo chamado issue#10.
@@ -640,10 +640,10 @@ servidor que mantém o repositório sob o serviço web.
 
 Não há limites para o número de ramos. Ramos podem ser locais, remotos
 ou ambos. Quando você cria um ramo, como nos comandos acima, ele é um
-ramo remoto. Quando você sobre esse ramo, ele passa ter sua parte remota
+ramo local. Quando você sobre esse ramo, ele passa ter sua parte remota
 também. E quando você clona um repositório, você traz todos os ramos que
 ele possui, que são ramos remotos. Ao escolher um ramo desse para
-trabalhar, ele passa a ser também um ramo local. Abaixo formas de listar
+trabalhar, ele passa a ser também um ramo local. Segue abaixo, formas de listar
 os ramos do projeto.
 
 ```{r, engine="bash", eval=FALSE}
@@ -681,14 +681,14 @@ disciplina. Esse repositório contém tanto lista de exercícios para os
 alunos como também as provas com as soluções. Para não entregar as
 provas de bandeija, o diretório de provas existe no ramo `secret` e é
 enviado somente para um repositório privado chamado `provas`. Já o
-conteúdo restante (lista de exercícios, notas de aula, scripts)
-disponibilizado para os alunos fica no ramo `master`, mantido em um
+conteúdo restante (lista de exercícios, notas de aula, scripts),
+disponibilizado para os alunos, fica no ramo `master`, mantido em um
 repositório aberto chamado de `origin`.
 
 Dois repositórios remotos tem endereços distintos pois são projetos
 distintos no serviço web. Você pode ter a parte pública do projeto
-(`origin`) no GitHub e a parte privada, as provas (`secret`) no GitLab
-de forma privada. Abaixo tem-se uma série de comandos para listar,
+(`origin`) no GitHub e a parte privada, as provas (`secret`), no GitLab. 
+Abaixo tem-se uma série de comandos para listar,
 renomear, remover e adicionar endereços para remotos.
 
 ```{r, engine="bash", eval=FALSE}
@@ -734,7 +734,7 @@ git fetch --all
 
 O comando *fetch* traz os ramos e atualiza a parte remota, por exemplo,
 o `origin/devel`. O ramo local `devel` não tem seu conteúdo modificado
-após o `fetch`. Para transferir o conteúdo o `origin/devel` para o
+após o `fetch`. Para transferir o conteúdo `origin/devel` para o
 `devel` tem-se que usar o `git merge`. No entanto, sempre que haver
 necessidade, antes do *merge* pode-se verificar as diferenças que
 existem entre local e remoto, principalmente quando esse remoto traz
@@ -753,8 +753,8 @@ git merge origin/devel
 ```
 
 Em resumo, para passar o conteúdo de um ramo remoto para um local temos
-que fazer `git fetch` e em seguida `git merge`. O comando `git pull` são
-esses dois em um. A documentação do `git
+que fazer `git fetch` e em seguida `git merge`. O comando `git pull` é
+esses dois, em um. A documentação do `git
 pull`\footnote{\url{https://git-scm.com/docs/git-pull}} dá uma descrição
 detalhada do seu uso enquanto que os exemplos abaixo ilustram o uso mais
 simples possível.
@@ -786,8 +786,8 @@ git push --all origin
 Quando você sobe pela primeira vez um ramo local, a sua parte remota é
 criada. Assim, a instrução que colocamos acima criou um ramo remoto
 chamado `origin/issue#10`. Essa é a forma mais natural, e até
-despercebida, de criar ramos locais com cópias remotas. Outras maneiras
-existem. Abaixo fazemos a criação do remoto a partir do local sem ser
+despercebida, de criar ramos locais com cópias remotas, mas existem outras
+maneiras. Abaixo fazemos a criação do remoto a partir do local sem ser
 usando o *push*. Esses comandos precisam ser usados uma vez apenas.
 
 ```{r, engine="bash", eval=FALSE}
@@ -812,7 +812,7 @@ disponibilizar seu trabalho. No entanto, um dos principais objetivos dos
 serviços web é permitir a colaboração entre pessoas. Já mencionamos o
 básico sobre recursos de colaboração quando falamos de *issue*, *fork* e
 *merge request*. Nas sessões a seguir, vamos nos aprofundar nesses três
-mecanísmos chaves para a colaboração via serviços web para Git.
+mecanísmos chave para a colaboração via serviços web para Git.
 
 ## Issues ##
 
@@ -901,7 +901,7 @@ colaboração, os usuários disponibilizam guias de contribuição
 (*contribution guide*) com instruções de como proceder para maior
 agilidade.
 
-Os *branchs* que criar serão na sua cópia os *pushs* que fizer irão para
+Os *branchs* que criar serão na sua cópia e os *pushs* que fizer irão para
 o seu perfil. Quando o seu trabalho estiver concluído, você pode fazer
 um *merge request* que descreveremos a seguir. Se a sua intenção foi
 usar o *fork* como ponto de partida para um projeto independente, não se
@@ -913,7 +913,7 @@ futuro, o seu projeto e o original sejam completamente diferentes.
 O *merge request* (requisição de mescla/fusão) é o recurso de
 colaboração chave. Ele serve para que pessoas da equipe (segundos) peçam
 para incorporar *branches* ao ramo principal (em geral o *master* ou o
-*devel*) e terceiros peçam para incorporar o desenvolvimento do
+*devel*) e terceiros peçam para incorporar o que foi desenvolvido no
 *fork*. O GitHub usa o termo *pull request* ao invés de *merge request*
 embora não exista diferença alguma.
 
@@ -921,7 +921,7 @@ Os trabalhos coletivos em projetos Git, para serem bem sucedidos,
 consideram algum esquema de trabalho. A maioria dos esquemas considera o
 desenvolvimento por *branches*. Nada mais justo, já que uma é uma
 característica do Git. Existem ramos permanentes, como o
-*master*, que recebem os desenvolvimento feito em *branches* auxiliares
+*master*, que recebem o desenvolvimento feito em *branches* auxiliares
 ou de demanda. Esses ramos de demanda, como o nome sugere, são criados
 para incorporar algo ao projeto e, portanto, não são permanentes - uma
 vez incorporados, são removidos.
@@ -938,7 +938,7 @@ git push origin issue#33
 
 Na interface web, o membro faz um *merge request* desse ramo para um
 ramo permamente, no qual em projetos simples é o *master* mas em
-projetos maiores é usualmente o *devel*. Ao fazer no *merge request*,
+projetos maiores é usualmente o *devel*. Ao clicar em *merge request*,
 uma caixa de diálogo abre para que você liste as colaborações que o
 *branch* leva.
 
@@ -950,7 +950,7 @@ devem ser incorporadas. Elas servem para justificar, esclarecer e
 informar o responsável pelo *merge* sobre a incorporação. Quando o
 projeto é coletivo e não individual, um membro pode ser indicado como
 responsável pelo *merge*. O responsável pelo merge avalia as
-contribuições, se sentir necessidade vê os *diffs* nos arquivos, e pode
+contribuições, se sentir necessidade vê as *diffs* nos arquivos, e pode
 colocar uma mensagem embaixo da sua com questionamentos e até adequações
 que precisarem ser feitas para aceitar o *merge request*.
 
@@ -970,7 +970,7 @@ Os próprios serviços web fazem o *merge* diretamente quando não existe
 conflito (merge do tipo *fast forward*). Isso facilita bastante o
 trabalho. Porém, não haver conflito de *merge* não significa que as
 modificações incorparadas estão funcionais, ou seja, as modificações
-feitas precisam ser testadas localmente para verificar surgiram
+feitas precisam ser testadas localmente para verificar se surtiram
 efeito. É possível habilitar o serviço Git para checar se o projeto é
 executável ou funcional. Esse recurso se chama intergração contínua e
 veremos na próxima sessão.
@@ -979,15 +979,15 @@ Em caso de confito de *merge*, tem-se que baixar os ramos (`git
 fetch`). Localmente pode-se comparar as diferenças entre eles para
 entender as fontes de conflito. Para isso são recomendáveis as
 interfaces para Git que serão discutidas no próximo Capítulo. Uma vez
-que o *merge* foi resolvido, deve-se fazer o *push* o ramo permanente
+que o *merge* foi resolvido, deve-se fazer o *push* do ramo permanente
 (receptor) para o serviço web que já reconhece que o *merge* foi feito e
 fecha a requisição automaticamente.
 
 Recomenda-se que os ramos de demanda sejam removidos após sua
 incorporação nos ramos permanentes. Isso torna o projeto mais claro e
 concentrado em ramos definitivos colhedores de desenvolvimento. Pode-se
-excluir o ramo de demanda incorporado direto pela interface marcando uma
-caixa de confirmação sobre remover o ramo apés o merge. Por linha de
+excluir o ramo de demanda incorporado direto pela interface, marcando uma
+caixa de confirmação sobre remover o ramo após o merge. Por linha de
 comando também é possível.
 
 ```{r, engine="bash", eval=FALSE}
@@ -1026,7 +1026,7 @@ Reprodutibilidade é uma questão de fundamental importância em projetos
 coletivos ou públicos. Existe a preocupação constante de que seu código
 (programa) seja executado (instalado) sem erros nos ambientes dos seus
 colaboradores ou usuários. É claro que o desenvolvimento do projeto visa
-aperfeiçoá-lo mas o tempo todo estamos sujeitos fazer modificações que
+aperfeiçoá-lo mas o tempo todo estamos sujeitos a fazer modificações que
 induzem erros e alguém encontra erros não esperados (*bugs*).
 
 Monitorar erros no projeto em desenvolvimento não é uma tarefa fácil,
@@ -1039,7 +1039,7 @@ feitas. Então, se correu sem erros, avisar à todos que podem prosseguir,
 mas se falhou, informar a equipe, encontrar e corrigir a falha.
 
 Não é raro algo ser bem sucedido no ambiente em que foi desenvolvido e
-apresentar falhas na ambiente de outra pessoa. O melhor jeito de
+apresentar falhas no ambiente de outra pessoa. O melhor jeito de
 antecipar erros é testar em um ambiente virgem, uma máquina cliente que
 contenha apenas os requisitos mínimos necessários ao projeto.
 
@@ -1049,7 +1049,7 @@ verificações no projeto a cada novo *push*.
 
 Fazer integração contínua no GitHub e GitLab, embora o conceito seja o
 mesmo, tem algumas diferenças. Paro o GitHub existem diversos serviços
-de IC, é algo terceirizado. Já o GitLab CE têm o serviço próprio de IC
+de IC, sendo eles terceirizados. Já o GitLab CE têm o serviço próprio de IC
 a partir da versão 8.0. Apresentaremos cada um deles na sessão seguinte.
 
 Independe do serviço web, as principais vantagens da
@@ -1070,11 +1070,10 @@ IC\footnote{\url{https://about.gitlab.com/gitlab-ci/}} são:
      disponível antes do merge;
   6) Entrega de versões estáveis, documentação e arquivos acessórios com
      *continuous deployment*, o que facilita o empacotamento e
-     disponibizaçaõ do projeto.
+     disponibização do projeto.
   7) Custo computacional reduzido já que é feito em um servidor
      dedicado.
-  8) É barato, até mesmo quando custa algo, porque parar o projeto por
-     para corrigir um erro pode custar inclusive mais caro.
+  8) Acaba saindo mais barato do que parar o projeto para corrigir um erro.
 
 O que deve ficar claro é que a integração contínua não elinima erros,
 mas faz com que eles sejam mais fáceis de identificar e corrigir.
@@ -1131,7 +1130,7 @@ prática em ver exemplos em uso, como o `.travis.yml` dos pacotes R
 na lista dos mais utilizados.
 
 Para todas as liguagens e objetivos têm-se exemplos de arquivos
-`.trevis.yml`. Para o Emacs e biblitecas lisp visite
+`.trevis.yml`. Para o Emacs e bibliotecas lisp visite
 <https://github.com/rolandwalker/emacs-travis>,
 <https://github.com/Malabarba/elisp-bug-hunter> e
 <https://github.com/abo-abo/tiny>. Para projetos em `C++` e `phyton`,
@@ -1214,7 +1213,7 @@ campos a seguir são todos opcionais:
     *docker*\footnote{\url{https://www.docker.com/}}. O tutorial de Alan
     Monger considera esse campo.
   * `services`: também refere ao *docker*. Tais campos são de uso menos
-    frequênte, porém existe uma séria de vantagens neles. A documentação
+    frequênte, porém existe uma série de vantagens neles. A documentação
     oficial sobre isso encontra-se em
     <http://doc.gitlab.com/ce/ci/docker/README.html>.
   * `before_script`: define comandos/scripts a serem executados antes
@@ -1280,7 +1279,7 @@ campos disponíveis para configurá-lo:
     teste mas não crucial.
   * `when`: é um comando que dispara excussões condicionais ao sucesso
     do *job* anterior
-    * `on_failure`: são instruções executadas quando algum o *job* do
+    * `on_failure`: são instruções executadas quando algum *job* do
       estágio anterior falhou.
     * `on_success`: são instruções executadas quando todos os *jobs* do
       estágio anterior foram bem sucedidos.
@@ -1348,6 +1347,6 @@ Para habilitar um *runner*, é necessário instalar o
 `gitlab-ci-multi-runner`. O repositório oficial do *GitLab
 Runner*\footnote{\url{https://gitlab.com/gitlab-org/gitlab-ci-multi-runner}}
 contém as instruções de instalação e configuração e a documentação
-oficial sobre
+oficial
 *runners*\footnote{\url{http://doc.gitlab.com/ce/ci/runners/README.html}}
-indica como tirar melhor proveito do recurso.
+indicando como tirar melhor proveito do recurso.
