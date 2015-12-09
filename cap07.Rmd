@@ -1,17 +1,32 @@
 ---
-title: "Capítulo 7: Trabalhando em equipe"
+title: "Trabalhando em equipe"
 author: "PET-Estatística UFPR"
-output: 
-  html_document: 
-    keep_md: yes
+graphics: yes
+header-includes: \usepackage{wrapfig}
+output:
+  pdf_document:
+    template: template.tex
+    highlight: default
+    toc: true
+    toc_depth: 2
+    keep_tex: true
+    number_sections: true
 ---
+
+```{r, include=FALSE}
+library(knitr)
+opts_chunk$set(comment=NA)
+```
+---
+
+\chapter{Trabalhando em equipe}
 
 O Git é uma ferramenta que aliada a outros serviços web, como GitLab ou 
 GitHub, oferece funcionalidade e autonomia para se trabalhar. 
 Contudo, com tantos recursos disponíveis, só serão bem aplicados quando 
 todos os membros do grupo, além de conhecê-los, trabalham em harmonia.
 
-## 1.Boas práticas de colaboração
+## Boas práticas de colaboração
 
 Repositório é onde são armazenados os arquivos de um projeto. Existem 
 três níveis de acesso permitidos:
@@ -32,11 +47,12 @@ tem permissão de leitura e escrita no repositório. Usuários sem conta
 no grupo podem clonar o repositório, mas não tem permissão para alterar
 o repositório (enviar merge requests por exemplo).
 
+
 É possível adicionar usuários para colaborar em um repositório. Cada 
 usuário pode ter um nível de acesso diferente: **Guest**, **Reporter**,
-**Developer**, **Master**. Em <a href="https://gitlab.c3sl.ufpr.br/help/permissions/permissions">
-permissões</a> é possível visualizar as habilidades concedidas para cada 
-nível.
+**Developer**, **Master**. Em permissões \footnote{\url{https://gitlab.c3sl.ufpr.br/help/permissions/permissions}} 
+é possível visualizar as habilidades concedidas para cada nível.
+
 
 Logo após criar um novo repositório, é recomendável que se crie um arquivo
 `README.md`. Independente da forma como o repositório foi configurado, 
@@ -152,12 +168,14 @@ de commit mais longa, devemos manter o corpo da mensagem com no máximo
 deixar de fora como você fez as modificações, pois o código alterado será auto-explicativo. 
 
 
-## 2.Modelos de fluxos de trabalho
+## Modelos de fluxos de trabalho
 
-A escolha do *workflow* (fluxo de trabalho) depende de cada projeto e das preferências pessoais. Podemos utilizar as informações sobre cada *workflow*, e decidir qual é mais adequado para cada projeto. Existem quatro maneiras 
-principais de trabalhar em colaboração com o git e o GitLab:
+A escolha do *workflow* (fluxo de trabalho) depende de cada projeto e 
+das preferências pessoais. Podemos utilizar as informações sobre cada 
+*workflow*, e decidir qual é mais adequado para cada projeto. Existem 
+quatro maneiras principais de trabalhar em colaboração com o git e o GitLab:
 
-- #### **Centralized workflow**: 
+- **Centralized workflow**: 
 recomendado para projetos pequenos, e/ou que não necessitam de muitas 
 alterações. Nesse workflow, o repositório possui apenas um branch (`master`) 
 e as alterações são feitas nesse branch. As revisões só poderão ser 
@@ -167,86 +185,114 @@ há uma grande chance de ocorrerem conflitos.
 
       **Exemplo**
 
-      Após iniciar um repositório central, os colaboradores devem clonar
-      o repositório.
+Após iniciar um repositório central, os colaboradores devem clonar
+o repositório.
 
-      ![](./images/traba-central-1.png)
+\begin{wrapfigure}{r}{0.4\textwidth}
+   \begin{center}
+      \includegraphics[width=3cm]{./images/traba-central-1.png}
+   \end{center}
+   \caption{Colaboradores clonando o repositório central.}
+\end{wrapfigure}
 
-      FIGURA: Colaboradores clonando o repositório central
+Depois de um colaborador terminar seu trabalho remotamente, ele publica 
+as modificações para o repositório central, para que os demais membros 
+possam ter acesso.
 
-      Depois de um colaborador terminar seu trabalho remotamente, ele 
-      publica as modificações para o repositório central, para que os 
-      demais membros possam ter acesso.
+\begin{wrapfigure}{r}{0.4\textwidth}
+   \begin{center}
+      \includegraphics[width=3cm]{./images/traba-central-2.png}
+   \end{center}
+   \caption{Colaborador publicando as modificações no repositório central.}
+\end{wrapfigure}
 
-      ![](./images/traba-central-2.png)
+Outro membro também termina seu trabalho e resolve publicar no repositório 
+central, porém não conseguirá. O repositório central está diferente do seu 
+repositório local.
 
-      FIGURA: Colaborador publicando as modificações no repositório central
+\begin{wrapfigure}{r}{0.4\textwidth}
+   \begin{center}
+      \includegraphics[width=3cm]{./images/traba-central-3.png}
+   \end{center}
+   \caption{Colaborador não conseguindo publicar as modificações no 
+      repositório central.}
+\end{wrapfigure}
 
-      Outro membro também termina seu trabalho e resolve publicar no 
-      repositório central, porém não conseguirá. O repositório central 
-      está diferente do seu repositório local.
+Para conseguir enviar as modificações realizadas, o colaborador precisa 
+puxar as atualizações feitas para  o seu repositório, integrá-los com as 
+suas alterações locais, e em seguida, tentar novamente.
 
-      ![](./images/traba-central-3.png)
+\begin{wrapfigure}{r}{0.4\textwidth}
+   \begin{center}
+      \includegraphics[width=3cm]{./images/traba-central-4.png}
+   \end{center}
+   \caption{Colaborador puxando as modificações do repositório central.}
+\end{wrapfigure}
 
-      FIGURA: Colaborador não conseguindo publicar as modificações no 
-      repositório central
-      
-      Para conseguir enviar as modificações realizadas, o colaborador
-      precisa puxar as atualizações feitas para  o seu repositório, 
-      integrá-los com as suas alterações locais, e em seguida, tentar 
-      novamente.
-      
-      ![](./images/traba-central-4.png)
 
-      FIGURA: Colaborador puxando as modificações do repositório central
-      
-      Após feito isso, será possível o colaborador fazer as modificações.
-      
-      ![](./images/traba-central-5.png)
+Após feito isso, será possível o colaborador fazer as modificações.
 
-      FIGURA: Colaborador publica modificações do repositório central
+\begin{wrapfigure}{r}{0.4\textwidth}
+   \begin{center}
+      \includegraphics[width=3cm]{./images/traba-central-5.png}
+   \end{center}
+   \caption{Colaborador publica modificações do repositório central.}
+\end{wrapfigure}
 
-- #### **Feature branch workflow**: 
+
+- **Feature branch workflow**: 
 recomendado para projetos pequenos e grandes, que envolvam mais de um 
 colaborador. O projeto principal é mantido no branch master. Se um membro 
 quiser realizar alguma alteração, deverá criar um novo branch `feature`, 
 e fazer as alterações nesse branch e sugerir um `merge request`. Com isso, 
-os demais colaboradores poderão revisar as alterações sugeridas e discutir as modificações, até que uma pessoa habilitada faça o merge desse branch 
+os demais colaboradores poderão revisar as alterações sugeridas e discutir 
+as modificações, até que uma pessoa habilitada faça o merge desse branch 
 `freature` para o branch `master`.
+
 Dessa forma, evita-se os possíveis conflitos e garante que tais alterações
-não causaram algum problema. Esse workflow é altamente recomendado por
+não causaram algum problema. Esse workflow é altamente recomendado por 
 ser simples de gerenciar, evitar grandes conflitos, e ser relativamente 
 fácil para usuários novos do git.
 
 
       **Exemplo**
 
-      Antes de começar a desenvolver um recurso, é preciso criar um 
-      ramo isolado para trabalhar
+Antes de começar a desenvolver um recurso, é preciso criar um ramo isolado 
+para trabalhar.
 
-      ![](./images/traba-feature-1.png)
+\begin{wrapfigure}{r}{0.4\textwidth}
+   \begin{center}
+      \includegraphics[width=3cm]{./images/traba-feature-1.png}
+   \end{center}
+   \caption{Criando um novo ramo para o trabalho.}
+\end{wrapfigure}
 
-      FIGURA: Criando um novo ramo para o trabalho
+Com isso, o membro poderá iniciar o seu trabalho, e realizar o que for 
+necessário nesse ramo (branch). O colaborador, após finalizar o projeto, 
+irá requirir um `merge request` para que as alterações feitas nesse branch, 
+sejam incorporadas no `master`. Os demais membros, poderão avaliar se 
+tais modificações são pertinentes para o projeto.
 
-      Com isso, o membro poderá iniciar o seu trabalho, e realizar o que
-      for necessário nesse ramo (branch). O colaborador, após finalizar o projeto, irá requirir um `merge request` para que 
-      as alterações feitas nesse branch, sejam incorporadas no `master`. Os 
-      demais membros, poderão avaliar se tais modificações são pertinentes
-      para o projeto.
+\begin{wrapfigure}{r}{0.4\textwidth}
+   \begin{center}
+      \includegraphics[width=3cm]{./images/traba-feature-2.png}
+   \end{center}
+   \caption{Colaborador solicita merge, e aguarda revisão dos colaboradores.}
+\end{wrapfigure}
 
-      ![](./images/traba-feature-2.png)
 
-      FIGURA: Colaborador solicita merge, e aguarda revisão dos demais
-      colaboradores
+Quando as alterações sugeridas para o colaborador forem incorporadas
+o branch poderá ser movido para o `master`.
 
-      Quando as alterações sugeridas para o colaborador forem incorporadas
-      o branch poderá ser movido para o `master`.
+\begin{wrapfigure}{r}{0.4\textwidth}
+   \begin{center}
+      \includegraphics[width=3cm]{./images/traba-feature-3.png}
+   \end{center}
+   \caption{Movendo ramo para o master.}
+\end{wrapfigure}
 
-      ![](./images/traba-feature-3.png)
 
-      FIGURA: Movendo ramo para o master
-
-- #### **Gitflow workflow**: 
+- **Gitflow workflow**: 
 indicado para projetos maiores e/ou com um grande número de colaboradores. 
 Esse workflow envolve a criação de alguns branches com funções específicas. 
 Todo o desenvolvimento é realizado no branch `develop`. Quando uma versão 
@@ -260,72 +306,86 @@ exemplo, que os usuários de um software, instalem tanto uma versão estável
 
       **Exemplo**
 
-      São criados branches com funções específicas, como no exemplo `Hotfix`,
-      `Release` e `Develop`.
+São criados branches com funções específicas, como no exemplo `Hotfix`,
+`Release` e `Develop`.
 
-      ![](./images/traba-git-1.png)
-
-      FIGURA: Ilustração dos branches específicos
-
-      *Develop* é semelhante ao master do feature branch workflow. *Release*
-      serve para "lançar" possíveis bugs gerados no código. *Hotfix* contém as
-      correções dos bugs do release que não podem aguardar o lançamento
-      do mesmo.
+\begin{wrapfigure}{r}{0.4\textwidth}
+   \begin{center}
+      \includegraphics[width=5.5cm]{./images/traba-git-1.png}
+   \end{center}
+   \caption{Ilustração dos branches específicos.}
+\end{wrapfigure}
 
 
-- #### **Forking workflow**: 
-recomendado para projetos abertos, onde se espera que usuários externos façam contribuições. Esse workflow consiste em um repositório oficial, de onde 
-os colaboradores fazem um `fork` desse repositório, e passam a desenvolver 
-o projeto de maneira independente. Assim, cada colaborador poderá adotar 
-o workflow de preferência, e não precisará ter acesso ao repositório 
-oficial, apenas colaborar enviando `merge`.
+*Develop* é semelhante ao master do feature branch workflow. *Release*  
+serve para "lançar" possíveis bugs gerados no código. *Hotfix* contém as
+correções dos bugs do release que não podem aguardar o lançamento do 
+mesmo.
 
-      **Exemplo**
+- **Forking workflow**: 
+recomendado para projetos abertos, onde se espera que usuários externos 
+façam contribuições. Esse workflow consiste em um repositório oficial, 
+de onde os colaboradores fazem um `fork` desse repositório, e passam a 
+desenvolver o projeto de maneira independente. Assim, cada colaborador 
+poderá adotar o workflow de preferência, e não precisará ter acesso ao 
+repositório oficial, apenas colaborar enviando `merge`.
 
-      Criado o repositório central, os colaboradores fazem um `fork`
-      poderão trabalhar de maneira independente. 
+**Exemplo**
 
-      ![](./images/traba-forking-1.png)
+Criado o repositório central, os colaboradores fazem um `fork`poderão 
+trabalhar de maneira independente. 
 
-      FIGURA: Ilustração dos forks de um projeto
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[width=5cm]{./images/traba-forking-1.png}
+  \end{center}
+  \caption{Ilustração dos forks de um projeto.}
+\end{wrapfigure}
 
-   Independente da escolha do workflow para cada projeto é importante sempre
+Independente da escolha do workflow para cada projeto é importante sempre
 informar o método que está sendo utilizado para seus colaboradores,
-para que eles possam seguir o mesmo padrão. Essas informações poderão ser
-descritas em `README.md` ou no `CONTRIBUTING.md`.
+para que eles possam seguir o mesmo padrão.
 
-## 3.Fluxo de trabalho PET no GitLab
+Essas informações poderão ser descritas em `README.md` 
+ou no `CONTRIBUTING.md`.
 
-O PET-Estatística UFPR possui um grupo no git para o desenvolvimento de
-projetos. Um desses, é a apostila do git. Esse projeto teve como finalidade 
-melhorar o conhecimento sobre o Git, e documentar em forma de apostila
-para outros usuários do git. 
+## Fluxo de trabalho PET no GitLab
 
-Para esse projeto, tivemos dois ramos:
-
-- `devel`: recebeu as contribuições dos membros, e após avaliação,
-a contribuição foi movida para o ramo `master`.
-- `master`: recebeu a versão estável do projeto.
+O PET-Estatística UFPR possui um grupo no Git para o desenvolvimento de 
+projetos. Utilizaremos a seguinte ilustração para entender o fluxo do 
+trabalho do PET.
 
 
-Esses ramos só receberam conteúdo provenientes de `merge` dos ramos de 
-demanda (*issue*)
-
-Os membros criaram `issue` para adicionarem suas contribuições. 
-Por exemplo, para adicionar um capítulo sobre o uso do programa, 
-foi criado um ramo para isso, depois de adicionar as contribuições, foi
-submetido esse ramo para o repositório remoto.
-
-Após o `git push`, a próxima etapa é  a requisição de `merge`. Com esse 
-`merge`, era feita as discussões a respeito da contribuição. Após da
-certeza dessa contribuição, era movida para o ramo `master`.
+\newpage
+\begin{wrapfigure}{r}{0.4\textwidth}
+   \begin{center}
+      \includegraphics[width=5cm]{./images/workflowpet.png}
+   \end{center}
+   \caption{Ilustração do fluxo de trabalho do PET.}
+\end{wrapfigure}
 
 
-### Referências
-https://git-scm.com/book/pt-br/v1/Git-Distribu%C3%ADdo-Contribuindo-Para-Um-Projeto
+Conforme a demanda de projetos, é criado o repositório para armazená-lo. 
+Após isso, são criados as `milestones` - marcadores de classificação dos 
+arquivos. Esses passos são feitos no `Owner`.
 
-https://prezi.com/_lm8kozmii8n/git-workflow/ 
+Indo para o `master`, temos os seguintes passos:
 
-https://www.atlassian.com/zh/git/workflows\#!workflow-overview
+- Conforme a demanda do projeto, é criado um `issue` para adição de 
+contribuições;
+- Atualiza o ramo `devel`;
+- Após isso, é necessário criar um `branch` (ramo) para incluir as 
+contribuições;
 
-http://git.leg.ufpr.br/leg/gitlab-rautu/blob/master/CONTRIBUTING.md
+Entrando no `developer`, teremos o ciclo de trabalho em que adiciona as 
+modificações (`git add`), registra as mesmas (`git commit`) e após 
+realizar todo o trabalho, é feito o `git push` enviando ao servidor remoto.
+
+A próxima etapa é a requisição de `merge`. Com esse `merge`, é feita as 
+discussões a respeito da contribuição, assim podendo retornar ao ciclo do 
+`developer` para as devidas correções e sugestões. Após a certeza dessa 
+contribuição, é movida para o ramo `devel` e fechado o `issue` referente 
+ao trabalho feito.
+
+Depois de terminar todas etapas do projeto, completa-se as `milestones`, 
+realiza o `merge` do `devel` no `master`, e cria a tag de versão.
