@@ -477,15 +477,23 @@ lançado apenas atráves do nome `meld`.
 git difftool -t meld README.md
 ```
 
-Para utilização em sistemas Windows, programas externos ao Git devem  
+Para utilização em sistemas Windows, programas externos ao Git devem 
 ser informados no arquivo de configuração (`.gitconfig`). Abaixo 
 configuramos, via linha de comando, este arquivo para usarmos o `meld` 
-como ferramenta de comparação - `difftool`:
+como ferramenta de comparação - `difftool`, tanto para usuários Unix
+como usuários Windows:
 
 ```{r, engine="bash", eval=FALSE}
-## Define globalmente o meld como ferramenta padrão de comparação
-git config --global diff.tool meld
-git config --global difftool.meld.cmd '"path/Meld.exe" $LOCAL $REMOTE'
+## Define localmente o meld como ferramenta padrão de diff
+##-------------------------------------------
+## Unix.
+git config diff.tool meld
+
+##-------------------------------------------
+### Windows.
+git config diff.tool meld
+git config difftool.meld.cmd '"path/Meld.exe" $LOCAL $REMOTE'
+
 ```
 
 \noindent 
@@ -509,13 +517,14 @@ git difftool README.md
   \label{fig:meld3}
 \end{figure}
 
-Na figura \ref{fig:meld3} temos a mesma informação trazida pelas
-interfaces onde implementam o comando `git diff`, porém aqui
-podemos alterar os arquivos exibidos atráves das flechas nas bordas
-(levando ou trazendo as contribuições) ou mesmo editando pela
-interface. Isso pode ser útil caso necessite desfazer parcialmente um
-*commit*, ou seja, parte das alterações de uma versão anterior seria
-mantida e parte alterada.
+Na figura \ref{fig:meld3} temos o _screenshot_ do programa após exectado
+o `difftool`. Nesta figura temos a mesma informação trazida pelas
+interfaces onde implementam o comando `git diff`, porém aqui podemos
+alterar os arquivos exibidos atráves das flechas nas bordas (levando ou
+trazendo as contribuições) ou mesmo editando pela interface. Isso pode
+ser útil caso necessite desfazer parcialmente um *commit*, ou seja,
+parte das alterações de uma versão anterior seria mantida e parte
+alterada.
 
 Contudo, a maior necessidade das ferramentas de comparação não está no
 seu uso como `difftools`, mas sim como `mergetools`. Já vimos no
@@ -655,7 +664,7 @@ conteúdo de cada arquivo em conflito com as porções conflitantes.
 então simplesmente exluí-los ou ignorá-los após a mesclagem adicionando 
 arquivos com esta extensão no `.gitignore`. Outra forma de manter seu 
 repositório sem os arquivos _backup_ é configurando sua `mergetool` para 
-não aramzená-los, ou seja, que a própria ferramenta os descarte quando a 
+não armazená-los, ou seja, que a própria ferramenta os descarte quando a 
 mesclagem for bem sucedida. Isso pode ser configurado com:
 
 ```{r, engine="bash", eval=FALSE}
@@ -664,24 +673,42 @@ git config --global mergetool.keepBackup false
 
 ```
 
-Até agora utilizamos o programa `meld` definindo-o na chamada dos
-comandos `difftool` e `mergetool` com a opção `-t` (ou `--tool`). Mas
-podemos também definir globalmente a ferramenta de `merge`
-e `diff`. Para usuários de sistemas Unix, essa configuração pode ser
-feita simplesmente com:
+O procedimento de conflito simulado acima foi resolvido utilizando o
+programa `meld` com os comandos definidos para os sistemas baseados no
+kernel LINUX. Ainda a chamada do programa foi realizada através da opção
+a opção `-t` (ou `--tool`). Porém podemos definir o `meld` como
+ferramenta padrão para resolução de de `merge`, assim como foi feito para
+a ferramenta de comparação (`difftool`). Abaixo configuramos o `meld`
+também como `mergetool`, para sistemas Unix e Windows.
 
 ```{r, engine="bash", eval=FALSE}
-## Configura meld como ferramenta padrão de merge e diff
-git config --global merge.tool meld
-git config --global diff.tool meld
+
+## Configura localmente meld como ferramenta padrão de merge
+##-------------------------------------------
+## Unix
+git config merge.tool meld
+
+##-------------------------------------------
+## Windows
+git config merge.tool meld
+git config merge.meld.cmd '"path/Meld.exe" $LOCAL $BASE $REMOTE --output=$MERGED'
 
 ```
 
+Para Windows deve-se informar o caminho para o arquivo executável,
+`path`, além de definir as três versões que serão exibidas `$LOCAL`,
+`$BASE` e `$REMOTE` conforme vimos na figura \ref{fig:meld4} e ainda a
+opção `--output=$MERGED` informa que o arquivo a ser editado será
+sobrescrito sob a versão `$MERGED`, que é criada pelo automaticamente
+Git quando há conflitos. 
+
 Alternativamente pode-se editar o arquivo `.gitconfig` com as mesmas
-informações passadas ao comando `git config --global`. Para verificar
-como altera-se esse arquivo, abra-o após avaliar os
-comandos descritos. Agora quando avaliados, os comandos `git mergetool` e
-`git difftool`, o programa `meld` será lançado automaticamente.
+informações passadas ao comando `git config`. Para verificar como
+altera-se esse arquivo, abra-o após avaliar os comandos descritos. Ainda
+se desjado que essas opções sejão válidas para todos os projetos Git de
+seu computador a opção `--global` em `git config` pode ser
+utilizada. Assim quando avaliados, os comandos `git mergetool` e `git
+difftool`, o programa `meld` será lançado automaticamente.
 
 Com isso, já temos nosso **Git** devidamente configurado para utilizar o
 programada `meld` e já observamos sua relevância quando se trabalha com
@@ -699,8 +726,8 @@ programas de `mergetool` e `difftoll` padrão são as mesmas.
 
 É importante salientar que as ferramentas gráficas apresentadas neste
 capítulo não substituem totalmente os comandos via terminal, mas seu uso
-em conjunto facilita o fluxo de trabalho adotado em um projeto sob 
-versionamento.
+em conjunto com estes facilitam o fluxo de trabalho adotado em um
+projeto sob versionamento.
 
 <!-- Exclui o repositório criado para exemplicação -->
 ```{r, engine = "bash", include = FALSE, eval = FALSE}
