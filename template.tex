@@ -216,6 +216,28 @@ $else$
   \predate{}\postdate{}
 $endif$
 
+% Para o apêndice de exemplo de rotinas
+\usepackage{tabularx}
+\usepackage{float}
+\newcommand{\routine}[1]{
+  % \rule{1\textwidth}{.4pt} \\ [0.1cm]
+  % \hspace*{1cm}\texttt{#1} \\ [0cm]
+  % \rule{1\textwidth}{.4pt}
+  %% Não funcionou, pois as linhas não ficavam vinculadas ao texto,
+  %% podendo ficar a linha em uma pagina e o texto na outra.
+  \begin{table}[H]
+    \centering
+    \begin{tabularx}{1\textwidth}{l}
+      \hline
+      \\ [-0.05cm]
+      \large{\texttt{#1}} \\ 
+      \\ [-0.05cm]
+      \hline
+    \end{tabularx}
+  \end{table}
+
+}
+
 $for(header-includes)$
 $header-includes$
 $endfor$
