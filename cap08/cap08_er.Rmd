@@ -1,9 +1,30 @@
+---
+title: "Exemplos de Rotina"
+author: "PET Estatística UFPR"
+graphics: yes
+output:
+  pdf_document:
+    template: ../template.tex
+    highlight: default
+    toc: true
+    toc_depth: 2
+    keep_tex: true
+    number_sections: true
+---
 
+\appendix
 
-Exemplos de Rotinas
-===================
+\chapter{Exemplos de Rotinas Git}
 
-## Clonar, Modificar e Subir
+Neste apêndice são descritas brevemente algumas das rotinas mais usuais
+em projetos sob sistema de versionamento Git. A maioria dos exemplos
+foram apresentados no decorrer da apostila e estão resumidos neste
+coletânea.
+
+\pagebreak
+
+\routine{Clonar, Modificar e Subir}
+
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Clonar o projeto desta apostila:
 git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
@@ -17,7 +38,8 @@ git push origin master
 
 ```
 
-## Resolver conflito de merge
+\routine{Resolver conflito de merge}
+
 ```{r, engine='bash', eval=FALSE, echo=TRUE}
 # Requisitar merge:
 git merge ramo_teste
@@ -29,7 +51,7 @@ git commit -a -m "Merge do ramo_teste"
 
 ```
 
-## Incorporar o remoto ao local
+\routine{Incorporar o remoto ao local}
 
 ```{r, engine='bash', eval=FALSE, echo=TRUE}
 # Listando os servidores remotos:
@@ -40,7 +62,7 @@ git remote add remoto git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
 git pull
 ```
 
-## Resolver um bug
+\routine{Resolver um bug}
 
 ```{r, engine='bash', eval=FALSE, echo=TRUE}
 
@@ -56,7 +78,7 @@ git branch -d bugfix
 
 ```
 
-## Deletar ramos
+\routine{Deletar ramos}
 
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Listar ramos:
@@ -67,7 +89,7 @@ git branch -d "nome_ramo"
 git push origin :nome_ramo
 ```
 
-## Criar ramo de um commit passado
+\routine{Criar ramo de um commit passado}
 
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Verificar código commit:
@@ -81,7 +103,7 @@ git checkout novo_branch
 
 ```
 
-## Voltar o projeto para um commit
+\routine{Voltar o projeto para um commit}
 
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Listando commits pelo nome e código de identificação:
@@ -93,7 +115,7 @@ git checkout ec3650c8661d75b486a236e3d416ab58db1d596a
 
 ```
 
-## Reescrever mensagem de commit
+\routine{Reescrever mensagem de commit}
 
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 git log --oneline
