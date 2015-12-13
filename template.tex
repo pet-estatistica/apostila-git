@@ -216,6 +216,7 @@ $else$
   \predate{}\postdate{}
 $endif$
 
+%-------------------------------------------
 % Para o apêndice de exemplo de rotinas
 \usepackage{tabularx}
 \usepackage{float}
@@ -237,6 +238,10 @@ $endif$
   \end{table}
 
 }
+% para referenciação correta dos links
+% http://tex.stackexchange.com/questions/193380/hyperref-pageref-links-point-to-first-page
+\newcommand{\hlabel}{\phantomsection\label}
+%-------------------------------------------
 
 $for(header-includes)$
 $header-includes$
