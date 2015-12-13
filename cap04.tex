@@ -345,16 +345,16 @@ servidor. O jeito mais simples de fazer isso é com transferência
 
 \section{Repositório remoto coletivo}\label{repositorio-remoto-coletivo}
 
-A única diferença é recomendamos você criar um novo usuário e adicionar
-as chaves públicas de todos os membros. Evite adicionar chaves públicas
-para usuários na sua conta porque isso expõe seus documentos, alguma
-operação desastrosa por parte de alguém pode comprometê-los. Por isso,
-crie um usuário, por exemplo \texttt{gitusers}, para na conta manter o
-repositório remoto.
+A única diferença é recomendamos a você criar um novo usuário e
+adicionar as chaves públicas de todos os membros. Evite adicionar chaves
+públicas para usuários na sua conta porque isso expõe seus documentos,
+alguma operação desastrosa por parte de alguém pode comprometê-los. Por
+isso, crie um usuário, por exemplo \texttt{gitusers}, para nesta conta
+manter o repositório remoto.
 
 Solicite que os colaboradores gerem as chaves públicas e te enviem o
 arquivo \texttt{id\_rsa.pub}. Depois você adiciona cada chave ao
-\texttt{authorized\_keys} da conta \texttt{gitusers}. Com chaves
+\texttt{authorized\_keys} de conta \texttt{gitusers}. Com chaves
 autorizadas, os colaboradores podem transferir arquivos, podem logar no
 servidor mas não podem instalar nada, a menos que você passe a senha do
 usuário \texttt{gitusers}. Para crias usuários no servidor, você precisa
@@ -399,7 +399,7 @@ Este comando é usado para clonar um repositório do servidor remoto para
 um servidor local, caso você queira copiar um repositório que já existe
 para realizar colaborações em um projeto que queira participar. Você
 terá acesso a todos os arquivos e poderá verificar as diferentes versões
-destes. Supondo que sua equipe de trabalho possue uma biblioteca Git
+destes. Supondo que sua equipe de trabalho possui uma biblioteca Git
 \textbf{Teste Clone}, onde são armazenados todos os arquivos. Você pode
 clonar estes arquivos para o seu diretório de trabalho e assim
 modificá-los conforme deseja.
@@ -456,9 +456,9 @@ que realizou o push por último serão desconsideradas.
 Para obter todos os arquivos presentes no projeto, você pode importar os
 arquivos do branch \texttt{master}. Toda vez que você utilizar o
 \texttt{Git pull} a última versão de todos os arquivos estarão no seu
-diretório. Este comando é utilizado para transferência de arquivos. O
-comando puxa os arquivos do servidor remoto para o repositório local e
-faz o merge do mesmo, fundindo a última versão com a versão atualizada.
+diretório. Também usado para transferência de arquivos, o comando puxa
+os arquivos do servidor remoto para o repositório local e faz o merge do
+mesmo, fundindo a última versão com a versão atualizada.
 
 \textbf{Exemplo:}
 
@@ -497,8 +497,8 @@ basta utilizar o comando \texttt{git diff}:
 \section{Listar branches
 locais/remotos}\label{listar-branches-locaisremotos}
 
-O comando \texttt{git remote}, este é usado para verificar quais
-repositórios estão configurados.
+O comando \texttt{git remote} é usado para verificar quais repositórios
+estão configurados.
 
 \textbf{Exemplo:} para retornar a lista de repositórios:
 
@@ -530,7 +530,7 @@ O comando \texttt{git remote add} adiciona um repositório remoto. No
 exemplo a seguir será adicionado um repositório chamado \textbf{MeuRepo}
 ao qual será vinculado a URL
 \texttt{git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git}.
-Usaremos como exemplo o projeto Git \textbf{Apostila-git}.
+Usaremos como exemplo o projeto \textbf{Apostila-git}.
 
 \textbf{Exemplo:}
 
@@ -650,8 +650,8 @@ diretório \texttt{\textasciitilde{}/git}:
 \end{Highlighting}
 \end{Shaded}
 
-As configurações do servidor estão completas. A partir você pode
-realizar os primeiros comandos para iniciar o repositório criado.
+As configurações do servidor estão completas. A partir de agora você
+pode realizar os primeiros comandos para iniciar o repositório criado.
 
 \section{Git no servidor}\label{git-no-servidor}
 

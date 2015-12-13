@@ -180,16 +180,16 @@ ssh eu@111.22.333.44\
 
 # Repositório remoto coletivo
 
-A única diferença é recomendamos você criar um novo usuário e adicionar
+A única diferença é recomendamos a você criar um novo usuário e adicionar
 as chaves públicas de todos os membros. Evite adicionar chaves públicas
 para usuários na sua conta porque isso expõe seus documentos, alguma
 operação desastrosa por parte de alguém pode comprometê-los. Por isso,
-crie um usuário, por exemplo `gitusers`, para na conta manter o
+crie um usuário, por exemplo `gitusers`, para nesta conta manter o
 repositório remoto.
 
 Solicite que os colaboradores gerem as chaves públicas e te enviem o
 arquivo `id_rsa.pub`. Depois você adiciona cada chave ao
-`authorized_keys` da conta `gitusers`. Com chaves autorizadas, os
+`authorized_keys` de conta `gitusers`. Com chaves autorizadas, os
 colaboradores podem transferir arquivos, podem logar no servidor mas
 não podem instalar nada, a menos que você passe a senha do usuário
 `gitusers`. Para crias usuários no servidor, você precisa de
@@ -230,7 +230,7 @@ Este comando é usado para clonar um repositório do servidor remoto para
 um servidor local, caso você queira copiar um repositório que já existe
 para realizar colaborações em um projeto que queira participar.  Você
 terá acesso a todos os arquivos e poderá verificar as diferentes versões
-destes.  Supondo que sua equipe de trabalho possue uma biblioteca Git **Teste Clone**, onde são armazenados todos os arquivos. Você pode clonar estes arquivos para o seu diretório de trabalho e assim modificá-los conforme deseja.
+destes.  Supondo que sua equipe de trabalho possui uma biblioteca Git **Teste Clone**, onde são armazenados todos os arquivos. Você pode clonar estes arquivos para o seu diretório de trabalho e assim modificá-los conforme deseja.
 
 
 **Exemplo:**
@@ -255,8 +255,7 @@ git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/TesteClone.git DirTeste
 Após clonar e realizar contribuições ao projeto, você pode enviá-los para o repositório remoto. Estes arquivos, após o `Git push`, estarão prontos para serem integrados ao projeto com o `merge`.  
 Usado para transferência de arquivos entre repositório local e o
 servidor remoto. Como o nome já diz, o comando empurra os arquivos para
-o servidor remoto.  No exemplo abaixo enviaremos a ramificação `Branch
-Master` para o servidor chamado `origin`:
+o servidor remoto.  No exemplo abaixo enviaremos a ramificação `Branch Master` para o servidor chamado `origin`:
     
 **Exemplo:**
 ```{r, engine="bash", eval=FALSE}
@@ -272,7 +271,7 @@ realizou o push por último serão desconsideradas.
 
 Para obter todos os arquivos presentes no projeto, você pode importar os arquivos do branch `master`.
 Toda vez que você utilizar o `Git pull` a última versão de todos os arquivos estarão no seu diretório.
-Este comando é utilizado para transferência de arquivos. O comando puxa os
+Também usado para transferência de arquivos, o comando puxa os
 arquivos do servidor remoto para o repositório local e faz o merge do
 mesmo, fundindo a última versão com a versão atualizada.
 
@@ -304,7 +303,7 @@ git diff master origin/master
 
 # Listar branches locais/remotos
   
-O comando `git remote`, este é usado para
+O comando `git remote` é usado para
 verificar quais repositórios estão configurados.
 
 **Exemplo:** para retornar a lista de repositórios:
@@ -332,7 +331,7 @@ O comando `git remote add` adiciona um repositório remoto. No exemplo a
 seguir será adicionado um repositório chamado **MeuRepo** ao qual será
 vinculado a URL
 `git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git`. Usaremos
-como exemplo o projeto Git **Apostila-git**.
+como exemplo o projeto **Apostila-git**.
 
 **Exemplo:**
 ```{r, engine="bash", echo=TRUE, eval=FALSE}
@@ -424,7 +423,7 @@ mkdir MeuRepo.git
 git --bare init
 ```
 
-As configurações do servidor estão completas. A partir você pode
+As configurações do servidor estão completas. A partir de agora você pode
 realizar os primeiros comandos para iniciar o repositório criado.
 
 # Git no servidor #
@@ -539,6 +538,5 @@ git -bare init
 
 Agora os usuários, cujas chaves foram salvas no arquivo
 `authorized_keys` podem compartilhar arquivos no repositório com os
-comando `git init`, `git add`, `git commit`, `git remote add` e `git
-push origin master`.
+comando `git init`, `git add`, `git commit`, `git remote add` e `git push origin master`.
 
