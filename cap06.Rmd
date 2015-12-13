@@ -26,8 +26,8 @@ opts_chunk$set(comment = NA)
 No Git, todo o gerenciamento do projeto é realizado via 
 *CLI (Command line interface)*, linhas de comando interpretadas, geralmente 
 pelo *bash*. Isso confere um maior controle e segurança nas ações realizadas, 
-mas em muitas situações os comandos e *outpus* Git não se apresentam de 
-forma tão amigável seja pela difícil memorização ou pela interatividade 
+mas em muitas situações os comandos e *outputs* Git não se apresentam de 
+forma tão amigável, seja pela difícil memorização ou pela interatividade 
 limitada.
 
 Os comandos mais usuais como `git add`e `git commit` se tornam simples,
@@ -37,7 +37,7 @@ com frequência, como por exemplo voltar a versão de um arquivo ou do
 repositório requerem comandos que são pouco utilizados e para realizá-las 
 é necessário a consulta de algum material. Outra situação em que 
 a utilização dos comandos é dificultada, ocorre em projetos grandes, uma vez que 
-muitos arquivos são alterados simultaneamente; e o procedimento de *commit* 
+muitos arquivos são alterados simultaneamente. Neste caso o procedimento de *commit* 
 se torna trabalhoso, pois é necessário listar todos os arquivos que fazem 
 parte de um *commit* no commando `git add`. Uma última situação exemplo 
 em que o uso de *CLI* não parece satisfatório é na comparação de arquivos, 
@@ -52,9 +52,9 @@ gráfica de seu sistema operacional.
 Neste capítulo apresentamos as principais *GUI's* para projetos Git em
 diferentes plataformas, sistemas UNIX, Mac OS X e Windows. Seccionamos
 em dois conjuntos de interfaces. O primeiro chamado de **Interfaces
-Git** refere-se as ferramentas para alterações e visualizações de
+Git** refere-se às ferramentas para alterações e visualizações de
 arquivos no repositório a fim de facilitar as atividades cotidianas. Já o
-segundo, **Interfaces de comparação** representam as que objetivam
+segundo, **Interfaces de comparação**, representam as que objetivam
 facilitar a visualização e edição de arquivos com base em suas
 diferentes versões. Detalhes de download, instalação e exemplos da
 utilização destas interfaces no fluxo de trabalho de um projeto são descritos.
@@ -88,7 +88,7 @@ seção abordaremos apenas as alterações mais comuns no repositório.
 
 A `git gui` no Windows, pode ser aberta pelo menu iniciar. Nesta
 plataforma, ao instalar o Git (conforme visto no capítulo 2), optamos
-pelos componentes **git BASH** e **git GUI**, assim estas aplicações
+pelos componentes **git BASH** e **git GUI**. Assim estas aplicações
 ficam disponíveis para uso. Em sistemas UNIX, a interface pode ser
 instalada via terminal, também apresentada no capítulo 2:
 
@@ -100,7 +100,7 @@ sudo apt-get install git-gui
 
 Ainda em sistemas Unix podemos criar um *alias* (criar ou editar
 adequadamente um arquivo em */usr/share/applications*) para que a `git
-gui` fique listada junto as aplicações do sistema. Porém, de forma geral,
+gui` fique listada junto às aplicações do sistema. Porém, de forma geral,
 independente da plataforma de trabalho, a `git gui` pode ser iniciada a
 partir de um terminal `bash`, com o comando:
 
@@ -114,7 +114,6 @@ arquivos do repositório `meu1repo` criado no capítulo 3.
 ```{r, include=FALSE}
 ## Temporariamente usando o meu1repo do arquivo git_tuto
 rmarkdown::render("git_tuto.Rmd")
-
 ```
 
 ```{r, engine="bash", echo=-c(1,2)}
@@ -204,9 +203,9 @@ ser acessadas com um simples clique e são auto-explicativas.
 Pioneira dentre as interfaces gráficas, `gitk` foi a primeira
 *GUI* implementada. Também escrita em *Tcl/Tk*, esta *GUI*
 tem como objetivo a apresentação do histórico de um projeto. A `gitk`
-é incorporada ao principal repositório do GIit, portanto nas instalações
+é incorporada ao principal repositório do Git, portanto nas instalações
 completas, esta interface fica disponível sem ser necessário
-download e instalação. Nesta seção apresentamos a `gitk` detalhando a
+download e instalação. Nesta seção apresentamos a `gitk`, detalhando a
 disposição dos elementos nesta interface que se mostra muito útil na
 visualização de projetos.
 
@@ -517,7 +516,7 @@ git difftool README.md
   \label{fig:meld3}
 \end{figure}
 
-Na figura \ref{fig:meld3} temos o _screenshot_ do programa após exectado
+Na figura \ref{fig:meld3} temos o _screenshot_ do programa após executado
 o `difftool`. Nesta figura temos a mesma informação trazida pelas
 interfaces onde implementam o comando `git diff`, porém aqui podemos
 alterar os arquivos exibidos atráves das flechas nas bordas (levando ou
@@ -674,10 +673,9 @@ git config --global mergetool.keepBackup false
 ```
 
 O procedimento de conflito simulado acima foi resolvido utilizando o
-programa `meld` com os comandos definidos para os sistemas baseados no
-kernel LINUX. Ainda a chamada do programa foi realizada através da opção
-a opção `-t` (ou `--tool`). Porém podemos definir o `meld` como
-ferramenta padrão para resolução de de `merge`, assim como foi feito para
+programa `meld`, com os comandos definidos para os sistemas baseados no
+kernel LINUX. Ainda a chamada do programa foi realizada através da opção `-t` (ou `--tool`). Porém podemos definir o `meld` como
+ferramenta padrão para resolução de `merge`, assim como foi feito para
 a ferramenta de comparação (`difftool`). Abaixo configuramos o `meld`
 também como `mergetool`, para sistemas Unix e Windows.
 
@@ -697,18 +695,17 @@ git config merge.meld.cmd '"path/Meld.exe" $LOCAL $BASE $REMOTE --output=$MERGED
 
 Para Windows deve-se informar o caminho para o arquivo executável,
 `path`, além de definir as três versões que serão exibidas `$LOCAL`,
-`$BASE` e `$REMOTE` conforme vimos na figura \ref{fig:meld4} e ainda a
-opção `--output=$MERGED` informa que o arquivo a ser editado será
-sobrescrito sob a versão `$MERGED`, que é criada pelo automaticamente
-Git quando há conflitos. 
+`$BASE` e `$REMOTE` conforme vimos na figura \ref{fig:meld4}. Ainda a
+opção `--output=$MERGED`, para informar que o arquivo a ser editado será
+sobrescrito sob a versão `$MERGED`, que é criada automaticamente
+pelo Git quando há conflitos. 
 
 Alternativamente pode-se editar o arquivo `.gitconfig` com as mesmas
 informações passadas ao comando `git config`. Para verificar como
-altera-se esse arquivo, abra-o após avaliar os comandos descritos. Ainda
-se desjado que essas opções sejão válidas para todos os projetos Git de
-seu computador a opção `--global` em `git config` pode ser
-utilizada. Assim quando avaliados, os comandos `git mergetool` e `git
-difftool`, o programa `meld` será lançado automaticamente.
+altera-se esse arquivo, abra-o após avaliar os comandos descritos. Ainda, 
+se desejado que essas opções sejam válidas para todos os projetos Git de
+seu computador, a opção `--global` em `git config` pode ser
+utilizada. Assim, quando avaliados os comandos `git mergetool` e `git difftool`, o programa `meld` será lançado automaticamente.
 
 Com isso, já temos nosso **Git** devidamente configurado para utilizar o
 programada `meld` e já observamos sua relevância quando se trabalha com
