@@ -1,55 +1,19 @@
----
-title: "Exemplos de Rotina"
-author: "PET Estatística UFPR"
-graphics: yes
-header-includes:
-    \usepackage{multicol}
-    \usepackage{cleveref}
-output:
-  pdf_document:
-    template: ../template.tex
-    highlight: default
-    toc: true
-    toc_depth: 2
-    keep_tex: true
-    number_sections: true
----
-
+\newpage
 \appendix
 
-\chapter{Exemplos de Rotinas}
+\chapter{Exemplos de rotinas}
 
 Neste apêndice são descritas brevemente algumas das rotinas mais usuais
 em projetos Git. A maioria dos exemplos estão detalhados na apostila e
 foram resumidos nesta coletânea. Abaixo temos a lista de rotinas aqui
-presentes:
+presentes.
 
-\begin{multicols}{2}
-\footnotesize
-  \begin{description}
-    \item[Configure usuário e e-mail,] pág. \pageref{routine1}
-    \item[Inicie um projeto git local,] pág. \pageref{routine2}
-    \item[Trabalhe com ramos,] pág. \pageref{routine3}
-    \item[Visualize diferenças,] pág. \pageref{routine4}
-    \item[Resolva conflitos de \textit{merge},] pág. \pageref{routine5}
-    \item[Visualize seu projeto,] pág. \pageref{routine6}
-    \item[Volte versões anteriores,] pág. \pageref{routine7}
-    \item[Reescreva \textit{commits},] pág. \pageref{routine8}
-    \item[Adicione chaves públicas,] pág. \pageref{routine9}
-    \item[Trabalhe remotamente,] pág. \pageref{routine10}
-    \item[Manipule ramos remotos,] pág. \pageref{routine11}
-    \item[Adicione local remoto,] pág. \pageref{routine12}
-  \end{description}
-\end{multicols}
+\listofprogram
 
-\pagebreak
-
-<!-- ------------------------------------------- -->
-\hlabel{routine1}
-\routine{Configure usuário e e-mail}
-
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-
+\begin{program}[H]
+  \caption{Configure usuário e e-mail.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Configurando localmente
 ##   - válido para o repositório atual
 git config user.name "Name Lastname"
@@ -62,15 +26,14 @@ git config --global user.email "namelastname@servidor"
 
 ## Obs.: As configurações locais se sobrepõem as
 ## globais, quando as duas forem avaliadas.
+@
 
-```
+%%----------------------------------------------------------------------
 
-<!-- ------------------------------------------- -->
-\hlabel{routine2}
-\routine{Inicie um projeto Git local}
-
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-
+\begin{program}[H]
+  \caption{Inicie um projeto Git local.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Em um diretório que deseja-se versionar
 
 ## Inicia o versionamento Git
@@ -79,7 +42,7 @@ git init
 ## Verifica o estado do repositório
 git status
 
-## Adicione os arquivos para receber o commit 
+## Adicione os arquivos para receber o commit
 git add file1.txt file2.R file3.txt file4.Rmd
 
 ## Registre a versão do repositório com uma mensagem
@@ -88,15 +51,14 @@ git commit -m "Inicia repositório"
 
 ## Verifica o histórico de versões
 git log
+@
 
-```
+%%----------------------------------------------------------------------
 
-<!-- ------------------------------------------- -->
-\hlabel{routine3}
-\routine{Trabalhe com ramos}
-
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-
+\begin{program}[H]
+  \caption{Trabalhe com ramos.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Verifica os ramos existentes
 git branch
 
@@ -125,14 +87,14 @@ git merge bugfix
 ## Deleta o ramo responsável pela correção do bug
 git branch -d bugfix
 
-```
+@
 
-<!-- ------------------------------------------- -->
-\hlabel{routine4}
-\routine{Visualize diferenças}
+%%----------------------------------------------------------------------
 
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-
+\begin{program}[H]
+  \caption{Visualize diferenças.}
+\end{program}  
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## -------------------------------------------
 ## Diferenças não commitadas
 
@@ -165,14 +127,14 @@ git diff master feature1
 ## visualizar diferenças, use difftool no lugar de
 ## diff, ver cap. 06
 
-```
+@
 
-<!-- ------------------------------------------- -->
-\hlabel{routine5}
-\routine{Resolva conflitos de merge}
+%%----------------------------------------------------------------------
 
-```{r, engine='bash', eval=FALSE, echo=TRUE}
-
+\begin{program}[H]
+  \caption{Resolva conflitos de merge.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Incorpora modificações realizadas no ramo feature
 git merge feature
 
@@ -182,35 +144,34 @@ git merge feature
 ## Finaliza merge com o commit:
 git commit -a -m "Merge do ramo feature"
 
-```
+@
 
-<!-- ------------------------------------------- -->
-\hlabel{routine6}
-\routine{Visualize seu projeto}
+%%----------------------------------------------------------------------
 
-```{r, engine='bash', eval=FALSE, echo=TRUE}
-
+\begin{program}[H]
+  \caption{Visualize seu projeto.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Histórico de registros
 git log
 
 ## Histórico de registros em uma linha com trajetória
-## dos ramos 
-git log --graph --oneline 
+## dos ramos
+git log --graph --oneline
 
 ## Histórico de registro com referência
 git reflog
 
 ## Histórico de registro via interface gráfica padrão
 gitk
+@
 
-```
+%%----------------------------------------------------------------------
 
-<!-- ------------------------------------------- -->
-\hlabel{routine7}
-\routine{Volte versões anteriores}
-
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-
+\begin{program}[H]
+  \caption{Volte versões anteriores.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Verifica o histórico de versões do repositório
 ##   - Guarde o SHA1 ID do registro desejado: ec3650c8
 git log --oneline
@@ -245,19 +206,19 @@ git checkout -b ramo_teste
 ## Obs.: O ramo provisório é removido assim que se
 ## fizer um checkout para qualquer outro ramo
 
-```
+@
 
-<!-- ------------------------------------------- -->
-\hlabel{routine8}
-\routine{Reescreva commits}
+%%----------------------------------------------------------------------
 
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-
+\begin{program}[H]
+  \caption{Reescreva commits.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Verifica o histórico de versões do repositório
 git log --oneline
 
 ## -------------------------------------------
-## Reescreve a última mensagem de commit 
+## Reescreve a última mensagem de commit
 git commit --amend -m "Correção de Commit"
 
 ## Obs1.: Arquivos na staging area também são
@@ -265,15 +226,14 @@ git commit --amend -m "Correção de Commit"
 ## Obs2.: Reescreve a história do repositório, não
 ## é recomendável reescrever a linha do tempo quando
 ## se está em um projeto colaborativo remoto.
+@
 
-```
+%%----------------------------------------------------------------------
 
-<!-- ------------------------------------------- -->
-\hlabel{routine9}
-\routine{Adicione chaves públicas}
-
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-
+\begin{program}[H]
+  \caption{Cria chaves públicas.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Cria uma chave pública.
 ssh-keygen -t rsa -C "namelastname@servidor"
 
@@ -291,15 +251,14 @@ ssh -T endereço ## endereço = git@github.com, ...
 ## Obs.: Todos os comandos ssh são provinientes do
 ## pacote de função ssh para shell, portanto para
 ## utilizar instale este pacote.
+@
 
-```
+%%----------------------------------------------------------------------
 
-<!-- ------------------------------------------- -->
-\hlabel{routine10}
-\routine{Trabalhe remotamente}
-
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-
+\begin{program}[H]
+  \caption{Trabalhe remotamente.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Clona um projeto remoto:
 ## e.g. git@github.com:pet-estatistica/apostila-git.git
 git clone endereço:namespace/project.git
@@ -318,15 +277,14 @@ git push origin
 
 ## Traz estado do repositório remoto
 git pull origin
+@
 
-```
+%%----------------------------------------------------------------------
 
-<!-- ------------------------------------------- -->
-\hlabel{routine11}
-\routine{Manipule ramos remotos}
-
-```{r, engine='bash', echo=TRUE, eval=FALSE}
-
+\begin{program}[H]
+  \caption{Manipule ramos remotos.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## -------------------------------------------
 ## Realizando contribuições em um ramo remoto
 
@@ -373,7 +331,7 @@ git commit -a -m "Altera classe do objeto retornado"
 ## Retorna ao ramo principal
 git checkout master
 
-## Incorpora modificações realizadas no ramo bugfix 
+## Incorpora modificações realizadas no ramo bugfix
 git merge bugfix
 
 ## Envia as alterações ao repositório remoto
@@ -383,15 +341,14 @@ git push origin master
 git branch -d bugfix ## Local
 git push :bugfix     ## Remoto
 
-```
+@
 
-<!-- \routine{Incorporar o remoto ao local} -->
-<!-- ------------------------------------------- -->
-\hlabel{routine12}
-\routine{Adicione local remoto} 
+%%----------------------------------------------------------------------
 
-```{r, engine='bash', eval=FALSE, echo=TRUE}
-
+\begin{program}[H]
+  \caption{Adicione endereço remoto.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Lista os servidores remotos, com endereço
 git remote -v
 
@@ -421,4 +378,4 @@ git remote set-url origin --push --add endereço_remoto
 ## Envia as contribuições para os locais remotos
 git push origin
 
-```
+@
