@@ -34,7 +34,7 @@ colaboradores tenham acesso. Isso inclusive vai permitir que você acesse
 o projeto de várias outras máquinas, como o *notebook* de casa e o
 desktop do *escritório*.
 
-## Repositório remoto pessoal
+# Repositório remoto pessoal
 
 O repositório remoto serve de centro do seu repositório Git. Como ele
 está em um servidor que você tem acesso, você pode compartilhar o
@@ -178,18 +178,18 @@ ssh eu@111.22.333.44\
   "cat >> ~/.ssh/authorized_keys2" < ~/.ssh/id_rsa.pub
 ```
 
-## Repositório remoto coletivo
+# Repositório remoto coletivo
 
-A única diferença é recomendamos você criar um novo usuário e adicionar
+A única diferença é recomendamos a você criar um novo usuário e adicionar
 as chaves públicas de todos os membros. Evite adicionar chaves públicas
 para usuários na sua conta porque isso expõe seus documentos, alguma
 operação desastrosa por parte de alguém pode comprometê-los. Por isso,
-crie um usuário, por exemplo `gitusers`, para na conta manter o
+crie um usuário, por exemplo `gitusers`, para nesta conta manter o
 repositório remoto.
 
 Solicite que os colaboradores gerem as chaves públicas e te enviem o
 arquivo `id_rsa.pub`. Depois você adiciona cada chave ao
-`authorized_keys` da conta `gitusers`. Com chaves autorizadas, os
+`authorized_keys` de conta `gitusers`. Com chaves autorizadas, os
 colaboradores podem transferir arquivos, podem logar no servidor mas
 não podem instalar nada, a menos que você passe a senha do usuário
 `gitusers`. Para crias usuários no servidor, você precisa de
@@ -221,24 +221,89 @@ ssh gitusers@111.22.333.44\
   "cat >> ~/.ssh/authorized_keys2" < todos.pub
 ```
 
-A fazer:
-  1. Fluxo de trabalho com repositório remoto, do *clone* ao *push*;
-  2. Listar branches locais/remotos;
-  3. Adicionar *remote*, renomear, deletar;
-  4. Adicionar mais de uma url para o mesmo *origin*;
-  5. Deletar ramos no servidor;
-  6. Clonar apenas um *branch*, *commit* ou *tag*.
 
-<!---------------------------------------------------------------------- -->
+# Fluxo de trabalho com repositório remoto, do clone ao push 
 
-# Introdução #
+## Git clone 
 
-Para colaborar em projetos coletivos no Git é preciso ter um repositório
-remoto. Este repositório conterá todo o histórico das versões dos
-arquivos editados. A seguir serão abordados como adicionar, remover e
-gerenciar repositórios remotos.
+Este comando é usado para clonar um repositório do servidor remoto para
+um servidor local, caso você queira copiar um repositório que já existe
+para realizar colaborações em um projeto que queira participar.  Você
+terá acesso a todos os arquivos e poderá verificar as diferentes versões
+destes.  Supondo que sua equipe de trabalho possui uma biblioteca Git **Teste Clone**, onde são armazenados todos os arquivos. Você pode clonar estes arquivos para o seu diretório de trabalho e assim modificá-los conforme deseja.
 
-Primeiramente será apresentado o comando `git remote`, este é usado para
+
+**Exemplo:**
+```{r, engine="bash", eval=FALSE}
+git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/TesteClone.git
+```
+
+Desta forma você terá um diretório `TesteClone` em seu computador, onde
+estarão todos os arquivos do projeto nele.
+
+Você também terá a opção de clonar o repositório `TesteClone` em um
+diretório diferente do padrão Git, que no próximo exemplo denominaremos
+de `DirTeste`:
+    
+**Exemplo:**
+```{r, engine="bash", eval=FALSE}
+git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/TesteClone.git DirTeste
+```
+
+## Git Push 
+
+Após clonar e realizar contribuições ao projeto, você pode enviá-los para o repositório remoto. Estes arquivos, após o `Git push`, estarão prontos para serem integrados ao projeto com o `merge`.  
+Usado para transferência de arquivos entre repositório local e o
+servidor remoto. Como o nome já diz, o comando empurra os arquivos para
+o servidor remoto.  No exemplo abaixo enviaremos a ramificação `Branch Master` para o servidor chamado `origin`:
+    
+**Exemplo:**
+```{r, engine="bash", eval=FALSE}
+git push origin master
+```
+
+É importante ressaltar que se dois usuários clonarem ao mesmo tempo,
+realizarem modificações e enviarem os arquivos atualizados ao
+repositório utilizando o `Git push`, as modificações do usuário que
+realizou o push por último serão desconsideradas.
+
+## Git Pull 
+
+Para obter todos os arquivos presentes no projeto, você pode importar os arquivos do branch `master`.
+Toda vez que você utilizar o `Git pull` a última versão de todos os arquivos estarão no seu diretório.
+Também usado para transferência de arquivos, o comando puxa os
+arquivos do servidor remoto para o repositório local e faz o merge do
+mesmo, fundindo a última versão com a versão atualizada.
+
+**Exemplo:**
+```{r, engine="bash", eval=FALSE}
+git pull origin master
+```
+
+## Git fetch 
+
+Assim como o comando `Git pull`, o `Git fetch` transfere arquivos do
+repositório remoto para o local, porém ele não realiza automaticamente o
+merge dos arquivos transferidos, o usuário deve fazer o merge
+manualmente.
+
+**Exemplo:**
+```{r, engine="bash", eval=FALSE}
+git fetch origin master
+```
+
+Para verificar as modificações realizadas entre versões de um arquivo
+basta utilizar o comando `git diff`:
+    
+**Exemplo:**
+```{r, engine="bash", eval=FALSE}
+git diff master origin/master
+```
+
+
+# Listar branches locais/remotos
+  
+O comando `git remote` é usado para
 verificar quais repositórios estão configurados.
 
 **Exemplo:** para retornar a lista de repositórios:
@@ -257,13 +322,16 @@ armazanados:
 git remote -v
 ```
 
-## Adicionando repositórios remotos ##
+
+# Adicionar, renomear, deletar remote
+  
+## Adicionando repositórios remotos 
 
 O comando `git remote add` adiciona um repositório remoto. No exemplo a
 seguir será adicionado um repositório chamado **MeuRepo** ao qual será
 vinculado a URL
 `git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git`. Usaremos
-como exemplo o projeto Git **Apostila-git**.
+como exemplo o projeto **Apostila-git**.
 
 **Exemplo:**
 ```{r, engine="bash", echo=TRUE, eval=FALSE}
@@ -275,7 +343,7 @@ git remote -v
 Pare acessar localmente o branch master do projeto **Apostila-git** será
 usado `MeuRepo/master`.
 
-## Obtendo informações de um Remoto ##
+## Obtendo informações de um Remoto 
 
 Você pode acessar as informações de qualquer repositório remoto com o
 comando `git remote show`, que retornará a URL e os `branches`.
@@ -285,7 +353,7 @@ comando `git remote show`, que retornará a URL e os `branches`.
 git remote show origin
 ```
 
-## Renomeado Remotos ##
+## Renomeado Remotos 
 
 O comando `git remote rename` pode modificar o nome de um repositório
 remoto. A seguir o repositório `MeuRepo`será renomeado para
@@ -296,7 +364,7 @@ remoto. A seguir o repositório `MeuRepo`será renomeado para
 git remote rename MeuRepo RenameRepo
 ```
 
-## Removendo Remotos ##
+## Removendo Remotos 
 
 Para remover remotos é utilizado o comando `git remote rm`, agora será
 removido o repositório renomeado anteriormente `RenameRepo`.
@@ -306,13 +374,36 @@ removido o repositório renomeado anteriormente `RenameRepo`.
  git remote rm RenameRepo
 ```
 
-**Protocolos Git**
+## Deletar ramos no servidor
 
-Há quatro tipos diferentes de protocolos Git (Local, Git, HTTP e SSH).
+Quando houver um branch que não está sendo utilizado ou está concluído, há a opção de excluí-lo do servidor.  
+Se for necessário apagar branches remotos, podemos utilizar o comando a seguir:
 
-Nesta apostila será abordado apenas o Secure Shell (SSH). Por ser fácil
-de fazer a configuração do acesso deste protocolo aos servidores, este é
-o mais usual.
+**Exemplo:**
+```{r, engine="bash", eval=FALSE}
+git push origin --delete <branch>
+```
+
+
+## Clonar apenas um *branch*, *commit* ou *tag*.
+
+É possível clonar apenas um branch e não o repositório Git completo. Supondo que no repositório há um branch chamado `MeuBranch` dentro do repositório `MeuRepo`, clonaremos o branch. 
+
+**Exemplo:**
+```{r, engine="bash", eval=FALSE}
+git clone -b MeuBranch --single-branch git://sub.domain.com/MeuRepo.git
+```
+
+O Git ainda permite clonar um commit ou tag.
+
+**Exemplo:**
+```{r, engine="bash", eval=FALSE}
+# Para uma tag:
+git -e: //git.myproject.org/MyProject.git@v1.0#egg=MyProject
+# Para um commit:
+git -e: //git.myproject.org/MyProject.git@da39a3ee5e6b4b0d3255bfef95601890afd80709#egg=MyProject
+```
+
 
 # Criando um Repositório Git #
     
@@ -323,7 +414,7 @@ criar um repositório remoto chamado `MeuRepo` e o armazenar em um
 diretório `~/git`:
     
 **Exemplo:**
-    ```{r, engine="sh", eval=FALSE}
+```{r, engine="bash", eval=FALSE}
 # Para criar um diretório git na sua home:
 mkdir ~/git
 # Para criar um repositório git:
@@ -332,7 +423,7 @@ mkdir MeuRepo.git
 git --bare init
 ```
 
-As configurações do servidor estão completas. A partir você pode
+As configurações do servidor estão completas. A partir de agora você pode
 realizar os primeiros comandos para iniciar o repositório criado.
 
 # Git no servidor #
@@ -357,7 +448,7 @@ qual você quer armazenar seus repositórios. Ao copiar o seu repositório
 limpo, você pode configurar seu novo repositório.
 
 **Exemplo:**
-    ```{r, engine="sh", eval=FALSE}
+```{r, engine="bash", eval=FALSE}
 scp -r MeuRepo.git usuario@git.example.com:/dir/git
 ```
 
@@ -375,7 +466,7 @@ segura da sua máquina com o servidor. Para isso começamos com o seguinte
 comando no terminal:
     
 **Exemplo:**
-    ```{r, engine="sh", eval=FALSE}
+```{r, engine="bash", eval=FALSE}
 ## Gerando uma chave ssh
 ssh-keygen -t rsa -C "usuario@email.com"
 ```
@@ -425,9 +516,11 @@ de alguns usuários, você pode salvá-las no arquivo `authorized_keys`,
 como no exemplo a seguir.
 
 **Exemplo:**
-```{r, engine="sh", eval=FALSE}
-cat /tmp/id_rsa1.pub >> ~/.ssh/authorized_keys # chave do primeiro usuário 
-cat /tmp/id_rsa2.pub >> ~/.ssh/authorized_keys # chave do segundo usuário
+```{r, engine="bash", eval=FALSE}
+# chave do primeiro usuário
+cat /tmp/id_rsa1.pub >> ~/.ssh/authorized_keys
+# chave do segundo usuário
+cat /tmp/id_rsa2.pub >> ~/.ssh/authorized_keys
 ...
 ```
 
@@ -436,7 +529,7 @@ limpo (sem um diretório de trabalho) para eles. Como visto
 anteriormente:
 
 **Exemplo:**
-```{r, engine="sh", eval=FALSE}
+```{r, engine="bash", eval=FALSE}
 cd/dir/git
 mkdir NovoProjeto.git
 cd NovoProjeto.git
@@ -445,83 +538,5 @@ git -bare init
 
 Agora os usuários, cujas chaves foram salvas no arquivo
 `authorized_keys` podem compartilhar arquivos no repositório com os
-comando `git init`, `git add`, `git commit`, `git remote add` e `git
-push origin master`.
-
-# Comandos clone, push, pull e fetch #
-
-## Git clone ##
-
-Este comando é usado para clonar um repositório do servidor remoto para
-um servidor local, caso você queira copiar um repositório que já existe
-para realizar colaborações em um projeto que queira participar.  Você
-terá acesso a todos os arquivos e poderá verificar as diferentes versões
-destes.  No exemplo abaixo temos uma bibliotaca Git, chamada
-**TesteClone**, que será clonado da seguinte forma:
-    
-**Exemplo:**
-    ```{r, engine="sh", eval=FALSE}
-git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/TesteClone.git
-```
-
-Desta forma você terá um diretório `TesteClone` em seu computador, onde
-estarão todos os arquivos do projeto nele.
-
-Você também terá a opção de clonar o repositório `TesteClone` em um
-diretório diferente do padrão Git, que no próximo exemplo denominaremos
-de `DirTeste`:
-    
-**Exemplo:**
-```{r, engine="bash", eval=FALSE}
-git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/TesteClone.git DirTeste
-```
-
-## Git Push ##
-
-Usado para transferência de arquivos entre repositório local e o
-servidor remoto. Como o nome já diz, o comando empurra os arquivos para
-o servidor remoto.  No exemplo abaixo enviaremos a ramificação `Branch
-Master` para o servidor chamado `origin`:
-    
-**Exemplo:**
-```{r, engine="bash", eval=FALSE}
-git push origin master
-```
-
-É importante ressaltar que se dois usuários clonarem ao mesmo tempo,
-realizarem modificações e enviarem os arquivos atualizados ao
-repositório utilizando o `Git push`, as modificações do usuário que
-realizou o push por último serão desconsideradas.
-
-## Git Pull ##
-
-Também utilizado para transferência de arquivos. O comando puxa os
-arquivos do servidor remoto para o repositório local e faz o merge do
-mesmo, fundindo a última versão com a versão atualizada.
-
-**Exemplo:**
-```{r, engine="bash", eval=FALSE}
-git pull origin master
-```
-
-## Git fetch ##
-
-Assim como o comando `Git pull`, o `Git fetch` transfere arquivos do
-repositório remoto para o local, porém ele não realiza automaticamente o
-merge dos arquivos transferidos, o usuário deve fazer o merge
-manualmente.
-
-**Exemplo:**
-```{r, engine="bash", eval=FALSE}
-git fetch origin master
-```
-
-Para verificar as modificações realizadas entre versões de um arquivo
-basta utilizar o comando `git diff`:
-    
-**Exemplo:**
-```{r, engine="bash", eval=FALSE}
-git diff master origin/master
-```
-
+comando `git init`, `git add`, `git commit`, `git remote add` e `git push origin master`.
 
