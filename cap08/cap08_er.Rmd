@@ -1,4 +1,4 @@
-    ---
+---
 title: "Exemplos de Rotina"
 author: "PET Estatística UFPR"
 graphics: yes
@@ -151,7 +151,8 @@ git reflog
 
 ## Lista as diferenças entre o último e o
 ## antepenúltimo registro
-git diff HEAD~0 HEAD~2 ## ou
+git diff HEAD~0 HEAD~2 ## ou pelo SHA1 ID
+git diff 7204daa be1a9cc
 
 ## -------------------------------------------
 ## Diferenças entre ramos
@@ -161,8 +162,8 @@ git diff HEAD~0 HEAD~2 ## ou
 git diff master feature1
 
 ## Obs.: Programas externos podem ser utilizados para
-## visualizar diferenças use difftool no lugar de
-## diff, ver no cap. 06
+## visualizar diferenças, use difftool no lugar de
+## diff, ver cap. 06
 
 ```
 
@@ -228,8 +229,8 @@ git revert ec3650c8
 git commit -am "Retorna projeto para versão funcional"
 
 ## Obs.: Faz um merge da versão atual com a versão do
-## SHA1 ID informado. POdem haver conflitos que devem
-## ser resolvido para concluir a reversão.
+## SHA1 ID informado. Podem haver conflitos que devem
+## ser resolvidos para concluir a reversão.
 
 ## -------------------------------------------
 ## Cria um ramo provisório a partir de um SHA1 ID
@@ -273,7 +274,7 @@ git commit --amend -m "Correção de Commit"
 
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 
-## Crie uma chave pública.
+## Cria uma chave pública.
 ssh-keygen -t rsa -C "namelastname@servidor"
 
 ## Exibe as chaves públicas.
@@ -303,7 +304,7 @@ ssh -T endereço ## endereço = git@github.com, ...
 ## e.g. git@github.com:pet-estatistica/apostila-git.git
 git clone endereço:namespace/project.git
 
-## Realiza modificações e/ou inclusões de em um ou
+## Realiza modificações e/ou inclusões de um ou
 ## vários arquivos
 
 ## Adiciona todas as alterações para commit
@@ -329,7 +330,7 @@ git pull origin
 ## -------------------------------------------
 ## Realizando contribuições em um ramo remoto
 
-## Lista todos os ramos
+## Lista todos os ramos, locais e remotos
 git branch -a
 
 ## Altera versionamento para o ramo issue01
@@ -338,7 +339,7 @@ git checkout issue01
 ## Traz estado do ramo remoto issue01
 git pull origin issue01
 
-## Realiza modificações e/ou inclusões de em um ou
+## Realiza modificações e/ou inclusões de um ou
 ## vários arquivos
 
 ## Adiciona todas as alterações para commit
@@ -375,10 +376,10 @@ git checkout master
 ## Incorpora modificações realizadas no ramo bugfix 
 git merge bugfix
 
-## Envia as alterações o repositório remoto
+## Envia as alterações ao repositório remoto
 git push origin master
 
-## Deleta o ramo local e remoto bugfix
+## Deleta o ramo bugfix
 git branch -d bugfix ## Local
 git push :bugfix     ## Remoto
 
