@@ -1,11 +1,11 @@
 ---
-title: 'Capítulo 3: Repositório Local'
-author:
+title: "Repositórios Locais"
+author: "PET Estatística UFPR"
 date: "15/12/2015"
 graphics: yes
 output:
   pdf_document:
-    template: template.tex
+    template:
     highlight: default
     toc: true
     toc_depth: 2
@@ -13,28 +13,27 @@ output:
     number_sections: true
 ---
 
-
 ```{r, include=FALSE}
 library(knitr)
 opts_chunk$set(comment=NA)
 ```
 
-\chapter{Repositório Local}
-
-### Instruções do Git
+# Instruções do Git #
 
 Neste capítulo, as instruções serão todas feitas no terminal mesmo que
 existam alternativas gráficas para as mesmas. Isso enfatiza no que está
 sendo feito além do fato de que no terminal todos devem ter os mesmos
 recursos e os comandos irão produzir os mesmos resultados, o que faz
-esse tutorial algo reproduzível. Casos você queira usufruir das ferramentas gráficas vá para o capítulo 6.
+esse tutorial algo reproduzível. Casos você queira usufruir das
+ferramentas gráficas vá para o capítulo 6.
 
-Sabendo que você executou os comandos de perfil que no capítulo anterior, temos o Git devidamente configurado, com credenciais (nome e e-mail) e
-configurações aplicadas. Vamos então ver como o sistema de controle de
-versão acontece.
+Sabendo que você executou os comandos de perfil que no capítulo
+anterior, temos o Git devidamente configurado, com credenciais (nome e
+e-mail) e configurações aplicadas. Vamos então ver como o sistema de
+controle de versão acontece.
 
 ```{r, engine = "bash"}
-# Apenas verificando o cadastro
+## Apenas verificando o cadastro.
 git config user.name "Knight Rider"
 git config user.email "batman@justiceleague.org"
 ```
@@ -71,11 +70,9 @@ ls -a
 
 ```
 
-
 ```{r, engine="bash"}
 cd meu1repo ## Diretório de teste de comandos 
 ```
-
 
 ```{r, engine="bash", echo=-c(1:2), eval=FALSE}
 cd meu1repo
@@ -94,7 +91,7 @@ cd meu1repo
 git help -a
 ```
 
-### Meu Primeiro Repositório
+# Meu Primeiro Repositório #
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -117,7 +114,7 @@ estrutura.
 cd meu1repo
 
 ## Mostra todo conteúdo do diretório.
-tree -a
+tree --charset=ascii -a
 ```
 
 **NOTA**: o `tree` é um programa instalado a parte (*third party
@@ -132,7 +129,7 @@ enfoque está no funcionamento, não haverá prejuízo.
 
 Vamos criar o arquivo com conteúdo também pelo terminal. Se você
 preferir, abra eu editor de texto favorito (Emacs, Gedit, Geany,
-RStudio, Bloco de Notas, Notepad++,  etc) e faça algo mais criativo.
+RStudio, Bloco de Notas, Notepad++, etc) e faça algo mais criativo.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -141,7 +138,7 @@ cd meu1repo
 echo "Meu primeiro repositório Git" > README.txt
 
 ## Lista os arquivos do diretório.
-tree
+## tree --charset=ascii
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -154,15 +151,15 @@ git status
 E o que o Git "acha" de tudo isso? O comando *status* é o mais usado do
 Git, principalmente nas etapas de aprendizado. Uma característica
 diferente do Git, se comparado a outras aplicações de uso por terminal,
-é que ele é realmente camarada. Nas mensagens de *output*, o Git 
-informa o que aconteceu e também sugere o que fazer.
+é que ele é realmente camarada. Nas mensagens de *output*, o Git informa
+o que aconteceu e também sugere o que fazer.
 
 Este diretório agora é um diretório sob versionamento Git, portanto
 todas as alterações realizadas serão observadas pelo sistema. Ao
-criarmos o arquivo e pedirmos a situação (*status*), o Git indica que 
-existe um arquivo não rastreado (*untracked*) no diretório. Inclusive 
-sugere uma ação que seria adicionar o aquivo (*add*). Se o seu sistema 
-operacional está em português, parte dos outputs do Git podem estar 
+criarmos o arquivo e pedirmos a situação (*status*), o Git indica que
+existe um arquivo não rastreado (*untracked*) no diretório. Inclusive
+sugere uma ação que seria adicionar o aquivo (*add*). Se o seu sistema
+operacional está em português, parte dos outputs do Git podem estar
 traduzidos.
 
 \begin{figure}
@@ -173,13 +170,14 @@ traduzidos.
   \label{fig:cap03_pversion}
 \end{figure}
 
-De forma geral temos 3 estágios \ref{fig:cap03_pversion} de arquivos considerados no sistema de
-controle de versionamento Git. São eles *working directory*, *Staged
-Area* e *Committed*, os discutiremos ao logo do texto. Todo arquivo
-criado em um diretório versionado deve necessariamente passar pelos três
-estágios. Voltando para a nossa situação temos o arquivo `README.txt`
-criado e atualmente ele está no estágio *working directory*, faremos
-todo o procedimento para que chegue ao estágio *committed*.
+De forma geral temos 3 estágios \ref{fig:cap03_pversion} de arquivos
+considerados no sistema de controle de versionamento Git. São eles
+*working directory*, *Staged Area* e *Committed*, os discutiremos ao
+logo do texto. Todo arquivo criado em um diretório versionado deve
+necessariamente passar pelos três estágios. Voltando para a nossa
+situação temos o arquivo `README.txt` criado e atualmente ele está no
+estágio *working directory*, faremos todo o procedimento para que chegue
+ao estágio *committed*.
 
 Alterações em arquivos no *working directory* não são armazenadas, por
 isso o sugestivo nome "diretório de trabalho". Portanto, para que o
@@ -222,21 +220,20 @@ consultadas quando você precisar desfazer/voltar. Ela deve ser curta (<=
 72 caracteres) e ao mesmo tempo informativa. A minha primeira mensagem
 não será, todavia.
 
-
 Boas Práticas de commit: 
 
 \begin{itemize}
-\item Verbo no indicativo}
-\item Frases curtas
-\item Dizer o que fez e não como fez
+  \item Verbo no indicativo
+  \item Frases curtas
+  \item Dizer o que fez e não como fez
 \end{itemize}
 
 Evite mensagens de commit como:
 
 \begin{itemize}
-\item "Modificações realizadas"  
-\item "Trabalhei muito hoje"  
-\item "Terminando este trabalho na madruga"
+  \item "Modificações realizadas"
+  \item "Trabalhei muito hoje"
+  \item "Terminando este trabalho na madruga"
 \end{itemize}
 
 ```{r engine="bash", echo =-c(1:2)}
@@ -256,7 +253,7 @@ projeto. São mostrados apenas os 7 primeiros dígitos porque são
 suficientes para diferenciar *commits*, seja de projetos pequenos ou até
 mesmo de projetos moderados ou grandes.
 
-### Complementos 
+# Complementos #
 
 Para o registro de desenvolvimento, existe marcação por tags, que 
 seriam commits especiais, geralmente usado para marcar pontos de 
@@ -278,10 +275,12 @@ git tag
 git tag -d versao1
 ```
 
-Caso haja mudança no nome do arquivo que você esteja versionado, deve ser alterado pelo próprio git, para que fique no atual estágio de versionamento.
+Caso haja mudança no nome do arquivo que você esteja versionado, deve
+ser alterado pelo próprio git, para que fique no atual estágio de
+versionamento.
 
 ```{r, engine = "bash", eval = FALSE}
-# git mv antigo novo
+## git mv antigo novo
 git mv -f README.txt LEIAME.txt
 ```
 
@@ -291,7 +290,7 @@ Caso você queira excluir o arquivo
 git rm README.txt
 ```
 
-## Versões de Arquivos Diferentes
+# Versões de Arquivos Diferentes #
 
 Vamos criar mais arquivos e acrescentar conteúdo ao já rastreado pelo
 Git para percebermos o funcionamento. Escrever uma lista de razões para
@@ -369,7 +368,6 @@ cd meu1repo
 git diff
 ```
 
-
 Vamos aplicar o primeiro *add* ao `porqueLinux.txt` para que ele começe
 a ser versionado. Perceba que ao adicioná-lo, as mudanças, no caso a
 criação do arquivo com contúdo, já são separadas para receber registro
@@ -421,8 +419,8 @@ git commit -m "Adiciona frase do Linux Torvalds."
 ```
 
 Agora temos 3 *commits* e o *log* apresenta os *sha1* e as mensagens
-correspondentes aos mesmos. Com `--oneline` resumimos o *output* mostrando
-apenas o *sha1* e a mensagem de *commit*.
+correspondentes aos mesmos. Com `--oneline` resumimos o *output*
+mostrando apenas o *sha1* e a mensagem de *commit*.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -435,20 +433,18 @@ modificações entre dois *commits*, não necessariamente consecutivos, por
 exemplo. Também podemos retroceder (*checkout*, *reset*, *revert*) o
 projeto para alguns desses pontos.
 
-
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
 
 git diff HEAD@{1}
 ```
 
-Instruímos o Git mostrar as diferenças para um *commit* atrás. A
-cabeça (*HEAD*) é o que se entende como estado mais recente. Usa-se o
-termo *HEAD* (cabeça) pois considera-se um crescimento do histórico
-debaixo para cima no qual um novo *commit* é colocado em cima dos demais
+Instruímos o Git mostrar as diferenças para um *commit* atrás. A cabeça
+(*HEAD*) é o que se entende como estado mais recente. Usa-se o termo
+*HEAD* (cabeça) pois considera-se um crescimento do histórico debaixo
+para cima no qual um novo *commit* é colocado em cima dos demais
 (empilhado). O `HEAD@{0}` ou apenas `HEAD` representa o último registro
 feito. Não é necessário escrever o último `HEAD` na intrução abaixo.
-
 
 Agora inspecionado uma distância de 2 *commits* a partir do último. Aqui
 tem-se os dois arquivos envolvidos nesse intervalo de 2 *commits*. Com
@@ -557,8 +553,8 @@ git status
 ```
 
 O `diff` vazio compara o diretório de trabalho com o último registro
-(último *commit*). Quando você usa explicitamente na instrução `HEAD@{ }`
-seguido de número, então estão sendo comparadas versões
+(último *commit*). Quando você usa explicitamente na instrução `HEAD@{
+}` seguido de número, então estão sendo comparadas versões
 "commitadas". Existem variantes de sufixo para usar no `HEAD` que são:
 
   * `HEAD@{n}`
@@ -627,15 +623,16 @@ cd meu1repo
 git blame README.txt
 ```
 
-## Trabalhando com Ramos
+# Trabalhando com Ramos #
 
-Existem várias formas de se trabalham com ramos veja a figura \ref{fig:cap03_work}. Geralmente os ramos são feitos sob demandas para adicionar uma característica ao projeto
-(*feature*) ou corrigir um *bug*. Alguns ramos, por outro lado, são
-ramos fixos destinados a receber o desenvolvimento dos ramos de
-demanda. Esses ramos são geralmente chamados de *devel* (*development*)
-e *release*. O ramo *master* é o default e em geral, para projetos
-grandes, o *master* só recebe versões funcionais do projeito, livre de
-bugs.
+Existem várias formas de se trabalham com ramos veja a figura
+\ref{fig:cap03_work}. Geralmente os ramos são feitos sob demandas para
+adicionar uma característica ao projeto (*feature*) ou corrigir um
+*bug*. Alguns ramos, por outro lado, são ramos fixos destinados a
+receber o desenvolvimento dos ramos de demanda. Esses ramos são
+geralmente chamados de *devel* (*development*) e *release*. O ramo
+*master* é o default e em geral, para projetos grandes, o *master* só
+recebe versões funcionais do projeito, livre de bugs.
 
 \begin{figure}
   \begin{center}
@@ -700,7 +697,8 @@ partir do ramo que é seu ancestral, ou seja, ele começa a partir do
 commitar. O comando `wget` permite baixar arquivos pelo terminal. Será
 baixado um arquivo com um função para calcular o fator de inflação de
 variância (*vif*, variance inflation factor) usado em modelos de
-regressão, disponível na página da Professora Suely Giolo. [\footnote{\url{http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R}}
+regressão, disponível na página da Professora Suely
+Giolo\footnote{\url{http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R}}.
 
 ```{r, engine="bash", include=FALSE}
 ## Tenta ir para o diretório downloads, se não conseguir é porque não
@@ -772,7 +770,7 @@ git commit -m "Adiciona função R para VIF."
 cd meu1repo
 
 ## Estrutura do diretório.
-tree
+tree --charset=ascii
 ```
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -804,7 +802,7 @@ git checkout master
 cd meu1repo
 
 ## Estrutura do diretório.
-tree
+tree --charset=ascii
 ```
 
 O arquivo `vif.R` não sumiu. Ele está no ramo `feature01` e só passará
@@ -843,11 +841,9 @@ cd meu1repo
 git log --oneline
 ```
 
-É possível criar um ramo a partir de um *commit* ancestral ao atual. Isso
-é extremamente útil para resolver os bugs. Vamos fazer um segundo ramo a
-partir do *commit* anterior a inclusão do arquivo R.
-
-
+É possível criar um ramo a partir de um *commit* ancestral ao
+atual. Isso é extremamente útil para resolver os bugs. Vamos fazer um
+segundo ramo a partir do *commit* anterior a inclusão do arquivo R.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -960,7 +956,7 @@ else
     cd downloads
 fi
 
-## Se não existir o aquivo pimentel_racoes.txt, então baixar da internet.
+## Se não existir o aquivo pimentel_racoes.txt, então baixe da internet.
 if [ ! -f pimentel_racoes.txt ]
 then
     echo "Arquivo pimentel_racoes.txt não existe. Baixando..."
@@ -1177,11 +1173,10 @@ git log --graph --oneline --decorate --date=relative --all
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
 
-tree
+tree --charset=ascii
 ```
 
-****
-## Resolvendo conflitos
+# Resolvendo conflitos #
 
 Agora vamos de propósito mostrar uma situação em que não é possível
 fazer o merge automaticamente. Vamos criar um conflito. Para isso vou
@@ -1415,8 +1410,6 @@ cd meu1repo
 
 git status
 ```
-
-
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
