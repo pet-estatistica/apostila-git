@@ -1,11 +1,11 @@
 ---
-title: 'Capítulo 2: Instalação e Configuração'
-author:
+title: "Instalação e Configuração"
+author: "PET Estatística UFPR"
 date: "29/10/2015"
 graphics: yes
 output:
   pdf_document:
-    template: template.tex
+    template:
     highlight: default
     toc: true
     toc_depth: 2
@@ -17,23 +17,23 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-\chapter{Instalação e Configuração}
-
 Agora, devidamente apresentados ao sistema de versionamento Git vamos
-utilizá-lo. Porém, antes de começarmos a entender os comandos Git, é 
-necessário sua instalação e configuração. Neste capítulo veremos 
-primeiramente como instalar o programa Git em diferentes sistemas operacionais 
-e posteriormente como configurar algumas opções para viabilizar e 
-facilitar seu uso. 
+utilizá-lo. Porém, antes de começarmos a entender os comandos Git, é
+necessário sua instalação e configuração. Neste capítulo veremos
+primeiramente como instalar o programa Git em diferentes sistemas
+operacionais e posteriormente como configurar algumas opções para
+viabilizar e facilitar seu uso.
 
 # Instalação
 
 ## Windows
-Usuários Windows devem visitar Git for Windows\footnote{\url{https://git-for-windows.github.io/}}, clicar em 
+
+Usuários Windows devem visitar Git for
+Windows\footnote{\url{https://git-for-windows.github.io/}}, clicar em
 "Download" e baixar o arquivo ".exe".
 
-Após o download, execute o arquivo e você terá a tela conforme figura 
-\ref{fig:inst01}: 
+Após o download, execute o arquivo e você terá a tela conforme figura
+\ref{fig:inst01}:
 
 \begin{figure}
   \begin{center}
@@ -43,13 +43,13 @@ Após o download, execute o arquivo e você terá a tela conforme figura
   \label{fig:inst01}
 \end{figure}
 
-Como de costume, clique em "Next". Para dar continuidade a instalação 
+Como de costume, clique em "Next". Para dar continuidade a instalação
 aceite a licença do Git.
 
-O diretório apresentado na figura \ref{fig:inst02} vem como default, porém é 
-possível alterar a instalação para um diretório de sua preferência. 
-Depois de selecionado o caminho da instalação, clique em "Next" para 
-prosseguir.
+O diretório apresentado na figura \ref{fig:inst02} vem como default,
+porém é possível alterar a instalação para um diretório de sua
+preferência.  Depois de selecionado o caminho da instalação, clique em
+"Next" para prosseguir.
 
 \begin{figure}
   \begin{center}
@@ -59,16 +59,15 @@ prosseguir.
   \label{fig:inst02}
 \end{figure}
 
-Na tela de componentes (figura \ref{fig:inst03}) podemos definir atalhos, integração ao menu de 
-contexto do Windows Explorer, associação de arquivos e uso de font 
-TrueType. 
-O Git Bash é o prompt de comandos próprio, que além dos comandos Git 
-também fornece alguns comandos Unix que podem ser bem úteis. Já o Git 
-GUI é uma interface gráfica para trabalhar com Git. É recomendável a 
-seleção de ambos os itens. 
+Na tela de componentes (figura \ref{fig:inst03}) podemos definir
+atalhos, integração ao menu de contexto do Windows Explorer, associação
+de arquivos e uso de font TrueType.  O Git Bash é o prompt de comandos
+próprio, que além dos comandos Git também fornece alguns comandos Unix
+que podem ser bem úteis. Já o Git GUI é uma interface gráfica para
+trabalhar com Git. É recomendável a seleção de ambos os itens.
 
-Depois de selecionado os componentes de sua preferência, clique em “Next” 
-para dar continuidade.
+Depois de selecionado os componentes de sua preferência, clique em
+"Next" para dar continuidade.
 
 \begin{figure}
   \begin{center}
@@ -78,9 +77,9 @@ para dar continuidade.
   \label{fig:inst03}
 \end{figure}
 
-No passo 4, representado pela figura \ref{fig:inst04}, o instalador nos oferece a oportunidade de mudar o nome da pasta 
-no menu iniciar, recomenda-se deixar o padrão para fácil localização 
-posteriormente.
+No passo 4, representado pela figura \ref{fig:inst04}, o instalador nos
+oferece a oportunidade de mudar o nome da pasta no menu iniciar,
+recomenda-se deixar o padrão para fácil localização posteriormente.
 
 \begin{figure}
   \begin{center}
@@ -90,15 +89,14 @@ posteriormente.
   \label{fig:inst04}
 \end{figure}
 
-Na tela de configuração "PATH environment",conforme a figura 
-\ref{fig:inst05}, podemos escolher as formas de integração do Git com o 
-sistema.  
-A primeira opção nos permite usar o Git apenas pelo "Git Bash" (é o 
-prompt de comando do Git), a segunda opção nos possibilita executar os 
-comandos no "Git Bash" e no prompt de comando do Windows (cmd.exe), e a
-terceira opção é a junção das duas de cima, porém alguns comandos do 
-Windows serão substituídos por comandos Unix com mesmo nome.  
-Essa última opção não é recomendada, a primeira opção é a desejável. 
+Na tela de configuração "PATH environment",conforme a figura
+\ref{fig:inst05}, podemos escolher as formas de integração do Git com o
+sistema.  A primeira opção nos permite usar o Git apenas pelo "Git Bash"
+(é o prompt de comando do Git), a segunda opção nos possibilita executar
+os comandos no "Git Bash" e no prompt de comando do Windows (cmd.exe), e
+a terceira opção é a junção das duas de cima, porém alguns comandos do
+Windows serão substituídos por comandos Unix com mesmo nome.  Essa
+última opção não é recomendada, a primeira opção é a desejável.
 
 \begin{figure}
   \begin{center}
@@ -108,20 +106,18 @@ Essa última opção não é recomendada, a primeira opção é a desejável.
   \label{fig:inst05}
 \end{figure}
 
-Na figura \ref{fig:inst06}, temos a configuração de quebra de linha. 
-Windows e sistemas Unix (Linux, Mac) possuem formatos diferentes de quebra 
-de linha em arquivos de texto. Se você escreve um código com quebras de 
-linha no formato Windows, outra pessoa pode ter problemas ao abrir o 
-mesmo arquivo em um Linux, e vice-versa. Este passo, portanto, permite
-normalizar isso.  
-A primeira opção converte automaticamente os arquivos para padrão Windows 
-quando receber algum arquivo e converterá para padrão Unix quando 
-“comitar” (enviar alterações) ao repositório. A segunda opção, 
-não faz nenhuma conversão ao receber arquivos, mas convertem 
-para padrão Unix ao “comitar”. 
-Já a terceira opção, o Git não fará nenhuma conversão.  
-Recomenda-se a seleção da opção "Checkout Windows-style, 
-commit Unix-Style line endings".
+Na figura \ref{fig:inst06}, temos a configuração de quebra de linha.
+Windows e sistemas Unix (Linux, Mac) possuem formatos diferentes de
+quebra de linha em arquivos de texto. Se você escreve um código com
+quebras de linha no formato Windows, outra pessoa pode ter problemas ao
+abrir o mesmo arquivo em um Linux, e vice-versa. Este passo, portanto,
+permite normalizar isso.  A primeira opção converte automaticamente os
+arquivos para padrão Windows quando receber algum arquivo e converterá
+para padrão Unix quando “comitar” (enviar alterações) ao repositório. A
+segunda opção, não faz nenhuma conversão ao receber arquivos, mas
+convertem para padrão Unix ao “comitar”.  Já a terceira opção, o Git não
+fará nenhuma conversão.  Recomenda-se a seleção da opção "Checkout
+Windows-style, commit Unix-Style line endings".
 
 \begin{figure}
   \begin{center}
@@ -131,12 +127,11 @@ commit Unix-Style line endings".
   \label{fig:inst06}
 \end{figure}
 
-No passo da figura \ref{fig:inst07}, temos a configuração do 
-emulador de terminal para usar com o Git Bash.  
-A primeira opção utiliza o terminal MSys2 (Shell), que permite utilizar 
-comandos Unix no Windows. Já a segunda opção, utiliza o terminal 
-padrão do Windows. Recomendamos a primeira opção. 
-Feito isso, dê continuidade a instalação.
+No passo da figura \ref{fig:inst07}, temos a configuração do emulador de
+terminal para usar com o Git Bash.  A primeira opção utiliza o terminal
+MSys2 (Shell), que permite utilizar comandos Unix no Windows. Já a
+segunda opção, utiliza o terminal padrão do Windows. Recomendamos a
+primeira opção.  Feito isso, dê continuidade a instalação.
 
 \begin{figure}
   \begin{center}
@@ -146,7 +141,7 @@ Feito isso, dê continuidade a instalação.
   \label{fig:inst07}
 \end{figure}
 
-E por último, a figura \ref{fig:inst08}, que configura ajustes de 
+E por último, a figura \ref{fig:inst08}, que configura ajustes de
 performance. Essa opção é para habilitar o sistema de cache de arquivo.
 
 \begin{figure}
@@ -157,29 +152,30 @@ performance. Essa opção é para habilitar o sistema de cache de arquivo.
   \label{fig:inst08}
 \end{figure}
 
-Feito isso, “Next”, “Finish” e o Git está instalado.
-
+Feito isso, "Next", "Finish" e o Git está instalado.
 
 ## Linux
 
-Em qualquer sistema Linux, pode-se utilizar o gerenciador de pacotes da respectiva distribuição para instalar o Git.
-Basta executar o código de instalação de sua respectiva distribuição. 
-
+Em qualquer sistema Linux, pode-se utilizar o gerenciador de pacotes da
+respectiva distribuição para instalar o Git.  Basta executar o código de
+instalação de sua respectiva distribuição.
 
 **Debian**
 
-Em uma sessão de terminal Linux de distribuições Debian (Ubuntu, Mint), 
-execute o código abaixo.  
-Adicione o ppa para obter a versão mais recente do Git.
+Em uma sessão de terminal Linux de distribuições Debian (Ubuntu, Mint),
+execute o código abaixo.  Adicione o ppa para obter a versão mais
+recente do Git.
+
 ```{r, engine="bash", eval=FALSE}
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
 ```
 
-Agora, execute o comando abaixo para instalação do Git.  
-Siga as instruções do prompt de comando, primeiro confirmando a instalação 
-dos pacotes e suas dependências, depois confirmando a instalação 
-do pacote git-core.
+Agora, execute o comando abaixo para instalação do Git.  Siga as
+instruções do prompt de comando, primeiro confirmando a instalação dos
+pacotes e suas dependências, depois confirmando a instalação do pacote
+git-core.
+
 ```{r, engine="bash", eval=FALSE}
 sudo apt-get install git git-core git-man git-gui git-doc \
     ssh openssh-server openssh-client
@@ -187,10 +183,10 @@ git --version
 ```
 
 Para adicionar ferramentas complementares, execute:
+
 ```{r, engine="bash", eval=FALSE}
 sudo apt-get install gitk meld
 ```
-
 
 **Arch**
 
@@ -203,30 +199,31 @@ git --version
 **Fedora**
 
 ```{r, engine="bash", eval=FALSE}
-Yum install git
+yum install git
 git --version
 ```
 
-Usuários de outra versão do Linux podem visitar Download for Linux\footnote{\url{https://git-scm.com/download/linux}}.
+Usuários de outra versão do Linux podem visitar Download for
+Linux\footnote{\url{https://git-scm.com/download/linux}}.
 
 ## MacOS
-Existem duas maneiras de instalar o Git no Mac, uma pelo instalador e 
+
+Existem duas maneiras de instalar o Git no Mac, uma pelo instalador e
 outra através do MacPorts.
 
 **Utiizando o Instalador**
 
 O usuário deverá acessar Download for
-Mac\footnote{\url{http://git-scm.com/downloads}}, clicar em "Download" 
-e baixar o arquivo ".dmg".
+Mac\footnote{\url{http://git-scm.com/downloads}}, clicar em "Download" e
+baixar o arquivo ".dmg".
 
-Após o download, é necessário clicar duas vezes para ter acesso ao pacote
-de instalação. Dentro do arquivo ".dmg", execute o arquivo ".pkg" para 
-iniciar a instalação. 
-Siga os passos até concluir a instalação. É recomendável utilizar a 
-instalação padrão. 
+Após o download, é necessário clicar duas vezes para ter acesso ao
+pacote de instalação. Dentro do arquivo ".dmg", execute o arquivo ".pkg"
+para iniciar a instalação.  Siga os passos até concluir a instalação. É
+recomendável utilizar a instalação padrão.
 
-Para testar a instalação, abra o terminal e digite o comando “git”. 
-A saída deverá ser similar a figura \ref{fig:inst09}:
+Para testar a instalação, abra o terminal e digite o comando "git".  A
+saída deverá ser similar a figura \ref{fig:inst09}:
 
 \begin{figure}
   \begin{center}
@@ -239,42 +236,43 @@ A saída deverá ser similar a figura \ref{fig:inst09}:
 **Utiizando o MacPorts**
 
 A maneira mais fácil de instalar Git no Mac é via
-MacPorts\footnote{\url{http://www.macports.org}}, para isso basta 
-executar o seguinte 
-comando:
+MacPorts\footnote{\url{http://www.macports.org}}, para isso basta
+executar o seguinte comando:
 
 ```{r, engine="bash", eval=FALSE}
 sudo port install git-core
 ```
 
-
 # Configurando Perfil
 
-As configurações vão determinar algumas opções globais do Git, sendo 
-necessário fazê-las apenas uma vez. 
+As configurações vão determinar algumas opções globais do Git, sendo
+necessário fazê-las apenas uma vez.
 
 ## Usuário
 
-Os comandos abaixo vão configurar o nome de usuário e endereço de e-mail.
-Esta informação é importante pois é anexada aos commits que você realiza, 
-ou seja, as configurações ficarão associadas ao trabalho em desenvolvimento, 
-permitindo que os colaboradores/gestores do projeto identifiquem suas 
-contribuições.
-Caso o projeto seja individual, a importância de configurar usuário e 
-e-mail se mantém. Uma vez que se trabalha com duas ou mais máquinas, 
-a maneira de identificar a pessoa que está desenvolvendo o trabalho é 
-pelo nome de usuário.
+Os comandos abaixo vão configurar o nome de usuário e endereço de
+e-mail.  Esta informação é importante pois é anexada aos commits que
+você realiza, ou seja, as configurações ficarão associadas ao trabalho
+em desenvolvimento, permitindo que os colaboradores/gestores do projeto
+identifiquem suas contribuições.  Caso o projeto seja individual, a
+importância de configurar usuário e e-mail se mantém. Uma vez que se
+trabalha com duas ou mais máquinas, a maneira de identificar a pessoa
+que está desenvolvendo o trabalho é pelo nome de usuário.
 
 Em um terminal Bash, execute o código abaixo:
+
 ```{r, engine="bash", eval=FALSE}
 git config --global user.name "Knight Rider"
 git config --global user.email "batman@justiceleague.org"
 ```
 
-A opção `--global` usará essa informação para todo projeto Git da máquina. 
+A opção `--global` usará essa informação para todo projeto Git da
+máquina.
 
-É possível fazer definições para cada projeto, ou seja, não globais. 
-Para isso é necessário executar o comando a seguir sem a opção `--global`.
+É possível fazer definições para cada projeto, ou seja, não globais.
+Para isso é necessário executar o comando a seguir sem a opção
+`--global`.
+
 ```{r, engine="bash", eval=FALSE}
 git config user.name "Knight Rider"
 git config user.email "batman@justiceleague.org"
@@ -282,35 +280,39 @@ git config user.email "batman@justiceleague.org"
 
 Uma vez configurado o perfil, o Git está pronto para uso.
 
-
 ## Atalhos
 
-Os atalhos no Git são chamados de *Alias*. Com ele podemos mapear comandos 
-que repetidamente usamos para algumas poucas teclas. Estes atalhos podem 
-ser criados de dois modos: através do comando no terminal ou editando 
-diretamente no arquivo `/.gitconfig`.
+Os atalhos no Git são chamados de *Alias*. Com ele podemos mapear
+comandos que repetidamente usamos para algumas poucas teclas. Estes
+atalhos podem ser criados de dois modos: através do comando no terminal
+ou editando diretamente no arquivo `/.gitconfig`.
 
 **Pelo terminal:**
 
-Execute o comando abaixo com o atalho de sua preferência e o nome completo 
-do camando o qual deseja criar o alias.
+Execute o comando abaixo com o atalho de sua preferência e o nome
+completo do camando o qual deseja criar o alias.
+
 ```{r, engine="bash", eval=FALSE}
 git config --global alias.nome_do_alias "comando inteiro"
 ```
 
 Um exemplo bem simples é o seguinte:
+
 ```{r, engine="bash", eval=FALSE}
 git config --global alias.st "status"
 ```
+
 Assim, ao executar git st é o mesmo que executar git status.
 
-Pelo método citado acima, o alias é adicionado automaticamente no seu arquivo `/.gitconfig`. 
+Pelo método citado acima, o alias é adicionado automaticamente no seu
+arquivo `/.gitconfig`.
 
 **Pelo arquivo `/.gitconfig`:**
 
-Pode-se criar atalhos através de um bloco no seu arquivo de configuração. 
-Para isso, é necessário localizar o diretório do Git e adicionar a lista 
-de comandos desejada, como no exemplo:
+Pode-se criar atalhos através de um bloco no seu arquivo de
+configuração.  Para isso, é necessário localizar o diretório do Git e
+adicionar a lista de comandos desejada, como no exemplo:
+
 ```{r, engine="bash", eval=FALSE}
 [alias]
   st = status
@@ -320,68 +322,72 @@ de comandos desejada, como no exemplo:
   df = diff
 ```
 
-Assim que adicionar este bloco com os comandos de sua escolha, ele irá 
+Assim que adicionar este bloco com os comandos de sua escolha, ele irá
 funcionar imediatamente.
 
-Segue abaixo os caminhos para encontrar o arquivo `/.gitconfig` nos sistemas operacionais:
+Segue abaixo os caminhos para encontrar o arquivo `/.gitconfig` nos
+sistemas operacionais:
 
-+ Windows:  
-1 - C:\\Pasta_do_seu_projeto\\.git\\config  
-2 – C:\\Documents and Settings\\Seu_usuario\\.gitconfig  
-3 – C:\\Arquivos de programas\\Git\\etc\\gitconfig  
+  + Windows:
+    1. `C:\\Pasta_do_seu_projeto\\.git\\config`
+    2. `C:\\Documents and Settings\\Seu_usuario\\.gitconfig`
+    3. `C:\\Arquivos de programas\\Git\\etc\\gitconfig`
+  + Mac:
+    1. `/Pasta_do_seu_projeto/.git/config`
+    2. `/Users/Seu_usuario/.gitconfig`
+    3. `/usr/local/git/etc/gitconfig`
+  + Linux:
+    1. Crie um arquivo como _sudo_ dentro da pasta etc/ com nome de
+       gitconfig e coloque os atalhos de sua escolha.
 
-+ Mac:  
-1 - /Pasta_do_seu_projeto/.git/config  
-2 – /Users/Seu_usuario/.gitconfig  
-3 – /usr/local/git/etc/gitconfig  
 Obs: Os arquivos de configuração do Git não tem extensão.
 
-+ Linux:  
-Crie um arquivo como _sudo_ dentro da pasta etc/ com nome de gitconfig e 
-coloque os atalhos de sua escolha.  
-
-Não importa o método você utilize, suas configurações sempre ficarão 
+Não importa o método você utilize, suas configurações sempre ficarão
 salvas no arquivo `/.gitconfig`.
 
 ## Ignorar Arquivos
 
-Usando o arquivo `.gitignore` podemos ignorar arquivos que não desejamos 
+Usando o arquivo `.gitignore` podemos ignorar arquivos que não desejamos
 versionar no repositório, pode ser feito por projeto e por usuário.
-Configurar um arquivo `.gitignore` antes de começar a trabalhar, 
-é importante, pois evita commits acidentais de arquivos que não deveriam 
+Configurar um arquivo `.gitignore` antes de começar a trabalhar, é
+importante, pois evita commits acidentais de arquivos que não deveriam
 ir para o seu repositório Git.
 
 **Ignorar Arquivos por Projeto:**
 
-Em todos os projetos que necessitam de um controle de versão há sempre 
-casos em que arquivos não precisam ser versionados. Para isso é preciso 
-criar um arquivo `.gitignore` no diretório raiz do projeto, o qual contém 
-padrões (pattern) que serão ignorados, cada padrão fica em uma linha 
-como no exemplo:
+Em todos os projetos que necessitam de um controle de versão há sempre
+casos em que arquivos não precisam ser versionados. Para isso é preciso
+criar um arquivo `.gitignore` no diretório raiz do projeto, o qual
+contém padrões (pattern) que serão ignorados, cada padrão fica em uma
+linha como no exemplo:
+
 ```{r, engine="bash", eval=FALSE}
 $ cat .gitignore
 *.[oa]
 *~
 ```
 
-A primeira linha fala para o Git ignorar qualquer arquivo finalizado 
-em **.o** ou **.a** e a segunda linha ignora todos os arquivos que 
-terminam com um til **(~)**. Esses padrões podem serem feitos de acordo 
-com a necessidade de cada projeto.
+A primeira linha fala para o Git ignorar qualquer arquivo finalizado em
+**.o** ou **.a** e a segunda linha ignora todos os arquivos que terminam
+com um til **(~)**. Esses padrões podem serem feitos de acordo com a
+necessidade de cada projeto.
 
 **Ignorar Arquivos por Usuário (Globalmente):**
 
-Para não precisar criar uma lista de comandos para serem ignorados em cada 
-projeto, é possível ignorar arquivos em todos os repositórios. Para isso, 
-basta criar um arquivo `.gitignore` em seu diretório _home_ contendo os 
-padrões os quais deseja ignorar e executar o comando abaixo no terminal 
-a partir da pasta onde está localizado o arquivo `.gitignore`:
+Para não precisar criar uma lista de comandos para serem ignorados em
+cada projeto, é possível ignorar arquivos em todos os repositórios. Para
+isso, basta criar um arquivo `.gitignore` em seu diretório _home_
+contendo os padrões os quais deseja ignorar e executar o comando abaixo
+no terminal a partir da pasta onde está localizado o arquivo
+`.gitignore`:
+
 ```{r, engine="bash", eval=FALSE}
 git config --global core.excludesfile ~/.gitignore
 ```
 
-A partir disso, todos os arquivos que estão na lista serão ignorados pelo usuário.
+A partir disso, todos os arquivos que estão na lista serão ignorados
+pelo usuário.
 
-Finalmente com a instalação, configuração essencial (usuário e e-mail) 
-e configurações adicionais concluídos, podemos começar a utilizar o Git 
+Finalmente com a instalação, configuração essencial (usuário e e-mail) e
+configurações adicionais concluídos, podemos começar a utilizar o Git
 para versionar nossos projetos.
