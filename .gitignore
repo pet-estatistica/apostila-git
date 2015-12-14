@@ -14,5 +14,7 @@ downloads/*
 *.orig
 apostila-git.Rproj
 /apostila_git.toc
+/apostila_git.lol
 cap*.md
 cap*.pdf
+cap*.tex
