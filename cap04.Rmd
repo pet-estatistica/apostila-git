@@ -2,18 +2,17 @@
 title: "Projetos Remotos"
 author: "PET Estatística UFPR"
 graphics: yes
-header-includes: \usepackage{menukeys}
+header-includes:
+  \usepackage{menukeys}
 output:
   pdf_document:
-    template: template.tex
+    template:
     highlight: default
     toc: true
     toc_depth: 2
     keep_tex: true
     number_sections: true
 ---
-
-\chapter{Projetos Remotos}
 
 Nos capítulos anteriores descrevemos como instalar o Git e ter projetos
 versionados. No entanto, o uso do Git até então foi apenas local. Os
@@ -180,20 +179,20 @@ ssh eu@111.22.333.44\
 
 # Repositório remoto coletivo
 
-A única diferença é recomendamos a você criar um novo usuário e adicionar
-as chaves públicas de todos os membros. Evite adicionar chaves públicas
-para usuários na sua conta porque isso expõe seus documentos, alguma
-operação desastrosa por parte de alguém pode comprometê-los. Por isso,
-crie um usuário, por exemplo `gitusers`, para nesta conta manter o
+A única diferença é recomendamos a você criar um novo usuário e
+adicionar as chaves públicas de todos os membros. Evite adicionar chaves
+públicas para usuários na sua conta porque isso expõe seus documentos,
+alguma operação desastrosa por parte de alguém pode comprometê-los. Por
+isso, crie um usuário, por exemplo `gitusers`, para nesta conta manter o
 repositório remoto.
 
 Solicite que os colaboradores gerem as chaves públicas e te enviem o
 arquivo `id_rsa.pub`. Depois você adiciona cada chave ao
 `authorized_keys` de conta `gitusers`. Com chaves autorizadas, os
-colaboradores podem transferir arquivos, podem logar no servidor mas
-não podem instalar nada, a menos que você passe a senha do usuário
-`gitusers`. Para crias usuários no servidor, você precisa de
-privilégios de *admin*.
+colaboradores podem transferir arquivos, podem logar no servidor mas não
+podem instalar nada, a menos que você passe a senha do usuário
+`gitusers`. Para crias usuários no servidor, você precisa de privilégios
+de *admin*.
 
 ```{r, engine="bash", eval=FALSE}
 ## Logar na servidora.
@@ -221,7 +220,6 @@ ssh gitusers@111.22.333.44\
   "cat >> ~/.ssh/authorized_keys2" < todos.pub
 ```
 
-
 # Fluxo de trabalho com repositório remoto, do clone ao push 
 
 ## Git clone 
@@ -230,8 +228,10 @@ Este comando é usado para clonar um repositório do servidor remoto para
 um servidor local, caso você queira copiar um repositório que já existe
 para realizar colaborações em um projeto que queira participar.  Você
 terá acesso a todos os arquivos e poderá verificar as diferentes versões
-destes.  Supondo que sua equipe de trabalho possui uma biblioteca Git **Teste Clone**, onde são armazenados todos os arquivos. Você pode clonar estes arquivos para o seu diretório de trabalho e assim modificá-los conforme deseja.
-
+destes.  Supondo que sua equipe de trabalho possui uma biblioteca Git
+**Teste Clone**, onde são armazenados todos os arquivos. Você pode
+clonar estes arquivos para o seu diretório de trabalho e assim
+modificá-los conforme deseja.
 
 **Exemplo:**
 ```{r, engine="bash", eval=FALSE}
@@ -252,10 +252,13 @@ git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/TesteClone.git DirTeste
 
 ## Git Push 
 
-Após clonar e realizar contribuições ao projeto, você pode enviá-los para o repositório remoto. Estes arquivos, após o `Git push`, estarão prontos para serem integrados ao projeto com o `merge`.  
-Usado para transferência de arquivos entre repositório local e o
-servidor remoto. Como o nome já diz, o comando empurra os arquivos para
-o servidor remoto.  No exemplo abaixo enviaremos a ramificação `Branch Master` para o servidor chamado `origin`:
+Após clonar e realizar contribuições ao projeto, você pode enviá-los
+para o repositório remoto. Estes arquivos, após o `Git push`, estarão
+prontos para serem integrados ao projeto com o `merge`.  Usado para
+transferência de arquivos entre repositório local e o servidor
+remoto. Como o nome já diz, o comando empurra os arquivos para o
+servidor remoto.  No exemplo abaixo enviaremos a ramificação `Branch
+Master` para o servidor chamado `origin`:
     
 **Exemplo:**
 ```{r, engine="bash", eval=FALSE}
@@ -269,11 +272,12 @@ realizou o push por último serão desconsideradas.
 
 ## Git Pull 
 
-Para obter todos os arquivos presentes no projeto, você pode importar os arquivos do branch `master`.
-Toda vez que você utilizar o `Git pull` a última versão de todos os arquivos estarão no seu diretório.
-Também usado para transferência de arquivos, o comando puxa os
-arquivos do servidor remoto para o repositório local e faz o merge do
-mesmo, fundindo a última versão com a versão atualizada.
+Para obter todos os arquivos presentes no projeto, você pode importar os
+arquivos do branch `master`.  Toda vez que você utilizar o `Git pull` a
+última versão de todos os arquivos estarão no seu diretório.  Também
+usado para transferência de arquivos, o comando puxa os arquivos do
+servidor remoto para o repositório local e faz o merge do mesmo,
+fundindo a última versão com a versão atualizada.
 
 **Exemplo:**
 ```{r, engine="bash", eval=FALSE}
@@ -300,11 +304,10 @@ basta utilizar o comando `git diff`:
 git diff master origin/master
 ```
 
-
 # Listar branches locais/remotos
   
-O comando `git remote` é usado para
-verificar quais repositórios estão configurados.
+O comando `git remote` é usado para verificar quais repositórios estão
+configurados.
 
 **Exemplo:** para retornar a lista de repositórios:
 
@@ -322,7 +325,6 @@ armazanados:
 git remote -v
 ```
 
-
 # Adicionar, renomear, deletar remote
   
 ## Adicionando repositórios remotos 
@@ -335,8 +337,10 @@ como exemplo o projeto **Apostila-git**.
 
 **Exemplo:**
 ```{r, engine="bash", echo=TRUE, eval=FALSE}
-git remote add MeuRepo git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
-# Quando executamos novamente o comando para obter a lista de repositórios:
+git remote add MeuRepo \
+  git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
+
+## A lista de repositórios agora é:
 git remote -v
 ```
 
@@ -376,18 +380,20 @@ removido o repositório renomeado anteriormente `RenameRepo`.
 
 ## Deletar ramos no servidor
 
-Quando houver um branch que não está sendo utilizado ou está concluído, há a opção de excluí-lo do servidor.  
-Se for necessário apagar branches remotos, podemos utilizar o comando a seguir:
+Quando houver um branch que não está sendo utilizado ou está concluído,
+há a opção de excluí-lo do servidor.  Se for necessário apagar branches
+remotos, podemos utilizar o comando a seguir:
 
 **Exemplo:**
 ```{r, engine="bash", eval=FALSE}
 git push origin --delete <branch>
 ```
 
-
 ## Clonar apenas um *branch*, *commit* ou *tag*.
 
-É possível clonar apenas um branch e não o repositório Git completo. Supondo que no repositório há um branch chamado `MeuBranch` dentro do repositório `MeuRepo`, clonaremos o branch. 
+É possível clonar apenas um branch e não o repositório Git
+completo. Supondo que no repositório há um branch chamado `MeuBranch`
+dentro do repositório `MeuRepo`, clonaremos o branch.
 
 **Exemplo:**
 ```{r, engine="bash", eval=FALSE}
@@ -398,12 +404,12 @@ O Git ainda permite clonar um commit ou tag.
 
 **Exemplo:**
 ```{r, engine="bash", eval=FALSE}
-# Para uma tag:
+## Para uma tag:
 git -e: //git.myproject.org/MyProject.git@v1.0#egg=MyProject
-# Para um commit:
+
+## Para um commit:
 git -e: //git.myproject.org/MyProject.git@da39a3ee5e6b4b0d3255bfef95601890afd80709#egg=MyProject
 ```
-
 
 # Criando um Repositório Git #
     
@@ -423,8 +429,8 @@ mkdir MeuRepo.git
 git --bare init
 ```
 
-As configurações do servidor estão completas. A partir de agora você pode
-realizar os primeiros comandos para iniciar o repositório criado.
+As configurações do servidor estão completas. A partir de agora você
+pode realizar os primeiros comandos para iniciar o repositório criado.
 
 # Git no servidor #
 
@@ -485,8 +491,15 @@ Para visualizar a chave basta digitar o seguinte comando:
 cat ~/.ssh/id_rsa.pub
 ```
 
-A chave está no arquivo `id_rsa.pub`. O usuário deve copiar o texto deste arquivo na íntegra.
-Para gerar a conexão ssh com o servidor, deve visitar o site [https://gitlab.c3sl.ufpr.br/profile/keys](https://gitlab.c3sl.ufpr.br/profile/keys) e clicar em [Add SSH Key](https://gitlab.c3sl.ufpr.br/profile/keys/new). É necessário escrever um título para a sua nova chave, no campo `key` colar o texto copiado do arquivo `id_rsa.pub` e adicionar sua nova chave.
+A chave está no arquivo `id_rsa.pub`. O usuário deve copiar o texto
+deste arquivo na íntegra.  Para gerar a conexão ssh com o servidor, deve
+visitar o site
+[https://gitlab.c3sl.ufpr.br/profile/keys](https://gitlab.c3sl.ufpr.br/profile/keys)
+e clicar em
+[Add SSH Key](https://gitlab.c3sl.ufpr.br/profile/keys/new). É
+necessário escrever um título para a sua nova chave, no campo `key`
+colar o texto copiado do arquivo `id_rsa.pub` e adicionar sua nova
+chave.
 
 Para checar a configuração da sua máquina com o sevidor basta realizar o
 seguinte comando:
@@ -517,9 +530,10 @@ como no exemplo a seguir.
 
 **Exemplo:**
 ```{r, engine="bash", eval=FALSE}
-# chave do primeiro usuário
+## Chave do primeiro usuário.
 cat /tmp/id_rsa1.pub >> ~/.ssh/authorized_keys
-# chave do segundo usuário
+
+## Chave do segundo usuário.
 cat /tmp/id_rsa2.pub >> ~/.ssh/authorized_keys
 ...
 ```
@@ -538,5 +552,6 @@ git -bare init
 
 Agora os usuários, cujas chaves foram salvas no arquivo
 `authorized_keys` podem compartilhar arquivos no repositório com os
-comando `git init`, `git add`, `git commit`, `git remote add` e `git push origin master`.
+comando `git init`, `git add`, `git commit`, `git remote add` e `git
+push origin master`.
 
