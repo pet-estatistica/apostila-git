@@ -32,7 +32,7 @@ anterior, temos o Git devidamente configurado, com credenciais (nome e
 e-mail) e configurações aplicadas. Vamos então ver como o sistema de
 controle de versão acontece.
 
-```{r, engine = "bash"}
+```{r, engine="bash", eval=FALSE}
 ## Apenas verificando o cadastro.
 git config user.name "Knight Rider"
 git config user.email "batman@justiceleague.org"
