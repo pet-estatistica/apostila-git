@@ -1,17 +1,23 @@
 ---
-output: html_document
+title: "Dicionário de Termos"
+author: "PET Estatística UFPR"
+graphics: yes
+output:
+  pdf_document:
+    template:
+    highlight: default
+    toc: false
+    keep_tex: true
+    number_sections: false
 ---
-Dicionário de Termos
-====================
 
-## Config
+## Config ##
 
-O `config` é um comando usado para ajustar as configurações padrão do git.
-Há duas configurações básicas a serem feitas: a inclusão do e-mail e 
-do nome do usuário Git.
-Todas as configurações definidas como globais ficam armazenadas em um 
-arquivo chamado `.gitconfig`, que fica localizado no diretório padrão 
-do usuário.
+O `config` é um comando usado para ajustar as configurações padrão do
+git.  Há duas configurações básicas a serem feitas: a inclusão do e-mail
+e do nome do usuário Git.  Todas as configurações definidas como globais
+ficam armazenadas em um arquivo chamado `.gitconfig`, que fica
+localizado no diretório padrão do usuário.
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -21,16 +27,16 @@ git config --global user.name "Ezio Auditore"
 git config --global user.email ezio.auditore@exemple.com
 ```
 
-## SSH Key
+## SSH Key ##
 
 É uma chave de autenticação baseada em criptografia de chave pública
-(chave assimétrica). Essa criptografia torna o processo de transferência 
-de arquivos entre o cliente e o servidor mais segura. 
+(chave assimétrica). Essa criptografia torna o processo de transferência
+de arquivos entre o cliente e o servidor mais segura.
 
-Para que o git local consiga se conectar a um servidor git remoto, é 
+Para que o git local consiga se conectar a um servidor git remoto, é
 necessário que esta chave seja gerada e que as devidas configurações
-sejam feitas tanto localmente quanto no servidor remoto,
-caso contrário, é exibido um erro e a conexão é interrompida.
+sejam feitas tanto localmente quanto no servidor remoto, caso contrário,
+é exibido um erro e a conexão é interrompida.
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -38,11 +44,10 @@ caso contrário, é exibido um erro e a conexão é interrompida.
 ssh-keygen
 ```
 
+## Help ##
 
-## Help
-
-Todo comando Git tem um manual de ajuda que pode ser exibido na tela
-com o comando `--help`.
+Todo comando Git tem um manual de ajuda que pode ser exibido na tela com
+o comando `--help`.
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -50,18 +55,11 @@ com o comando `--help`.
 git status --help
 ```
 
-## Repositório
+## Repositório ##
 
-<<<<<<< HEAD
-
-=======
- Um repositório é uma pasta gerenciada pelo git. A partir 
-da criação desta, usufruimos dos sistema de versionamento, sendo possível
-transitar entre as diferentes versões a medida que necessário. 
->>>>>>> 07c90afef682bf3d8d8cd150e8145174e3520928
-
-
-
+Um repositório é uma pasta gerenciada pelo git. A partir da criação
+desta, usufruimos dos sistema de versionamento, sendo possível transitar
+entre as diferentes versões a medida que necessário.
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -69,19 +67,20 @@ transitar entre as diferentes versões a medida que necessário.
 git init
 ```
 
-## Stagin Area
+## Stagin Area ##
 
-A stagin area é um espaço temporário na pasta gerenciada pelo Git. É 
-o local em que ficam os arquivos antes de serem marcados como uma versão 
-definitiva. Em tradução livre, stagin area é área de estágio, podemos 
-assim imaginar que o arquivo está estagiando antes de ser promovido a um 
+A stagin area é um espaço temporário na pasta gerenciada pelo Git. É o
+local em que ficam os arquivos antes de serem marcados como uma versão
+definitiva. Em tradução livre, stagin area é área de estágio, podemos
+assim imaginar que o arquivo está estagiando antes de ser promovido a um
 arquivo definitivo.
 
-## Remote
+## Remote ##
 
-O `remote` mostra o servidor remoto onde os arquivos Git estão hospedados. 
-O remote padrão geralmente é criado com o nome de `origin`, mas é possível adicioná-lo utilizando outros nomes e até mesmo adicionar outros servidores
-remotos juntamente ao `origin`.
+O `remote` mostra o servidor remoto onde os arquivos Git estão
+hospedados.  O remote padrão geralmente é criado com o nome de `origin`,
+mas é possível adicioná-lo utilizando outros nomes e até mesmo adicionar
+outros servidores remotos juntamente ao `origin`.
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -89,17 +88,16 @@ remotos juntamente ao `origin`.
 git remote add origin "git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git"
 ```
 
-
-## Clone
+## Clone ##
 
 O `clone` é usado quando deseja-se clonar um repositório que está
-disponível em um servidor remoto para o servidor local.
-Depois da clonagem, estará disponível todos os arquivos e todo o 
-histórico de controle de versões sem a necessidade de uso da internet.
+disponível em um servidor remoto para o servidor local.  Depois da
+clonagem, estará disponível todos os arquivos e todo o histórico de
+controle de versões sem a necessidade de uso da internet.
 
-É importante salientar que quando se é usado o `clone`, o servidor remoto
-é adicionado automaticamente, podendo ser acessado através do comando
-`origin`.
+É importante salientar que quando se é usado o `clone`, o servidor
+remoto é adicionado automaticamente, podendo ser acessado através do
+comando `origin`.
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -109,7 +107,7 @@ git clone git@gitlab.c3sl.ufpr.br:pet-estatistica/apostila-git.git
 git remote
 ```
 
-## Status
+## Status ##
 
 O status exibe a diferença entre o estado atual dos arquivos e o estado
 do último `commit` do mesmo `branch`. São três estados possíveis:
@@ -121,10 +119,10 @@ consolidado (committed), modificado (modified) e preparado (staged).
 git status
 ```
 
-## Add
+## Add ##
 
-O `add` adiciona (envia) os arquivos para a stagin area, para que 
-possa ser marcado no tempo por um commit.
+O `add` adiciona (envia) os arquivos para a stagin area, para que possa
+ser marcado no tempo por um commit.
 
 **Exemplo:**
 ```{r, engine="bash", eval=FALSE}
@@ -132,10 +130,10 @@ possa ser marcado no tempo por um commit.
 git add *
 ```
 
-## Commit
+## Commit ##
 
-O `commit` marca os arquivos da stagin area como uma versão definitiva, 
-para que posteriormente, caso algum erro ocorra, possamos voltar nos 
+O `commit` marca os arquivos da stagin area como uma versão definitiva,
+para que posteriormente, caso algum erro ocorra, possamos voltar nos
 commits anteriores onde o código está em pleno funcionamento.
 
 **Exemplo:**
@@ -145,19 +143,11 @@ git commit -m "Meu primeiro commit"
 
 ## Branch
 
-HEAD
-Os `branchs` são como uma cópia dos arquivos do ultimo commit
-para um ambiente de desenvolvimento paralelo, o que
-permite que as modificações em um `branch` não afete os arquivos em outro.
-Os branchs também são chamados de ramos de desenvolvimento. Veja com mais
-detalhes no capitulos dos worksflows.
-
-
-Os `branchs` são como cópias dos arquivos do último commit para um ambiente 
-de desenvolvimento paralelo, o qual permite que as modificações em um 
-`branch` não afete os arquivos em outro.
-Os branchs também são chamados de ramos de desenvolvimento.
- 07c90afef682bf3d8d8cd150e8145174e3520928
+Os `branchs` são como uma cópia dos arquivos do ultimo commit para um
+ambiente de desenvolvimento paralelo, o que permite que as modificações
+em um `branch` não afete os arquivos em outro.  Os branchs também são
+chamados de ramos de desenvolvimento. Veja com mais detalhes no
+capitulos dos worksflows.
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -165,10 +155,10 @@ Os branchs também são chamados de ramos de desenvolvimento.
 git branch novoBranch
 ```
 
-## Checkout
+## Checkout ##
 
-O `checkout` serve para transitar entre branchs e commits. 
-Usando o checkout é possível voltar a commits anteriores.
+O `checkout` serve para transitar entre branchs e commits.  Usando o
+checkout é possível voltar a commits anteriores.
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -176,17 +166,17 @@ Usando o checkout é possível voltar a commits anteriores.
 git checkout teste
 ```
 
-## Merge
+## Merge ##
 
 Com o `merge` é possível a fusão de dos dois ramos em um.
 
 Quando se trabalha em ramos diferentes (diferentes branchs) e precisa-se
-posteriormente juntar o trabalho, o `merge` (fundir) é usado, 
-permitindo que o trabalho seja centralizado novamente. A fusão é feita 
-de forma automática, mas conflitos podem ocorrer, como por exemplo,
-quando duas ou mais pessoas modificam a mesma parte do código. 
-Estes conflitos devem ser resolvidos manualmente, deixando a cargo do
-gerente de projetos decidir que parte do código deve permanecer.
+posteriormente juntar o trabalho, o `merge` (fundir) é usado, permitindo
+que o trabalho seja centralizado novamente. A fusão é feita de forma
+automática, mas conflitos podem ocorrer, como por exemplo, quando duas
+ou mais pessoas modificam a mesma parte do código.  Estes conflitos
+devem ser resolvidos manualmente, deixando a cargo do gerente de
+projetos decidir que parte do código deve permanecer.
 
 **Exemplo:**
 ```{r, engine='bash', eval=FALSE}
@@ -194,21 +184,15 @@ gerente de projetos decidir que parte do código deve permanecer.
 git merge novoBranch
 ```
 
-## Rm
+## Rm ##
 
- HEAD
-O `git rm`, na sua forma mais comum, serve para remover um arquivo de 
-forma que ele deixe de ser gerenciado pelo git e seja excluido do disco 
-rígido. Também é possível que o arquivo deixe de ser gerenciado 
-e permaneça no disco.
+O `git rm`, na sua forma mais comum, serve para remover um arquivo de
+forma que ele deixe de ser gerenciado pelo git e seja excluido do disco
+rígido. Também é possível que o arquivo deixe de ser gerenciado e
+permaneça no disco.
 
-O `git rm`, de forma mais prática, serve para remover um arquivo deixando
-de ser gerenciado pelo Git e seja excluído do disco rígido. Também é possível 
-que o arquivo deixe de ser gerenciado e permaneça no disco.
- 07c90afef682bf3d8d8cd150e8145174e3520928
-
-Uma das vantagens é que, quando o arquivo é removido pelo `git rm`, já 
-aparece como preparado (staged), precisando somente que a exclusão seja 
+Uma das vantagens é que, quando o arquivo é removido pelo `git rm`, já
+aparece como preparado (staged), precisando somente que a exclusão seja
 commitada.
 
 **Exemplo:**
@@ -220,13 +204,13 @@ git rm teste.tex
 git rm --cached teste.tex
 ```
 
-## Mv
+## Mv ##
 
 O `git mv` move ou renomeia arquivos informando ao Git.
 
 Caso a mudança seja feita sem esse comando, o Git entende que o arquivo
-foi deletado e que um novo arquivo foi criado, deixando de fora, 
-por exemplo, a ligação existente entre o arquivo e seus commits.
+foi deletado e que um novo arquivo foi criado, deixando de fora, por
+exemplo, a ligação existente entre o arquivo e seus commits.
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -234,10 +218,10 @@ por exemplo, a ligação existente entre o arquivo e seus commits.
 git mv teste.tex arquivo1.tex
 ```
 
-## Push
+## Push ##
 
-O `push` é usado para "empurrar" os arquivos do repositório local 
-para o servidor remoto.
+O `push` é usado para "empurrar" os arquivos do repositório local para o
+servidor remoto.
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -245,10 +229,11 @@ para o servidor remoto.
 git push origin master
 ```
 
-## Fetch 
+## Fetch ##
 
-O `fetch` atualiza o repositório local com as alterações do remoto, porém
-não realiza o merge dos arquivos, deixando isso para ser feito manualmente.
+O `fetch` atualiza o repositório local com as alterações do remoto,
+porém não realiza o merge dos arquivos, deixando isso para ser feito
+manualmente.
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -256,11 +241,11 @@ não realiza o merge dos arquivos, deixando isso para ser feito manualmente.
 git fetch origin
 ```
 
-## Pull
+## Pull ##
 
-O `pull` é semelhante ao comando `fetch`, porém, puxa os 
-arquivos do servidor remoto fazendo merge. Caso haja algum conflito de
-merge, estes deverão ser resolvidos manualmente.
+O `pull` é semelhante ao comando `fetch`, porém, puxa os arquivos do
+servidor remoto fazendo merge. Caso haja algum conflito de merge, estes
+deverão ser resolvidos manualmente.
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -268,25 +253,24 @@ merge, estes deverão ser resolvidos manualmente.
 git pull origin
 ```
 
-
-## HEAD
+## HEAD ##
 
 `HEAD` é um arquivo que contém um apontador para o `branch` atual.
-Quando o `checkout` é executado para a mudança do `branch`, 
-esse arquivo é automaticamente modificado, apontando agora para o
-novo local, e assim permitindo que, quando o computador for desligado e 
-depois de reniciado o Git ainda esteja trabalhando com o mesmo `branch`.
+Quando o `checkout` é executado para a mudança do `branch`, esse arquivo
+é automaticamente modificado, apontando agora para o novo local, e assim
+permitindo que, quando o computador for desligado e depois de reniciado
+o Git ainda esteja trabalhando com o mesmo `branch`.
 
-## Tag
+## Tag ##
 
 As tags são usadas para marcar pontos específicos do desenvolvimento.
 Geralmente são usadas para marcar versões definitivas, como a v1.0, v2.0
 e assim por diante.
 
-Elas são divididas em dois tipos: leve e anotada.
-A `tag` leve simplesmente aponta para um `commit` específico. Já a `tag` 
-anotada é guardada como objetos inteiros, possuindo algumas informações,
-como o nome da pessoa que criou, a data, uma mensagem semelhante a de `commit`, 
+Elas são divididas em dois tipos: leve e anotada.  A `tag` leve
+simplesmente aponta para um `commit` específico. Já a `tag` anotada é
+guardada como objetos inteiros, possuindo algumas informações, como o
+nome da pessoa que criou, a data, uma mensagem semelhante a de `commit`,
 entre outras.
 
 **Exemplo:**
@@ -298,10 +282,10 @@ git tag -l "v1.0.0"
 git tag -a v1.0 -m "Minha primeira tag anotada."
 ```
 
-## Stash
+## Stash ##
 
-Com este comando não é necessário fazer um `commit` para mudar de `branch`.
-Ao executá-lo, os arquivos modificados ficam salvos em uma
+Com este comando não é necessário fazer um `commit` para mudar de
+`branch`.  Ao executá-lo, os arquivos modificados ficam salvos em uma
 pilha de modificações inacabadas, sendo possível transitar entre
 `branchs` e voltar ao trabalho inacabado quando necessário.
 
@@ -313,12 +297,12 @@ git stash
 git stash list
 ```
 
-## Reset
+## Reset ##
 
-Enquanto o `git checkout` somente transita entre os `commits`, 
-o `reset` pode também alterar o histórico, fazendo `commits` serem 
-apagados de maneira irreversível (--hard) ou serem apenas resetados 
-ao estado de não commitado (--soft).
+Enquanto o `git checkout` somente transita entre os `commits`, o `reset`
+pode também alterar o histórico, fazendo `commits` serem apagados de
+maneira irreversível (--hard) ou serem apenas resetados ao estado de não
+commitado (--soft).
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -326,15 +310,14 @@ ao estado de não commitado (--soft).
 git reset --hard HEAD~1
 ```
 
-
-## Rebase
+## Rebase ##
 
 O `rebase` é usado para modificar `commits` antigos. Ele refaz a árvore
-de `commits`, sendo assim não é uma boa ideia fazer um `push` da 
-alteração, pois modificará a árvore do servidor afetando todos os 
+de `commits`, sendo assim não é uma boa ideia fazer um `push` da
+alteração, pois modificará a árvore do servidor afetando todos os
 desenvolvedores.
 
-A ideia geral é `rebase` apaga os commits de um ramo e "muda de base", 
+A ideia geral é `rebase` apaga os commits de um ramo e "muda de base",
 passando-os para novos commits do ramo atual, formando uma árvore com
 fluxo de trabalho linear.
 
@@ -344,21 +327,21 @@ fluxo de trabalho linear.
 git rebase teste
 ```
 
-## Blame
+## Blame ##
 
-Pesquisa qual `commit` modificou determinado arquivo, com o objetivo
-de encontrar quem e quando um erro foi inserido.
-Esse método também é chamado de anotação de arquivo.
+Pesquisa qual `commit` modificou determinado arquivo, com o objetivo de
+encontrar quem e quando um erro foi inserido.  Esse método também é
+chamado de anotação de arquivo.
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
 # Fazer
 ```
 
-## Bisect
+## Bisect ##
 
-O `bisect` realiza uma pesquisa binária (binary search) a procura de 
-erros. Para que a pesquisa ocorra, é necessário um ponto no tempo em que 
+O `bisect` realiza uma pesquisa binária (binary search) a procura de
+erros. Para que a pesquisa ocorra, é necessário um ponto no tempo em que
 o código esteja funcionando e outro que não esteja.
 
 **Exemplo:**
