@@ -1,6 +1,7 @@
 \documentclass[
-  a5paper,
-  pagesize,
+  % a5paper,
+  a4paper,
+  % pagesize,
   9pt,
   % bibtotoc,
   pointlessnumbers,
@@ -263,40 +264,47 @@
 % http://www.latextemplates.com/template/ebook
 % https://www.overleaf.com/3861001pgjtwv#/11122365/
 \thispagestyle{empty}
-\ThisCenterWallPaper{0.9}{./images/git-agasalho.png}
+\ThisCenterWallPaper{0.9}{./images/apostila_capa.pdf}
 % Add the background image, the first argument is the scaling - adjust
 % this as necessary so the image fits the entire page.
 
-\begin{tikzpicture}[remember picture, overlay]
-\node [rectangle, rounded corners, fill=white, opacity=0.75,
-  anchor=south west, minimum width=5cm, minimum height=4cm]
-  (box) at (-0.5,-10) (box){};
-% White rectangle - "minimum width/height" adjust the width and height
-% of the box; "(-0.5,-10)" adjusts the position on the page.
+% \begin{tikzpicture}[remember picture, overlay]
+% \node [rectangle, rounded corners, fill=white, opacity=0.75,
+%   anchor=south west, minimum width=5cm, minimum height=4cm]
+%   (box) at (-0.5,-10) (box){};
+% % White rectangle - "minimum width/height" adjust the width and height
+% % of the box; "(-0.5,-10)" adjusts the position on the page.
+% 
+% \node[anchor=west,
+%   color01,
+%   font=\sffamily\bfseries\scshape\Large,
+%   xshift=-1.5cm, yshift=-1cm, text width=4cm]
+%   at (box.north){\thetitle}; 
+% % "Text width" adjusts the wrapping width, "xshift/yshift" adjust the
+% % position relative to the white rectangle.
+% 
+% \node[anchor=west,
+%   color01,
+%   font=\sffamily\bfseries,
+%   xshift=-1.5cm, yshift=-2.5cm, text width=4cm]
+%   at (box.north){\theauthor};
+% % "Text width" adjusts the wrapping width, "xshift/yshift" adjust the
+% % position relative to the white rectangle.
+% \end{tikzpicture}
 
-\node[anchor=west,
-  color01,
-  font=\sffamily\bfseries\scshape\Large,
-  xshift=-1.5cm, yshift=-1cm, text width=4cm]
-  at (box.north){\thetitle}; 
-% "Text width" adjusts the wrapping width, "xshift/yshift" adjust the
-% position relative to the white rectangle.
-
-\node[anchor=west,
-  color01,
-  font=\sffamily\bfseries,
-  xshift=-1.5cm, yshift=-2.5cm, text width=4cm]
-  at (box.north){\theauthor};
-% "Text width" adjusts the wrapping width, "xshift/yshift" adjust the
-% position relative to the white rectangle.
-\end{tikzpicture}
+$\phantom{0}$
 
 \end{titlepage}
 
 %-----------------------------------------------------------------------
 % Dedicatórias.
 
-\newpage{}
+\clearpage
+$\phantom{0}$
+\thispagestyle{empty}
+
+\pagebreak
+% \newpage
 \thispagestyle{empty}
 \vspace*{2cm}
 
@@ -315,7 +323,11 @@
   }
 \end{center}
 
-\newpage
+\clearpage
+$\phantom{0}$
+\thispagestyle{empty}
+
+\pagebreak
 
 %-----------------------------------------------------------------------
 % Agradecimentos.
@@ -356,6 +368,9 @@
 
 \addcontentsline{toc}{chapter}{Apêndice}
 \input{./cap08/cap08_er.tex}
+
+\chapter{Dicionário de termos}
+\input{./cap08/cap08_dt.tex}
 
 \end{document}
 
