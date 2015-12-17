@@ -11,7 +11,7 @@ presentes.
 \listofprogram
 
 \begin{program}[H]
-  \caption{Configure usuário e e-mail.}
+  \caption{Configurar usuário e e-mail localmente e globalmente.}
 \end{program}
 <<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Configurando localmente
@@ -31,7 +31,7 @@ git config --global user.email "namelastname@servidor"
 %%----------------------------------------------------------------------
 
 \begin{program}[H]
-  \caption{Inicie um projeto Git local.}
+  \caption{Iniciar um projeto Git local.}
 \end{program}
 <<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Em um diretório que deseja-se versionar
@@ -56,11 +56,100 @@ git log
 %%----------------------------------------------------------------------
 
 \begin{program}[H]
-  \caption{Trabalhe com ramos.}
+  \caption{Criar chaves públicas para adicionar aos perfils em seviços
+    Web.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
+## Cria uma chave pública.
+ssh-keygen -t rsa -C "namelastname@servidor"
+
+## Exibe as chaves públicas.
+cat ~/.ssh/id_rsa.pub
+
+## Adicione o conteúdo a um servidor remoto, como:
+##  - git@github.com
+##  - git@gitlab.com
+##  - git@gitlab.c3sl.ufpr.br
+
+## Verifica conexão com o servidor
+ssh -T endereço ## endereço = git@github.com, ...
+
+## Obs.: Todos os comandos ssh são provinientes do
+## pacote de função ssh para shell, portanto para
+## utilizar instale este pacote.
+@
+
+%%----------------------------------------------------------------------
+
+\begin{program}[H]
+  \caption{Criar chaves públicas e adicionar ao um servidor remoto.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
+## Cria uma chave pública na sua máquina local.
+ssh-keygen -t rsa -C "namelastname@servidor"
+
+## Exibe as chaves públicas criadas.
+cat ~/.ssh/id_rsa.pub
+
+## Exibe as chaves autorizadas da sua conta no servidor remoto.
+ssh user@caporal.c3sl.ufpr.br "cat ~/.ssh/authorized_keys2"
+
+## Insere a chave gerada final do arquivo de chaves autorizadas.
+ssh user@caporal.c3sl.ufpr.br \
+  "cat >> ~/.ssh/authorized_keys2" < ~/.ssh/id_rsa.pub
+
+@
+
+%%----------------------------------------------------------------------
+
+\begin{program}[H]
+  \caption{Inicar um repositório remoto Git em um servidor.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
+## Loga no servidor por SSH.
+ssh user@caporal.c3sl.ufpr.br
+
+## Criar um diretório para conter o projeto. Apesar do final .git
+## (opcional), é um diretório, não um arquivo.
+mkdir -p ~/Documentos/meu1repo.git
+cd ~/Documentos/meu1repo.git
+
+## Inicia um repositório remoto sem workspace.
+git --bare init
+git config --list
+
+## Sai do servidor.
+exit
+
+## Opção 1: Na máquina local, clonar o repositório. O diretório criado
+## não tem o .git no final
+git clone user@macalan.c3sl.ufpr.br:~/Documentos/meu1repo.git
+cd meu1repo
+git status
+
+## Opção 2: Se o repositório ja começou localmente, então apenas
+## adicione o endereço do remoto.
+git remote add origin \
+  user@macalan.c3sl.ufpr.br:~/Documentos/meu1repo.git
+git push origin master
+
+## Exibir os endereços remotos.
+git remote -v
+
+@
+
+%%----------------------------------------------------------------------
+
+\begin{program}[H]
+  \caption{Criar um ramo, incluir modificações e fazer o merge em
+    outro.}
 \end{program}
 <<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Verifica os ramos existentes
 git branch
+git branch -l ## Apenas os locais
+git branch -r ## Apenas os remotos
+git branch -a ## Todos
 
 ## Cria um ramo, para trabalho específico como:
 ##   - Corrigir bugs
@@ -89,10 +178,15 @@ git branch -d bugfix
 
 @
 
+%% Criar um ramo e subir as diferenças, setar upstream.
+
+%% Baixar um ramo e criar o seu local.
+
 %%----------------------------------------------------------------------
 
 \begin{program}[H]
-  \caption{Visualize diferenças.}
+  \caption{Visualizar diferenças entre referências relativas, absolutas
+    (\textit{commits}) e ramos.}
 \end{program}  
 <<engine="bash", echo=TRUE, eval=FALSE>>=
 ## -------------------------------------------
@@ -132,7 +226,7 @@ git diff master feature1
 %%----------------------------------------------------------------------
 
 \begin{program}[H]
-  \caption{Resolva conflitos de merge.}
+  \caption{Resolver conflitos de merge.}
 \end{program}
 <<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Incorpora modificações realizadas no ramo feature
@@ -149,7 +243,7 @@ git commit -a -m "Merge do ramo feature"
 %%----------------------------------------------------------------------
 
 \begin{program}[H]
-  \caption{Visualize seu projeto.}
+  \caption{Visualizar o histórico de \textit{commits} do projeto.}
 \end{program}
 <<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Histórico de registros
@@ -164,12 +258,13 @@ git reflog
 
 ## Histórico de registro via interface gráfica padrão
 gitk
+gitk --all
 @
 
 %%----------------------------------------------------------------------
 
 \begin{program}[H]
-  \caption{Volte versões anteriores.}
+  \caption{Voltar arquivos para versões anteriores.}
 \end{program}
 <<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Verifica o histórico de versões do repositório
@@ -211,11 +306,15 @@ git checkout -b ramo_teste
 %%----------------------------------------------------------------------
 
 \begin{program}[H]
-  \caption{Reescreva commits.}
+  \caption{Refazer o último \textit{commit} para alterar a mensagem e/ou
+    incluir mais modificações.}
 \end{program}
 <<engine="bash", echo=TRUE, eval=FALSE>>=
 ## Verifica o histórico de versões do repositório
 git log --oneline
+
+## Caso seja o objetivo, adicione mais modificações.
+git add script.R
 
 ## -------------------------------------------
 ## Reescreve a última mensagem de commit
@@ -226,31 +325,6 @@ git commit --amend -m "Correção de Commit"
 ## Obs2.: Reescreve a história do repositório, não
 ## é recomendável reescrever a linha do tempo quando
 ## se está em um projeto colaborativo remoto.
-@
-
-%%----------------------------------------------------------------------
-
-\begin{program}[H]
-  \caption{Cria chaves públicas.}
-\end{program}
-<<engine="bash", echo=TRUE, eval=FALSE>>=
-## Cria uma chave pública.
-ssh-keygen -t rsa -C "namelastname@servidor"
-
-## Exibe as chaves públicas.
-cat ~/.ssh/id_rsa.pub
-
-## Adicione o conteúdo a um servidor remoto, como:
-##  - git@github.com
-##  - git@gitlab.com
-##  - git@gitlab.c3sl.ufpr.br
-
-## Verifica conexão com o servidor
-ssh -T endereço ## endereço = git@github.com, ...
-
-## Obs.: Todos os comandos ssh são provinientes do
-## pacote de função ssh para shell, portanto para
-## utilizar instale este pacote.
 @
 
 %%----------------------------------------------------------------------
@@ -280,6 +354,12 @@ git pull origin
 @
 
 %%----------------------------------------------------------------------
+
+\begin{itemize}
+\item asdasd
+\item asdas
+\item 
+\end{itemize}
 
 \begin{program}[H]
   \caption{Manipule ramos remotos.}
@@ -377,5 +457,36 @@ git remote set-url origin --push --add endereço_remoto
 
 ## Envia as contribuições para os locais remotos
 git push origin
+
+@
+
+%%----------------------------------------------------------------------
+
+\begin{program}[H]
+  \caption{Remove ramos de demanda, locais e remotos, já incorporados
+    aos ramos permanentes.}
+\end{program}
+<<engine="bash", echo=TRUE, eval=FALSE>>=
+## Listar os ramos:
+git branch -l       ## Locais
+git branch -r       ## Remotos
+git branch -a       ## Todos
+git branch --merged ## Incorporados ao atual
+
+## Remove ramos:
+git branch -d bugfix            ## Locais
+git branch -dr origin/bugfix    ## Remotos
+git push --delete origin bugfix ## No origin
+git push origin :bugfix         ## Idem o anterior
+
+## Remove todos os ramos LOCAIS com 'issue' no nome.
+git branch -l --merged | grep "issue" | xargs -n 1 git branch -d
+
+## Remove todos os ramos REMOTOS com 'issue' no nome.
+git branch -r --merged | grep "issue" | xargs -n 1 git branch -dr
+
+## Acima da versão 2.5.0 pode-se usar
+git branch -d `git branch l --merged`
+git branch -dr `git branch r --merged`
 
 @
