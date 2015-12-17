@@ -29,7 +29,7 @@
       1. Habilitar comunicação
       2. Gerenciar repositórios
    3. Fluxo de trabalho
-   4. Macanísmos de colaboração
+   4. Mecanismos de colaboração
       1. Issues e merge request
       2. Fork e pull request
    5. Integração contínua
@@ -54,7 +54,7 @@
       1. Clonar, modificar e subir
       2. Resolver um bug
       3. Incorporar o remoto ao local
-      4. Resolver confito de merge
+      4. Resolver conflito de merge
       5. Voltar o projeto para um commit
       6. Deletar ramos
       7. Criar ramo de um commit passado
@@ -84,7 +84,7 @@
    + Walmes: terminar o que tem para ser feito para GitHub, adicionar
      chaves, verificar conexão, criar renomear projeto, clonar,
      modificar e subir. Renomear, deletar e transferir projeto.
-   + Gabriel: Descrever o usdo do `init`, `add`, `commit`, definir as
+   + Gabriel: Descrever o uso do `init`, `add`, `commit`, definir as
      três áreas de presença das modificações e acompanhar modificações
      com `diff`, `log`, `status` e `reflog`.
    + Ângela: Incluir as ilustrações dos modelos de workflow.
@@ -92,13 +92,13 @@
      versão preliminar da apostila correspondentes à Linux e Windows.
    + Eduardo: concluir as seções sobre uso da `git gui`, `gitk`, `gitg`
      e `gitx`.
-   + Alessandra: configurar conexão serviador via ssh, criar e
+   + Alessandra: configurar conexão servidor via ssh, criar e
      transferir as chaves públicas, criar um repositório no servidor e
      cloná-lo.
    + Alcides: concluir o dicionário de termos.
    + Daniel: concluir o conteúdo do *cheat sheet*.
 3. 2015-11-10 [week03]:
-   + Walmes: escrever para o GitLab o mesmo contúdo para presente para o
+   + Walmes: escrever para o GitLab o mesmo conteúdo para presente para o
      GitHub. Isso vai de uma breve descrição das funcionalidades, como
      criar conta e gerenciar um repositório.
    + Gabriel: **finalizar o trabalho da semana anterior**. Escrever
@@ -115,17 +115,17 @@
    + Daniel: Definir o conteúdo previsto no *cheat sheet* e concluir o
      capítulo sobre SCV. Revisar o capítulo da Ângela.
 4. 2015-11-17 [week04]:
-   + Walmes: descrever os mecanísmos de colaboração com interfaces web:
+   + Walmes: descrever os mecanismos de colaboração com interfaces web:
      issue, fork e merge request.
    + Gabriel: Acréscimos de revisão do capítulo. Revisar os apêndices do
      Alcides.
    + Ângela: Descrever o fluxo de trabalho do PET. Revisar o capítulo da
      Jhenifer.
-   + Jhenifer: Acrécimos de revisão. Revisão do capítulo da Alessandra.
+   + Jhenifer: Acréscimos de revisão. Revisão do capítulo da Alessandra.
    + Eduardo: Documentar o uso das ferramentas de merge: meld, kdiff3 e
      p4merge.
-   + Alessandra: Acréscismos e revisão. Revisar o capítulo da Ângela.
-   + Alcides: Acréscismos e revisão. Revisar o capítulo do Gabriel.
+   + Alessandra: Acréscimos e revisão. Revisar o capítulo da Ângela.
+   + Alcides: Acréscimos e revisão. Revisar o capítulo do Gabriel.
    + Daniel: **finalizar todo o trabalho da semana anterior**. Concluir
      o capítulo sobre Git com o RStudio
 5. 2015-11-24 [week05]:
@@ -184,16 +184,16 @@
    + Gabriel: Disponibilizar o capítulo 3 para o Eduardo até sexta.
    + Walmes: Juntar todos os capítulos e gerar a Apostila Git.
 8. 2015-12-15: Apostila Git concluída!
-   + Daniel: Não concluiu nenhum dos comprimissos assumidos. As
-     pendendências devem ser incorporadas na segunda fase do Projeto.
+   + Daniel: Não concluiu nenhum dos compromissos assumidos. As
+     pendências devem ser incorporadas na segunda fase do Projeto.
    + Gabriel: Enviou de forma inacabada os compromissos que assumiu;
-   + Ângela: Fez a capa. Concluiu a primera fase da apostila sem nenhuma
+   + Ângela: Fez a capa. Concluiu a primeira fase da apostila sem nenhuma
      pendência;
-   + Jhenifer: Concluiu a primera fase da apostila sem nenhuma
+   + Jhenifer: Concluiu a primeira fase da apostila sem nenhuma
      pendência;
-   + Walmes: Concluiu a primera fase da apostila sem nenhuma pendência;
+   + Walmes: Concluiu a primeira fase da apostila sem nenhuma pendência;
    + Eduardo: Concluiu com tudo em dia
-   + Alessandra: Concluiu a primera fase da apostila sem nenhuma
+   + Alessandra: Concluiu a primeira fase da apostila sem nenhuma
      pendência;
    + Alcides: Fez as modificações mas não pediu MR.
 

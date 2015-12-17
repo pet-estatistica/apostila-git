@@ -3,7 +3,7 @@ Guia de contribuição
 
 Esse é um projeto público do PET Estatística aberto a
 colaboradores. Para que a colaboração seja bem sucedida, seguem algumas
-intruções e recomendações.
+instruções e recomendações.
 
 ## O funcionamento
 
@@ -24,9 +24,9 @@ que fazê-lo conforme abaixo.
     ```
 
 A compilação desse documento cria sempre um projeto Git do zero. Com
-intruções do shell ao longo do documento, no instante da compilação,
+instruções do shell ao longo do documento, no instante da compilação,
 arquivos são criados, adicionados (`git add`), commitados (`git
-commit`), moficados, etc. Esse documento é, portanto, um documento
+commit`), modificados, etc. Esse documento é, portanto, um documento
 reproduzível.
 
 Para compilar o documento você deve abrir uma sessão R onde o diretório
@@ -117,7 +117,7 @@ Visite para mais dicas de como escrever um *commit*:
 
 ## Escrita do código
 
-Recomensa-se fortemente que ao escrever o código, não se ultrapasse 72
+Recomenda-se fortemente que ao escrever o código, não se ultrapasse 72
 caracteres por linha. Isso torna o texto/código mais legível nos
 arquivos fontes. Linhas longas são difíceis de ler nos monitores atuais, 
 que possuem uma tela grande.
