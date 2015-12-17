@@ -13,10 +13,10 @@ Configura o diretório atual para um projeto Git
 Configura o nome que será visualizado nos commit
 
 #### $ git config --global user.email "Seu email"
-Configura o email que será associado ao seu nome
+Configura o e-mail que será associado ao seu nome
 
 #### $ git clone git://github.com/usuario/projeto.git
-Clona um projeto git já existente
+Clona um projeto Git já existente
 
 ### Atividades Locais
 
@@ -104,4 +104,4 @@ Desfaz todos os commit a partir do commit especificado
 Reverte para um commit especificado
 
 #### $ git submodule
-Cria, atualiza ou inspeciona um submodulo (sub branch)
+Cria, atualiza ou inspeciona um submódulo (sub branch)
