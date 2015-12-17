@@ -184,6 +184,18 @@
    + Gabriel: Disponibilizar o capítulo 3 para o Eduardo até sexta.
    + Walmes: Juntar todos os capítulos e gerar a Apostila Git.
 8. 2015-12-15: Apostila Git concluída!
+   + Daniel: Não concluiu nenhum dos comprimissos assumidos. As
+     pendendências devem ser incorporadas na segunda fase do Projeto.
+   + Gabriel: Enviou de forma inacabada os compromissos que assumiu;
+   + Ângela: Fez a capa. Concluiu a primera fase da apostila sem nenhuma
+     pendência;
+   + Jhenifer: Concluiu a primera fase da apostila sem nenhuma
+     pendência;
+   + Walmes: Concluiu a primera fase da apostila sem nenhuma pendência;
+   + Eduardo: Concluiu com tudo em dia
+   + Alessandra: Concluiu a primera fase da apostila sem nenhuma
+     pendência;
+   + Alcides: Fez as modificações mas não pediu MR.
 
 [week01]: https://gitlab.c3sl.ufpr.br/pet-estatistica/apostila-git/commits/week01
 [week02]: https://gitlab.c3sl.ufpr.br/pet-estatistica/apostila-git/commits/week02
