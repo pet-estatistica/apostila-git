@@ -290,7 +290,7 @@ ou editando diretamente no arquivo `/.gitconfig`.
 **Pelo terminal:**
 
 Execute o comando abaixo com o atalho de sua preferência e o nome
-completo do camando o qual deseja criar o alias.
+completo do comando o qual deseja criar o alias.
 
 ```{r, engine="bash", eval=FALSE}
 git config --global alias.nome_do_alias "comando inteiro"
@@ -389,5 +389,5 @@ A partir disso, todos os arquivos que estão na lista serão ignorados
 pelo usuário.
 
 Finalmente com a instalação, configuração essencial (usuário e e-mail) e
-configurações adicionais concluídos, podemos começar a utilizar o Git
+configurações adicionais concluídas, podemos começar a utilizar o Git
 para versionar nossos projetos.

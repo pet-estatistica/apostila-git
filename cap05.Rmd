@@ -26,12 +26,12 @@ No capítulo anterior vimos como configurar um repositório remoto em um
 servidor. Esse procedimento possibilita trabalho em equipe pois
 centraliza o repositório remoto em um servidor que todos têm
 acesso. Assim, todos podem clonar, criar branches, subir as
-contruibuições, etc.  Apesar do servidor centralizar o trabalho de todos
+contribuições, etc.  Apesar do servidor centralizar o trabalho de todos
 os usuários, estes terão que se comunicar e fazer a gestão de tarefas
-sobre o projeto de outra forma, como por email direto, lista de
+sobre o projeto de outra forma, como por e-mail direto, lista de
 emails/discussão ou chats coletivos. Para que um desenvolvedor veja o
 que os outros fizeram, ele terá que periodicamente dar `fetch`, ver os
-braches do repositório, navegar no histórico de commits, ver *diffs*
+branches do repositório, navegar no histórico de commits, ver *diffs*
 entre arquivos. Se por um lado existe recurso para um fluxo de
 desenvolvimento orientado dessa forma, também existem recursos para
 tornar o trabalho coletivo mais simples e centralizado. Eles são os
@@ -39,7 +39,7 @@ serviços web para projetos Git.
 
 O Git tem vários serviços web voltados para ter um local que centralize 
 o projeto bem como ofereça recursos administrativos e colaborativos. 
-Esses serviços possuem contas *free*, algums planos pagos e diversos
+Esses serviços possuem contas *free*, alguns planos pagos e diversos
 recursos para todo tipo de projeto e equipe.
 
 Os objetivos desse capítulo são: apresentar os serviços web para
@@ -83,12 +83,12 @@ mesmo sendo desconhecidas. Dentre os principais recursos disponíveis,
 têm-se:
 
   * README: é um arquivo que funciona como capa do seu repositório. O
-    seu conteúdo é texto escrito em liguagem de marcação (Markdown, RST,
+    seu conteúdo é texto escrito em linguagem de marcação (Markdown, RST,
     Textile, Org, etc) renderizada para exibição pelo GitHub. Como capa,
     o conteúdo do README está na *home* do projeto e serve para informar
     o visitante dos objetivos do repositório, seus desenvolvedores,
     instruções de instalação/uso e formas de colaboração.
-  * Wiki: a Wiki de cada repositório são um conjunto de páginas que
+  * Wiki: a Wiki de cada repositório é um conjunto de páginas que
     serve para divulgação e documentação do repositório. Estas também
     são escritas em linguagem de marcação, tornando fácil e rápida a
     escrita pelo desenvolvedor e simples para o visitante ler e
@@ -100,11 +100,11 @@ têm-se:
     gerenciamento de tarefas. Os usuários criam *issues* para notificar
     um *bug* encontrado de forma que ele possa ser rapidamente
     corrigido. Criar *issues* também serve como ferramenta de
-    admistração de tarefas nas quais eles descrevem algo a ser
+    administração de tarefas nas quais eles descrevem algo a ser
     feito por alguém.
   * *Milestones*: são pedras de milha, ou seja, marcam um ponto a ser
     alcançado. São usadas para descrever o que precisa ser desenvolvido
-    para que ocorra uma mundança de versão e estabalecer um prazo para
+    para que ocorra uma mudança de versão e estabelecer um prazo para
     conclusão, por exemplo. As *milestones* agrupam *issues* que indicam
     as etapas a serem percorridas.
   * *Pull request* ou *merge request* (MR): é uma requisição de
@@ -113,7 +113,7 @@ têm-se:
     responsável por avaliar o MR pode ver os *diffs* nos arquivos e
     fazer o merge direto pela interface, de dentro do serviço sem
     precisar baixar (*fetch*) o ramo, aplicar o merge (*merge*) e
-    subí-lo (*push*). Então os desenvolvedores não precisam interromper
+    subi-lo (*push*). Então os desenvolvedores não precisam interromper
     o trabalho local para fazer um merge já que ele pode ser feito no
     serviço sem modificações no *workspace*.
   * *Fork*: é uma forma de se fazer uma cópia do projeto de alguém para
@@ -130,7 +130,7 @@ Finley\footnote{\url{http://techcrunch.com/2012/07/14/what-exactly-is-github-any
 mantenedor recebe um MR ele pode ver o perfil do contribuidor onde estão
 listados todos os projetos no qual este contribuiu. Ao aceitar o MR, é
 acrescentado mais uma colaboração a reputação do colaborador. Esse
-mecanísmo, então, beneficia as duas partes.
+mecanismo, então, beneficia as duas partes.
 
 Além dessas características chave, o GitHub permite que você acompanhe
 (*watch*) e favorite (*star*) repositórios. Também dá para seguir
@@ -153,7 +153,7 @@ coleções de funções que podem ser carregadas com um `source()`.
 Com o plano *free* do GitHub, você pode ter inúmeros repositórios
 públicos, inúmeros colaboradores, ter o *fork* de quantos repositórios
 quiser e participar de quantas organizações precisar. Para ter
-repositórios privados, o plano mais básico custa U$ 7 e dá direito à 5
+repositórios privados, o plano mais básico custa U$ 7 por mês e dá direito à 5
 repositórios. Existem outros planos individuais, e também planos
 organizacionais, para todos os tamanhos de projeto e equipe. Além dessas
 opções, pode-se ter o GitHub em um servidor próprio, o GitHub
@@ -179,7 +179,7 @@ básico.  O GitLab e o Bitbucket estão entre os 5 mais populares e
 permitem, por exemplo, ter alguns repositórios privados com a conta
 *free*.
 
-Como hopedamos nossos projetos coletivos do PET-Estatística no GitLab do
+Como hospedamos nossos projetos coletivos do PET-Estatística no GitLab do
 C3SL\footnote{\url{https://gitlab.c3sl.ufpr.br/explore}}, não podemos
 deixar de falar sobre ele.
 
@@ -187,9 +187,9 @@ deixar de falar sobre ele.
 
 O GitLab\footnote{\url{https://about.gitlab.com/}}, assim como o GitHub,
 é um serviço web para repositórios Git. O GitLab é um projeto *open
-source* desenvolvido em Ruby que teve início em 2011 pelo ucrâniano
+source* desenvolvido em Ruby que teve início em 2011 pelo ucraniano
 Dmitriy Zaporozhets. Em 2013, a Companhia GitLab tinha uma equipe de 11
-funcionios e mais de 10 mil organizações usando o serviço.
+funcionários e mais de 10 mil organizações usando o serviço.
 
 <!-- \begin{wrapfigure}{r}{0.4\textwidth} -->
 \begin{figure}[h]
@@ -200,8 +200,8 @@ funcionios e mais de 10 mil organizações usando o serviço.
 \end{figure}
 <!-- \end{wrapfigure} -->
 
-O GitLab, além de ser um serviço gratuito (com planos extras)
-colaboração, é também um programa que você pode instalar em servidor
+O GitLab, além de ser um serviço gratuito (com planos extras), é também 
+um programa que você pode instalar em servidor
 local para ter seus repositórios na intraweb. Esse é o caso do GitLab do
 C3SL e do GitLab do LEG\footnote{\url{http://git.leg.ufpr.br/explore}}.
 
@@ -228,7 +228,7 @@ Geoinformação). Estes GitLabs dão suporte à colaboração em código dentro
 dos departamentos de Informática e Estatística para alunos e professores
 (C3SL) e para a equipe e colaboradores do LEG.
 
-Em termos finaceiros, custa menos um servidor na nuvem da Digital
+Em termos financeiros, custa menos um servidor na nuvem da Digital
 Ocean\footnote{\url{https://www.digitalocean.com/community/tutorials/how-to-use-the-gitlab-one-click-install-image-to-manage-git-repositories}}
 com o GitLab CE (U$ 5/mês) do que ter uma conta para repositórios
 privados no GitHub (U$ 7/mês) por 5 repositórios privados). No entanto,
@@ -240,35 +240,35 @@ Além das características essenciais e comuns aos demais serviços, como
 5 níveis de acesso aos repositórios (*owner*, *master*, *developer*,
 *report* e *guess*), 2) revisão comentada de código nos *diffs*, 3)
 importação repositórios de outros serviços, 4) adição de *web hooks*
-e 5) integração contínua nativa apartir da versão 8.0.
+e 5) integração contínua nativa a partir da versão 8.0.
 
 # Criar um perfil #
 
-Criar uma conta no Github é tão simples como uma conta de email ou numa
+Criar uma conta no Github é tão simples como uma conta de e-mail ou numa
 rede social. Acesse o endereço <https://github.com/join> para preencher
 seus dados pessoais e escolher um plano. Nenhum dos planos tem limitação
 quanto ao número de repositórios ou colaboradores. O que muda é a
-quantidade de reposiórios privados. No plano *free*, só são criados
+quantidade de repositórios privados. No plano *free*, só são criados
 repositórios públicos enquanto que nos planos pagos, o menor deles
-permite 5 repositórios privados por um custo de U$ 5 por mês. Acesse
+permite 5 repositórios privados por um custo de U$ 7 por mês. Acesse
 <https://github.com/pricing> para mais detalhes.
 
-Ao preencher o formulário de criação de conta, você receberá um email
-com uma ulr de ativação. Se optar por planos pagos, terá que informar o número
+Ao preencher o formulário de criação de conta, você receberá um e-mail
+com uma url de ativação. Se optar por planos pagos, terá que informar o número
 do cartão de crédito para que seja feito o pagamento mensalmente.
 
 Para criar uma conta gratuita no GitLab, acesse 
 <https://gitlab.com/users/sign_in>. Os serviços GitLab que usamos são
 instalações em servidoras próprias (do C3SL e do LEG), no entanto, a
-interface do usuário é a mesma, com excessão de alguns privilégios
+interface do usuário é a mesma, com exceção de alguns privilégios
 administrativos.
 
 ## Habilitar comunição ##
 
-http://www.vogella.com/tutorials/GitHosting/article.html
+<!-- http://www.vogella.com/tutorials/GitHosting/article.html -->
 
-Geração e configuração das chaves públicas.
-Incluir screenshots.
+<!-- Geração e configuração das chaves públicas. -->
+<!-- Incluir screenshots. -->
 
 Uma vez criada uma conta, é necessário habilitar a comunicação entre sua
 máquina e o (servidor do) GitHub. A comunicação é feita com protocolo
@@ -328,7 +328,7 @@ qual você tem autenticação por chaves.
 Acesse <https://github.com/settings/ssh> para então adicionar chaves
 públicas (Figura \ref{github_sshkeys}) ao seu perfil. Clique em
 \menu{Add SSH key}, cole o conteúdo copiado do arquivo `*.pub` no campo
-`key`. No campo `Title` identifique a máquina correspndente àquela
+`key`. No campo `Title` identifique a máquina correspondente àquela
 chave. Use, por exemplo, `laptop` ou `trabalho` para facilitar o
 reconhecimento. É comum trabalhar-se com mais de um máquina, como uma em
 casa e outra no trabalho.
@@ -343,7 +343,7 @@ casa e outra no trabalho.
   \label{github_sshkeys}
 \end{figure}
 
-Para testar a comunição entre o GitHub e a sua máquina, execute:
+Para testar a comunicação entre o GitHub e a sua máquina, execute:
 ```{r, engine="bash", eval=FALSE}
 ## Testa comunição. Retorna um "Welcome!" em caso positivo.
 ssh -T git@github.com
@@ -354,7 +354,7 @@ ssh -vT git@github.com
 
 No GitLab, o cadastro de chaves públicas é um processo semelhante. Uma
 vez autenticado, acesse <https://gitlab.c3sl.ufpr.br/profile/keys> para
-adicionar chaves públicas.  Para testar a comunição entre o GitLab e a
+adicionar chaves públicas.  Para testar a comunicação entre o GitLab e a
 sua máquina, execute:
 
 ```{r, engine="bash", eval=FALSE}
@@ -405,7 +405,7 @@ repositório e serve para documentar o seu objetivo, formas de
 colaboração, colaboradores, formas de instalação/uso.
 
 Você pode editar o arquivo `README.md` (ou qualquer outro) no próprio
-GitHub. As moficações que fizer devem ser *commitadas* para serem
+GitHub. As modificações que fizer devem ser *commitadas* para serem
 salvas. O arquivo `README.md`, que é linguagem de marcação MarkDown, é
 automaticamente renderizado pelo GitHub fazendo com que *urls* sejam
 clicáveis e códigos estejam em ambientes de fonte monoespaço, além de
@@ -460,7 +460,7 @@ git push -u origin master
 O seu projeto é configurado em \menu{Settings}. Para renomear, deletar
 ou transferir o projeto para outro usuário ou organização, vá em
 \menu{Options}. Em \menu{Collaborators} você administra os colaboradores
-do projeto. Para genrenciar os ramos de trabalho, como proteger ou
+do projeto. Para gerenciar os ramos de trabalho, como proteger ou
 remover ramos, vá em \menu{Branches}. O uso de de serviços web é
 configurado no \menu{Webhooks \& services}. O \menu{Deploy keys} permite
 adicionar chaves públicas.
@@ -581,11 +581,11 @@ descrever o procedimento de trabalho considerando tais interfaces.
 
 # Fluxo de trabalho #
 
-TODO Deixar os chunks dessa sessão reproduzíveis! TODO
+<!-- TODO Deixar os chunks dessa sessão reproduzíveis! TODO -->
 
 O fluxo de trabalho de um projeto Git local usando um servidor remoto
 foram apresentados no capítulo anterior. O fluxo com um repositório Git
-mantido em um serviço, como o GitHub ou Gitlab, não muda muito. A maior
+mantido em um serviço, como o GitHub ou GitLab, não muda muito. A maior
 diferença não é sobre o uso de novas instruções Git mas sim a adoção de
 uma estratégia de trabalho (*workflow*) baseada nos recursos desses
 serviços, como as *milestones* e *issues*. Esse modelos de trabalho
@@ -596,7 +596,7 @@ acrescenta àqueles necessários para se comunicar com o
 repositório. Alguns desses comandos, senão todos, já foram apresentados
 no capítulo anterior a esse.
 
-Ao considerar um seviço web, você pode começar um repositório novo de
+Ao considerar um serviço web, você pode começar um repositório novo de
 duas formas: localmente ou pelo serviço.
 
 Pelo serviço, qualquer que seja, crie um novo repositório. GitHub e
@@ -608,7 +608,7 @@ de criar e *clonar* o repositório e também de criar local e adicionar a
 *url* do repositório remoto (`origin`).
 
 Localmente o repositório segue o ciclo normal de desenvolvimento que
-minimamente contém as intruções `git add` e `git commit`. Os fluxos de
+minimamente contém as instruções `git add` e `git commit`. Os fluxos de
 trabalho, em geral, preconizam o desenvolvimento a partir de *branches*
 de demanda cujo conteúdo será incorporado aos ramos permanentes
 (`master`, `devel`) quando forem concluídos. Abaixo ilustramos a
@@ -677,7 +677,7 @@ default. No entanto, um projeto Git pode ter mais de um repositório
 remoto. Considere o caso simples de um repositório para arquivos de uma
 disciplina. Esse repositório contém tanto lista de exercícios para os
 alunos como também as provas com as soluções. Para não entregar as
-provas de bandeija, o diretório de provas existe no ramo `secret` e é
+provas de bandeja, o diretório de provas existe no ramo `secret` e é
 enviado somente para um repositório privado chamado `provas`. Já o
 conteúdo restante (lista de exercícios, notas de aula, scripts),
 disponibilizado para os alunos, fica no ramo `master`, mantido em um
@@ -736,7 +736,7 @@ após o `fetch`. Para transferir o conteúdo `origin/devel` para o
 `devel` tem-se que usar o `git merge`. No entanto, sempre que haver
 necessidade, antes do *merge* pode-se verificar as diferenças que
 existem entre local e remoto, principalmente quando esse remoto traz
-contribuições de algum colaborador. Os comandos abaixos exibem as
+contribuições de algum colaborador. Os comandos abaixo exibem as
 diferenças entre os ramos e aplicam o merge entre eles.
 
 ```{r, engine="bash", eval=FALSE}
@@ -765,7 +765,7 @@ git pull origin
 git pull origin devel
 ```
 
-Por fim, para subir o trabalho feito em um ramo, usa-se a intrução `git
+Por fim, para subir o trabalho feito em um ramo, usa-se a instrução `git
 push`. Enviar o seu trabalho com frequência é a melhor forma de ter
 *backups*, exibir e disponibilizar suas contribuições para os seus
 colaboradores. A documentação do `git
@@ -810,7 +810,7 @@ disponibilizar seu trabalho. No entanto, um dos principais objetivos dos
 serviços web é permitir a colaboração entre pessoas. Já mencionamos o
 básico sobre recursos de colaboração quando falamos de *issue*, *fork* e
 *merge request*. Nas sessões a seguir, vamos nos aprofundar nesses três
-mecanísmos chave para a colaboração via serviços web para Git.
+mecanismos chave para a colaboração via serviços web para Git.
 
 ## Issues ##
 
@@ -825,7 +825,7 @@ que as pessoas abram um assunto/tópico referente ao projeto. Em geral,
 com os *issues* as pessoas externas ao projeto indicam um *bug* - uma
 falha a ser corrigida - ou sugerem que o projeto incorpore determinada
 característica desejável. O dono do projeto avalia a proposta e pode
-discutí-la logo em seguida, mantendo as mensagens reunidas e disponíveis
+discuti-la logo em seguida, mantendo as mensagens reunidas e disponíveis
 para outros usuários que acompanham o projeto. Quando a proposta do
 *issue* for implementada, o *issue* é fechado. Mesmo assim, o *issue*
 continua disponível e pode ser referenciado no futuro, tanto para novos
@@ -884,7 +884,7 @@ Com o *fork* você pode colaborar como um terceiro em um projeto, ou
 seja, sem ser colaborador adicionado pelo dono. Nessa cópia você tem
 permissões de *owner* pois na realidade, embora seja uma cópia, ela é
 toda sua. Você faz sua cópia livre, trabalha como quiser e no prazo que
-quiser, e submete ao projeto original o desenvido na sua cópia. O dono
+quiser, e submete ao projeto original o desenvolvido na sua cópia. O dono
 do projeto não tem como saber por que você fez o *fork* (mas você pode
 criar um *issue*) nem quando irá concluir o que almeja. No entanto,
 quando concluir, para que seu trabalho seja incorporado ao original,
@@ -935,14 +935,14 @@ git push origin issue#33
 ```
 
 Na interface web, o membro faz um *merge request* desse ramo para um
-ramo permamente, no qual em projetos simples é o *master* mas em
+ramo permanente, no qual em projetos simples é o *master* mas em
 projetos maiores é usualmente o *devel*. Ao clicar em *merge request*,
 uma caixa de diálogo abre para que você liste as colaborações que o
 *branch* leva.
 
 Em ambos os serviços, o *merge resquest* leva para um página na qual
 você escolhe que ramo de demanda (doador) será incorporado a um ramo
-permamente (receptor). Ao confirmar os ramos envolvidos, tem-se uma
+permanente (receptor). Ao confirmar os ramos envolvidos, tem-se uma
 caixa de texto destinada as informações sobre quais as modificações
 devem ser incorporadas. Elas servem para justificar, esclarecer e
 informar o responsável pelo *merge* sobre a incorporação. Quando o
@@ -967,13 +967,13 @@ e portanto, o trabalho vai levar mais tempo.
 Os próprios serviços web fazem o *merge* diretamente quando não existe
 conflito (merge do tipo *fast forward*). Isso facilita bastante o
 trabalho. Porém, não haver conflito de *merge* não significa que as
-modificações incorparadas estão funcionais, ou seja, as modificações
+modificações incorporadas estão funcionais, ou seja, as modificações
 feitas precisam ser testadas localmente para verificar se surtiram
 efeito. É possível habilitar o serviço Git para checar se o projeto é
-executável ou funcional. Esse recurso se chama intergração contínua e
+executável ou funcional. Esse recurso se chama integração contínua e
 veremos na próxima sessão.
 
-Em caso de confito de *merge*, tem-se que baixar os ramos (`git
+Em caso de conflito de *merge*, tem-se que baixar os ramos (`git
 fetch`). Localmente pode-se comparar as diferenças entre eles para
 entender as fontes de conflito. Para isso são recomendáveis as
 interfaces para Git que serão discutidas no próximo Capítulo. Uma vez
@@ -1028,7 +1028,7 @@ aperfeiçoá-lo mas o tempo todo estamos sujeitos a fazer modificações que
 induzem erros e alguém encontra erros não esperados (*bugs*).
 
 Monitorar erros no projeto em desenvolvimento não é uma tarefa fácil,
-principalmente em trabalhos coletivos nos quais cada colaborator tem um
+principalmente em trabalhos coletivos nos quais cada colaborador tem um
 ambiente de trabalho. Em uma situação ideal, alguém teria que testar se
 o projeto corre sem erros (código executa, software instala) em uma
 máquina cliente (com os requisitos mínimos exigidos), toda vez que um
@@ -1062,24 +1062,24 @@ IC\footnote{\url{https://about.gitlab.com/gitlab-ci/}} são:
   3) Verificação em vários ambientes (sistemas operacionais,
      arquiteturas, dependências e versões);
   4) Informação coletiva e imediata à equipe da causa de falha na hora
-     que ela ocorre, o que aumenta a visilibidade, facilita a
+     que ela ocorre, o que aumenta a visibilidade, facilita a
      comunicação e direcionamento de esforços.
   5) Indicação de sucesso ou não na home do projeto e nos *branches*
      disponível antes do merge;
   6) Entrega de versões estáveis, documentação e arquivos acessórios com
      *continuous deployment*, o que facilita o empacotamento e
-     disponibização do projeto.
+     disponibilização do projeto.
   7) Custo computacional reduzido já que é feito em um servidor
      dedicado.
   8) Acaba saindo mais barato do que parar o projeto para corrigir um erro.
 
-O que deve ficar claro é que a integração contínua não elinima erros,
+O que deve ficar claro é que a integração contínua não elimina erros,
 mas faz com que eles sejam mais fáceis de identificar e corrigir.
 
 Sem a automação, os espaços entre verificações podem ficar longos.
 Encontrar um *bug* em tantos *commits* é mais difícil, encontrar no
 código é mais ainda. Pode atrasar a entrega do projeto e comprometer a
-receita e popularidade. Integrações periodicas são mais fáceis e leves.
+receita e popularidade. Integrações periódicas são mais fáceis e leves.
 
 O fluxo de trabalho de um repositório com IC é basicamente assim:
 
@@ -1089,15 +1089,15 @@ O fluxo de trabalho de um repositório com IC é basicamente assim:
   3) O serviço de IC monitora o repositório toda vez que modificações
      ocorrem;
   4) O serviço de IC corre todos os testes de inspeção que foram
-     configurados (instala dependendencias, executa scripts,
-     cria/tranfere arquivos, etc);
+     configurados (instala dependências, executa scripts,
+     cria/transfere arquivos, etc);
   5) O serviço de IC disponibiliza produtos da verificação, como
      binários de instalação e documentação (no caso de sucesso) ou log
-     de execussão (no caso de falha);
+     de execução (no caso de falha);
   6) O serviço de IC assinala no repositório Git o *status* da
      verificação: sucesso/fracasso;
   7) O serviço de IC informa a equipe dos resultados por mensagem de
-     email ou *web hooks*, como o Slack;
+     e-mail ou *web hooks*, como o Slack;
   8) A equipe toma das providências cabíveis na primeira oportunidade,
      como corrigir a falha ou anunciar o sucesso;
   9) O serviço aguarda por mais modificações;
@@ -1114,7 +1114,7 @@ Para vincular um projeto no GitHub com IC no Travis CI, você precisa
 logar no <https://travis-ci.org/> com a sua conta do GitHub. Assim que
 você logar, dê autorização para acessar seus repositórios e em uma lista
 você deve marcar os que usarão o serviço.  A próxima etapa é criar um
-arquivo `.travis.yml` na raíz do seu repositório Git. Esse arquivo
+arquivo `.travis.yml` na raiz do seu repositório Git. Esse arquivo
 oculto especifica todas as instruções que devem ser feitas a fim de
 verificar seu repositório. Se seu repositório é um pacote R, por
 exemplo, esse arquivo vai ter instruções de instalação do pacote.
@@ -1127,7 +1127,7 @@ prática em ver exemplos em uso, como o `.travis.yml` dos pacotes R
 `devtools`\footnote{\url{https://github.com/hadley/devtools}} que estão
 na lista dos mais utilizados.
 
-Para todas as liguagens e objetivos têm-se exemplos de arquivos
+Para todas as linguagens e objetivos têm-se exemplos de arquivos
 `.trevis.yml`. Para o Emacs e bibliotecas lisp visite
 <https://github.com/rolandwalker/emacs-travis>,
 <https://github.com/Malabarba/elisp-bug-hunter> e
@@ -1168,7 +1168,7 @@ realidade um *desktop* com Ubuntu Server 14.04. É patrimônio da UFPR de
 responsabilidade do LEG mas tem uso compartilhado com o PET Estatística
 e colaboradores do Laboratório. Desde a disponibilização do GitLab, em
 julho de 2015, mantemos artigos, materiais de ensino (aulas, provas,
-scripts), tutoriais e materias de blog em devolvimento colaborativo,
+scripts), tutoriais e matérias de blog em devolvimento colaborativo,
 além de pacotes R.
 
 Nessa servidora, criamos um usuário chamado `gitlab-runner` com o qual
@@ -1186,7 +1186,7 @@ pacotes R.
 A documentação oficial sobre como usar o arquivo `.gitlab-ci.yml`
 encontra-se em <http://doc.gitlab.com/ce/ci/yaml/README.html>.
 
-O arquivo `.gitlab-ci.yml` fica na raíz do projeto. Seu conteúdo define
+O arquivo `.gitlab-ci.yml` fica na raiz do projeto. Seu conteúdo define
 todo o processo de verificação do seu repositório a partir de uma série
 de instruções, como execução de comandos diretos ou execução de
 scripts. Abaixo tem-se um exemplo simples de `.gitlab-ci.yml`.
@@ -1202,7 +1202,7 @@ job2:
 ```
 
 Neste exemplo existem dois *jobs* (tarefas). Cada um deles corre
-independente e podem ser executados simultâneamente. O primeiro executa
+independente e podem ser executados simultaneamente. O primeiro executa
 um *script* shell e o segundo comandos *shell* em uma lista. Porém, tais
 arquivos podem ser bem mais complexos, com campos além do `script:`. Os
 campos a seguir são todos opcionais:
@@ -1211,7 +1211,7 @@ campos a seguir são todos opcionais:
     *docker*\footnote{\url{https://www.docker.com/}}. O tutorial de Alan
     Monger considera esse campo.
   * `services`: também refere ao *docker*. Tais campos são de uso menos
-    frequênte, porém existe uma série de vantagens neles. A documentação
+    frequente, porém existe uma série de vantagens neles. A documentação
     oficial sobre isso encontra-se em
     <http://doc.gitlab.com/ce/ci/docker/README.html>.
   * `before_script`: define comandos/scripts a serem executados antes
@@ -1240,14 +1240,14 @@ campos a seguir são todos opcionais:
       script: "compacta_transfere.sh"
       stage: entrega
     ```  
-  * `variables`: serve para criar variaveis de ambiente que podem ser
+  * `variables`: serve para criar variáveis de ambiente que podem ser
     usados por todos os comandos e scripts. Tais variáveis podem
-    aramazenas senhas de acesso, necessárias por exemplo para instalação
+    armazenadas senhas de acesso, necessárias por exemplo para instalação
     de componentes e acesso à bancos de dados.
   * `cache`: indica os diretórios e arquivos que serão mantidos entre os
     *jobs* (builds), possivelmente porque são aproveitados futuramente.
 
-Com excessão dos nomes listados acima, um *job* pode ter qualquer nome,
+Com exceção dos nomes listados acima, um *job* pode ter qualquer nome,
 desde que seja exclusivo. Dentro de um *job* tem-se também uma lista de
 campos disponíveis para configurá-lo:
 
@@ -1257,7 +1257,7 @@ campos disponíveis para configurá-lo:
     execução dos *jobs*. Vários *jobs* podem ser do mesmo estágio e
     nesse caso são executados paralelamente.
   * `only` e `except`: servem para restringir a execução do *job*,
-    incluindo ou excluindo, para uma lista de referências git, como
+    incluindo ou excluindo, para uma lista de referências Git, como
     *branches* ou *tags*. Esse campo permite expressões regulares, úteis
     para incluir (excluir) ramos representáveis por *regex*, como são os
     ramos de desenvolvimento do nosso workflow, iniciados com *issue*.
@@ -1281,7 +1281,7 @@ campos disponíveis para configurá-lo:
       estágio anterior falhou.
     * `on_success`: são instruções executadas quando todos os *jobs* do
       estágio anterior foram bem sucedidos.
-    * `always`: excutados sempre.
+    * `always`: executados sempre.
   * `cache`: especifica arquivos e diretórios mantidos entre um *job* e
     outro.
 
@@ -1302,7 +1302,7 @@ job_R:
 Estas são instruções em *shell* que chamam o R com expressões passadas
 para `Rscript -e` para fazer a instalação do pacote. Na ocorrência da
 primeira falha, o processo é logicamente interrompido e os
-colaboradoradores podem ver a causa em
+colaboradores podem ver a causa em
 <http://git.leg.ufpr.br/leg/legTools/builds>. No caso do *build* correr
 sem falhas, tem-se uma estampa de *success*. Essa estampa também vai
 aparecer no `README.md` na página de rosto do projeto, basta para isso
@@ -1321,7 +1321,7 @@ meio do GitLab CI. Um *runner* pode ser específico de um projeto ou pode
 ser um *runner* compartilhado, disponível à todos os projetos. Estes
 últimos são úteis à projetos que tem necessidades similares, como todos
 àqueles projetos que são pacotes R, por exemplo. Isso facilita a
-administação e atualização. Os específicos, por outro lado, atendem
+administração e atualização. Os específicos, por outro lado, atendem
 projetos com demandas particulares.
 
 Apenas usuários com permissões de *admin* podem criar *runners*
@@ -1336,9 +1336,9 @@ novas entradas no menu da esquerda:
      útil para passar senhas.
   * *Triggers*: servem para TODO
   * *CI Web Hooks*: esse *web hook* pode ser usado para criar eventos
-    quando o *build* é concluido.
+    quando o *build* é concluído.
   * *CI Settings*: configurações gerais.
-  * *CI Services*: permite integrar o CI com outros serviços, como email
+  * *CI Services*: permite integrar o CI com outros serviços, como e-mail
     e Slack.
 
 Para habilitar um *runner*, é necessário instalar o

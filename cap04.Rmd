@@ -24,7 +24,7 @@ vários segmentos sejam conduzidos de forma independente e no futuro,
 quando apropriado, reunidos em um único *branch*. Isso é exatamente o
 que precisamos para trabalhar em equipe, certo? Se cada colaborador
 pudesse ter um ramo separado do projeto para trabalhar, todos poderiam
-trabalhar simultâneamente. Quando oportuno, bastaria fazer merges para
+trabalhar simultaneamente. Quando oportuno, bastaria fazer merges para
 reunir o trabalho. A questão é: como deixar o projeto disponível para os
 colaboradores?
 
@@ -37,7 +37,7 @@ desktop do *escritório*.
 
 O repositório remoto serve de centro do seu repositório Git. Como ele
 está em um servidor que você tem acesso, você pode compartilhar o
-repositório com outras máquinas, clonado de lá. Ele serve como *backup*
+repositório com outras máquinas, clonando de lá. Ele serve como *backup*
 do repositório.
 
 Aqui não se trabalha em colaboração mas o processo permite acessar o
@@ -66,7 +66,7 @@ Caso queira, você também pode usar `git init`. A diferença entre eles é
 só onde ficam os arquivos do versionamento. Com `git init`, um diretório
 oculto `.git/` é o repositório Git e os arquivos de trabalho, como o
 `README.md`, ficam ao lado dele na estrutura de diretório. Com `git
---bare init` o conteúdo do repositório Git fica na raíz. Essa última
+--bare init` o conteúdo do repositório Git fica na raiz. Essa última
 opção é justamente para criar repositórios remotos que vão justamente
 manter a parte repositório e não os arquivos.
 
@@ -98,7 +98,7 @@ git remote -v
 ```
 
 Esse endereço pode ter IP, porque na realidade, todo servidor tem um
-IP. Por exemplo, o servidor do <github.com> tem o IP
+IP. Por exemplo, o servidor do `github.com` tem o IP
 192.30.252.129. Para saber o IP é só dar um *ping* no endereço.
 
 ```{r, engine="bash", eval=FALSE}
@@ -319,7 +319,7 @@ No comando acima é possível visualizar o remoto padrão **origin** (URL
 SSH para onde será possível enviar os seus arquivos).
 
 **Exemplo:** para retornar o nome dos repositórios com a URL onde foram
-armazanados:
+armazenados:
 
 ```{r, engine="bash", echo=TRUE, eval=FALSE}
 git remote -v
@@ -445,10 +445,10 @@ não contém um diretório de trabalho.
 ```
 
 Acima foi criado um repositório limpo `MeuRepo.git`, no qual está
-armazenada a cópia de todos os arquivos do diretorio Git.
+armazenada a cópia de todos os arquivos do diretório Git.
 
 Após este primeiro passo o repositório limpo será colocado no Servidor e
-configurado os protolocos.  No exemplo abaixo, supondo que você tem
+configurado os protocolos.  No exemplo abaixo, supondo que você tem
 configurado um servidor `git.servidor.com`, e um diretório `/dir/git`no
 qual você quer armazenar seus repositórios. Ao copiar o seu repositório
 limpo, você pode configurar seu novo repositório.
@@ -501,7 +501,7 @@ necessário escrever um título para a sua nova chave, no campo `key`
 colar o texto copiado do arquivo `id_rsa.pub` e adicionar sua nova
 chave.
 
-Para checar a configuração da sua máquina com o sevidor basta realizar o
+Para checar a configuração da sua máquina com o servidor basta realizar o
 seguinte comando:
     
 **Exemplo:**

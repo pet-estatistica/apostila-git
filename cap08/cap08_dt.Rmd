@@ -14,7 +14,7 @@ output:
 ## Config ##
 
 O `config` é um comando usado para ajustar as configurações padrão do
-git.  Há duas configurações básicas a serem feitas: a inclusão do e-mail
+Git.  Há duas configurações básicas a serem feitas: a inclusão do e-mail
 e do nome do usuário Git.  Todas as configurações definidas como globais
 ficam armazenadas em um arquivo chamado `.gitconfig`, que fica
 localizado no diretório padrão do usuário.
@@ -33,7 +33,7 @@ git config --global user.email ezio.auditore@exemple.com
 (chave assimétrica). Essa criptografia torna o processo de transferência
 de arquivos entre o cliente e o servidor mais segura.
 
-Para que o git local consiga se conectar a um servidor git remoto, é
+Para que o Git local consiga se conectar a um servidor Git remoto, é
 necessário que esta chave seja gerada e que as devidas configurações
 sejam feitas tanto localmente quanto no servidor remoto, caso contrário,
 é exibido um erro e a conexão é interrompida.
@@ -57,8 +57,8 @@ git status --help
 
 ## Repositório ##
 
-Um repositório é uma pasta gerenciada pelo git. A partir da criação
-desta, usufruimos dos sistema de versionamento, sendo possível transitar
+Um repositório é uma pasta gerenciada pelo Git. A partir da criação
+desta, usufruímos do sistema de versionamento, sendo possível transitar
 entre as diferentes versões a medida que necessário.
 
 **Exemplo:**
@@ -146,8 +146,8 @@ git commit -m "Meu primeiro commit"
 Os `branchs` são como uma cópia dos arquivos do ultimo commit para um
 ambiente de desenvolvimento paralelo, o que permite que as modificações
 em um `branch` não afete os arquivos em outro.  Os branchs também são
-chamados de ramos de desenvolvimento. Veja com mais detalhes no
-capitulos dos worksflows.
+chamados de ramos de desenvolvimento. Veja com mais detalhes nos
+capítulos 3 e 7.
 
 **Exemplo:**
 ```{r, engine='bash', echo=TRUE, eval=FALSE}
@@ -187,7 +187,7 @@ git merge novoBranch
 ## Rm ##
 
 O `git rm`, na sua forma mais comum, serve para remover um arquivo de
-forma que ele deixe de ser gerenciado pelo git e seja excluido do disco
+forma que ele deixe de ser gerenciado pelo Git e seja excluído do disco
 rígido. Também é possível que o arquivo deixe de ser gerenciado e
 permaneça no disco.
 
@@ -258,7 +258,7 @@ git pull origin
 `HEAD` é um arquivo que contém um apontador para o `branch` atual.
 Quando o `checkout` é executado para a mudança do `branch`, esse arquivo
 é automaticamente modificado, apontando agora para o novo local, e assim
-permitindo que, quando o computador for desligado e depois de reniciado
+permitindo que, quando o computador for desligado e depois de reiniciado
 o Git ainda esteja trabalhando com o mesmo `branch`.
 
 ## Tag ##
@@ -301,7 +301,7 @@ git stash list
 
 Enquanto o `git checkout` somente transita entre os `commits`, o `reset`
 pode também alterar o histórico, fazendo `commits` serem apagados de
-maneira irreversível (--hard) ou serem apenas resetados ao estado de não
+maneira irreversível (--hard) ou serem apenas retornados ao estado de não
 commitado (--soft).
 
 **Exemplo:**

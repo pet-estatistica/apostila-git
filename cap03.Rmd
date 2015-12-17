@@ -99,7 +99,7 @@ cd meu1repo
 git init
 ```
 
-O Git retorna a mensagem de inicilização do repositório. Nesse momento
+O Git retorna a mensagem de inicialização do repositório. Nesse momento
 ele cria um diretório oculto `.git/` com subdiretórios que são o coração
 do sistema de versionamento. Você não deve modificar nada nesse
 diretório. É por essa razão que ele é oculto. Alterar o conteúdo pode
@@ -200,7 +200,7 @@ semanas e até anos atrás.
 O controle de versão não é apenas voltar os arquivos para o conteúdo que
 eles tinham no passado. Arquivos rastreados que foram deletados ou
 renomeados são recuperados. Até mesmo as permissões de
-leitura/escrita/execussão dos arquivos são comtempladas no
+leitura/escrita/execução dos arquivos são contempladas no
 versionamento.
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -215,7 +215,7 @@ O arquivo `README.txt` já é visto pelo Git como um arquivo com o qual
 ele deve se "preocupar", pois está sob versionamento. Vamos agora fazer
 um registro definitivo sobre o estado desse arquivo (*commit*). É de
 fundamental importância que a mensagem de notificação, ou mensagem de
-*commit*, reflita as moficações feitas. São as mensagens que serão
+*commit*, reflita as modificações feitas. São as mensagens que serão
 consultadas quando você precisar desfazer/voltar. Ela deve ser curta (<=
 72 caracteres) e ao mesmo tempo informativa. A minha primeira mensagem
 não será, todavia.
@@ -276,7 +276,7 @@ git tag -d versao1
 ```
 
 Caso haja mudança no nome do arquivo que você esteja versionado, deve
-ser alterado pelo próprio git, para que fique no atual estágio de
+ser alterado pelo próprio Git, para que fique no atual estágio de
 versionamento.
 
 ```{r, engine = "bash", eval = FALSE}
@@ -368,9 +368,9 @@ cd meu1repo
 git diff
 ```
 
-Vamos aplicar o primeiro *add* ao `porqueLinux.txt` para que ele começe
+Vamos aplicar o primeiro *add* ao `porqueLinux.txt` para que ele comece
 a ser versionado. Perceba que ao adicioná-lo, as mudanças, no caso a
-criação do arquivo com contúdo, já são separadas para receber registro
+criação do arquivo com conteúdo, já são separadas para receber registro
 (*changes to be commited*).
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -395,12 +395,12 @@ git status
 ```
 
 Ainda resta o `REAMDE.txt` para receber registro. Você não precisa fazer
-agora. Pode continuar editanto caso não tenha atingido uma quantidade de
+agora. Pode continuar editando caso não tenha atingido uma quantidade de
 modificação merecedora de *commit*. Lembre-se que registros geram
 conteúdo no diretório `.git`. Quanto mais *commits*, mais conteúdo
 gerado. Mas também, toda vez que você faz um *commit*, você define um
 ponto de retorno, um estado salvo, caso precise no futuro
-recuperar/visitar. O que é uma unidade de modificação comitável você irá
+recuperar/visitar. O que é uma unidade de modificação "comitável" você irá
 definir aos poucos com a prática.
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -444,7 +444,7 @@ Instruímos o Git mostrar as diferenças para um *commit* atrás. A cabeça
 *HEAD* (cabeça) pois considera-se um crescimento do histórico debaixo
 para cima no qual um novo *commit* é colocado em cima dos demais
 (empilhado). O `HEAD@{0}` ou apenas `HEAD` representa o último registro
-feito. Não é necessário escrever o último `HEAD` na intrução abaixo.
+feito. Não é necessário escrever o último `HEAD` na instrução abaixo.
 
 Agora inspecionado uma distância de 2 *commits* a partir do último. Aqui
 tem-se os dois arquivos envolvidos nesse intervalo de 2 *commits*. Com
@@ -491,7 +491,7 @@ git status
 
 O Git sugere você aplicar *add* para preparar para *commit*. Caso as
 modificações sejam um engano e não mais desejadas, você pode
-desfazazê-las, abadonar a correção/inclusão das palavras usando
+desfazê-las, abandonar a correção/inclusão das palavras usando
 `checkout`. Vamos aplicá-lo para ver como funciona.
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -561,7 +561,7 @@ O `diff` vazio compara o diretório de trabalho com o último registro
   * `HEAD^n`
   * `HEAD~n`
 
-em que `n` é um número inteiro não negativo. Cada sulfixo tem uma
+em que `n` é um número inteiro não negativo. Cada sufixo tem uma
 finalidade que não detalharemos agora. Visite: [git-caret-and-tilde][].
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -595,7 +595,7 @@ git diff HEAD@{2} HEAD@{0}
 
 Para ficar claro daqui em diante, você pode ao invés de pedir `log`,
 pedir o `reflog` que incluí as referências em termos da sequência do
-mais rencente para os seus ancestrais.
+mais recente para os seus ancestrais.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -638,12 +638,12 @@ recebe versões funcionais do projeito, livre de bugs.
   \begin{center}
     \includegraphics [width=8cm]{./images/git_workflow.png}
   \end{center}
-  \caption{\textit{Printscreen} do passo 8}
+  \caption{Exemplo de esquema de ramificação de um projeto Git}
   \label{fig:cap03_work}
 \end{figure}
 
 
-Para criar um ramo, usandos `git branch` seguido do nome que se
+Para criar um ramo, usamos `git branch` seguido do nome que se
 deseja. Vamos criar um ramo para adicionar mais arquivos ou modificações
 ao projeto.
 
@@ -696,7 +696,7 @@ partir do ramo que é seu ancestral, ou seja, ele começa a partir do
 último *commit* existente, por padrão. Vamos adicionar um arquivo e
 commitar. O comando `wget` permite baixar arquivos pelo terminal. Será
 baixado um arquivo com um função para calcular o fator de inflação de
-variância (*vif*, variance inflation factor) usado em modelos de
+variância (*vif*, _variance inflation factor_) usado em modelos de
 regressão, disponível na página da Professora Suely
 Giolo\footnote{\url{http://people.ufpr.br/~giolo/CE071/Exemplos/vif.R}}.
 
@@ -1028,7 +1028,7 @@ No nosso projeto temos o *master* e o *feature01* em igual condição, sem
 nenhuma diferença. O *commit* recém feito indica um novo seguimento a
 partir daquele onde adicionamos novos itens na lista. Vamos criar um
 novo ramo porque atualmente estamos em um ramos suspenso (*detached
-HEAD*) que não é persistênte.
+HEAD*) que não é persistente.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -1057,8 +1057,8 @@ git log --graph --oneline --decorate --date=relative --all
 
 Vamos explorar bem a funcionalidade. Vamos voltar para o `feature01` e
 criar mais coisas lá. Você já deve estar pensando que tudo isso é
-absurdo e jamais alguém firaria indo e voltando assim. Você está certo,
-porém, quando o projeto envolve mais pessoas, cerrtamente as coisas irão
+absurdo e jamais alguém ficaria indo e voltando assim. Você está certo,
+porém, quando o projeto envolve mais pessoas, certamente as coisas irão
 bifurcar em algum ponto.
 
 ```{r, engine="bash", echo=-c(1:2)}
@@ -1184,7 +1184,7 @@ criar um ramo novo, modificar o arquivo na última linha e commitar. Vou
 voltar par ao *master* e fazer o mesmo mas vou usar um texto diferente
 para incluir no arquivo. Já que os ramos *feature01* e *feature02* não
 são mais necessários, podemos removê-los. No entanto, eles permanecem na
-história do projeto e poder resurgir se você voltar no tempo.
+história do projeto e poder ressurgir se você voltar no tempo.
 
 ```{r, engine="bash", echo=-c(1:2)}
 cd meu1repo
@@ -1370,12 +1370,12 @@ less bib1.txt | head -10
 ```
 
 Então deu conflito e o Git informa que ele deve ser resolvido. Resolver
-o conflito aqui significa abrir os arquivos com problema listados no git
-status e editar de tal forma a desconflitar. Nas regiões de conflito o
+o conflito aqui significa abrir os arquivos com problema listados no Git
+status e editar de tal forma a "desconflitar". Nas regiões de conflito o
 Git sinaliza de forma especial, indicando por divisórias (`<<<<<<<`,
 `=======` e `>>>>>>>`) as versões no HEAD (ramo *master*) e no ramos a
 ser incorporado (*feature03*). Então vamos resolver o conflito sem
-favorecer ninguém, ou seja, vamos encurtar para 4 digitos e manter caixa
+favorecer ninguém, ou seja, vamos encurtar para 4 dígitos e manter caixa
 alta. Dessa forma o aquivo fica assim.
 
 ```{r, engine="bash", echo=-c(1:2), include=FALSE}

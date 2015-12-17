@@ -73,7 +73,7 @@ inicial de todo repositório. Por esse motivo, é importante que o
     para softwares).  Criando esse arquivo com estas informações, ele
     aparecerá automaticamente em uma aba na página inicial do projeto.
 
-Outra parte fundamental do git, são os **commits**. Além de salvarem as
+Outra parte fundamental do Git, são os **commits**. Além de salvarem as
 alterações realizadas nos arquivos, também são responsáveis por
 documentar as alterações feitas por qualquer usuário e em qualquer
 arquivo.  Os commits agilizam o processo de revisão do projeto, e poderá
@@ -85,7 +85,7 @@ aparecerão no `git log` do projeto,por isso é essencial que sejam bem
 escritas, de forma clara e sigam um padrão.
 
 Algumas **regras de ouro**, que são convenções gerais, para que um
-projeto versionado com git seja bem sucedido são:
+projeto versionado com Git seja bem sucedido são:
 
   - **Faça commits regularmente**: isso faz com que as mudanças de
     código entre um commit e outro sejam menores, tornando mais fácil
@@ -106,7 +106,7 @@ projeto versionado com git seja bem sucedido são:
 
 Existem outras convenções estabelecidas sobre como escrever mensagens de
 commit contextualizadas, baseadas nas mensagens geradas por mensagens de
-funções do próprio git. Estas convenções podem resumidas nas 7 regras
+funções do próprio Git. Estas convenções podem resumidas nas 7 regras
 que são convenções globais:
 
   1. **Separe o título do corpo do texto com uma linha em branco**: por
@@ -130,7 +130,7 @@ que são convenções globais:
      mensagens de commits únicas. O modo imperativo significa escrever
      como se estivesse dando um comando a alguém. Seja direto e
      objetivo, e escreva no presente.  Exemplos de mensagens no
-     impertativo:
+     imperativo:
      
 
          - Adiciona versão final
@@ -145,7 +145,7 @@ que são convenções globais:
 
   6. **Limite o corpo da mensagem em 72 caracteres**: ao escrever uma
      mensagem de commit mais longa, devemos manter o corpo da mensagem
-     com no máximo 72 carateres.
+     com no máximo 72 caracteres.
   7. **Use o corpo da mensagem para explicar "o que" e "porque", e não
      "como"**: contextualize o que você fez e o motivo. Na maioria dos
      casos você pode deixar de fora como você fez as modificações, pois
@@ -156,7 +156,7 @@ que são convenções globais:
 A escolha do *workflow* (fluxo de trabalho) depende de cada projeto e
 das preferências pessoais. Podemos utilizar as informações sobre cada
 *workflow*, e decidir qual é mais adequado para cada projeto. Existem
-quatro maneiras principais de trabalhar em colaboração com o git e o
+quatro maneiras principais de trabalhar em colaboração com o Git e o
 GitLab:
 
 ## Centralized workflow ##
@@ -236,7 +236,7 @@ habilitada faça o merge desse branch `freature` para o branch `master`.
 Dessa forma, evita-se os possíveis conflitos e garante que tais
 alterações não causaram algum problema. Esse workflow é altamente
 recomendado por ser simples de gerenciar, evitar grandes conflitos, e
-ser relativamente fácil para usuários novos do git.
+ser relativamente fácil para usuários novos do Git.
 
 **Exemplo**
 
@@ -283,7 +283,7 @@ funções específicas.  Todo o desenvolvimento é realizado no branch
 `release`, onde é testada e finalmente incorporada ao ramo master, que
 contém apenas versões finais (estáveis). É extremamente recomendado esse
 workflow para desenvolvimento de softwares, porém exige de mais
-familiaridade com o git. Permite, por exemplo, que os usuários de um
+familiaridade com o Git. Permite, por exemplo, que os usuários de um
 software, instalem tanto uma versão estável (do branch `master`) quanto
 uma versão em desenvolvimento (do branch `develop`).
 

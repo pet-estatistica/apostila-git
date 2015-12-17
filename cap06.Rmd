@@ -165,7 +165,7 @@ interface `git gui`.
 \end{figure}
 
 A interface `git gui` se apresenta de forma simples, o que facilita sua
-utilização. Na figura \ref{fig:gitgui} detacamos as quatro áreas que
+utilização. Na figura \ref{fig:gitgui} destacamos as quatro áreas que
 compreendem a interface. Na primeira porção temos listados os arquivos
 presentes no *working directory*, os arquivos criados aparecem com ícone
 em branco e os modificados com linhas em azul, aqui a interface
@@ -220,7 +220,7 @@ Git, uma vez que visualizar de forma gráfica as alterações que os
 comandos realizados causam no projeto, torna mais fácil a compreensão
 dos mesmos.
 
-`gitk`, assim como a `git gui` pode ser chamada atráves da linha de
+`gitk`, assim como a `git gui` pode ser chamada através da linha de
 comando:
 
 ```{r, engine="bash", eval=FALSE}
@@ -246,7 +246,7 @@ chamada neste estado do repositório temos:
 Perceba na figura \ref{fig:gitk} que esta interface é mais completa do
 que a `git gui` no que diz respeito à informação. Dividida em apenas
 duas partes, a `gitk` apresenta na primeira todo o histórico do projeto,
-comtempla uma implementação visual e agradável do comando `git log
+contempla uma implementação visual e agradável do comando `git log
 --graph`. No gráfico apresentado na parte superior, as bolinhas em azul
 representam *commits* passados, a de amarelo indica o estado atual do
 repositório e em vermelho são as modificações no *working directory*. Ao
@@ -261,7 +261,7 @@ Além da excelente apresentação visual do repositório Git, a interface
 `gitk` também permite algumas alterações. Clicando com o botão direito
 de seu *mouse* em qualquer *commit* listado, podemos criar *tags*,
 reverter o repositório neste estado, criar um ramo a partir do *commit*
-dentre outras opções possíveis atráves da interface.
+dentre outras opções possíveis através da interface.
 
 ## Outras Interfaces ##
 
@@ -322,7 +322,7 @@ opções do menu quando pressionado o botão direito do mouse.
 \end{landscape}
 
 Na figura \ref{fig:rabbit} temos o *screenshot* do repositório
-`meu1repo` no navegor de arquivos `nautilus` (padrão do sistema Ubuntu
+`meu1repo` no navegador de arquivos `nautilus` (padrão do sistema Ubuntu
 14.04). Perceba que com essa interface os ícones de arquivos e pastas no
 navegador ganham destaque com um outro pequeno ícone na parte
 inferior. Estes pequenos ícones indicam o estado do arquivo sem precisar
@@ -373,7 +373,7 @@ seja por meio de *plugins* adicionais instalados ou pela opção nativa do
 editor.
 
 Destacamos aqui dois editores, comumente utilizados pela comunidade
-estatística, que possuem os comandos **Git** intergrado à sua
+estatística, que possuem os comandos **Git** integrados à sua
 interface. São eles, o `emacs`, o qual temos as opções de *buffers* no
 editor onde podemos abrir uma instância *shell* e executar os comandos
 **Git** junto com o desenvolvimento do código fonte. Além disso uma
@@ -455,7 +455,7 @@ velhos tempos antes de conhecermos o **Git**).
   \begin{center}
     \includegraphics{./images/meld2}
   \end{center}
-  \caption{\textit{Screenshot} de comparaçao de arquivos com programa
+  \caption{\textit{Screenshot} de comparação de arquivos com programa
   \textit{meld} 
   \texttt{RabbitVCS}}
   \label{fig:meld2}
@@ -468,7 +468,7 @@ projeto `meu1repo`, iniciado no capítulo 3 e alterado na seção
 foram salvas, então podemos visualizá-las no `meld`. A inicialização do
 programa pode ser feita via linha de comando `git difftool`, só temos
 que informar o programa a ser utilizado com a opção `-t` (abreviação de
-`--tool`). Nos sistemas UNIX, o programa pode ser lançado apenas atráves
+`--tool`). Nos sistemas UNIX, o programa pode ser lançado apenas através
 do nome `meld`.
 
 ```{r, engine="bash", eval=FALSE}
@@ -518,7 +518,7 @@ git difftool README.md
 Na figura \ref{fig:meld3} temos o _screenshot_ do programa após executado
 o `difftool`. Nesta figura temos a mesma informação trazida pelas
 interfaces onde implementam o comando `git diff`, porém aqui podemos
-alterar os arquivos exibidos atráves das flechas nas bordas (levando ou
+alterar os arquivos exibidos através das flechas nas bordas (levando ou
 trazendo as contribuições) ou mesmo editando pela interface. Isso pode
 ser útil caso necessite desfazer parcialmente um *commit*, ou seja,
 parte das alterações de uma versão anterior seria mantida e parte
@@ -654,12 +654,12 @@ git add README.txt
 git commit -m "Resolve conflito via meld"
 ```
 
-Para resolucão de conflitos via alguma ferramenta gráfica com o comando
+Para resolução de conflitos via alguma ferramenta gráfica com o comando
 `git mergetool`, o **Git** gera arquivos de _backup_ com extensão
 `.orig`. Perceba no _output_ gerado pelo `git status` que estes
 armazenam o conteúdo de cada arquivo em conflito com as porções
 conflitantes.  É recomendável não versionar estes arquivos de
-_backup_. Podemos então simplesmente exluí-los ou ignorá-los após a
+_backup_. Podemos então simplesmente excluí-los ou ignorá-los após a
 mesclagem adicionando arquivos com esta extensão no `.gitignore`. Outra
 forma de manter seu repositório sem os arquivos _backup_ é configurando
 sua `mergetool` para não armazená-los, ou seja, que a própria ferramenta
@@ -719,7 +719,7 @@ para \textit{download} em
 \url{https://www.perforce.com/product/components/perforce-visual-merge-and-diff-tools}},
 como outras interfaces de comparação bastante utilizadas em projetos
 versionados. Em geral, todos estes programas seguem o mesmo estilo de
-exbição de arquivos que o `meld` e as configurações para torná-los
+exibição de arquivos que o `meld` e as configurações para torná-los
 programas de `mergetool` e `difftoll` padrão são as mesmas.
 
 É importante salientar que as ferramentas gráficas apresentadas neste
